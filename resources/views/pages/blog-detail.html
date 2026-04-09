@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Generative AI Is Reshaping Enterprise Software — KawachTech Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-blue: #1a73e8;
+      --dark-navy: #0d1b3e;
+      --mid-navy: #162447;
+      --light-navy: #1f3a6e;
+      --accent-blue: #2196f3;
+      --text-dark: #1a1a2e;
+      --text-muted: #6c757d;
+      --bg-light: #f4f6fb;
+      --white: #ffffff;
+      --border-light: #e2e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background-color: var(--dark-navy);
+      padding: 14px 0;
+    }
+    .navbar-brand {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .navbar-brand span.brand-highlight { color: var(--accent-blue); }
+    .navbar-brand .brand-sub {
+      display: block;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 5px;
+      color: #aac4e0;
+      margin-top: -4px;
+    }
+    .navbar-nav .nav-link {
+      color: #ccd9ea;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 6px 18px;
+      transition: color 0.2s;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active { color: var(--white); }
+    .btn-quote {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 8px 22px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn-quote:hover { background-color: #1558b0; color: var(--white); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 0;
+    }
+    .breadcrumb-bar .container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .breadcrumb-bar a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .breadcrumb-bar a:hover { color: #1558b0; }
+    .breadcrumb-sep { color: #ccc; font-size: 0.7rem; }
+    .breadcrumb-current { color: var(--text-dark); font-weight: 600; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--light-navy) 60%, #1e4a8f 100%);
+      padding: 56px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(33,150,243,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 28px
+      );
+      pointer-events: none;
+    }
+    .article-hero-inner {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 48px;
+    }
+    .article-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(33,150,243,0.18);
+      border: 1px solid rgba(33,150,243,0.38);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #90c8f8;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .article-hero-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.22;
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+    .article-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .hero-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 0.85rem;
+      color: var(--white);
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .hero-author-info .author-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--white);
+    }
+    .hero-author-info .author-role {
+      font-size: 0.72rem;
+      color: #90c8f8;
+    }
+    .hero-meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #b8d4f0;
+      font-weight: 500;
+    }
+    .hero-meta-pill i { color: var(--accent-blue); font-size: 0.72rem; }
+
+    /* hero thumb strip */
+    .article-hero-thumb {
+      background: linear-gradient(135deg, #1a3a6e 0%, #0d47a1 50%, #1565c0 100%);
+      min-height: 320px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px 14px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .article-hero-thumb .thumb-pattern {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 20px
+      );
+    }
+    .article-hero-thumb .thumb-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(33,150,243,0.3) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .thumb-main-icon {
+      position: relative;
+      z-index: 2;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.18);
+    }
+    /* floating decorative chips on thumb */
+    .thumb-chip {
+      position: absolute;
+      z-index: 3;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 8px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.72rem;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+    }
+    .thumb-chip .chip-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4caf50;
+      flex-shrink: 0;
+    }
+    .tc-1 { top: 22px; left: 24px; }
+    .tc-2 { top: 22px; right: 24px; }
+    .tc-3 { bottom: 22px; left: 24px; }
+    .tc-4 { bottom: 22px; right: 24px; }
+
+    /* ── LAYOUT ── */
+    .article-layout {
+      background: var(--bg-light);
+      padding: 50px 0 80px;
+    }
+
+    /* ── ARTICLE CONTENT ── */
+    .article-content-wrap {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 44px 48px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    /* share / actions bar */
+    .article-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .share-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .share-btns { display: flex; gap: 8px; align-items: center; }
+    .share-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .share-btn:hover { opacity: 0.85; transform: translateY(-2px); color: var(--white); }
+    .sb-linkedin { background: #0077b5; }
+    .sb-twitter  { background: #1da1f2; }
+    .sb-facebook { background: #1877f2; }
+    .sb-link     { background: var(--primary-blue); }
+    .read-time-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: #e8f1fd;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+    }
+    .read-time-badge i { font-size: 0.72rem; }
+
+    /* Article body typography */
+    .article-body h2 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.45rem;
+      color: var(--text-dark);
+      margin: 36px 0 14px;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary-blue);
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.12rem;
+      color: var(--text-dark);
+      margin: 28px 0 10px;
+    }
+    .article-body p {
+      font-size: 0.96rem;
+      line-height: 1.85;
+      color: #2e3a5c;
+      margin-bottom: 18px;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 18px 0;
+      padding-left: 22px;
+    }
+    .article-body li {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #2e3a5c;
+      margin-bottom: 6px;
+    }
+    .article-body strong { color: var(--text-dark); font-weight: 700; }
+
+    /* Callout / quote block */
+    .article-callout {
+      background: linear-gradient(135deg, #e8f1fd, #dbeeff);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .article-callout p {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--light-navy);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .article-callout cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    /* Stat cards inside article */
+    .stat-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 28px 0;
+    }
+    .stat-card {
+      flex: 1;
+      min-width: 130px;
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-light);
+      border-radius: 10px;
+      padding: 20px 18px;
+      text-align: center;
+    }
+    .stat-card .stat-num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.9rem;
+      color: var(--primary-blue);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Code snippet block */
+    .code-block {
+      background: var(--dark-navy);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      overflow-x: auto;
+      position: relative;
+    }
+    .code-block-label {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #4caf50;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .code-block pre {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: #90caf9;
+      line-height: 1.7;
+    }
+    .code-block pre .kw { color: #ce93d8; }
+    .code-block pre .str { color: #a5d6a7; }
+    .code-block pre .cm { color: #546e7a; }
+
+    /* Info box */
+    .info-box {
+      background: #e8f5e9;
+      border: 1.5px solid #a5d6a7;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 24px 0;
+      display: flex;
+      gap: 14px;
+    }
+    .info-box i { color: #388e3c; font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+    .info-box p { font-size: 0.88rem; color: #1b5e20; margin: 0; line-height: 1.65; }
+
+    /* Warning box */
+    .warn-box {
+      background: #fff8e1;
+      border: 1.5px solid #ffe082;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 24px 0;
+      display: flex;
+      gap: 14px;
+    }
+    .warn-box i { color: #f57f17; font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+    .warn-box p { font-size: 0.88rem; color: #4e342e; margin: 0; line-height: 1.65; }
+
+    /* Tags */
+    .article-tags {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 28px;
+      margin-top: 28px;
+      border-top: 1px solid var(--border-light);
+    }
+    .tag-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .tag-pill {
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-light);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .tag-pill:hover {
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+      background: #e8f1fd;
+    }
+
+    /* ── AUTHOR BIO ── */
+    .author-bio {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 28px;
+    }
+    .bio-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--white);
+      flex-shrink: 0;
+      border: 3px solid #e8f1fd;
+    }
+    .bio-name {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .bio-role {
+      font-size: 0.78rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .bio-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .bio-socials { display: flex; gap: 8px; margin-top: 12px; }
+    .bio-social-btn {
+      width: 30px; height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .bio-social-btn:hover { opacity: 0.8; color: var(--white); }
+
+    /* ── SIDEBAR ── */
+    .sidebar-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      margin-bottom: 24px;
+    }
+    .sidebar-heading {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-blue);
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    /* TOC */
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li {
+      border-bottom: 1px solid var(--border-light);
+      padding: 8px 0;
+    }
+    .toc-list li:last-child { border-bottom: none; }
+    .toc-list a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--primary-blue); }
+    .toc-list a i { font-size: 0.6rem; color: var(--primary-blue); }
+    .toc-num {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 0.7rem;
+      color: var(--primary-blue);
+      background: #e8f1fd;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Related posts */
+    .related-mini {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+      text-decoration: none;
+    }
+    .related-mini:last-child { border-bottom: none; }
+    .related-thumb-mini {
+      width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .related-mini-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      line-height: 1.35;
+      margin-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .related-mini:hover .related-mini-title { color: var(--primary-blue); }
+    .related-mini-date {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Newsletter sidebar */
+    .sidebar-newsletter {
+      background: linear-gradient(135deg, var(--dark-navy), var(--light-navy));
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .sidebar-newsletter::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(33,150,243,0.2) 0%, transparent 70%);
+    }
+    .sidebar-newsletter-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .sidebar-newsletter-sub {
+      font-size: 0.78rem;
+      color: #aac4e0;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .sidebar-nl-input {
+      width: 100%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 9px 14px;
+      font-size: 0.82rem;
+      color: var(--white);
+      outline: none;
+      margin-bottom: 8px;
+      font-family: 'Open Sans', sans-serif;
+      position: relative;
+    }
+    .sidebar-nl-input::placeholder { color: rgba(255,255,255,0.4); }
+    .btn-sidebar-subscribe {
+      width: 100%;
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 9px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .btn-sidebar-subscribe:hover { background: #1558b0; }
+
+    /* Progress bar */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--primary-blue);
+      z-index: 9999;
+      width: 0%;
+      transition: width 0.1s;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 42px;
+      height: 42px;
+      background: var(--primary-blue);
+      color: var(--white);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(26,115,232,0.4);
+      transition: opacity 0.3s, transform 0.2s;
+      opacity: 0;
+      text-decoration: none;
+      z-index: 999;
+    }
+    .back-to-top.visible { opacity: 1; }
+    .back-to-top:hover { transform: translateY(-3px); color: var(--white); }
+
+    /* ── RELATED FULL CARDS ── */
+    .related-section {
+      background: var(--white);
+      padding: 60px 0 70px;
+    }
+    .section-divider {
+      width: 60px; height: 3px;
+      background: var(--primary-blue);
+      margin: 0 auto 10px;
+      border-radius: 2px;
+    }
+    .section-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+    .blog-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-light);
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    .blog-card-thumb {
+      height: 160px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-card-thumb .tp {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 20px);
+    }
+    .blog-card-thumb i { font-size: 3rem; color: rgba(255,255,255,0.2); position: relative; z-index: 1; }
+    .blog-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-badge {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--primary-blue); background: #e8f1fd;
+      border-radius: 4px; padding: 2px 9px;
+      display: inline-block; margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .blog-card-title {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.98rem; color: var(--text-dark);
+      margin-bottom: 8px; line-height: 1.4; flex: 1;
+    }
+    .blog-card-footer {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+      padding-top: 12px; margin-top: 12px;
+    }
+    .blog-card-meta { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+    .blog-card-meta i { color: var(--primary-blue); font-size: 0.68rem; }
+    .btn-read-sm {
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--primary-blue); text-decoration: none;
+      display: flex; align-items: center; gap: 5px;
+      transition: gap 0.2s;
+    }
+    .btn-read-sm:hover { gap: 8px; color: var(--primary-blue); }
+
+    .thumb-ai    { background: linear-gradient(135deg, #1a3a6e 0%, #2196f3 100%); }
+    .thumb-cloud { background: linear-gradient(135deg, #0d2137 0%, #1976d2 100%); }
+    .thumb-saas  { background: linear-gradient(135deg, #162447 0%, #1a73e8 100%); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--light-navy) 100%);
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(33,150,243,0.12) 0%, transparent 70%);
+    }
+    .cta-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .cta-subtitle { color: #aac4e0; font-size: 0.95rem; margin-bottom: 30px; position: relative; }
+    .btn-cta-primary {
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 12px 32px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+      position: relative;
+    }
+    .btn-cta-primary:hover { background: #1558b0; color: var(--white); }
+    .btn-cta-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+      border-radius: 6px;
+      padding: 11px 32px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+      position: relative;
+    }
+    .btn-cta-outline:hover { background: var(--white); color: var(--dark-navy); }
+
+    /* ── FOOTER ── */
+    .footer-section { background: var(--dark-navy); padding: 48px 0 20px; }
+    .footer-heading {
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.95rem; color: var(--white);
+      margin-bottom: 18px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-blue);
+      display: inline-block;
+    }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a {
+      color: #8bacc8; text-decoration: none;
+      font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-contact-item {
+      color: #8bacc8; font-size: 0.85rem;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+    }
+    .footer-contact-item i { color: var(--primary-blue); width: 16px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 10px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: var(--white);
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .social-btn:hover { opacity: 0.8; color: var(--white); }
+    .social-linkedin { background: #0077b5; }
+    .social-twitter  { background: #1da1f2; }
+    .social-facebook { background: #1877f2; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 30px; padding-top: 16px; text-align: center;
+    }
+    .footer-bottom p { color: #5a7a99; font-size: 0.8rem; margin: 0; }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .article-hero-title { font-size: 1.8rem; }
+      .article-content-wrap { padding: 28px 22px; }
+      .article-hero-thumb { min-height: 220px; }
+      .tc-1, .tc-2, .tc-3, .tc-4 { display: none; }
+    }
+    @media (max-width: 767px) {
+      .author-bio { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      INNOVATE<span class="brand-highlight">TECH</span>
+      <span class="brand-sub">S O L U T I O N S</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+      style="border-color:rgba(255,255,255,0.3);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center me-3">
+        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Case Studies</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="blogs.html">Blog</a></li>
+      </ul>
+      <a href="#" class="btn btn-quote">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <a href="index.html"><i class="fas fa-home" style="font-size:0.72rem;"></i> Home</a>
+    <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+    <a href="blogs.html">Blog</a>
+    <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+    <a href="#">AI &amp; Machine Learning</a>
+    <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+    <span class="breadcrumb-current">How Generative AI Is Reshaping Enterprise Software</span>
+  </div>
+</div>
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <div class="container">
+      <div class="article-category-badge">
+        <i class="fas fa-brain"></i> AI &amp; Machine Learning
+      </div>
+      <h1 class="article-hero-title">
+        How Generative AI Is Reshaping Enterprise<br class="d-none d-md-block"> Software Development in 2024
+      </h1>
+      <div class="article-hero-meta">
+        <div class="hero-author">
+          <div class="hero-avatar">AK</div>
+          <div class="hero-author-info">
+            <div class="author-name">Arjun Kumar</div>
+            <div class="author-role">Lead AI Engineer</div>
+          </div>
+        </div>
+        <span class="hero-meta-pill"><i class="fas fa-calendar-alt"></i> March 18, 2024</span>
+        <span class="hero-meta-pill"><i class="fas fa-clock"></i> 9 min read</span>
+        <span class="hero-meta-pill"><i class="fas fa-eye"></i> 4,821 views</span>
+        <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> 14 comments</span>
+      </div>
+    </div>
+
+    <!-- Hero thumb -->
+    <div class="container" style="margin-top:0;">
+      <div class="article-hero-thumb">
+        <div class="thumb-pattern"></div>
+        <div class="thumb-glow"></div>
+        <i class="fas fa-brain thumb-main-icon"></i>
+        <!-- chips -->
+        <div class="thumb-chip tc-1">
+          <div class="chip-dot"></div> AI Systems Active
+        </div>
+        <div class="thumb-chip tc-2">
+          <i class="fas fa-chart-line" style="color:#4caf50;font-size:0.75rem;"></i> +40% Dev Speed
+        </div>
+        <div class="thumb-chip tc-3">
+          <i class="fas fa-shield-alt" style="color:#2196f3;font-size:0.75rem;"></i> Enterprise-Grade
+        </div>
+        <div class="thumb-chip tc-4">
+          <i class="fas fa-robot" style="color:#90c8f8;font-size:0.75rem;"></i> GenAI Powered
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="article-layout">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- ARTICLE MAIN -->
+      <div class="col-lg-8">
+        <div class="article-content-wrap">
+
+          <!-- Share / actions bar -->
+          <div class="article-actions">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span class="share-label">Share</span>
+              <div class="share-btns">
+                <a href="#" class="share-btn sb-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="share-btn sb-twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-btn sb-facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-btn sb-link"><i class="fas fa-link"></i></a>
+              </div>
+            </div>
+            <div class="read-time-badge">
+              <i class="fas fa-clock"></i> 9 min read
+            </div>
+          </div>
+
+          <!-- Article body -->
+          <div class="article-body">
+
+            <p>
+              Generative AI has moved decisively from novelty to necessity in enterprise software development. Organizations that embraced AI-assisted tooling early are now reporting delivery cycles up to <strong>40% faster</strong>, with measurably reduced technical debt and higher code quality scores. This shift is not merely about autocomplete — it's a fundamental rethinking of how software is conceived, built, tested, and maintained.
+            </p>
+
+            <div class="article-callout">
+              <p>"AI is not replacing developers — it's giving every developer a team of senior engineers available around the clock."</p>
+              <cite>— Arjun Kumar, Lead AI Engineer, KawachTech Solutions</cite>
+            </div>
+
+            <h2 id="s1">1. The State of Generative AI in Software Teams</h2>
+            <p>
+              A year ago, AI coding tools were largely an individual productivity experiment. Today, engineering leaders are building them into standard operating procedures: code review pipelines, architecture review sessions, and onboarding workflows all leverage large language models in some form.
+            </p>
+
+            <div class="stat-row">
+              <div class="stat-card">
+                <div class="stat-num">40%</div>
+                <div class="stat-label">Faster Delivery</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">63%</div>
+                <div class="stat-label">Teams Using AI Daily</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">2.4×</div>
+                <div class="stat-label">Bug Detection Rate</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">28%</div>
+                <div class="stat-label">Reduction in Tech Debt</div>
+              </div>
+            </div>
+
+            <p>
+              These numbers come from real production environments — not controlled studies. The pattern is consistent: teams that integrate AI into their <em>process</em>, rather than treating it as a standalone tool, see compounding gains over time.
+            </p>
+
+            <h2 id="s2">2. Where Generative AI Adds the Most Value</h2>
+            <p>
+              Not all engineering tasks benefit equally from AI assistance. Based on our work across 30+ enterprise clients in 2023–24, we identified five zones of highest impact:
+            </p>
+            <ul>
+              <li><strong>Boilerplate generation</strong> — scaffolding, CRUD operations, test stubs, and config files that consume hours of repetitive work.</li>
+              <li><strong>Code review assistance</strong> — AI flags potential bugs, security vulnerabilities, and anti-patterns before human reviewers see the diff.</li>
+              <li><strong>Documentation</strong> — generating accurate, up-to-date docstrings, README files, and API references from actual code.</li>
+              <li><strong>Refactoring legacy systems</strong> — explaining decades-old code and proposing modernised equivalents with full context awareness.</li>
+              <li><strong>Test generation</strong> — producing unit, integration, and edge-case tests from function signatures and existing behaviour.</li>
+            </ul>
+
+            <div class="info-box">
+              <i class="fas fa-lightbulb"></i>
+              <p><strong>Pro tip:</strong> Start with documentation and test generation — these deliver immediate, measurable ROI with almost zero risk of introducing bugs into production code.</p>
+            </div>
+
+            <h2 id="s3">3. Integrating AI into Your Development Workflow</h2>
+            <p>
+              The most successful implementations we've seen don't bolt AI on at the end of the pipeline — they weave it into each stage. Here's a simplified workflow pattern:
+            </p>
+
+            <div class="code-block">
+              <span class="code-block-label">workflow.yaml</span>
+              <pre><span class="cm"># AI-Augmented Dev Pipeline</span>
+<span class="kw">stages</span>:
+  - <span class="kw">name</span>: <span class="str">design</span>
+    ai_assist: <span class="str">architecture review, spec generation</span>
+  - <span class="kw">name</span>: <span class="str">develop</span>
+    ai_assist: <span class="str">code completion, pair programming</span>
+  - <span class="kw">name</span>: <span class="str">review</span>
+    ai_assist: <span class="str">automated PR analysis, security scan</span>
+  - <span class="kw">name</span>: <span class="str">test</span>
+    ai_assist: <span class="str">test generation, coverage analysis</span>
+  - <span class="kw">name</span>: <span class="str">deploy</span>
+    ai_assist: <span class="str">runbook generation, incident triage</span></pre>
+            </div>
+
+            <p>
+              At each stage, AI acts as an intelligent assistant — never as the final decision-maker. Human engineers retain ownership of architecture, security posture, and release approvals.
+            </p>
+
+            <h2 id="s4">4. Common Pitfalls and How to Avoid Them</h2>
+            <p>
+              Our consulting team has seen organisations stumble in predictable ways. Here are the most common mistakes, and how to sidestep them:
+            </p>
+            <ol>
+              <li><strong>Over-trusting AI output:</strong> LLMs hallucinate. Every AI-generated code block should go through the same review process as human-written code. Establish a "trust but verify" policy early.</li>
+              <li><strong>Ignoring data privacy:</strong> Sending proprietary source code to external AI APIs can violate NDAs and data residency requirements. Evaluate on-premises or private-cloud model options for sensitive codebases.</li>
+              <li><strong>Skipping prompt engineering training:</strong> The quality of AI output is directly proportional to the quality of the prompt. Teams that invest in prompt engineering upskilling see dramatically better results.</li>
+              <li><strong>No governance framework:</strong> Without clear guidelines on when and how to use AI tools, adoption becomes inconsistent and outcomes unpredictable. Define AI usage policies before rolling out to your full team.</li>
+            </ol>
+
+            <div class="warn-box">
+              <i class="fas fa-exclamation-triangle"></i>
+              <p><strong>Watch out:</strong> AI models trained on public data may reproduce licensed code snippets. Always run AI-generated code through a licence-compliance checker before shipping to production.</p>
+            </div>
+
+            <h2 id="s5">5. Building an AI-Ready Engineering Culture</h2>
+            <p>
+              Technology is only half the equation. The organisations making the most of generative AI have also invested in cultural change: running AI hackathons, rewarding experimentation, and creating dedicated guilds where developers share prompts, workflows, and learnings.
+            </p>
+            <p>
+              Leadership buy-in is essential. When CTOs and engineering directors publicly champion AI tooling and use it themselves, adoption rates and quality of outcomes both improve significantly. The signal it sends — that AI is a strategic priority, not just a developer toy — changes how the whole organisation approaches the technology.
+            </p>
+
+            <h2 id="s6">6. Looking Ahead: What to Expect in Late 2024</h2>
+            <p>
+              The pace of advancement is not slowing. In the next 6–12 months, expect to see AI assistants with longer context windows capable of reasoning about entire codebases, not just individual files. Multi-agent systems — where several AI models collaborate on different parts of a task — are already showing promise in research settings and will reach production tooling soon.
+            </p>
+            <p>
+              Organisations that build robust AI governance frameworks and invest in upskilling today will be positioned to capitalise on these advances without scrambling to catch up. The gap between AI-native teams and AI-resistant teams will continue to widen — and the cost of inaction is rising every quarter.
+            </p>
+
+            <!-- Tags -->
+            <div class="article-tags">
+              <span class="tag-label">Tags:</span>
+              <a href="#" class="tag-pill">Generative AI</a>
+              <a href="#" class="tag-pill">LLMs</a>
+              <a href="#" class="tag-pill">Enterprise Software</a>
+              <a href="#" class="tag-pill">DevOps</a>
+              <a href="#" class="tag-pill">AI Strategy</a>
+              <a href="#" class="tag-pill">Productivity</a>
+            </div>
+
+          </div><!-- /article-body -->
+        </div><!-- /article-content-wrap -->
+
+        <!-- AUTHOR BIO -->
+        <div class="author-bio">
+          <div class="bio-avatar">AK</div>
+          <div>
+            <div class="bio-name">Arjun Kumar</div>
+            <div class="bio-role">Lead AI Engineer, KawachTech Solutions</div>
+            <p class="bio-text">Arjun leads AI strategy and implementation across KawachTech's enterprise client portfolio. With over 10 years in software engineering and 4 years specialising in applied ML, he has guided organisations across finance, healthcare, and logistics through large-scale AI adoption programmes.</p>
+            <div class="bio-socials">
+              <a href="#" class="bio-social-btn" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="bio-social-btn" style="background:#1da1f2;"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="bio-social-btn" style="background:#1a73e8;"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /col main -->
+
+      <!-- SIDEBAR -->
+      <div class="col-lg-4">
+
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-heading">Table of Contents</div>
+          <ul class="toc-list">
+            <li>
+              <a href="#s1">
+                <span class="toc-num">1</span> The State of GenAI in Software Teams
+              </a>
+            </li>
+            <li>
+              <a href="#s2">
+                <span class="toc-num">2</span> Where AI Adds the Most Value
+              </a>
+            </li>
+            <li>
+              <a href="#s3">
+                <span class="toc-num">3</span> Integrating AI into Your Workflow
+              </a>
+            </li>
+            <li>
+              <a href="#s4">
+                <span class="toc-num">4</span> Common Pitfalls to Avoid
+              </a>
+            </li>
+            <li>
+              <a href="#s5">
+                <span class="toc-num">5</span> Building an AI-Ready Culture
+              </a>
+            </li>
+            <li>
+              <a href="#s6">
+                <span class="toc-num">6</span> What to Expect in Late 2024
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="sidebar-newsletter">
+          <div class="sidebar-newsletter-title">Stay in the Loop</div>
+          <div class="sidebar-newsletter-sub">Get our best articles delivered weekly to your inbox.</div>
+          <input type="email" class="sidebar-nl-input" placeholder="Your email address"/>
+          <button class="btn-sidebar-subscribe">Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:0.75rem;"></i></button>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="sidebar-card" style="margin-top:24px;">
+          <div class="sidebar-heading">Related Articles</div>
+
+          <a href="#" class="related-mini">
+            <div class="related-thumb-mini thumb-ai">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div>
+              <div class="related-mini-title">RAG vs Fine-Tuning: Which Approach Makes Your LLM Actually Useful?</div>
+              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 8 min read</div>
+            </div>
+          </a>
+
+          <a href="#" class="related-mini">
+            <div class="related-thumb-mini thumb-cloud">
+              <i class="fas fa-server"></i>
+            </div>
+            <div>
+              <div class="related-mini-title">Kubernetes vs Docker Swarm: Choosing the Right Orchestration for Scale</div>
+              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 6 min read</div>
+            </div>
+          </a>
+
+          <a href="#" class="related-mini">
+            <div class="related-thumb-mini thumb-saas">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <div>
+              <div class="related-mini-title">Building Multi-Tenant SaaS: Architecture Patterns That Scale</div>
+              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 8 min read</div>
+            </div>
+          </a>
+
+          <a href="#" class="related-mini">
+            <div class="related-thumb-mini" style="background:linear-gradient(135deg,#0d1b3e,#1565c0);">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div>
+              <div class="related-mini-title">Zero Trust Architecture: A Step-by-Step Implementation Guide</div>
+              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 7 min read</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Share sticky -->
+        <div class="sidebar-card">
+          <div class="sidebar-heading">Share This Article</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#" class="share-btn sb-linkedin" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="#" class="share-btn sb-twitter" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="#" class="share-btn sb-link" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
+              <i class="fas fa-link"></i> Copy Link
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+</div><!-- /article-layout -->
+
+<!-- RELATED FULL CARDS -->
+<section class="related-section">
+  <div class="container text-center">
+    <div class="section-divider"></div>
+    <h2 class="section-title">More Articles You'll Enjoy</h2>
+    <p class="section-subtitle">Keep exploring insights from our engineering team</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="blog-card">
+          <div class="blog-card-thumb thumb-ai">
+            <div class="tp"></div>
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-badge">AI &amp; ML</span>
+            <div class="blog-card-title">RAG vs Fine-Tuning: Which Approach Makes Your LLM Actually Useful?</div>
+            <div class="blog-card-footer">
+              <span class="blog-card-meta"><i class="fas fa-clock"></i> 8 min read</span>
+              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="blog-card">
+          <div class="blog-card-thumb thumb-cloud">
+            <div class="tp"></div>
+            <i class="fas fa-server"></i>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-badge">Cloud &amp; DevOps</span>
+            <div class="blog-card-title">FinOps Fundamentals: Cutting Cloud Costs Without Cutting Corners</div>
+            <div class="blog-card-footer">
+              <span class="blog-card-meta"><i class="fas fa-clock"></i> 6 min read</span>
+              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="blog-card">
+          <div class="blog-card-thumb thumb-saas">
+            <div class="tp"></div>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-badge">SaaS</span>
+            <div class="blog-card-title">Product-Led Growth: How SaaS Companies Are Turning Users Into Revenue</div>
+            <div class="blog-card-footer">
+              <span class="blog-card-meta"><i class="fas fa-clock"></i> 5 min read</span>
+              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="position:relative;">
+    <h2 class="cta-title">Ready to Transform Your Business?</h2>
+    <p class="cta-subtitle">Let's discuss your project and find the best AI-powered solution</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="btn-cta-primary">Schedule a Call</a>
+      <a href="#" class="btn-cta-outline">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Our Expertise</div>
+        <ul class="footer-links">
+          <li><a href="#">Custom Software</a></li>
+          <li><a href="#">AI &amp; Automation</a></li>
+          <li><a href="#">Web &amp; Mobile</a></li>
+          <li><a href="#">Cloud &amp; DevOps</a></li>
+          <li><a href="#">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contact Us</div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i> hello@KawachTech.io</div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i> +1 234 567 9900</div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, NY</div>
+        <div class="footer-social">
+          <a href="#" class="social-btn social-linkedin"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn social-twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn social-facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 KawachTech Solutions. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const scrollHeight = doc.scrollHeight - doc.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById('readingProgress').style.width = progress + '%';
+
+    // Back to top visibility
+    const btn = document.getElementById('backToTop');
+    if (scrollTop > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+
+  // Back to top smooth scroll
+  document.getElementById('backToTop').addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // TOC smooth scroll
+  document.querySelectorAll('.toc-list a').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Copy link button
+  document.querySelectorAll('.sb-link').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      navigator.clipboard.writeText(window.location.href).catch(() => {});
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i>';
+      setTimeout(() => btn.innerHTML = orig, 1500);
+    });
+  });
+</script>
+</body>
+</html>
