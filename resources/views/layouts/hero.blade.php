@@ -3,7 +3,7 @@
     <div class="row align-items-center">
       <div class="col-lg-6 col-md-7">
         <h1 class="hero-title">
-          Building Smart Software<br>
+          Building Smart Software Solutions<br>
           <strong>Solutions</strong> <span>for Your Business</span>
         </h1>
         <p class="hero-subtitle">Custom software development to drive your success.</p>
