@@ -23,19 +23,19 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Full Name *</label>
-                <input type="text" class="form-control" placeholder="John Smith" required>
+                <input type="text" class="form-control" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Company Name</label>
-                <input type="text" class="form-control" placeholder="Acme Corp">
+                <input type="text" class="form-control">
               </div>
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" placeholder="john@acmecorp.com" required>
+                <input type="email" class="form-control" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" placeholder="+1 234 567 8900">
+                <input type="tel" class="form-control">
               </div>
               <div class="col-12">
                 <label class="form-label">Services You Need</label>

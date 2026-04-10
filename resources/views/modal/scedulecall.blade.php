@@ -23,11 +23,11 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Full Name *</label>
-                <input type="text" class="form-control" placeholder="Alex Johnson" required>
+                <input type="text" class="form-control" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" placeholder="alex@company.com" required>
+                <input type="email" class="form-control" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Preferred Date *</label>

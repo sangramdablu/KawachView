@@ -9,10 +9,11 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navMenu">
       <ul class="navbar-nav align-items-center me-3">
-        <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="/case-studies">Case Studies</a></li>
-        <li class="nav-item"><a class="nav-link" href="/about-us">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('casestudy') }}">Case Studies</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">Blog</a></li>
+        <li class="nav-item"><a class="nav-link active" href="{{ route('contact') }}">Contact</a></li>
       </ul>
       <button class="btn btn-quote" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</button>
     </div>
