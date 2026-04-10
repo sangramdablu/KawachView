@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
+@include('modal.getquote')
+@include('modal.navgetquote')
+@include('modal.scedulecall')
 <body>
 
 <!-- ── NAVBAR ── -->
@@ -18,7 +21,7 @@
           We Deliver Innovative Software Solutions Tailored to Your Business Needs
         </p>
         <div class="d-flex gap-3 flex-wrap">
-          <a href="#" class="btn-hero-primary">Get a Free Consultation</a>
+          <button class="btn btn-consultation" data-bs-toggle="modal" data-bs-target="#consultModal">Get a Free Consultation</button>
           <a href="#approach" class="btn-hero-outline">Our Approach</a>
         </div>
       </div>
@@ -271,7 +274,7 @@
         </p>
       </div>
       <div class="col-md-auto ms-md-4">
-        <a href="#" class="btn-schedule">Schedule a Call</a>
+        <button class="btn btn-cta-primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">Schedule a Call</button>
       </div>
     </div>
   </div>

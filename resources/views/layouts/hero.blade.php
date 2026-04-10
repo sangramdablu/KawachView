@@ -7,7 +7,7 @@
           <strong>Solutions</strong> <span>for Your Business</span>
         </h1>
         <p class="hero-subtitle">Custom software development to drive your success.</p>
-        <a href="#" class="btn btn-consultation">Get a Free Consultation</a>
+        <button class="btn btn-consultation" data-bs-toggle="modal" data-bs-target="#consultModal">Get a Free Consultation</button>
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
         <div class="hero-mockup position-relative">

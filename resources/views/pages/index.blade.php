@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
+@include('modal.getquote')
+@include('modal.navgetquote')
+@include('modal.scedulecall')
 <body>
 <!-- NAVBAR -->
 @include('layouts.navbar')
@@ -29,8 +32,8 @@
     <h2 class="cta-title">Ready to Transform Your Business?</h2>
     <p class="cta-subtitle">Let's discuss your project and find the best solution</p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
-      <a href="#" class="btn btn-cta-primary">Schedule a Call</a>
-      <a href="#" class="btn btn-cta-outline">Get a Quote</a>
+      <button class="btn btn-cta-primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">Schedule a Call</button>
+      <a href="#" class="btn btn-cta-outline" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</a>
     </div>
   </div>
 </section>

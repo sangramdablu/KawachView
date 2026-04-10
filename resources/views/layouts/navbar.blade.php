@@ -14,7 +14,7 @@
         <li class="nav-item"><a class="nav-link" href="/about-us">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
       </ul>
-      <a href="#" class="btn btn-quote">Get a Quote</a>
+      <button class="btn btn-quote" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</button>
     </div>
   </div>
 </nav>

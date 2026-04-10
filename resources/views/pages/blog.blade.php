@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.head')
+@include('modal.getquote')
+@include('modal.navgetquote')
+@include('modal.scedulecall')
 <body>
 
 <!-- NAVBAR -->

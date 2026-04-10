@@ -1532,7 +1532,232 @@
       .timeline-card { max-width: 100%; }
     }
 
+    /* =============================== Mdodals css =================================== */
+    .modal-content {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
 
+    /* Modal Header — dark navy strip matching navbar */
+    .modal-header-branded {
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--light-navy) 100%);
+      padding: 24px 28px 20px;
+      border-bottom: none;
+      position: relative;
+    }
+    .modal-header-branded::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(33,150,243,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .modal-header-branded .modal-brand-icon {
+      width: 48px; height: 48px;
+      background: rgba(33,150,243,0.2);
+      border: 1px solid rgba(33,150,243,0.4);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+    }
+    .modal-header-branded .modal-brand-icon i {
+      color: var(--accent-blue); font-size: 1.3rem;
+    }
+    .modal-header-branded .modal-title-main {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 4px;
+      position: relative; z-index: 1;
+    }
+    .modal-header-branded .modal-title-sub {
+      color: #aac4e0;
+      font-size: 0.85rem;
+      position: relative; z-index: 1;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      color: #aac4e0;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      z-index: 2;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0;
+    }
+    .modal-close-btn:hover { background: rgba(255,255,255,0.2); color: var(--white); }
+
+    /* Modal Body */
+    .modal-body-branded {
+      background: var(--white);
+      padding: 28px 28px 10px;
+    }
+
+    /* Form styling */
+    .modal-form .form-label {
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .modal-form .form-control,
+    .modal-form .form-select {
+      border: 1.5px solid var(--border-light);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fafbfd;
+    }
+    .modal-form .form-control:focus,
+    .modal-form .form-select:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(26,115,232,0.12);
+      background: var(--white);
+    }
+    .modal-form textarea.form-control { resize: none; }
+
+    /* Service tags */
+    .service-tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .service-tag {
+      padding: 6px 14px;
+      border: 1.5px solid var(--border-light);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fafbfd;
+      user-select: none;
+    }
+    .service-tag:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: #edf4fe; }
+    .service-tag.active { border-color: var(--primary-blue); color: var(--white); background: var(--primary-blue); }
+
+    /* Budget radio pills */
+    .budget-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .budget-pill input[type="radio"] { display: none; }
+    .budget-pill label {
+      padding: 6px 16px;
+      border: 1.5px solid var(--border-light);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fafbfd;
+      margin: 0;
+    }
+    .budget-pill input[type="radio"]:checked + label {
+      border-color: var(--primary-blue);
+      color: var(--white);
+      background: var(--primary-blue);
+    }
+
+    /* Time slot pills (schedule modal) */
+    .time-slot-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .time-slot input[type="radio"] { display: none; }
+    .time-slot label {
+      display: block; text-align: center;
+      padding: 8px 6px;
+      border: 1.5px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fafbfd;
+      margin: 0;
+    }
+    .time-slot input[type="radio"]:checked + label {
+      border-color: var(--primary-blue);
+      color: var(--white);
+      background: var(--primary-blue);
+    }
+
+    /* Modal Footer */
+    .modal-footer-branded {
+      background: var(--white);
+      border-top: 1px solid var(--border-light);
+      padding: 16px 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .modal-footer-branded .footer-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .modal-footer-branded .footer-note i { color: #4caf50; }
+
+    .btn-modal-submit {
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 11px 28px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: background 0.2s, transform 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-modal-submit:hover { background: #1558b0; color: var(--white); transform: translateY(-1px); }
+    .btn-modal-submit:active { transform: translateY(0); }
+
+    /* Divider with text */
+    .form-divider {
+      display: flex; align-items: center; gap: 12px; margin: 18px 0 14px;
+    }
+    .form-divider span { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+    .form-divider::before, .form-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border-light);
+    }
+
+    /* Success state */
+    .modal-success {
+      display: none;
+      text-align: center;
+      padding: 40px 28px;
+    }
+    .modal-success .success-icon {
+      width: 68px; height: 68px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .modal-success .success-icon i { color: #4caf50; font-size: 2rem; }
+    .modal-success h4 {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      color: var(--text-dark); margin-bottom: 8px;
+    }
+    .modal-success p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Backdrop blur effect */
+    .modal-backdrop { backdrop-filter: blur(4px); }
+
+    /* ===========================================End modal Css============================================= */
 
 
 
