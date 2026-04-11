@@ -88,12 +88,219 @@
       overflow: hidden;
     }
 
-    .hero-section::before {
+    /* ── HERO BACKGROUND ANIMATION ─────────────────────────────────── */
+
+    /* ── Base canvas for all animations ──────────────────────────── */
+    .hero-section::before,
+    .hero-section::after {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 70% 50%, rgba(33,150,243,0.13) 0%, transparent 70%);
       pointer-events: none;
+    }
+
+    /* Radial glow overlay */
+    .hero-section::before {
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(33,150,243,0.13) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(26,115,232,0.08) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    /* Grid lines */
+    .hero-section::after {
+      background-image:
+        linear-gradient(rgba(33,150,243,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(33,150,243,0.07) 1px, transparent 1px);
+      background-size: 52px 52px;
+      animation: gridDrift 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes gridDrift {
+      0%   { background-position: 0 0; }
+      100% { background-position: 52px 52px; }
+    }
+
+    /* Make sure hero content sits above everything */
+    .hero-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── FLOATING CODE LINES ────────────────────────────────────────
+      These represent streaming code / terminal output
+      Each .code-line is a horizontal bar that floats upward
+    ─────────────────────────────────────────────────────────────── */
+    .hero-bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .code-line {
+      position: absolute;
+      height: 2px;
+      border-radius: 2px;
+      opacity: 0;
+      animation: codeFloat linear infinite;
+    }
+
+    /* Color variants — blue shades + subtle green for "active" lines */
+    .code-line.cl-1  { width: 120px; left:  5%; bottom: -10px; background: rgba(33,150,243,0.45);  animation-duration: 9s;  animation-delay: 0s;    }
+    .code-line.cl-2  { width:  80px; left: 12%; bottom: -10px; background: rgba(255,255,255,0.15); animation-duration: 11s; animation-delay: 1.5s;  }
+    .code-line.cl-3  { width: 160px; left: 18%; bottom: -10px; background: rgba(33,150,243,0.35);  animation-duration: 8s;  animation-delay: 0.8s;  }
+    .code-line.cl-4  { width:  60px; left: 26%; bottom: -10px; background: rgba(76,175,80,0.4);    animation-duration: 13s; animation-delay: 3s;    }
+    .code-line.cl-5  { width: 100px; left: 33%; bottom: -10px; background: rgba(33,150,243,0.3);   animation-duration: 10s; animation-delay: 0.3s;  }
+    .code-line.cl-6  { width: 140px; left: 42%; bottom: -10px; background: rgba(255,255,255,0.1);  animation-duration: 14s; animation-delay: 2.2s;  }
+    .code-line.cl-7  { width:  90px; left: 55%; bottom: -10px; background: rgba(33,150,243,0.5);   animation-duration: 7s;  animation-delay: 1.1s;  }
+    .code-line.cl-8  { width: 110px; left: 63%; bottom: -10px; background: rgba(76,175,80,0.3);    animation-duration: 12s; animation-delay: 4s;    }
+    .code-line.cl-9  { width:  75px; left: 72%; bottom: -10px; background: rgba(33,150,243,0.4);   animation-duration: 9.5s;animation-delay: 0.6s;  }
+    .code-line.cl-10 { width: 130px; left: 80%; bottom: -10px; background: rgba(255,255,255,0.12); animation-duration: 11s; animation-delay: 2.8s;  }
+    .code-line.cl-11 { width:  50px; left: 88%; bottom: -10px; background: rgba(33,150,243,0.35);  animation-duration: 8.5s;animation-delay: 1.8s;  }
+    .code-line.cl-12 { width: 200px; left:  2%; bottom: -10px; background: rgba(33,150,243,0.2);   animation-duration: 16s; animation-delay: 5s;    }
+    .code-line.cl-13 { width:  95px; left: 48%; bottom: -10px; background: rgba(76,175,80,0.25);   animation-duration: 10s; animation-delay: 3.5s;  }
+    .code-line.cl-14 { width: 170px; left: 70%; bottom: -10px; background: rgba(33,150,243,0.3);   animation-duration: 13s; animation-delay: 0.2s;  }
+    .code-line.cl-15 { width:  65px; left: 92%; bottom: -10px; background: rgba(255,255,255,0.1);  animation-duration: 9s;  animation-delay: 2s;    }
+
+    @keyframes codeFloat {
+      0%   { transform: translateY(0);     opacity: 0;   }
+      8%   { opacity: 1;                                  }
+      85%  { opacity: 0.6;                               }
+      100% { transform: translateY(-700px); opacity: 0;  }
+    }
+
+    /* ── CIRCUIT NODES ──────────────────────────────────────────────
+      Pulsing dot nodes that look like PCB / circuit board points
+    ─────────────────────────────────────────────────────────────── */
+    .circuit-node {
+      position: absolute;
+      border-radius: 50%;
+      animation: nodePulse ease-in-out infinite;
+    }
+
+    /* Outer ring */
+    .circuit-node::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid currentColor;
+      opacity: 0;
+      animation: nodeRing ease-out infinite;
+    }
+
+    .circuit-node.cn-1  { width:6px; height:6px; background:rgba(33,150,243,0.7);  color:rgba(33,150,243,0.4);  top:15%; left:8%;  animation-duration:3.2s; animation-delay:0s;   }
+    .circuit-node.cn-2  { width:4px; height:4px; background:rgba(76,175,80,0.6);   color:rgba(76,175,80,0.3);   top:30%; left:15%; animation-duration:4s;   animation-delay:1s;   }
+    .circuit-node.cn-3  { width:8px; height:8px; background:rgba(33,150,243,0.5);  color:rgba(33,150,243,0.25); top:55%; left:5%;  animation-duration:3.8s; animation-delay:2s;   }
+    .circuit-node.cn-4  { width:5px; height:5px; background:rgba(255,255,255,0.3); color:rgba(255,255,255,0.15);top:20%; left:75%; animation-duration:2.8s; animation-delay:0.5s; }
+    .circuit-node.cn-5  { width:7px; height:7px; background:rgba(33,150,243,0.6);  color:rgba(33,150,243,0.3);  top:70%; left:80%; animation-duration:4.5s; animation-delay:1.5s; }
+    .circuit-node.cn-6  { width:4px; height:4px; background:rgba(76,175,80,0.5);   color:rgba(76,175,80,0.25);  top:40%; left:90%; animation-duration:3.5s; animation-delay:3s;   }
+    .circuit-node.cn-7  { width:6px; height:6px; background:rgba(33,150,243,0.4);  color:rgba(33,150,243,0.2);  top:80%; left:25%; animation-duration:5s;   animation-delay:0.8s; }
+    .circuit-node.cn-8  { width:5px; height:5px; background:rgba(255,255,255,0.25);color:rgba(255,255,255,0.12);top:10%; left:55%; animation-duration:3s;   animation-delay:2.5s; }
+    .circuit-node.cn-9  { width:9px; height:9px; background:rgba(33,150,243,0.35); color:rgba(33,150,243,0.18); top:60%; left:60%; animation-duration:6s;   animation-delay:1.2s; }
+    .circuit-node.cn-10 { width:4px; height:4px; background:rgba(76,175,80,0.45);  color:rgba(76,175,80,0.22);  top:25%; left:40%; animation-duration:3.3s; animation-delay:4s;   }
+
+    @keyframes nodePulse {
+      0%, 100% { transform: scale(1);   opacity: 0.7; }
+      50%       { transform: scale(1.5); opacity: 1;   }
+    }
+
+    @keyframes nodeRing {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(3.5); opacity: 0;   }
+    }
+
+    /* ── DATA STREAM PARTICLES ──────────────────────────────────────
+      Tiny dots travelling horizontally — like data packets
+    ─────────────────────────────────────────────────────────────── */
+    .data-packet {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      animation: packetTravel linear infinite;
+    }
+
+    /* Trail effect via box-shadow */
+    .data-packet.dp-blue  { background: rgba(33,150,243,0.8);  box-shadow: -6px 0 8px rgba(33,150,243,0.5), -14px 0 4px rgba(33,150,243,0.2);  }
+    .data-packet.dp-green { background: rgba(76,175,80,0.8);   box-shadow: -6px 0 8px rgba(76,175,80,0.5),  -14px 0 4px rgba(76,175,80,0.2);   }
+    .data-packet.dp-white { background: rgba(255,255,255,0.6); box-shadow: -6px 0 8px rgba(255,255,255,0.3),-14px 0 4px rgba(255,255,255,0.1); }
+
+    .data-packet.dp-1  { top: 18%; left: -4px; animation-duration: 6s;  animation-delay: 0s;   }
+    .data-packet.dp-2  { top: 34%; left: -4px; animation-duration: 8s;  animation-delay: 1.5s; }
+    .data-packet.dp-3  { top: 52%; left: -4px; animation-duration: 5s;  animation-delay: 3s;   }
+    .data-packet.dp-4  { top: 68%; left: -4px; animation-duration: 9s;  animation-delay: 0.7s; }
+    .data-packet.dp-5  { top: 82%; left: -4px; animation-duration: 7s;  animation-delay: 2s;   }
+    .data-packet.dp-6  { top: 12%; left: -4px; animation-duration: 11s; animation-delay: 4s;   }
+    .data-packet.dp-7  { top: 45%; left: -4px; animation-duration: 6.5s;animation-delay: 1s;   }
+    .data-packet.dp-8  { top: 75%; left: -4px; animation-duration: 8.5s;animation-delay: 2.8s; }
+
+    @keyframes packetTravel {
+      0%   { transform: translateX(0);     opacity: 0; }
+      5%   { opacity: 1;                               }
+      90%  { opacity: 0.8;                             }
+      100% { transform: translateX(100vw); opacity: 0; }
+    }
+
+    /* ── BINARY RAIN (subtle, top corners) ─────────────────────────
+      Faint 0s and 1s drifting down at the sides only
+    ─────────────────────────────────────────────────────────────── */
+    .binary-col {
+      position: absolute;
+      top: -20px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      line-height: 1.8;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: rgba(33,150,243,0.18);
+      animation: binaryRain linear infinite;
+      white-space: pre;
+      user-select: none;
+    }
+
+    .binary-col.bc-1  { left: 1.5%;  animation-duration: 8s;  animation-delay: 0s;   }
+    .binary-col.bc-2  { left: 3.2%;  animation-duration: 10s; animation-delay: 2s;   }
+    .binary-col.bc-3  { left: 4.5%;  animation-duration: 7s;  animation-delay: 1s;   }
+    .binary-col.bc-4  { right: 1.5%; animation-duration: 9s;  animation-delay: 0.5s; }
+    .binary-col.bc-5  { right: 3%;   animation-duration: 11s; animation-delay: 3s;   }
+    .binary-col.bc-6  { right: 5%;   animation-duration: 8.5s;animation-delay: 1.5s; }
+
+    @keyframes binaryRain {
+      0%   { transform: translateY(-100%); opacity: 0;   }
+      10%  { opacity: 1;                                 }
+      90%  { opacity: 0.5;                               }
+      100% { transform: translateY(110vh);  opacity: 0;  }
+    }
+
+    /* ── SCAN LINE SWEEP ────────────────────────────────────────────
+      A very subtle horizontal light sweep across the hero
+    ─────────────────────────────────────────────────────────────── */
+    .hero-scan-line {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(33,150,243,0.0) 20%,
+        rgba(33,150,243,0.25) 50%,
+        rgba(33,150,243,0.0) 80%,
+        transparent 100%
+      );
+      animation: scanSweep 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes scanSweep {
+      0%   { top: 0%;   opacity: 0; }
+      5%   { opacity: 1;            }
+      95%  { opacity: 0.6;          }
+      100% { top: 100%; opacity: 0; }
     }
 
     .hero-title {
@@ -142,49 +349,6 @@
       max-width: 500px;
       position: relative;
     }
-
-    /* .laptop-frame {
-      background: #1e2d50;
-      border-radius: 12px;
-      padding: 14px 14px 30px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-      position: relative;
-    }
-
-    .laptop-screen {
-      background: linear-gradient(145deg, #1a3a6e, #0f2345);
-      border-radius: 6px;
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .laptop-screen::after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      background: linear-gradient(135deg, rgba(33,150,243,0.3) 0%, transparent 60%);
-      border-radius: 4px;
-    }
-
-    .laptop-stand {
-      width: 60px;
-      height: 12px;
-      background: #1e2d50;
-      margin: 0 auto;
-      border-radius: 0 0 6px 6px;
-    }
-
-    .laptop-base {
-      width: 120px;
-      height: 6px;
-      background: #1a2540;
-      margin: 0 auto;
-      border-radius: 3px;
-    } */
 
     .floating-card {
       position: absolute;

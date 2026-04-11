@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuoteController;
+
 
 Route::get('/', function () {
     return view('pages.index');
@@ -18,5 +20,8 @@ Route::get('/case-studies', function () {
     return view('pages.case-studies');
 })->name('casestudy');
 Route::get('/contact', function () {
-    return view('pages.contact');
+    return view('pages.contact');   
 })->name('contact');
+
+ 
+Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
