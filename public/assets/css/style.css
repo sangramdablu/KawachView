@@ -74,12 +74,10 @@
       font-size: 0.9rem;
       transition: background 0.2s;
     }
-
     .btn-quote:hover {
       background-color: #1558b0;
       color: var(--white);
     }
-
     /* ── HERO ── */
     .hero-section {
       background: linear-gradient(135deg, var(--dark-navy) 0%, var(--light-navy) 60%, #1e4a8f 100%);
@@ -87,9 +85,7 @@
       position: relative;
       overflow: hidden;
     }
-
     /* ── HERO BACKGROUND ANIMATION ─────────────────────────────────── */
-
     /* ── Base canvas for all animations ──────────────────────────── */
     .hero-section::before,
     .hero-section::after {
