@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'images_path' => env('IMAGE_PATH', 'default/path'),
 ];

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use App\Mail\QuoteRequestMail;
 use App\Models\QuoteRequest;
+use Illuminate\Validation\Rule;
+use App\Models\ScheduledCall;
 
 class QuoteController extends Controller
 {
@@ -67,4 +69,80 @@ class QuoteController extends Controller
             ], 500);
         }
     }
+
+    public function scheduleCall(Request $request)
+    {
+        $validated = $request->validate([
+            'full_name'      => ['required', 'string', 'min:2', 'max:100', 'regex:/^[\pL\s\-\.\']+$/u'],
+            'email'          => ['required', 'email:rfc,dns', 'max:254'],
+            'phone'          => ['nullable', 'string', 'regex:/^[\+\d\s\-\(\)]{7,20}$/'],
+            'preferred_date' => ['required', 'date', 'after_or_equal:today',
+                                 function ($attr, $value, $fail) {
+                                     $dow = date('N', strtotime($value));
+                                     if ($dow >= 6) {
+                                         $fail('We don\'t schedule calls on weekends. Please select a weekday.');
+                                     }
+                                 }],
+            'timezone'       => ['required', 'string', Rule::in(['EST','CST','MST','PST','GMT','CET','EET','IST','SGT','JST','AEST'])],
+            'time_slot'      => ['required', 'string', Rule::in(['09:00','10:00','11:00','13:00','14:00','15:00'])],
+            'call_topic'     => ['required', 'string', Rule::in([ 'New Project / MVP', 'Existing Project Help', 'Pricing & Packages', 'Partnership Opportunity', 'General Inquiry', ])],
+            'wants_video'    => ['required', 'boolean'],
+            'video_platform' => [Rule::requiredIf(fn() => (bool) $request->input('wants_video')), 'nullable', 'string',Rule::in(['Zoom', 'Microsoft Teams', 'Google Meet', 'Cisco Webex']),],
+            'notes'          => ['nullable', 'string', 'max:1000'],
+        ], [
+            'full_name.required'      => 'Please enter your full name.',
+            'full_name.min'           => 'Name must be at least 2 characters.',
+            'full_name.regex'         => 'Name may only contain letters, spaces, hyphens and dots.',
+            'email.required'          => 'Please enter your email address.',
+            'email.email'             => 'Please enter a valid email address.',
+            'phone.regex'             => 'Please enter a valid phone number.',
+            'preferred_date.required' => 'Please select a preferred date.',
+            'preferred_date.date'     => 'Please enter a valid date.',
+            'preferred_date.after_or_equal' => 'Please select a future date.',
+            'timezone.required'       => 'Please select your timezone.',
+            'timezone.in'             => 'Please select a valid timezone.',
+            'time_slot.required'      => 'Please select a preferred time slot.',
+            'time_slot.in'            => 'Please select a valid time slot.',
+            'call_topic.required'     => 'Please select a call topic.',
+            'call_topic.in'           => 'Please select a valid call topic.',
+            'video_platform.required' => 'Please select a video call platform.',
+            'video_platform.in'       => 'Please select a valid video platform.',
+            'notes.max'               => 'Notes may not exceed 1000 characters.',
+        ]);
+ 
+        try {
+            $call = ScheduledCall::create([
+                'full_name'      => $validated['full_name'],
+                'email'          => $validated['email'],
+                'phone'          => $validated['phone'] ?? null,
+                'preferred_date' => $validated['preferred_date'],
+                'timezone'       => $validated['timezone'],
+                'time_slot'      => $validated['time_slot'],
+                'call_topic'     => $validated['call_topic'],
+                'wants_video'    => (bool) $validated['wants_video'],
+                'video_platform' => $validated['video_platform'] ?? null,
+                'notes'          => $validated['notes'] ?? null,
+                'ip_address'     => $request->ip(),
+                'user_agent'     => $request->userAgent(),
+            ]);
+ 
+            // Uncomment when mail is configured:
+            // Mail::to($validated['email'])->send(new ScheduleConfirmationMail($call));
+            // Mail::to(config('mail.schedule_recipient', 'hello@kawachtech.com'))
+            //     ->send(new ScheduleNotificationMail($call));
+ 
+            return response()->json([
+                'success' => true,
+                'message' => 'Your call has been scheduled. Check your inbox for a confirmation.',
+            ], 201);
+ 
+        } catch (\Exception $e) {
+            Log::error('ScheduledCall store failed: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong on our end. Please try again in a moment.',
+            ], 500);
+        }
+    }
+
 }

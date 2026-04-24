@@ -340,7 +340,63 @@
 @include('layouts.navbar')
 
 <!-- HERO BANNER -->
-<section class="contact-hero">
+<section class="hero-section">
+
+  {{-- ── Animated background layer ── --}}
+  <div class="hero-bg-layer">
+
+    {{-- Floating code lines --}}
+    <div class="code-line cl-1"></div>
+    <div class="code-line cl-2"></div>
+    <div class="code-line cl-3"></div>
+    <div class="code-line cl-4"></div>
+    <div class="code-line cl-5"></div>
+    <div class="code-line cl-6"></div>
+    <div class="code-line cl-7"></div>
+    <div class="code-line cl-8"></div>
+    <div class="code-line cl-9"></div>
+    <div class="code-line cl-10"></div>
+    <div class="code-line cl-11"></div>
+    <div class="code-line cl-12"></div>
+    <div class="code-line cl-13"></div>
+    <div class="code-line cl-14"></div>
+    <div class="code-line cl-15"></div>
+
+    {{-- Circuit board nodes --}}
+    <div class="circuit-node cn-1"></div>
+    <div class="circuit-node cn-2"></div>
+    <div class="circuit-node cn-3"></div>
+    <div class="circuit-node cn-4"></div>
+    <div class="circuit-node cn-5"></div>
+    <div class="circuit-node cn-6"></div>
+    <div class="circuit-node cn-7"></div>
+    <div class="circuit-node cn-8"></div>
+    <div class="circuit-node cn-9"></div>
+    <div class="circuit-node cn-10"></div>
+
+    {{-- Data packets (horizontal travel) --}}
+    <div class="data-packet dp-blue  dp-1"></div>
+    <div class="data-packet dp-green dp-2"></div>
+    <div class="data-packet dp-white dp-3"></div>
+    <div class="data-packet dp-blue  dp-4"></div>
+    <div class="data-packet dp-green dp-5"></div>
+    <div class="data-packet dp-white dp-6"></div>
+    <div class="data-packet dp-blue  dp-7"></div>
+    <div class="data-packet dp-green dp-8"></div>
+
+    {{-- Binary rain columns (sides only) --}}
+    <div class="binary-col bc-1">1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;1</div>
+    <div class="binary-col bc-2">0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;0</div>
+    <div class="binary-col bc-3">1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1</div>
+    <div class="binary-col bc-4">0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0</div>
+    <div class="binary-col bc-5">1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0</div>
+    <div class="binary-col bc-6">0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1</div>
+
+    {{-- Scan line --}}
+    <div class="hero-scan-line"></div>
+
+  </div>
+  {{-- /hero-bg-layer --}}
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-7">
@@ -421,7 +477,11 @@
       </div>
     </div>
   </div>
+
+
 </section>
+
+
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb-wrap">

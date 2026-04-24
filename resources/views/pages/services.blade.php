@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta property="og:title" content="Our Services - Kawach Technology">
+<meta property="og:description" content="Explore our software development services">
+<meta property="og:image" content="{{ asset('images/og-default.jpg') }}">
+<meta property="og:url" content="{{ url('/services') }}">
+<meta property="og:type" content="website">
+
+<meta name="twitter:title" content="Our Services - Kawach Technology">
+<meta name="twitter:description" content="Explore our services">
+<meta name="twitter:image" content="{{ asset('images/og-default.jpg') }}">
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+@verbatim
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "{{ $services->title }}",
+  "description": "{{ $services->meta_description }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "Kawach Technology",
+    "url": "{{ url('/') }}"
+  }
+}
+</script>
+@endverbatim
 <body>
 
 <!-- ── NAVBAR ── -->
@@ -11,6 +35,59 @@
 
 <!-- ── HERO ── -->
 <section class="services-hero-section">
+  <div class="hero-bg-layer">
+
+    {{-- Floating code lines --}}
+    <div class="code-line cl-1"></div>
+    <div class="code-line cl-2"></div>
+    <div class="code-line cl-3"></div>
+    <div class="code-line cl-4"></div>
+    <div class="code-line cl-5"></div>
+    <div class="code-line cl-6"></div>
+    <div class="code-line cl-7"></div>
+    <div class="code-line cl-8"></div>
+    <div class="code-line cl-9"></div>
+    <div class="code-line cl-10"></div>
+    <div class="code-line cl-11"></div>
+    <div class="code-line cl-12"></div>
+    <div class="code-line cl-13"></div>
+    <div class="code-line cl-14"></div>
+    <div class="code-line cl-15"></div>
+
+    {{-- Circuit board nodes --}}
+    <div class="circuit-node cn-1"></div>
+    <div class="circuit-node cn-2"></div>
+    <div class="circuit-node cn-3"></div>
+    <div class="circuit-node cn-4"></div>
+    <div class="circuit-node cn-5"></div>
+    <div class="circuit-node cn-6"></div>
+    <div class="circuit-node cn-7"></div>
+    <div class="circuit-node cn-8"></div>
+    <div class="circuit-node cn-9"></div>
+    <div class="circuit-node cn-10"></div>
+
+    {{-- Data packets (horizontal travel) --}}
+    <div class="data-packet dp-blue  dp-1"></div>
+    <div class="data-packet dp-green dp-2"></div>
+    <div class="data-packet dp-white dp-3"></div>
+    <div class="data-packet dp-blue  dp-4"></div>
+    <div class="data-packet dp-green dp-5"></div>
+    <div class="data-packet dp-white dp-6"></div>
+    <div class="data-packet dp-blue  dp-7"></div>
+    <div class="data-packet dp-green dp-8"></div>
+
+    {{-- Binary rain columns (sides only) --}}
+    <div class="binary-col bc-1">1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;1</div>
+    <div class="binary-col bc-2">0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;0</div>
+    <div class="binary-col bc-3">1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1</div>
+    <div class="binary-col bc-4">0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0</div>
+    <div class="binary-col bc-5">1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0</div>
+    <div class="binary-col bc-6">0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1</div>
+
+    {{-- Scan line --}}
+    <div class="hero-scan-line"></div>
+
+  </div>
   <div class="container">
     <div class="row align-items-center">
       <!-- left copy -->
@@ -85,138 +162,37 @@
       <h2 class="solutions-heading">Expert Solutions for Every Industry</h2>
     </div>
 
-    <!-- Row 1 -->
+    <!-- Row 2 -->
     <div class="row g-4 mb-4">
 
-      <!-- Card 1 – Custom Software -->
+     @foreach($services as $service)
       <div class="col-md-4">
-        <div class="service-card">
+        <div class="service-card">  
           <div class="service-card-img">
-            <div class="mini-device md-1"></div>
-            <div class="mini-device md-2"></div>
-            <div class="mini-device md-3"></div>
             <div class="svc-icon-wrap">
               <div class="svc-icon-circle ic-custom">
-                <i class="fas fa-laptop-code"></i>
+                <img src="{{ config('app.images_path') . $service->featured_image }}" alt="{{ $service->image_alt }}" title="{{ $service->image_title }}">
               </div>
             </div>
           </div>
-          <div class="service-card-body">
-            <div class="service-card-title">Custom Software<br>Development</div>
-            <p class="service-card-desc">Tailor-made software solutions designed to meet your unique business requirements.</p>
-            <a href="#" class="btn-learn">Learn More</a>
-          </div>
-        </div>
-      </div>
 
-      <!-- Card 2 – Web & Mobile -->
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-card-img">
-            <div class="mini-device md-1"></div>
-            <div class="mini-device md-2"></div>
-            <div class="mini-device md-3"></div>
-            <div class="svc-icon-wrap">
-              <div class="svc-icon-circle ic-web">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
+          <div class="service-card-body">
+            <div class="service-card-title">
+              {{ $service->title }}
             </div>
-          </div>
-          <div class="service-card-body">
-            <div class="service-card-title">Web &amp; Mobile App<br>Development</div>
-            <p class="service-card-desc">Modern, responsive, and user-friendly applications for web and mobile platforms.</p>
-            <a href="#" class="btn-learn">Learn More</a>
+
+            <p class="service-card-desc">
+              {{ $service->service->short_description }}
+            </p>
+
+            <a href="{{ url('/services/'.$service->slug) }}" class="btn-learn">
+              Learn More
+            </a>
           </div>
         </div>
       </div>
+    @endforeach
 
-      <!-- Card 3 – AI & ML -->
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-card-img">
-            <div class="mini-device md-1"></div>
-            <div class="mini-device md-2"></div>
-            <div class="mini-device md-3"></div>
-            <div class="svc-icon-wrap">
-              <div class="svc-icon-circle ic-ai">
-                <i class="fas fa-brain"></i>
-              </div>
-            </div>
-          </div>
-          <div class="service-card-body">
-            <div class="service-card-title">AI &amp; Machine Learning</div>
-            <p class="service-card-desc">Harness the power of AI to automate processes and gain insights from your data.</p>
-            <a href="#" class="btn-learn">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="row g-4">
-
-      <!-- Card 4 – SaaS -->
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-card-img">
-            <div class="mini-device md-1"></div>
-            <div class="mini-device md-2"></div>
-            <div class="mini-device md-3"></div>
-            <div class="svc-icon-wrap">
-              <div class="svc-icon-circle ic-saas">
-                <i class="fas fa-cloud"></i>
-              </div>
-            </div>
-          </div>
-          <div class="service-card-body">
-            <div class="service-card-title">SaaS Development</div>
-            <p class="service-card-desc">Full-cycle development of scalable and secure SaaS products.</p>
-            <a href="#" class="btn-learn">Learn More</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 – Cloud & DevOps -->
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-card-img">
-            <div class="mini-device md-1"></div>
-            <div class="mini-device md-2"></div>
-            <div class="mini-device md-3"></div>
-            <div class="svc-icon-wrap">
-              <div class="svc-icon-circle ic-devops">
-                <i class="fas fa-server"></i>
-              </div>
-            </div>
-          </div>
-          <div class="service-card-body">
-            <div class="service-card-title">Cloud &amp; DevOps</div>
-            <p class="service-card-desc">Efficient and secure cloud infrastructure with CI/CD pipelines and DevOps practices.</p>
-            <a href="#" class="btn-learn">Learn More</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 – UI/UX -->
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-card-img">
-            <div class="mini-device md-1"></div>
-            <div class="mini-device md-2"></div>
-            <div class="mini-device md-3"></div>
-            <div class="svc-icon-wrap">
-              <div class="svc-icon-circle ic-uiux">
-                <i class="fas fa-pencil-ruler"></i>
-              </div>
-            </div>
-          </div>
-          <div class="service-card-body">
-            <div class="service-card-title">UI/UX Design</div>
-            <p class="service-card-desc">User-centered design for a seamless and engaging digital experience.</p>
-            <a href="#" class="btn-learn">Learn More</a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
