@@ -23,6 +23,7 @@ Route::get('/contact', function () {
 })->name('contact');
  
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
+Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/schedule', [QuoteController::class, 'scheduleCall'])->name('schedule.store');

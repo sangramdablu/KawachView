@@ -5,6 +5,7 @@
 @include('modal.navgetquote')
 @include('modal.scedulecall')
 <body>
+
 <!-- NAVBAR -->
 @include('layouts.navbar')
 
@@ -42,5 +43,44 @@
 @include('layouts.footer')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script id="disable-right-click">
+  document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+  });
+</script>
+<script id="block-shortcuts">
+document.addEventListener('keydown', function (e) {
+
+    // Ctrl + U
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+    }
+
+    // Ctrl + Shift + I (DevTools)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+    }
+
+    // Ctrl + Shift + J
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+    }
+
+    // F12
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+
+});
+</script>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey && ['u','U'].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ['I','J'].includes(e.key)) e.preventDefault();
+    if (e.key === 'F12') e.preventDefault();
+});
+</script>
 </body>
 </html>

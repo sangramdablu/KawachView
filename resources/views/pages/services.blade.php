@@ -185,7 +185,7 @@
               {{ $service->service->short_description }}
             </p>
 
-            <a href="{{ url('/services/'.$service->slug) }}" class="btn-learn">
+            <a href="{{ route('pages.child.sevice_details', $service->slug) }}" class="btn-learn">
               Learn More
             </a>
           </div>
