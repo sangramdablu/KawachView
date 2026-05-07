@@ -14,7 +14,46 @@
     justify-content: center;
     overflow: hidden;
   }
+  .hero-section {
+    position: relative;
+    overflow: hidden;s
+    background: #0f172a;
+  }
 
+  /* Background Image */
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('{{ asset("assets/images/Kawach_technology_contact_us_bg_image.png") }}') center center/cover no-repeat;
+    z-index: 0;
+  }
+
+  /* Dark overlay */
+  .hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.42),
+      rgba(30, 41, 59, 0.32)
+    );
+    z-index: 1;
+  }
+
+  /* IMPORTANT */
+  .hero-bg-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero-section .container {
+    position: relative;
+    z-index: 3;
+  }
   /* Central Icon with Pulse */
   .central-icon {
     position: relative;
@@ -591,64 +630,7 @@
       <!-- RIGHT: Contact Info + Map + Hours -->
       <div class="col-lg-5">
 
-        <!-- Contact Info Card -->
-        <div class="info-card animate delay-1">
-          <div class="info-card-header">
-            <div class="info-card-title"><i class="fas fa-address-book" style="margin-right:8px;color:var(--accent-blue);"></i> Contact Information</div>
-          </div>
-          <div class="info-card-body">
-
-            <div class="contact-item">
-              <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
-              <div>
-                <div class="contact-item-label">Email Us</div>
-                <div class="contact-item-value"><a href="mailto:hello@innovatetech.io">hello@innovatetech.io</a></div>
-                <div class="contact-item-sub">For general inquiries &amp; partnerships</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon"><i class="fas fa-headset"></i></div>
-              <div>
-                <div class="contact-item-label">Support</div>
-                <div class="contact-item-value"><a href="mailto:support@innovatetech.io">support@innovatetech.io</a></div>
-                <div class="contact-item-sub">Existing client support</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon"><i class="fas fa-phone-alt"></i></div>
-              <div>
-                <div class="contact-item-label">Call Us</div>
-                <div class="contact-item-value"><a href="tel:+12345679900">+1 234 567 9900</a></div>
-                <div class="contact-item-sub">Mon – Fri, 9 AM – 6 PM EST</div>
-                <div class="status-badge"><div class="status-dot"></div> Lines Open Now</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <div class="contact-item-label">Our Office</div>
-                <div class="contact-item-value">123 Tech Avenue, Suite 400</div>
-                <div class="contact-item-sub">New York, NY 10001, USA</div>
-              </div>
-            </div>
-
-            <div class="contact-item" style="border-bottom:none;padding-bottom:0;">
-              <div class="contact-item-icon"><i class="fas fa-share-alt"></i></div>
-              <div>
-                <div class="contact-item-label">Follow Us</div>
-                <div class="social-row" style="margin-top:8px;">
-                  <a href="#" class="social-btn s-linkedin"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#" class="social-btn s-twitter"><i class="fab fa-twitter"></i></a>
-                  <a href="#" class="social-btn s-facebook"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#" class="social-btn s-instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      @include('sections.contactinfocard')
 
         <!-- Map Card -->
         <div class="map-card animate delay-2">

@@ -125,4 +125,5 @@ return [
 
     'images_path' => env('IMAGE_PATH', 'default/path'),
     'main_email' => env('MAIN_EMAIL', 'default/path'),
+    'support_email' => env('SUPPORT_EMAIL', 'default/path'),
 ];
