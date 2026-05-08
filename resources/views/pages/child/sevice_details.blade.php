@@ -458,7 +458,7 @@
                 <button class="share-btn twitter"
                         onclick="shareTwitter()"
                         aria-label="Share on Twitter">
-                  <i class="fab fa-twitter"></i> Twitter
+                  <i class="fab fa-instagram"></i> Instagram
                 </button>
                 <button class="share-btn"
                         onclick="copyPageLink(this)"
@@ -483,7 +483,7 @@
                 </li>
                 <li>
                   <i class="fas fa-phone-alt"></i>
-                  <div><strong>Phone</strong><span><a href="tel:+12345679900" style="color:var(--primary-blue);text-decoration:none;">+1 234 567 9900</a></span></div>
+                  <div><strong>Phone</strong><span><a href="tel:{{ config('app.mobile') }}" style="color:var(--primary-blue);text-decoration:none;">{{ config('app.mobile') }}</a></span></div>
                 </li>
                 <li>
                   <i class="fas fa-clock"></i>
@@ -552,5 +552,6 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>

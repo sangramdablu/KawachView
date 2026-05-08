@@ -13,6 +13,35 @@
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+<style>
+    .services-hero-section {
+      position: relative;
+      overflow: hidden;
+      background: #0f172a;
+    }
+
+    /* Background Image */
+    .services-hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('{{ asset("assets/images/kawach_main_bg.png") }}') center center/cover no-repeat;
+      /* opacity: 0.12; */
+      z-index: 0;
+    }
+
+    .hero-bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .services-hero-section .container {
+      position: relative;
+      z-index: 3;
+    }
+</style>
 @verbatim
 <script type="application/ld+json">
 {
@@ -104,7 +133,7 @@
       </div>
 
       <!-- right illustration -->
-      <div class="col-lg-6 col-md-5 d-none d-md-flex hero-devices">
+      {{-- <div class="col-lg-6 col-md-5 d-none d-md-flex hero-devices">
         <div class="device-stack">
           <!-- floating widgets -->
           <div class="float-widget fw-1">
@@ -149,7 +178,8 @@
             <div class="float-phone-screen"></div>
           </div>
         </div>
-      </div>
+      </div> --}}
+
     </div>
   </div>
 </section>

@@ -43,12 +43,12 @@
 @include('layouts.footer')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-<script id="disable-right-click">
+{{-- <script id="disable-right-click">
   document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
   });
-</script>
-<script id="block-shortcuts">
+</script> --}}
+{{-- <script id="block-shortcuts">
 document.addEventListener('keydown', function (e) {
 
     // Ctrl + U
@@ -81,6 +81,6 @@ document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && e.shiftKey && ['I','J'].includes(e.key)) e.preventDefault();
     if (e.key === 'F12') e.preventDefault();
 });
-</script>
+</script> --}}
 </body>
 </html>

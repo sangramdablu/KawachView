@@ -3,15 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\BluLandingController;
+use App\Http\Controllers\FrontBlogController;
 
 
 Route::get('/', function () {
     return view('pages.index');
 });
-Route::get('/blog', function () {
-    return view('pages.blog');
-})->name('blog');
+
+Route::get('/blog', [FrontBlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [FrontBlogController::class, 'show'])->name('blog.show')->where('slug', '[a-z0-9\-]+');
+Route::post('/newsletter/subscribe', [FrontBlogController::class, 'newsletterSubscribe'])->name('newsletter.subscribe');
+
+
 Route::get('/about-us', function () {
     return view('pages.about');
 })->name('about');

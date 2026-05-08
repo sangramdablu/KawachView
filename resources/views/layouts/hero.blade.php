@@ -107,3 +107,47 @@
   </div>
 
 </section>
+
+<style>
+  .hero-section {
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+/* Background Image */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('{{ asset("assets/images/kawach_main_bg.png") }}') center center/cover no-repeat;
+  /* opacity: 0.12; */
+  z-index: 0;
+}
+
+/* Dark overlay */
+/* .hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.32),
+    rgba(30, 41, 59, 0.22)
+  );
+  z-index: 1;
+} */
+
+/* IMPORTANT */
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 3;
+}
+</style>

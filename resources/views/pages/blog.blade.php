@@ -1,95 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
+{{-- ═══════════════════════════════════════════════════════════
+     SEO META TAGS
+════════════════════════════════════════════════════════════ --}}
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+{{-- Primary --}}
+<title>Blog & Insights | Kawach Technology</title>
+<meta name="description" content="Expert articles on AI, cloud computing, software development, and digital transformation from the Kawach Technology team."/>
+<meta name="keywords"    content="software development blog, AI insights, cloud computing, DevOps, tech articles, Kawach Technology"/>
+<meta name="author"      content="Kawach Technology"/>
+<meta name="robots"      content="index, follow, max-snippet:-1, max-image-preview:large"/>
+<link rel="canonical"    href="{{ url('/blog') }}"/>
+
+{{-- Open Graph --}}
+<meta property="og:type"        content="website"/>
+<meta property="og:site_name"   content="Kawach Technology"/>
+<meta property="og:url"         content="{{ url('/blog') }}"/>
+<meta property="og:title"       content="Blog & Insights | Kawach Technology"/>
+<meta property="og:description" content="Expert articles on AI, cloud computing, software development, and digital transformation."/>
+<meta property="og:image"       content="{{ asset('images/og-default.jpg') }}"/>
+
+{{-- Twitter --}}
+<meta name="twitter:card"        content="summary_large_image"/>
+<meta name="twitter:title"       content="Blog & Insights | Kawach Technology"/>
+<meta name="twitter:description" content="Expert articles on AI, cloud computing, software development, and digital transformation."/>
+<meta name="twitter:image"       content="{{ asset('images/og-default.jpg') }}"/>
+
+{{-- JSON-LD Blog structured data --}}
+@verbatim
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Kawach Technology Blog",
+  "url": "{{ url('/blog') }}",
+  "description": "Expert articles on AI, cloud computing, software development, and digital transformation.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kawach Technology",
+    "url": "{{ url('/') }}",
+    "logo": "{{ asset('images/logo.png') }}"
+  }
+}
+</script>
+@endverbatim
+</head>
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+
 <body>
 
-<!-- NAVBAR -->
 @include('layouts.navbar')
 
-<!-- PAGE HERO -->
+{{-- ═══════════════════════════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════════════════════════ --}}
 <section class="page-hero">
   <div class="hero-bg-layer">
-
-    {{-- Floating code lines --}}
-    <div class="code-line cl-1"></div>
-    <div class="code-line cl-2"></div>
-    <div class="code-line cl-3"></div>
-    <div class="code-line cl-4"></div>
-    <div class="code-line cl-5"></div>
-    <div class="code-line cl-6"></div>
-    <div class="code-line cl-7"></div>
-    <div class="code-line cl-8"></div>
-    <div class="code-line cl-9"></div>
-    <div class="code-line cl-10"></div>
-    <div class="code-line cl-11"></div>
-    <div class="code-line cl-12"></div>
-    <div class="code-line cl-13"></div>
-    <div class="code-line cl-14"></div>
-    <div class="code-line cl-15"></div>
-
-    {{-- Circuit board nodes --}}
-    <div class="circuit-node cn-1"></div>
-    <div class="circuit-node cn-2"></div>
-    <div class="circuit-node cn-3"></div>
-    <div class="circuit-node cn-4"></div>
-    <div class="circuit-node cn-5"></div>
-    <div class="circuit-node cn-6"></div>
-    <div class="circuit-node cn-7"></div>
-    <div class="circuit-node cn-8"></div>
-    <div class="circuit-node cn-9"></div>
-    <div class="circuit-node cn-10"></div>
-
-    {{-- Data packets (horizontal travel) --}}
-    <div class="data-packet dp-blue  dp-1"></div>
-    <div class="data-packet dp-green dp-2"></div>
-    <div class="data-packet dp-white dp-3"></div>
-    <div class="data-packet dp-blue  dp-4"></div>
-    <div class="data-packet dp-green dp-5"></div>
-    <div class="data-packet dp-white dp-6"></div>
-    <div class="data-packet dp-blue  dp-7"></div>
-    <div class="data-packet dp-green dp-8"></div>
-
-    {{-- Binary rain columns (sides only) --}}
+    <div class="code-line cl-1"></div><div class="code-line cl-2"></div><div class="code-line cl-3"></div>
+    <div class="code-line cl-4"></div><div class="code-line cl-5"></div><div class="code-line cl-6"></div>
+    <div class="code-line cl-7"></div><div class="code-line cl-8"></div><div class="code-line cl-9"></div>
+    <div class="code-line cl-10"></div><div class="code-line cl-11"></div><div class="code-line cl-12"></div>
+    <div class="code-line cl-13"></div><div class="code-line cl-14"></div><div class="code-line cl-15"></div>
+    <div class="circuit-node cn-1"></div><div class="circuit-node cn-2"></div><div class="circuit-node cn-3"></div>
+    <div class="circuit-node cn-4"></div><div class="circuit-node cn-5"></div><div class="circuit-node cn-6"></div>
+    <div class="circuit-node cn-7"></div><div class="circuit-node cn-8"></div><div class="circuit-node cn-9"></div><div class="circuit-node cn-10"></div>
+    <div class="data-packet dp-blue  dp-1"></div><div class="data-packet dp-green dp-2"></div>
+    <div class="data-packet dp-white dp-3"></div><div class="data-packet dp-blue  dp-4"></div>
+    <div class="data-packet dp-green dp-5"></div><div class="data-packet dp-white dp-6"></div>
+    <div class="data-packet dp-blue  dp-7"></div><div class="data-packet dp-green dp-8"></div>
     <div class="binary-col bc-1">1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;1</div>
     <div class="binary-col bc-2">0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;0</div>
     <div class="binary-col bc-3">1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1</div>
     <div class="binary-col bc-4">0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0</div>
     <div class="binary-col bc-5">1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0</div>
     <div class="binary-col bc-6">0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1</div>
-
-    {{-- Scan line --}}
     <div class="hero-scan-line"></div>
-
   </div>
+
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-8">
-        <div class="page-hero-badge">
-          <i class="fas fa-rss"></i> Insights &amp; Updates
-        </div>
-        <h1 class="page-hero-title">
-          Our <span>Blog</span> &amp; Insights
-        </h1>
+        <div class="page-hero-badge"><i class="fas fa-rss"></i> Insights &amp; Updates</div>
+        <h1 class="page-hero-title">Our <span>Blog</span> &amp; Insights</h1>
         <p class="page-hero-subtitle">
           Stay ahead of the curve with expert articles on AI, cloud computing, software development, and digital transformation.
         </p>
       </div>
       <div class="col-lg-4 d-none d-lg-flex justify-content-end align-items-center">
         <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end;">
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);border-radius:10px;padding:16px 20px;text-align:center;">
-            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;color:#fff;">48+</div>
-            <div style="font-size:0.72rem;color:#90c8f8;font-weight:600;">Articles</div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-val">{{ $counts['all'] }}+</div>
+            <div class="hero-stat-label">Articles</div>
           </div>
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);border-radius:10px;padding:16px 20px;text-align:center;">
-            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;color:#fff;">6</div>
-            <div style="font-size:0.72rem;color:#90c8f8;font-weight:600;">Categories</div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-val">{{ $categories->count() }}</div>
+            <div class="hero-stat-label">Categories</div>
           </div>
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);border-radius:10px;padding:16px 20px;text-align:center;">
-            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;color:#fff;">12k</div>
-            <div style="font-size:0.72rem;color:#90c8f8;font-weight:600;">Readers</div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-val">{{ number_format($counts['views'] / 1000, 0) }}k</div>
+            <div class="hero-stat-label">Readers</div>
           </div>
         </div>
       </div>
@@ -97,340 +115,358 @@
   </div>
 </section>
 
-<!-- FILTER BAR -->
+{{-- ═══════════════════════════════════════════════════════════
+     FILTER BAR
+════════════════════════════════════════════════════════════ --}}
 <div class="filter-bar">
   <div class="container">
-    <span class="filter-label">Filter:</span>
-    <span class="filter-pill active" onclick="filterPill(this)">All</span>
-    <span class="filter-pill" onclick="filterPill(this)">AI &amp; ML</span>
-    <span class="filter-pill" onclick="filterPill(this)">Cloud &amp; DevOps</span>
-    <span class="filter-pill" onclick="filterPill(this)">Development</span>
-    <span class="filter-pill" onclick="filterPill(this)">SaaS</span>
-    <span class="filter-pill" onclick="filterPill(this)">Security</span>
-    <span class="filter-pill" onclick="filterPill(this)">Data &amp; Analytics</span>
-    <div class="search-wrap">
-      <i class="fas fa-search"></i>
-      <input type="text" class="search-input" placeholder="Search articles…"/>
-    </div>
+    <form method="GET" action="{{ url('/blog') }}" id="filterForm">
+      <span class="filter-label">Filter:</span>
+
+      {{-- All --}}
+      <a href="{{ url('/blog') }}"
+         class="filter-pill {{ !request('category') && !request('search') ? 'active' : '' }}">
+        All
+      </a>
+
+      {{-- Dynamic category pills --}}
+      @foreach($categories as $cat)
+      <a href="{{ url('/blog') }}?category={{ $cat->slug }}"
+         class="filter-pill {{ request('category') === $cat->slug ? 'active' : '' }}">
+        {{ $cat->name }}
+      </a>
+      @endforeach
+
+      {{-- Search --}}
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text"
+               name="search"
+               class="search-input"
+               placeholder="Search articles…"
+               value="{{ request('search') }}"
+               id="searchInput"/>
+        @if(request('category'))
+          <input type="hidden" name="category" value="{{ request('category') }}"/>
+        @endif
+      </div>
+    </form>
   </div>
 </div>
 
-<!-- BLOG SECTION -->
+{{-- ═══════════════════════════════════════════════════════════
+     BLOG SECTION
+════════════════════════════════════════════════════════════ --}}
 <section class="blog-section">
   <div class="container">
     <div class="text-center">
       <div class="section-divider"></div>
-      <h2 class="section-title">Latest Articles</h2>
-      <p class="section-subtitle">Expert knowledge from our team, delivered fresh</p>
+      <h2 class="section-title">
+        @if(request('search'))
+          Search: "{{ request('search') }}"
+        @elseif(request('category') && $currentCategory)
+          {{ $currentCategory->name }}
+        @else
+          Latest Articles
+        @endif
+      </h2>
+      <p class="section-subtitle">
+        @if($posts->total() > 0)
+          Showing {{ $posts->firstItem() }}–{{ $posts->lastItem() }} of {{ $posts->total() }} articles
+        @else
+          No articles found
+        @endif
+      </p>
     </div>
 
-    <!-- FEATURED POST -->
+    {{-- ── FEATURED POST (only on first page with no filters) ── --}}
+    @if(!request('search') && !request('category') && $posts->currentPage() === 1 && $featuredPost)
     <div class="blog-featured">
-      <div class="blog-featured-thumb thumb-ai">
-        <div class="thumb-pattern"></div>
-        <div class="thumb-inner">
-          <i class="fas fa-brain thumb-icon thumb-icon-lg"></i>
-        </div>
+      {{-- Thumbnail --}}
+      <div class="blog-featured-thumb {{ $featuredPost->category ? 'thumb-' . Str::slug($featuredPost->category->name) : 'thumb-dev' }}">
+        @if($featuredPost->featured_image)
+          <img src="{{ asset($featuredPost->featured_image) }}"
+               alt="{{ $featuredPost->title }}"
+               class="featured-thumb-img"
+               loading="eager"/>
+        @else
+          <div class="thumb-pattern"></div>
+          <div class="thumb-inner">
+            <i class="fas fa-newspaper thumb-icon thumb-icon-lg"></i>
+          </div>
+        @endif
         <div class="thumb-badge-icon">Featured</div>
       </div>
+
+      {{-- Content --}}
       <div class="blog-featured-body">
-        <span class="blog-featured-badge">AI &amp; Machine Learning</span>
-        <h2 class="blog-featured-title">How Generative AI Is Reshaping Enterprise Software Development in 2024</h2>
+        @if($featuredPost->category)
+        <span class="blog-featured-badge">{{ $featuredPost->category->name }}</span>
+        @endif
+
+        <h2 class="blog-featured-title">{{ $featuredPost->title }}</h2>
+
         <p class="blog-featured-excerpt">
-          Generative AI has moved from novelty to necessity. Enterprises adopting AI-driven development workflows report up to 40% faster delivery cycles and significantly reduced technical debt. In this deep-dive, we explore real-world implementations, key pitfalls to avoid, and a practical roadmap for integrating AI assistants into your engineering culture.
+          {{ $featuredPost->excerpt ?? Str::limit(strip_tags($featuredPost->content), 220) }}
         </p>
+
         <div class="blog-meta">
           <div class="blog-author">
-            <div class="author-avatar" style="background:#1a73e8;">AK</div>
-            <span class="author-name">Arjun Kumar</span>
+            <div class="author-avatar" style="background:#1a73e8;">
+              {{ strtoupper(substr($featuredPost->author_name ?? 'K', 0, 2)) }}
+            </div>
+            <span class="author-name">{{ $featuredPost->author_name ?? 'Kawach Team' }}</span>
           </div>
-          <span class="blog-date"><i class="fas fa-calendar-alt"></i> Mar 18, 2024</span>
-          <span class="blog-readtime"><i class="fas fa-clock"></i> 9 min read</span>
+          <span class="blog-date">
+            <i class="fas fa-calendar-alt"></i>
+            {{ \Carbon\Carbon::parse($featuredPost->published_at)->format('M d, Y') }}
+          </span>
+          @if($featuredPost->reading_time)
+          <span class="blog-readtime">
+            <i class="fas fa-clock"></i> {{ $featuredPost->reading_time }} min read
+          </span>
+          @endif
         </div>
-        <a href="#" class="btn-read">Read Article <i class="fas fa-arrow-right"></i></a>
+
+        <a href="{{ url('/blog/' . $featuredPost->slug) }}" class="btn-read">
+          Read Article <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
+    @endif
 
-    <!-- BLOG GRID -->
-    <div class="row g-4">
+    {{-- ── BLOG GRID ─────────────────────────────────────────── --}}
+    @if($posts->count())
+    <div class="row g-4" id="blogGrid">
+      @foreach($posts as $post)
 
-      <!-- Card 1 -->
+      {{-- Skip featured on first page (already shown above) --}}
+      @if(!request('search') && !request('category') && $posts->currentPage() === 1 && isset($featuredPost) && $post->id === $featuredPost->id)
+        @continue
+      @endif
+
       <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-cloud">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-cloud thumb-icon"></i></div>
-            <div class="thumb-badge-icon">Cloud</div>
-          </div>
+        <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+          <meta itemprop="headline"     content="{{ $post->title }}"/>
+          <meta itemprop="description"  content="{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 160) }}"/>
+          <meta itemprop="datePublished" content="{{ optional($post->published_at)->toISOString() }}"/>
+          <meta itemprop="url"          content="{{ url('/blog/' . $post->slug) }}"/>
+
+          {{-- Thumbnail --}}
+          <a href="{{ url('/blog/' . $post->slug) }}" tabindex="-1" aria-hidden="true">
+            <div class="blog-card-thumb {{ $post->category ? 'thumb-' . Str::slug($post->category->name) : 'thumb-dev' }}">
+              @if($post->featured_image)
+                <img src="{{ asset($post->featured_image) }}"
+                     alt="{{ $post->title }}"
+                     class="card-thumb-img"
+                     loading="lazy"
+                     itemprop="image"/>
+              @else
+                <div class="thumb-pattern"></div>
+                <div class="thumb-inner">
+                  <i class="{{ $categoryIcons[$post->category->slug ?? ''] ?? 'fas fa-newspaper' }} thumb-icon"></i>
+                </div>
+                @if($post->category)
+                  <div class="thumb-badge-icon">{{ Str::limit($post->category->name, 8) }}</div>
+                @endif
+              @endif
+            </div>
+          </a>
+
+          {{-- Body --}}
           <div class="blog-card-body">
-            <span class="blog-card-badge">Cloud &amp; DevOps</span>
-            <h3 class="blog-card-title">Kubernetes vs Docker Swarm: Choosing the Right Orchestration for Scale</h3>
-            <p class="blog-card-excerpt">A practical breakdown of when to use Kubernetes versus Docker Swarm, with real cost and performance benchmarks from production deployments.</p>
+            @if($post->category)
+            <span class="blog-card-badge">{{ $post->category->name }}</span>
+            @endif
+
+            <h3 class="blog-card-title" itemprop="name">
+              <a href="{{ url('/blog/' . $post->slug) }}" class="card-title-link">
+                {{ $post->title }}
+              </a>
+            </h3>
+
+            <p class="blog-card-excerpt">
+              {{ Str::limit($post->excerpt ?? strip_tags($post->content), 120) }}
+            </p>
+
+            {{-- Tags --}}
+            @if($post->tags && $post->tags->count())
+            <div class="blog-tags">
+              @foreach($post->tags->take(3) as $tag)
+              <a href="{{ url('/blog') }}?tag={{ $tag->slug }}" class="blog-tag">#{{ $tag->name }}</a>
+              @endforeach
+            </div>
+            @endif
+
             <div class="blog-card-footer">
               <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#1976d2;">SR</div>
-                  <span class="author-name">Sara R.</span>
+                <div class="blog-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <div class="author-avatar"
+                       style="background:{{ $avatarColors[($loop->index % count($avatarColors))] }};">
+                    {{ strtoupper(substr($post->author_name ?? 'K', 0, 2)) }}
+                  </div>
+                  <span class="author-name" itemprop="name">
+                    {{ $post->author_name ?? 'Kawach Team' }}
+                  </span>
                 </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 6 min</span>
+                @if($post->reading_time)
+                <span class="blog-readtime">
+                  <i class="fas fa-clock"></i> {{ $post->reading_time }} min
+                </span>
+                @endif
               </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
+              <a href="{{ url('/blog/' . $post->slug) }}" class="btn-read-sm" aria-label="Read {{ $post->title }}">
+                Read <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
-        </div>
+        </article>
       </div>
 
-      <!-- Card 2 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-saas">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-cubes thumb-icon"></i></div>
-            <div class="thumb-badge-icon">SaaS</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">SaaS</span>
-            <h3 class="blog-card-title">Building Multi-Tenant SaaS: Architecture Patterns That Scale</h3>
-            <p class="blog-card-excerpt">From database isolation strategies to billing infrastructure, learn the architectural decisions that determine the success of your SaaS product at scale.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#0d47a1;">MP</div>
-                  <span class="author-name">Mike P.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 8 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
+    </div>{{-- /blogGrid --}}
 
-      <!-- Card 3 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-sec">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-shield-alt thumb-icon"></i></div>
-            <div class="thumb-badge-icon">Security</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">Security</span>
-            <h3 class="blog-card-title">Zero Trust Architecture: A Step-by-Step Implementation Guide</h3>
-            <p class="blog-card-excerpt">Zero Trust isn't a product — it's a strategy. This guide walks through the incremental steps enterprises can take to reduce their attack surface without disrupting operations.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#1565c0;">LN</div>
-                  <span class="author-name">Lena N.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 7 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
+    @else
+    {{-- Empty state --}}
+    <div class="empty-state">
+      <div class="empty-icon"><i class="fas fa-search"></i></div>
+      <h3 class="empty-title">No articles found</h3>
+      <p class="empty-desc">
+        @if(request('search'))
+          No results for "<strong>{{ request('search') }}</strong>". Try a different keyword.
+        @elseif(request('category'))
+          No articles in this category yet. Check back soon.
+        @else
+          No published articles yet. Check back soon.
+        @endif
+      </p>
+      <a href="{{ url('/blog') }}" class="btn-empty-reset">
+        <i class="fas fa-times"></i> Clear Filter
+      </a>
+    </div>
+    @endif
 
-      <!-- Card 4 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-data">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-chart-bar thumb-icon"></i></div>
-            <div class="thumb-badge-icon">Data</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">Data &amp; Analytics</span>
-            <h3 class="blog-card-title">Real-Time Analytics at Scale: Choosing Between Kafka, Flink, and Spark</h3>
-            <p class="blog-card-excerpt">We tested three popular streaming data stacks under identical load conditions. Here's what we found about latency, throughput, and operational overhead.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#1a73e8;">AK</div>
-                  <span class="author-name">Arjun K.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 10 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-dev">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-laptop-code thumb-icon"></i></div>
-            <div class="thumb-badge-icon">Dev</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">Development</span>
-            <h3 class="blog-card-title">Micro-Frontends in 2024: When to Use Them and When to Avoid Them</h3>
-            <p class="blog-card-excerpt">Micro-frontends promise team autonomy and independent deployments — but they come with hidden costs. We share lessons from two years of production use.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#2196f3;">TW</div>
-                  <span class="author-name">Tom W.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 5 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-mob">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-mobile-alt thumb-icon"></i></div>
-            <div class="thumb-badge-icon">Mobile</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">Development</span>
-            <h3 class="blog-card-title">React Native vs Flutter in 2024: The Definitive Comparison for Startups</h3>
-            <p class="blog-card-excerpt">Both frameworks are mature and battle-tested. Which one saves you time and money depends on your team's background, app complexity, and long-term roadmap.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#29b6f6;">SR</div>
-                  <span class="author-name">Sara R.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 7 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-ai">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-robot thumb-icon"></i></div>
-            <div class="thumb-badge-icon">AI</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">AI &amp; ML</span>
-            <h3 class="blog-card-title">RAG vs Fine-Tuning: Which Approach Makes Your LLM Actually Useful?</h3>
-            <p class="blog-card-excerpt">Retrieval-Augmented Generation and fine-tuning solve different problems. Understanding the trade-offs will save you thousands in compute costs and weeks of engineering time.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#1a73e8;">AK</div>
-                  <span class="author-name">Arjun K.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 8 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 8 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-cloud">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-server thumb-icon"></i></div>
-            <div class="thumb-badge-icon">Cloud</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">Cloud &amp; DevOps</span>
-            <h3 class="blog-card-title">FinOps Fundamentals: Cutting Cloud Costs Without Cutting Corners</h3>
-            <p class="blog-card-excerpt">Cloud bills can spiral fast. Our FinOps playbook covers reserved instances, spot usage, rightsizing strategies, and tooling that helped clients cut spend by 35%.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#1976d2;">MP</div>
-                  <span class="author-name">Mike P.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 6 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 9 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="blog-card">
-          <div class="blog-card-thumb thumb-saas">
-            <div class="thumb-pattern"></div>
-            <div class="thumb-inner"><i class="fas fa-chart-line thumb-icon"></i></div>
-            <div class="thumb-badge-icon">SaaS</div>
-          </div>
-          <div class="blog-card-body">
-            <span class="blog-card-badge">SaaS</span>
-            <h3 class="blog-card-title">Product-Led Growth: How SaaS Companies Are Turning Users Into Revenue</h3>
-            <p class="blog-card-excerpt">PLG isn't just a sales strategy — it's an engineering discipline. Learn how product decisions at the code level directly impact activation rates and viral loops.</p>
-            <div class="blog-card-footer">
-              <div class="blog-meta">
-                <div class="blog-author">
-                  <div class="author-avatar" style="background:#1565c0;">LN</div>
-                  <span class="author-name">Lena N.</span>
-                </div>
-                <span class="blog-readtime"><i class="fas fa-clock"></i> 5 min</span>
-              </div>
-              <a href="#" class="btn-read-sm">Read <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /row -->
-
-    <!-- PAGINATION -->
+    {{-- ── PAGINATION ────────────────────────────────────────── --}}
+    @if($posts->hasPages())
     <div class="pagination-wrap">
-      <a href="#" class="page-btn"><i class="fas fa-chevron-left" style="font-size:0.7rem;"></i></a>
-      <a href="#" class="page-btn active">1</a>
-      <a href="#" class="page-btn">2</a>
-      <a href="#" class="page-btn">3</a>
-      <a href="#" class="page-btn">4</a>
-      <span class="page-btn" style="cursor:default;border:none;background:none;color:var(--text-muted);">…</span>
-      <a href="#" class="page-btn">8</a>
-      <a href="#" class="page-btn"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i></a>
+      {{-- Prev --}}
+      @if($posts->onFirstPage())
+        <span class="page-btn page-btn-disabled"><i class="fas fa-chevron-left" style="font-size:.7rem;"></i></span>
+      @else
+        <a href="{{ $posts->previousPageUrl() }}" class="page-btn" aria-label="Previous page">
+          <i class="fas fa-chevron-left" style="font-size:.7rem;"></i>
+        </a>
+      @endif
+
+      {{-- Page numbers --}}
+      @foreach($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+        @if($page == $posts->currentPage())
+          <span class="page-btn active" aria-current="page">{{ $page }}</span>
+        @elseif($page == 1 || $page == $posts->lastPage() || abs($page - $posts->currentPage()) <= 2)
+          <a href="{{ $url }}" class="page-btn">{{ $page }}</a>
+        @elseif(abs($page - $posts->currentPage()) == 3)
+          <span class="page-btn page-ellipsis" style="cursor:default;border:none;background:none;color:var(--text-muted);">…</span>
+        @endif
+      @endforeach
+
+      {{-- Next --}}
+      @if($posts->hasMorePages())
+        <a href="{{ $posts->nextPageUrl() }}" class="page-btn" aria-label="Next page">
+          <i class="fas fa-chevron-right" style="font-size:.7rem;"></i>
+        </a>
+      @else
+        <span class="page-btn page-btn-disabled"><i class="fas fa-chevron-right" style="font-size:.7rem;"></i></span>
+      @endif
     </div>
+    @endif
 
   </div>
 </section>
 
-<!-- NEWSLETTER -->
+{{-- ═══════════════════════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════════════════ --}}
 <section class="newsletter-section">
   <div class="container">
     <div class="row align-items-center g-4">
       <div class="col-lg-6">
         <h2 class="newsletter-title">Never Miss an Insight</h2>
-        <p class="newsletter-sub">Join 12,000+ tech leaders who get our best articles delivered weekly.</p>
+        <p class="newsletter-sub">
+          Join {{ number_format($counts['views']) }}+ tech readers who get our best articles delivered weekly.
+        </p>
       </div>
       <div class="col-lg-6">
-        <div class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Enter your email address"/>
-          <button class="btn-subscribe">Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:0.8rem;"></i></button>
-        </div>
+        <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletter(event)">
+          @csrf
+          <input type="email"
+                 name="email"
+                 class="newsletter-input"
+                 placeholder="Enter your email address"
+                 required
+                 id="newsletterEmail"/>
+          <button type="submit" class="btn-subscribe" id="newsletterBtn">
+            Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:.8rem;"></i>
+          </button>
+        </form>
+        <p class="newsletter-note" id="newsletterMsg" style="display:none;"></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 @include('layouts.footer')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 <script>
-  function filterPill(el) {
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
+  // ── Search with debounce ────────────────────────────────────────
+  let searchTimer;
+  document.getElementById('searchInput').addEventListener('input', function () {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      document.getElementById('filterForm').submit();
+    }, 500);
+  });
+
+  // ── Newsletter ──────────────────────────────────────────────────
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = document.getElementById('newsletterBtn');
+    const msg = document.getElementById('newsletterMsg');
+    const email = document.getElementById('newsletterEmail').value;
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing…';
+
+    fetch('{{ url("/newsletter/subscribe") }}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+      },
+      body: JSON.stringify({ email })
+    })
+    .then(r => r.json())
+    .then(data => {
+      msg.style.display = 'block';
+      if (data.success) {
+        msg.innerHTML = '<i class="fas fa-check" style="color:#4caf50;"></i> ' + (data.message || 'You\'re subscribed!');
+        msg.style.color = '#4caf50';
+        document.getElementById('newsletterEmail').value = '';
+      } else {
+        msg.innerHTML = '<i class="fas fa-times" style="color:#e53935;"></i> ' + (data.message || 'Something went wrong.');
+        msg.style.color = '#e53935';
+      }
+      btn.disabled = false;
+      btn.innerHTML = 'Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:.8rem;"></i>';
+    })
+    .catch(() => {
+      msg.style.display = 'block';
+      msg.innerHTML = '<i class="fas fa-times" style="color:#e53935;"></i> Network error. Please try again.';
+      msg.style.color = '#e53935';
+      btn.disabled = false;
+      btn.innerHTML = 'Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:.8rem;"></i>';
+    });
   }
 </script>
 </body>
