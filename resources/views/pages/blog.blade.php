@@ -30,7 +30,175 @@
 <meta name="twitter:title"       content="Blog & Insights | Kawach Technology"/>
 <meta name="twitter:description" content="Expert articles on AI, cloud computing, software development, and digital transformation."/>
 <meta name="twitter:image"       content="{{ asset('images/og-default.jpg') }}"/>
+<style>
+  /* =========================================================
+   COMMON HERO LAYOUT
+========================================================= */
 
+.page-hero,
+.blog-page-hero{
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 80px 0 70px;
+    background:
+        url('{{ asset("assets/images/kawach_main_bg.png") }}')
+        center center / cover no-repeat;
+}
+
+/* Extra blur overlay */
+.page-hero::after,
+.blog-page-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+}
+
+/* Animation layer */
+.hero-bg-layer{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+}
+
+/* Content */
+.page-hero .container,
+.blog-page-hero .container{
+    position:relative;
+    z-index:3;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.page-hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(33,150,243,.15);
+    border:1px solid rgba(33,150,243,.35);
+    border-radius:20px;
+    padding:6px 15px;
+    font-size:.78rem;
+    font-weight:700;
+    color:#90c8f8;
+    margin-bottom:18px;
+    backdrop-filter: blur(8px);
+}
+
+.page-hero-title{
+    font-family:'Nunito',sans-serif;
+    font-size:clamp(2.3rem,5vw,4rem);
+    font-weight:900;
+    line-height:1.1;
+    color:#fff;
+    margin-bottom:18px;
+}
+
+.page-hero-title span{
+    color:var(--accent-blue);
+}
+
+.page-hero-subtitle{
+    color:#c7d7ea;
+    font-size:1.05rem;
+    line-height:1.7;
+    max-width:620px;
+}
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+.hero-stat-chip{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    border-radius:18px;
+    padding:18px 22px;
+    min-width:120px;
+    text-align:center;
+}
+
+.hero-stat-val{
+    color:#fff;
+    font-size:1.6rem;
+    font-weight:800;
+    line-height:1;
+    margin-bottom:6px;
+}
+
+.hero-stat-label{
+    color:#9fb3c8;
+    font-size:.82rem;
+    font-weight:600;
+}
+
+/* =========================================================
+   ANIMATION GLOW
+========================================================= */
+
+.code-line,
+.circuit-node,
+.data-packet,
+.binary-col{
+    opacity:.75;
+    filter:drop-shadow(0 0 10px rgba(59,130,246,.55));
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:991px){
+
+    .page-hero,
+    .blog-page-hero{
+        min-height:auto;
+        padding:90px 0 70px;
+    }
+
+    .page-hero-title{
+        font-size:2.5rem;
+    }
+
+    .page-hero-subtitle{
+        font-size:.98rem;
+    }
+
+}
+
+@media(max-width:767px){
+
+    .page-hero,
+    .blog-page-hero{
+        padding:80px 0 60px;
+    }
+
+    .page-hero-title{
+        font-size:2rem;
+    }
+
+    .page-hero-subtitle{
+        font-size:.93rem;
+    }
+
+    .hero-stat-chip{
+        min-width:100px;
+        padding:14px 16px;
+    }
+
+    .hero-stat-val{
+        font-size:1.3rem;
+    }
+
+}
+</style>
 {{-- JSON-LD Blog structured data --}}
 @verbatim
 <script type="application/ld+json">
@@ -63,7 +231,8 @@
 {{-- ═══════════════════════════════════════════════════════════
      PAGE HERO
 ════════════════════════════════════════════════════════════ --}}
-<section class="page-hero">
+<section class="blog-page-hero">
+
   <div class="hero-bg-layer">
     <div class="code-line cl-1"></div><div class="code-line cl-2"></div><div class="code-line cl-3"></div>
     <div class="code-line cl-4"></div><div class="code-line cl-5"></div><div class="code-line cl-6"></div>
@@ -120,32 +289,26 @@
 ════════════════════════════════════════════════════════════ --}}
 <div class="filter-bar">
   <div class="container">
-    <form method="GET" action="{{ url('/blog') }}" id="filterForm">
-      <span class="filter-label">Filter:</span>
-
-      {{-- All --}}
-      <a href="{{ url('/blog') }}"
-         class="filter-pill {{ !request('category') && !request('search') ? 'active' : '' }}">
-        All
-      </a>
-
-      {{-- Dynamic category pills --}}
-      @foreach($categories as $cat)
-      <a href="{{ url('/blog') }}?category={{ $cat->slug }}"
-         class="filter-pill {{ request('category') === $cat->slug ? 'active' : '' }}">
-        {{ $cat->name }}
-      </a>
-      @endforeach
-
+    <form method="GET" action="{{ url('/blog') }}" id="filterForm" class="filter-form">
+      <div class="filter-left">
+        <span class="filter-label">Filter:</span>
+        {{-- All --}}
+        <a href="{{ url('/blog') }}"
+          class="filter-pill {{ !request('category') && !request('search') ? 'active' : '' }}">
+          All
+        </a>
+        {{-- Dynamic category pills --}}
+        @foreach($categories as $cat)
+        <a href="{{ url('/blog') }}?category={{ $cat->slug }}"
+          class="filter-pill {{ request('category') === $cat->slug ? 'active' : '' }}">
+          {{ $cat->name }}
+        </a>
+        @endforeach
+      </div>
       {{-- Search --}}
       <div class="search-wrap">
         <i class="fas fa-search"></i>
-        <input type="text"
-               name="search"
-               class="search-input"
-               placeholder="Search articles…"
-               value="{{ request('search') }}"
-               id="searchInput"/>
+        <input type="text" name="search" class="search-input" placeholder="Search articles…" value="{{ request('search') }}" id="searchInput"/>
         @if(request('category'))
           <input type="hidden" name="category" value="{{ request('category') }}"/>
         @endif
@@ -185,7 +348,7 @@
       {{-- Thumbnail --}}
       <div class="blog-featured-thumb {{ $featuredPost->category ? 'thumb-' . Str::slug($featuredPost->category->name) : 'thumb-dev' }}">
         @if($featuredPost->featured_image)
-          <img src="{{ asset($featuredPost->featured_image) }}"
+          <img src="{{ config('app.images_path') . $featuredPost->featured_image }}" title="{{ $featuredPost->image_title }}"
                alt="{{ $featuredPost->title }}"
                class="featured-thumb-img"
                loading="eager"/>
@@ -256,7 +419,7 @@
           <a href="{{ url('/blog/' . $post->slug) }}" tabindex="-1" aria-hidden="true">
             <div class="blog-card-thumb {{ $post->category ? 'thumb-' . Str::slug($post->category->name) : 'thumb-dev' }}">
               @if($post->featured_image)
-                <img src="{{ asset($post->featured_image) }}"
+                <img src="{{ config('app.images_path') . $post->featured_image }}"
                      alt="{{ $post->title }}"
                      class="card-thumb-img"
                      loading="lazy"
