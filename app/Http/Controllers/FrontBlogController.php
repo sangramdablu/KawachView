@@ -146,10 +146,8 @@ class FrontBlogController extends Controller
             ->where('published_at', '<=', now())
             ->firstOrFail();
 
-        // ── Increment views (fire and forget) ────────────────────
         Blog::where('id', $post->id)->increment('views');
 
-        // ── Related posts (same category, exclude current) ───────
         $related = Blog::with('category')
             ->where('status', 'published')
             ->where('id', '!=', $post->id)
@@ -160,7 +158,6 @@ class FrontBlogController extends Controller
             ->limit(3)
             ->get();
 
-        // ── Prev / Next navigation ────────────────────────────────
         $prev = Blog::where('status', 'published')
             ->where('published_at', '<', $post->published_at)
             ->latest('published_at')
@@ -171,7 +168,7 @@ class FrontBlogController extends Controller
             ->oldest('published_at')
             ->first(['id','title','slug']);
 
-        return view('pages.blog', compact('post', 'related', 'prev', 'next'));
+        return view('pages.child.blog_details', compact('post', 'related', 'prev', 'next'));
     }
 
     /**

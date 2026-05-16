@@ -31,21 +31,13 @@
 <meta name="twitter:description" content="Expert articles on AI, cloud computing, software development, and digital transformation."/>
 <meta name="twitter:image"       content="{{ asset('images/og-default.jpg') }}"/>
 <style>
-  /* =========================================================
-   COMMON HERO LAYOUT
-========================================================= */
-
-.page-hero,
-.blog-page-hero{
+.page-hero, .blog-page-hero{
     position: relative;
     overflow: hidden;
-    min-height: 520px;
     display: flex;
     align-items: center;
     padding: 80px 0 70px;
-    background:
-        url('{{ asset("assets/images/kawach_main_bg.png") }}')
-        center center / cover no-repeat;
+    background:  url('{{ asset("assets/images/kawach_main_bg.png") }}')  center center / cover no-repeat;
 }
 
 /* Extra blur overlay */
@@ -111,10 +103,6 @@
     max-width:620px;
 }
 
-/* =========================================================
-   HERO STATS
-========================================================= */
-
 .hero-stat-chip{
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.12);
@@ -139,64 +127,41 @@
     font-weight:600;
 }
 
-/* =========================================================
-   ANIMATION GLOW
-========================================================= */
-
-.code-line,
-.circuit-node,
-.data-packet,
-.binary-col{
+.code-line, .circuit-node, .data-packet, .binary-col{
     opacity:.75;
     filter:drop-shadow(0 0 10px rgba(59,130,246,.55));
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
 @media(max-width:991px){
-
     .page-hero,
     .blog-page-hero{
         min-height:auto;
         padding:90px 0 70px;
     }
-
     .page-hero-title{
         font-size:2.5rem;
     }
-
     .page-hero-subtitle{
         font-size:.98rem;
     }
-
 }
-
 @media(max-width:767px){
-
-    .page-hero,
-    .blog-page-hero{
+    .page-hero, .blog-page-hero{
         padding:80px 0 60px;
     }
-
     .page-hero-title{
         font-size:2rem;
     }
-
     .page-hero-subtitle{
         font-size:.93rem;
     }
-
     .hero-stat-chip{
         min-width:100px;
         padding:14px 16px;
     }
-
     .hero-stat-val{
         font-size:1.3rem;
     }
-
 }
 </style>
 {{-- JSON-LD Blog structured data --}}
@@ -391,7 +356,7 @@
           @endif
         </div>
 
-        <a href="{{ url('/blog/' . $featuredPost->slug) }}" class="btn-read">
+        <a href="{{ route('blog.show', $featuredPost->slug) }}" class="btn-read">
           Read Article <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -413,10 +378,10 @@
           <meta itemprop="headline"     content="{{ $post->title }}"/>
           <meta itemprop="description"  content="{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 160) }}"/>
           <meta itemprop="datePublished" content="{{ optional($post->published_at)->toISOString() }}"/>
-          <meta itemprop="url"          content="{{ url('/blog/' . $post->slug) }}"/>
+          <meta itemprop="url"          content="{{ route('blog.show', $post->slug) }}"/>
 
           {{-- Thumbnail --}}
-          <a href="{{ url('/blog/' . $post->slug) }}" tabindex="-1" aria-hidden="true">
+          <a href="{{ route('blog.show', $post->slug) }}" tabindex="-1" aria-hidden="true">
             <div class="blog-card-thumb {{ $post->category ? 'thumb-' . Str::slug($post->category->name) : 'thumb-dev' }}">
               @if($post->featured_image)
                 <img src="{{ config('app.images_path') . $post->featured_image }}"
@@ -443,7 +408,7 @@
             @endif
 
             <h3 class="blog-card-title" itemprop="name">
-              <a href="{{ url('/blog/' . $post->slug) }}" class="card-title-link">
+              <a href="{{ route('blog.show', $post->slug) }}" class="card-title-link">
                 {{ $post->title }}
               </a>
             </h3>
@@ -478,7 +443,7 @@
                 </span>
                 @endif
               </div>
-              <a href="{{ url('/blog/' . $post->slug) }}" class="btn-read-sm" aria-label="Read {{ $post->title }}">
+              <a href="{{ route('blog.show', $post->slug) }}" class="btn-read-sm" aria-label="Read {{ $post->title }}">
                 Read <i class="fas fa-arrow-right"></i>
               </a>
             </div>
