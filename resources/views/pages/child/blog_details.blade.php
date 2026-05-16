@@ -984,7 +984,6 @@
         <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> 14 comments</span>
       </div>
     </div>
-
     <!-- Hero thumb -->
     <div class="container" style="margin-top:0;">
       <div class="article-hero-thumb">
