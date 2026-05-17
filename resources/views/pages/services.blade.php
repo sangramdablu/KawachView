@@ -132,54 +132,6 @@
         </div>
       </div>
 
-      <!-- right illustration -->
-      {{-- <div class="col-lg-6 col-md-5 d-none d-md-flex hero-devices">
-        <div class="device-stack">
-          <!-- floating widgets -->
-          <div class="float-widget fw-1">
-            <i class="fas fa-shield-alt"></i> Secure &amp; Scalable
-          </div>
-          <div class="float-widget fw-2">
-            <i class="fas fa-bolt"></i> Fast Delivery
-          </div>
-          <!-- laptop -->
-          <div class="device-laptop">
-            <div class="device-laptop-screen">
-              <!-- simulated UI bars -->
-              <div class="screen-ui-row">
-                <div class="screen-ui-bar"></div>
-                <div class="screen-ui-bar screen-ui-bar-sm"></div>
-              </div>
-              <div class="screen-ui-row">
-                <div class="screen-ui-bar screen-ui-bar-sm"></div>
-                <div class="screen-ui-bar"></div>
-                <div class="screen-ui-bar screen-ui-bar-sm"></div>
-              </div>
-              <div class="screen-ui-row mt-2">
-                <div class="screen-ui-block"></div>
-                <div class="screen-ui-block screen-ui-block-alt"></div>
-                <div class="screen-ui-block"></div>
-              </div>
-              <div class="screen-ui-row mt-2">
-                <div class="screen-ui-bar"></div>
-                <div class="screen-ui-bar screen-ui-bar-sm"></div>
-              </div>
-            </div>
-            <div class="device-laptop-base"></div>
-          </div>
-          <div class="device-laptop-stand"></div>
-          <div class="device-laptop-foot"></div>
-          <!-- floating tablet -->
-          <div class="float-tablet">
-            <div class="float-tablet-screen"></div>
-          </div>
-          <!-- floating phone -->
-          <div class="float-phone">
-            <div class="float-phone-screen"></div>
-          </div>
-        </div>
-      </div> --}}
-
     </div>
   </div>
 </section>
@@ -191,10 +143,8 @@
       <div class="section-divider"></div>
       <h2 class="solutions-heading">Expert Solutions for Every Industry</h2>
     </div>
-
     <!-- Row 2 -->
     <div class="row g-4 mb-4">
-
      @foreach($services as $service)
       <div class="col-md-4">
         <div class="service-card">  
@@ -205,24 +155,14 @@
               </div>
             </div>
           </div>
-
           <div class="service-card-body">
-            <div class="service-card-title">
-              {{ $service->title }}
-            </div>
-
-            <p class="service-card-desc">
-              {{ $service->service->short_description }}
-            </p>
-
-            <a href="{{ route('pages.child.sevice_details', $service->slug) }}" class="btn-learn">
-              Learn More
-            </a>
+            <div class="service-card-title">{{ $service->title }}</div>
+            <p class="service-card-desc">{{ $service->service->short_description }}</p>
+            <a href="{{ route('pages.child.sevice_details', $service->slug) }}" class="btn-learn">Learn More</a>
           </div>
         </div>
       </div>
     @endforeach
-
     </div>
   </div>
 </section>

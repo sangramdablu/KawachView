@@ -4,6 +4,37 @@
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+<style>
+  .case-hero-section{
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 70px;
+      background:  url('{{ asset("assets/images/kawach_main_bg.png") }}')  center center / cover no-repeat;
+  }
+  /* Extra blur overlay */
+  .case-hero-section::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+  }
+  /* Animation layer */
+  .hero-bg-layer{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+  }
+  /* Content */
+  .case-hero-section .container,
+  .case-hero-section .container{
+      position:relative;
+      z-index:3;
+  }
+</style>
+</head>
 <body>
 
 <!-- ── NAVBAR ── -->

@@ -4,6 +4,36 @@
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+<style>
+  .about-hero-section{
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 70px;
+      background:  url('{{ asset("assets/images/kawach_main_bg.png") }}')  center center / cover no-repeat;
+  }
+  /* Extra blur overlay */
+  .about-hero-section::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+  }
+  /* Animation layer */
+  .hero-bg-layer{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+  }
+  /* Content */
+  .about-hero-section .container,
+  .about-hero-section .container{
+      position:relative;
+      z-index:3;
+  }
+</style>
 </head>
 <body>
 
@@ -161,7 +191,7 @@
         <div class="who-visual">
           <div class="who-img-card">
             <div class="who-img-inner">
-              <div class="who-img-logo">INNOVATE<span>TECH</span></div>
+              <div class="who-img-logo">Kawach<span>TECH</span></div>
               <p class="who-img-tagline">
                 Founded in 2014, we've grown from a 3-person startup<br>into a global software powerhouse.
               </p>

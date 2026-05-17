@@ -1,4 +1,23 @@
 {{-- ── SERVICES CAROUSEL SECTION ──────────────────────────────── --}}
+@php
+use App\Models\Page;
+$services = Page::with('service')->published()->byType('service')->orderBy('sort_order')->limit(10)->get();
+$gradients = [ 'svc-blue', 'svc-purple', 'svc-teal', 'svc-green', 'svc-amber', 'svc-coral' ];
+$icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas fa-shield-alt', 'fas fa-database', 'fas fa-paint-brush', 'fas fa-robot', 'fas fa-chart-line', 'fas fa-mobile-alt', 'fas fa-server' ];
+@endphp
+<style>
+.svc-card-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+/* image wrapper */
+.svc-card-img{
+    overflow:hidden;
+}
+</style>
 <section class="services-section">
   <div class="container text-center">
     <div class="section-divider"></div>
@@ -15,67 +34,41 @@
 
       <div class="svc-track-wrap">
         <div class="svc-track" id="svcTrack">
-
-          <div class="svc-card">
-            <div class="svc-card-img svc-blue"><i class="fas fa-laptop-code"></i></div>
-            <div class="svc-card-body text-start">
-              <div class="svc-card-title">Web &amp; Mobile Apps</div>
-              <p class="svc-card-desc">Modern, responsive applications built for performance and scale across every device.</p>
-              <span class="svc-tag">Development</span>
-            </div>
-          </div>
-
-          <div class="svc-card">
-            <div class="svc-card-img svc-purple"><i class="fas fa-brain"></i></div>
-            <div class="svc-card-body text-start">
-              <div class="svc-card-title">AI &amp; Machine Learning</div>
-              <p class="svc-card-desc">Smart AI solutions that automate decisions and unlock insights from your data.</p>
-              <span class="svc-tag">Artificial Intelligence</span>
-            </div>
-          </div>
-
-          <div class="svc-card">
-            <div class="svc-card-img svc-teal"><i class="fas fa-cloud-upload-alt"></i></div>
-            <div class="svc-card-body text-start">
-              <div class="svc-card-title">Cloud &amp; DevOps</div>
-              <p class="svc-card-desc">Secure, scalable cloud infrastructure with CI/CD pipelines and zero-downtime deployments.</p>
-              <span class="svc-tag">Infrastructure</span>
-            </div>
-          </div>
-
-          <div class="svc-card">
-            <div class="svc-card-img svc-green"><i class="fas fa-shield-alt"></i></div>
-            <div class="svc-card-body text-start">
-              <div class="svc-card-title">Cybersecurity</div>
-              <p class="svc-card-desc">End-to-end security audits, penetration testing, and compliance frameworks for your systems.</p>
-              <span class="svc-tag">Security</span>
-            </div>
-          </div>
-
-          <div class="svc-card">
-            <div class="svc-card-img svc-amber"><i class="fas fa-database"></i></div>
-            <div class="svc-card-body text-start">
-              <div class="svc-card-title">Data Engineering</div>
-              <p class="svc-card-desc">Robust data pipelines, warehouses and analytics dashboards that power business decisions.</p>
-              <span class="svc-tag">Analytics</span>
-            </div>
-          </div>
-
-          <div class="svc-card">
-            <div class="svc-card-img svc-coral"><i class="fas fa-paint-brush"></i></div>
-            <div class="svc-card-body text-start">
-              <div class="svc-card-title">UI/UX Design</div>
-              <p class="svc-card-desc">User-first design systems, wireframes and prototypes that convert visitors into customers.</p>
-              <span class="svc-tag">Design</span>
-            </div>
-          </div>
-
+          <div class="svc-track" id="svcTrack">
+            @forelse($services as $service)
+                @php
+                    $gradient = $gradients[$loop->index % count($gradients)];
+                    $icon = $icons[$loop->index % count($icons)];
+                @endphp
+                <div class="svc-card">
+                    {{-- TOP AREA --}}
+                    <div class="svc-card-img {{ $gradient }}">
+                        @if($service->featured_image)
+                            <img  src="{{ config('app.images_path') . $service->featured_image }}"  alt="{{ $service->image_alt ?? $service->title }}"  title="{{ $service->image_title ?? $service->title }}"  class="svc-card-image">
+                        @else
+                            <i class="{{ $icon }}"></i>
+                        @endif
+                    </div>
+                    {{-- BODY --}}
+                    <div class="svc-card-body text-start">
+                        <div class="svc-card-title"> {{ $service->title }} </div>
+                          <p class="svc-card-desc"> {{ \Illuminate\Support\Str::words( strip_tags( $service->service->short_description ?? $service->service->content ?? '' ), 6, '...' ) }}
+                          <a href="{{ $service->canonical_url ?: url('/services/' . $service->slug) }}" class="svc-read-more"> Read More </a>
+                          </p>
+                        {{-- TAG --}}
+                        <span class="svc-tag">
+                            {{ $service->focus_keyword  ?? $service->service->billing_cycle  ?? 'Technology'  }}
+                        </span>
+                    </div>
+                </div>
+            @empty
+                <div class="text-center w-100 py-5"><p>No services available.</p></div>
+            @endforelse
+        </div>
         </div>{{-- /svc-track --}}
       </div>{{-- /svc-track-wrap --}}
-
       <div class="svc-progress"><div class="svc-progress-bar" id="svcBar"></div></div>
     </div>{{-- /svc-outer --}}
-
     <div class="svc-dots" id="svcDots"></div>
   </div>
 </section>
