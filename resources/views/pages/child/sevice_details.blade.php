@@ -121,19 +121,53 @@
   </script>
   @endverbatim
   @include('layouts.head')
+  <style>
+    .svc-detail-hero{
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 80px 0 70px;
+        background:  url('{{ asset("assets/images/kawach_main_bg.png") }}')  center center / cover no-repeat;
+    }
+
+    /* Extra blur overlay */
+    .svc-detail-hero::after,
+    .svc-detail-hero::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:1;
+    }
+
+    /* Animation layer */
+    .hero-bg-layer{
+        position:absolute;
+        inset:0;
+        z-index:2;
+        pointer-events:none;
+    }
+
+    /* Content */
+    .svc-detail-hero .container,
+    .svc-detail-hero .container{
+        position:relative;
+        z-index:3;
+    }
+  </style>
 </head>
 <body>
 @include('layouts.navbar')
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
-{{-- ══════════════════════════════════════════
-     HERO
-════════════════════════════════════════════ --}}
+
+{{-- ══════════════════════════════════════════ HERO ════════════════════════════════════════════ --}}
+
 <section class="svc-detail-hero" itemscope itemtype="https://schema.org/Service">
-  <meta itemprop="name"        content="{{ $service->title }}"/>
+  <meta itemprop="name" content="{{ $service->title }}"/>
   <meta itemprop="description" content="{{ $service->meta_description ?? $service->short_description }}"/>
-  <meta itemprop="url"         content="{{ url('/services/' . $service->slug) }}"/>
+  <meta itemprop="url" content="{{ url('/services/' . $service->slug) }}"/>
 
   <div class="hero-bg-layer">
     {{-- CSS background animations (same as services page) --}}
@@ -158,15 +192,8 @@
         <a href="{{ route('services') }}" class="hero-eyebrow" aria-label="Back to all services">
           <i class="fas fa-arrow-left"></i> All Services
         </a>
-
-        <h1 class="svc-hero-title" itemprop="name">
-          {{ $service->title }}
-        </h1>
-
-        <p class="svc-hero-desc" itemprop="description">
-          {{ $service->short_description }}
-        </p>
-
+        <h1 class="svc-hero-title" itemprop="name">  {{ $service->title }}  </h1>
+        <p class="svc-hero-desc" itemprop="description">  {{ $service->short_description }}  </p>
         <div class="hero-cta-group">
           <button class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#consultModal">
             <i class="fas fa-comments"></i> Get Free Consultation
@@ -208,14 +235,9 @@
           <div class="hero-float-1">
             <div class="hero-float-dot"></div> Service Active
           </div>
-          <img
-            src="{{ config('app.images_path') . $service->page->featured_image }}"
+          <img src="{{ config('app.images_path') . $service->page->featured_image }}"
             alt="{{ $service->image_alt ?? $service->title . ' - Kawach Technology' }}"
-            title="{{ $service->image_title ?? $service->title }}"
-            width="520" height="280"
-            loading="eager"
-            itemprop="image"
-          />
+            title="{{ $service->image_title ?? $service->title }}" width="520" height="280" loading="eager" itemprop="image" />
           <div class="hero-img-overlay">
             <span class="hero-img-tag"><i class="fas fa-certificate"></i> &nbsp; Expert Service</span>
           </div>
@@ -288,13 +310,13 @@
           <h2 class="content-card-title"><i class="fas fa-star"></i> Key Features</h2>
           <div class="features-grid">
             @foreach([
-              ['icon'=>'fas fa-rocket',      'title'=>'Fast Delivery',       'desc'=>'Agile sprints and milestone-based releases so you see results quickly.'],
-              ['icon'=>'fas fa-shield-alt',  'title'=>'Enterprise Security',  'desc'=>'Built-in best practices — encrypted data, secure auth, and OWASP compliance.'],
-              ['icon'=>'fas fa-expand-arrows-alt','title'=>'Fully Scalable','desc'=>'Architecture designed to grow with your user base without costly rewrites.'],
-              ['icon'=>'fas fa-headset',     'title'=>'Dedicated Support',    'desc'=>'Post-launch support, monitoring, and a dedicated point of contact.'],
-              ['icon'=>'fas fa-code-branch', 'title'=>'Clean Codebase',       'desc'=>'Readable, documented code following industry-standard patterns.'],
-              ['icon'=>'fas fa-chart-line',  'title'=>'Data-Driven',          'desc'=>'Analytics and performance tracking built in from day one.'],
-            ] as $f)
+    ['icon' => 'fas fa-rocket', 'title' => 'Fast Delivery', 'desc' => 'Agile sprints and milestone-based releases so you see results quickly.'],
+    ['icon' => 'fas fa-shield-alt', 'title' => 'Enterprise Security', 'desc' => 'Built-in best practices — encrypted data, secure auth, and OWASP compliance.'],
+    ['icon' => 'fas fa-expand-arrows-alt', 'title' => 'Fully Scalable', 'desc' => 'Architecture designed to grow with your user base without costly rewrites.'],
+    ['icon' => 'fas fa-headset', 'title' => 'Dedicated Support', 'desc' => 'Post-launch support, monitoring, and a dedicated point of contact.'],
+    ['icon' => 'fas fa-code-branch', 'title' => 'Clean Codebase', 'desc' => 'Readable, documented code following industry-standard patterns.'],
+    ['icon' => 'fas fa-chart-line', 'title' => 'Data-Driven', 'desc' => 'Analytics and performance tracking built in from day one.'],
+  ] as $f)
             <div class="feature-item">
               <div class="feature-item-icon"><i class="{{ $f['icon'] }}"></i></div>
               <div>
@@ -329,12 +351,12 @@
               @endforeach
             @else
               @foreach([
-                ['How long does a typical project take?','Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
-                ['What does your development process look like?','We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
-                ['Do you offer post-launch support?','Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
-                ['How do you handle project communication?','We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
-                ['What happens if the scope changes mid-project?','Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
-              ] as $i => $qa)
+    ['How long does a typical project take?', 'Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
+    ['What does your development process look like?', 'We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
+    ['Do you offer post-launch support?', 'Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
+    ['How do you handle project communication?', 'We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
+    ['What happens if the scope changes mid-project?', 'Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
+  ] as $i => $qa)
               <div class="faq-item {{ $i === 0 ? 'open' : '' }}" onclick="toggleFaq(this)">
                 <div class="faq-question">
                   <span class="faq-q-text">{{ $qa[0] }}</span>

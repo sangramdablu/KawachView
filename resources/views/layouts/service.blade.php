@@ -7,10 +7,10 @@
 
     <div class="svc-outer" id="svcOuter">
       <button class="svc-arrow svc-arrow-left" id="svcPrev" aria-label="Previous services">
-        <i class="fas fa-chevron-left"></i>
+        <i class="fa-solid fa-angle-left"></i>
       </button>
       <button class="svc-arrow svc-arrow-right" id="svcNext" aria-label="Next services">
-        <i class="fas fa-chevron-right"></i>
+        <i class="fa-solid fa-angle-right"></i>
       </button>
 
       <div class="svc-track-wrap">
