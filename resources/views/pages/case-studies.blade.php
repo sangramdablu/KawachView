@@ -1,5 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Primary SEO Meta Tags -->
+<title>Case Studies | Kawach Technology Pvt Ltd</title>
+
+<meta name="title" content="Case Studies | Healthcare, SaaS & Web Development Projects | Kawach">
+<meta name="description" content="Explore Kawach case studies featuring scalable healthcare platforms, SaaS applications, enterprise web development, cloud infrastructure, and custom software solutions for global clients.">
+<meta name="keywords" content="web development company USA, software development company Canada, healthcare software development, SaaS development services, custom web application development, enterprise software development, telehealth platform development, HIPAA compliant software development, cloud application development, React development company, Node.js development services, AWS cloud solutions, healthcare app development company, custom software agency Europe">
+<meta name="author" content="Kawach">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<!-- Geo Targeting -->
+<meta name="geo.region" content="US-CA">
+<meta name="geo.placename" content="United States">
+<meta name="distribution" content="global">
+
+<!-- Canonical -->
+<link rel="canonical" href="{{ url()->current() }}" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:title" content="Case Studies | Healthcare, SaaS & Web Development Projects | Kawach">
+<meta property="og:description" content="Discover how Kawach delivers scalable healthcare platforms, SaaS products, cloud-native applications, and enterprise software solutions for clients worldwide.">
+<meta property="og:image" content="{{ asset('assets/images/case-study-og.jpg') }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Kawach">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ url()->current() }}">
+<meta name="twitter:title" content="Case Studies | Healthcare, SaaS & Web Development Projects | Kawach">
+<meta name="twitter:description" content="Explore healthcare software, SaaS, enterprise web apps, and cloud-native development case studies built by Kawach.">
+
+<meta name="twitter:image" content="{{ asset('assets/images/case-study-og.jpg') }}">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0A0A0A">
+
+<!-- Mobile SEO -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Schema.org JSON-LD -->
+@verbatim
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Kawach Case Studies",
+  "url": "{{ url()->current() }}",
+  "description": "Explore software development case studies including healthcare platforms, SaaS products, enterprise applications, and cloud-native solutions developed by Kawach.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kawach",
+    "url": "{{ url('/') }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ asset('assets/images/logo.png') }}"
+    }
+  }
+}
+</script>
+@endverbatim
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
@@ -32,6 +96,21 @@
   .case-hero-section .container{
       position:relative;
       z-index:3;
+  }
+  .featured-case-image,
+  .case-card-image{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+      object-position:center;
+
+      display:block;
+  }
+
+  .case-card-visual,
+  .featured-card-visual{
+      overflow:hidden;
   }
 </style>
 </head>
@@ -109,15 +188,15 @@
         </div>
         <div class="casehero-stats">
           <div class="stat-item">
-            <div class="stat-number">150<span>+</span></div>
+            <div class="stat-number">{{ $stats['projects'] }}+<span>+</span></div>
             <div class="stat-label">Projects Delivered</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">98<span>%</span></div>
+            <div class="stat-number">{{ $stats['satisfaction'] }}<span>%</span></div>
             <div class="stat-label">Client Satisfaction</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">40<span>+</span></div>
+            <div class="stat-number">{{ $stats['industries'] }}<span>+</span></div>
             <div class="stat-label">Industries Served</div>
           </div>
         </div>
@@ -176,13 +255,18 @@
 <section class="filter-section">
   <div class="container">
     <div class="filter-tabs">
-      <button class="filter-btn active">All Projects</button>
-      <button class="filter-btn">E-Commerce</button>
-      <button class="filter-btn">AI &amp; ML</button>
+      {{-- <button class="filter-btn active">All Projects</button> --}}
+      <div class="filter-tabs">
+          <button class="filter-btn active">All Projects</button>
+          @foreach($categories as $category)
+              <button class="filter-btn">{{ $category }}</button>
+          @endforeach
+      </div>
+      {{-- <button class="filter-btn">AI &amp; ML</button>
       <button class="filter-btn">Cloud &amp; DevOps</button>
       <button class="filter-btn">Healthcare</button>
       <button class="filter-btn">FinTech</button>
-      <button class="filter-btn">Education</button>
+      <button class="filter-btn">Education</button> --}}
     </div>
   </div>
 </section>
@@ -196,49 +280,49 @@
       <p class="section-subtitle">Our most impactful project of the year</p>
     </div>
 
-    <div class="featured-card">
-      <div class="featured-card-visual">
-        <div class="featured-tag">⭐ Featured</div>
-        <div class="featured-visual-inner">
-          <div class="fvi-screen">
-            <div class="fvi-bar fvi-bar-full"></div>
-            <div class="fvi-bar fvi-bar-med"></div>
-            <div class="fvi-bar fvi-bar-short"></div>
-            <div class="fvi-row">
-              <div class="fvi-block fvi-block-blue"></div>
-              <div class="fvi-block"></div>
-              <div class="fvi-block fvi-block-blue"></div>
-            </div>
+    @if($featuredCase)
+      <div class="featured-card">
+          <div class="featured-card-visual">
+              @if($featuredCase->featured_image)
+                  <img src="{{ config('app.images_path') . $featuredCase->featured_image }}" alt="{{ $featuredCase->title }}" title="{{ $featuredCase->title }}" class="featured-case-image">
+              @endif
+              <div class="featured-tag">⭐ Featured</div>
           </div>
-          <div class="fvi-screen" style="opacity:0.6;">
-            <div class="fvi-bar fvi-bar-med"></div>
-            <div class="fvi-bar fvi-bar-short"></div>
+          <div class="featured-card-body">
+              <div class="case-category">{{ $featuredCase->caseStudy->client_industry ?? 'Technology'}}
+              </div>
+              <h3 class="case-title"> {{ $featuredCase->title }} </h3>
+              <p class="case-desc">
+                  {{ \Illuminate\Support\Str::limit(strip_tags($featuredCase->caseStudy->challenge ?? $featuredCase->caseStudy->solution ?? ''),220) }}
+              </p>
+
+              {{-- KPIs --}}
+              <div class="case-metrics">
+                  @php
+                    $kpis = $featuredCase->caseStudy->kpis;
+                    // Convert string JSON to array safely
+                    if (is_string($kpis)) {
+                        $decoded = json_decode($kpis, true);
+                        $kpis = is_array($decoded) ? $decoded : [];
+                    }
+                  @endphp
+                @if(!empty($kpis))
+                    @foreach(array_slice($kpis, 0, 3) as $kpi)
+                        <div class="metric-item">
+                            <div class="metric-value">  {{ $kpi['value'] ?? '100%' }}  </div>
+                            <div class="metric-label"> {{ $kpi['label'] ?? 'Growth' }} </div>
+                        </div>
+                    @endforeach
+                @endif
+              </div>
+              <a href="{{ route('case-studies.show', $featuredCase->slug) }}" class="btn-read-more">
+                  Read Full Case Study
+                  <i class="fas fa-arrow-right"></i>
+              </a>
           </div>
-        </div>
       </div>
-      <div class="featured-card-body">
-        <div class="case-category">E-Commerce &nbsp;·&nbsp; AI-Powered</div>
-        <h3 class="case-title">ShopNova E-Commerce Platform — Boosting Sales by 150%</h3>
-        <p class="case-desc">
-          ShopNova approached us with a legacy storefront struggling under high traffic and low conversion rates. We rebuilt the entire platform with a modern microservices architecture, integrated AI-driven product recommendations, and a real-time inventory sync system — resulting in record-breaking growth within 6 months of launch.
-        </p>
-        <div class="case-metrics">
-          <div class="metric-item">
-            <div class="metric-value">150%</div>
-            <div class="metric-label">Sales Increase</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-value">3×</div>
-            <div class="metric-label">Faster Load Time</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-value">99.9%</div>
-            <div class="metric-label">Uptime SLA</div>
-          </div>
-        </div>
-        <a href="#" class="btn-read-more">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
+    @endif
+
   </div>
 </section>
 
@@ -252,146 +336,41 @@
     </div>
 
     <div class="row g-4">
-
-      <!-- Card 1 – E-Commerce -->
+      @foreach($caseStudies as $case)
       <div class="col-md-4">
-        <div class="case-card">
-          <div class="case-card-visual ccv-ecom">
-            <div class="ccv-result"><i class="fas fa-arrow-up"></i> +150% Sales</div>
-            <div class="ccv-icon"><i class="fas fa-shopping-cart"></i></div>
-            <div class="ccv-badge">E-Commerce</div>
-          </div>
-          <div class="case-card-body">
-            <div class="case-card-category">E-Commerce &nbsp;·&nbsp; Retail</div>
-            <div class="case-card-title">E-Commerce Platform Redesign for ShopNova</div>
-            <p class="case-card-desc">Rebuilt a legacy storefront with AI-driven recommendations and microservices, boosting sales by 150% in 6 months.</p>
-            <div class="case-card-footer">
-              <div>
-                <div class="case-card-metric">150%</div>
-                <div class="case-card-metric-label">Revenue Growth</div>
+          <div class="case-card">
+              <div class="case-card-visual ccv-ecom">
+                  @if($case->featured_image)
+                      <img src="{{ config('app.images_path') . $case->featured_image }}" alt="{{ $case->title }}" title="{{ $case->title }}" class="case-card-image">
+                  @endif
+                  <div class="ccv-badge">
+                      {{ $case->caseStudy->client_industry ?? 'Technology'}}
+                  </div>
               </div>
-              <a href="#" class="btn-case-link">View Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 – AI CRM -->
-      <div class="col-md-4">
-        <div class="case-card">
-          <div class="case-card-visual ccv-crm">
-            <div class="ccv-result"><i class="fas fa-arrow-up"></i> +80% Leads</div>
-            <div class="ccv-icon"><i class="fas fa-robot"></i></div>
-            <div class="ccv-badge">AI &amp; ML</div>
-          </div>
-          <div class="case-card-body">
-            <div class="case-card-category">AI &amp; Machine Learning &nbsp;·&nbsp; SaaS</div>
-            <div class="case-card-title">AI-Powered CRM for Automated Lead Management</div>
-            <p class="case-card-desc">Deployed a smart CRM with predictive lead scoring and automated follow-ups, increasing conversion rates by 80%.</p>
-            <div class="case-card-footer">
-              <div>
-                <div class="case-card-metric">80%</div>
-                <div class="case-card-metric-label">Lead Conversion</div>
+              <div class="case-card-body">
+                  <div class="case-card-category">
+                      {{ $case->category->name ?? 'Case Study' }}
+                  </div>
+                  <div class="case-card-title"> {{ $case->title }}</div>
+                  <p class="case-card-desc">
+                      {{ \Illuminate\Support\Str::words(strip_tags( $case->caseStudy->challenge ?? $case->caseStudy->solution ?? '' ), 18, '...') }}
+                  </p>
+                  <div class="case-card-footer">
+                      <div>
+                          <div class="case-card-metric">
+                              {{ $case->caseStudy->project_duration . ' Months' ?? '6 Months' }}
+                          </div>
+                          <div class="case-card-metric-label">Duration</div>
+                      </div>
+                      <a href="{{ route('case-studies.show', $case->slug) }}" class="btn-case-link"> View Study <i class="fas fa-arrow-right"></i>
+                      </a>
+                  </div>
               </div>
-              <a href="#" class="btn-case-link">View Study <i class="fas fa-arrow-right"></i></a>
-            </div>
           </div>
-        </div>
       </div>
+      @endforeach
 
-      <!-- Card 3 – Logistics -->
-      <div class="col-md-4">
-        <div class="case-card">
-          <div class="case-card-visual ccv-lms">
-            <div class="ccv-result"><i class="fas fa-arrow-down"></i> -40% Cost</div>
-            <div class="ccv-icon"><i class="fas fa-truck"></i></div>
-            <div class="ccv-badge">Cloud &amp; DevOps</div>
-          </div>
-          <div class="case-card-body">
-            <div class="case-card-category">Cloud &amp; DevOps &nbsp;·&nbsp; Logistics</div>
-            <div class="case-card-title">Logistics Management System — Optimised Supply Chain</div>
-            <p class="case-card-desc">Built a real-time logistics platform with route optimisation and live tracking, cutting operational costs by 40%.</p>
-            <div class="case-card-footer">
-              <div>
-                <div class="case-card-metric">40%</div>
-                <div class="case-card-metric-label">Cost Reduction</div>
-              </div>
-              <a href="#" class="btn-case-link">View Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <!-- Card 4 – Healthcare -->
-      <div class="col-md-4">
-        <div class="case-card">
-          <div class="case-card-visual ccv-health">
-            <div class="ccv-result"><i class="fas fa-arrow-up"></i> +65% Efficiency</div>
-            <div class="ccv-icon"><i class="fas fa-heartbeat"></i></div>
-            <div class="ccv-badge">Healthcare</div>
-          </div>
-          <div class="case-card-body">
-            <div class="case-card-category">Healthcare &nbsp;·&nbsp; Custom Software</div>
-            <div class="case-card-title">Patient Management Portal for MedCore Clinics</div>
-            <p class="case-card-desc">Developed a HIPAA-compliant patient portal with appointment booking, EHR integration, and telemedicine support.</p>
-            <div class="case-card-footer">
-              <div>
-                <div class="case-card-metric">65%</div>
-                <div class="case-card-metric-label">Staff Efficiency</div>
-              </div>
-              <a href="#" class="btn-case-link">View Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 – FinTech -->
-      <div class="col-md-4">
-        <div class="case-card">
-          <div class="case-card-visual ccv-fin">
-            <div class="ccv-result"><i class="fas fa-arrow-up"></i> +90% Speed</div>
-            <div class="ccv-icon"><i class="fas fa-chart-line"></i></div>
-            <div class="ccv-badge">FinTech</div>
-          </div>
-          <div class="case-card-body">
-            <div class="case-card-category">FinTech &nbsp;·&nbsp; AI &amp; ML</div>
-            <div class="case-card-title">Real-Time Fraud Detection Engine for PayShield</div>
-            <p class="case-card-desc">Engineered a real-time ML fraud detection system processing 1M+ transactions per day with sub-100ms response time.</p>
-            <div class="case-card-footer">
-              <div>
-                <div class="case-card-metric">99.7%</div>
-                <div class="case-card-metric-label">Detection Accuracy</div>
-              </div>
-              <a href="#" class="btn-case-link">View Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 – EdTech -->
-      <div class="col-md-4">
-        <div class="case-card">
-          <div class="case-card-visual ccv-edu">
-            <div class="ccv-result"><i class="fas fa-arrow-up"></i> +70% Engagement</div>
-            <div class="ccv-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div class="ccv-badge">Education</div>
-          </div>
-          <div class="case-card-body">
-            <div class="case-card-category">Education &nbsp;·&nbsp; Web &amp; Mobile</div>
-            <div class="case-card-title">Smart LMS Platform for EduReach Online Academy</div>
-            <p class="case-card-desc">Created an adaptive learning management system with AI-personalised course paths, live sessions, and gamification.</p>
-            <div class="case-card-footer">
-              <div>
-                <div class="case-card-metric">70%</div>
-                <div class="case-card-metric-label">Student Engagement</div>
-              </div>
-              <a href="#" class="btn-case-link">View Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -419,59 +398,7 @@
 </section>
 
 <!-- ── FOOTER ── -->
-<footer class="footer-section">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-heading">Quick Links</div>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="#">Case Studies</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-heading">Our Expertise</div>
-        <ul class="footer-links">
-          <li><a href="#">Custom Software</a></li>
-          <li><a href="#">AI &amp; Automation</a></li>
-          <li><a href="#">SaaS Solutions</a></li>
-          <li><a href="#">Cloud &amp; DevOps</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-heading">Resources</div>
-        <ul class="footer-links">
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Documentation</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-heading">Contact Us</div>
-        <div class="footer-contact-item">
-          <i class="fas fa-envelope"></i>
-          info@KawachTech.com
-        </div>
-        <div class="footer-contact-item">
-          <i class="fas fa-phone"></i>
-          +1 234 567 9900
-        </div>
-        <div class="footer-social">
-          <a href="#" class="social-btn social-linkedin"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-btn social-twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-btn social-facebook"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2034 KawachTech Solutions. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+@include('layouts.footer')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 <script>

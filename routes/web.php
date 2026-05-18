@@ -21,12 +21,17 @@ Route::get('/about-us', function () {
 Route::get('/case-studies', function () {
     return view('pages.case-studies');
 })->name('casestudy');
+Route::get('/case-studies/see', function () {
+    return view('pages.child.case_study_details');
+})->name('casestudy');
 Route::get('/contact', function () {
     return view('pages.contact');   
 })->name('contact');
  
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
+Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');
+Route::get('/case-studies/{slug}', [PagesController::class, 'show'])->name('case-studies.show');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/schedule', [QuoteController::class, 'scheduleCall'])->name('schedule.store');
