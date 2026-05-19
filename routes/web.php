@@ -31,7 +31,7 @@ Route::get('/contact', function () {
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');
-Route::get('/case-studies/{slug}', [PagesController::class, 'show'])->name('case-studies.show');
+Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetails'])->name('case-studies.show');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/schedule', [QuoteController::class, 'scheduleCall'])->name('schedule.store');

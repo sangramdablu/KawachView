@@ -12,22 +12,217 @@
     <meta property="og:description" content="{{ $post->og_description ?? $post->meta_description }}">
     <meta property="og:image" content="{{ config('app.images_path') . $post->featured_image }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <style>
+      .article-hero{
+          position:relative;
+          overflow:hidden;
+          background:#0f172a;
+          isolation:isolate;
+      }
+      .article-hero::before{
+          content:"";
+          position:absolute;
+          inset:0;
+          background:  linear-gradient( 135deg, rgba(15,23,42,.92) 0%, rgba(15,23,42,.82) 45%, rgba(13,71,161,.68) 100% ), url('{{ asset("assets/images/kawach_main_bg.png") }}') center center / cover no-repeat;
+          z-index:0;
+      }
 
+      .article-hero::after{
+          content:"";
+          position:absolute;
+          inset:0;
+          background: radial-gradient( circle at top right, rgba(59,130,246,.16), transparent 45% );
+          z-index:1;
+      }
+
+      .article-hero .hero-bg-layer{
+          position:absolute;
+          inset:0;
+          z-index:2;
+          pointer-events:none;
+          opacity:.55;
+      }
+
+      /* soften animation */
+      .article-hero .code-line,
+      .article-hero .circuit-node,
+      .article-hero .data-packet,
+      .article-hero .binary-col{
+          opacity:.42;
+      }
+
+      .article-hero .container{
+          position:relative;
+          z-index:3;
+      }
+
+      .article-hero-inner{
+          position:relative;
+          z-index:3;
+      }
+
+      .article-category-badge{
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          padding:8px 18px;
+          border-radius:999px;
+          background:rgba(59,130,246,.14);
+          border:1px solid rgba(59,130,246,.22);
+          color:#dbeafe;
+          font-size:.82rem;
+          font-weight:700;
+          margin-bottom:24px;
+          backdrop-filter:blur(10px);
+      }
+
+      .article-hero-title{
+          font-family:'Nunito',sans-serif;
+          font-size:3.2rem;
+          font-weight:900;
+          line-height:1.15;
+          color:#fff;
+          max-width:950px;
+          margin-bottom:28px;
+      }
+
+      .article-hero-meta{
+          display:flex;
+          align-items:center;
+          gap:14px;
+          flex-wrap:wrap;
+          margin-bottom:42px;
+      }
+
+      .hero-meta-pill{
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          padding:10px 16px;
+          border-radius:999px;
+          background:rgba(255,255,255,.08);
+          border:1px solid rgba(255,255,255,.12);
+          color:#dbeafe;
+          font-size:.82rem;
+          font-weight:600;
+          backdrop-filter:blur(12px);
+      }
+
+      .hero-author{
+          display:flex;
+          align-items:center;
+          gap:12px;
+          margin-right:10px;
+      }
+
+      .hero-avatar{
+          width:52px;
+          height:52px;
+          border-radius:50%;
+          background: linear-gradient(135deg,#2563eb,#1d4ed8);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#fff;
+          font-weight:800;
+          box-shadow: 0 8px 20px rgba(37,99,235,.28);
+      }
+      .author-name{
+          color:#fff;
+          font-weight:800;
+      }
+
+      .author-role{
+          color:#93c5fd;
+          font-size:.82rem;
+      }
+
+      .article-hero-thumb{
+          position:relative;
+          border-radius:30px;
+          overflow:hidden;
+          margin-top:18px;
+          box-shadow: 0 30px 60px rgba(0,0,0,.32);
+          border:1px solid rgba(255,255,255,.08);
+          background:#0f172a;
+      }
+
+      .article-hero-image{
+          width:100%;
+          height:560px;
+          object-fit:cover;
+          object-position:center;
+          display:block;
+      }
+
+      @media(max-width:1200px){
+          .article-hero-title{
+              font-size:2.8rem;
+          }
+      }
+
+      @media(max-width:991px){
+          .article-hero{
+              padding:75px 0 60px;
+          }
+          .article-hero-title{
+              font-size:2.3rem;
+          }
+          .article-hero-image{
+              height:420px;
+          }
+          .article-hero-meta{
+              gap:10px;
+          }
+      }
+
+      @media(max-width:767px){
+          .article-hero{
+              padding:60px 0 50px;
+          }
+          .article-hero-title{
+              font-size:1.75rem;
+              line-height:1.3;
+          }
+          .article-hero-meta{
+              flex-direction:column;
+              align-items:flex-start;
+          }
+          .hero-author{
+              margin-bottom:4px;
+          }
+          .hero-meta-pill{
+              width:100%;
+              justify-content:flex-start;
+          }
+          .article-hero-image{
+              height:240px;
+          }
+          .article-hero-thumb{
+              border-radius:20px;
+          }
+          .binary-col,
+          .code-line:nth-child(n+8){
+              display:none;
+          }
+
+      }
+    </style>
     @verbatim
-    <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "{{ $post->title }}",
-        "description": "{{ $post->meta_description }}",
-        "image": "{{ config('app.images_path') . $post->featured_image }}",
-        "datePublished": "{{ $post->published_at }}",
-        "author": {
-            "@type": "Person",
-            "name": "{{ $post->author_name ?? 'Kawach Team' }}"
-        }
-        }
-    </script>
+      <script type="application/ld+json">
+          {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "{{ $post->title }}",
+          "description": "{{ $post->meta_description }}",
+          "image": "{{ config('app.images_path') . $post->featured_image }}",
+          "datePublished": "{{ $post->published_at }}",
+          "author": {
+              "@type": "Person",
+              "name": "{{ $post->author_name ?? 'Kawach Team' }}"
+          }
+          }
+      </script>
     @endverbatim
 </head>
 @include('modal.getquote')
@@ -55,6 +250,29 @@
 
 <!-- ARTICLE HERO -->
 <section class="article-hero">
+
+  <div class="hero-bg-layer">
+    <div class="code-line cl-1"></div><div class="code-line cl-2"></div><div class="code-line cl-3"></div>
+    <div class="code-line cl-4"></div><div class="code-line cl-5"></div><div class="code-line cl-6"></div>
+    <div class="code-line cl-7"></div><div class="code-line cl-8"></div><div class="code-line cl-9"></div>
+    <div class="code-line cl-10"></div><div class="code-line cl-11"></div><div class="code-line cl-12"></div>
+    <div class="code-line cl-13"></div><div class="code-line cl-14"></div><div class="code-line cl-15"></div>
+    <div class="circuit-node cn-1"></div><div class="circuit-node cn-2"></div><div class="circuit-node cn-3"></div>
+    <div class="circuit-node cn-4"></div><div class="circuit-node cn-5"></div><div class="circuit-node cn-6"></div>
+    <div class="circuit-node cn-7"></div><div class="circuit-node cn-8"></div><div class="circuit-node cn-9"></div><div class="circuit-node cn-10"></div>
+    <div class="data-packet dp-blue  dp-1"></div><div class="data-packet dp-green dp-2"></div>
+    <div class="data-packet dp-white dp-3"></div><div class="data-packet dp-blue  dp-4"></div>
+    <div class="data-packet dp-green dp-5"></div><div class="data-packet dp-white dp-6"></div>
+    <div class="data-packet dp-blue  dp-7"></div><div class="data-packet dp-green dp-8"></div>
+    <div class="binary-col bc-1">1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;1</div>
+    <div class="binary-col bc-2">0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;0</div>
+    <div class="binary-col bc-3">1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1</div>
+    <div class="binary-col bc-4">0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0</div>
+    <div class="binary-col bc-5">1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0&#10;0</div>
+    <div class="binary-col bc-6">0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1&#10;1</div>
+    <div class="hero-scan-line"></div>
+  </div>
+
   <div class="article-hero-inner">
     <div class="container">
       <div class="article-category-badge">

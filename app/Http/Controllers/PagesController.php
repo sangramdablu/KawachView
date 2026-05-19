@@ -37,9 +37,7 @@ class PagesController extends Controller
                 ->whereHas('page', function ($query) use ($service) {
                     $query->where('id', '!=', $service->page_id)
                         ->where('status', 'published');
-                })
-                ->limit(3)
-                ->get();
+                })->limit(3)->get();
         });
 
         $seoTitle = $service->page->meta_title ?? $service->page->title . ' | Kawach Technology';
@@ -52,11 +50,8 @@ class PagesController extends Controller
     public function caseStudyIndex()
     {
         $caseStudies = Page::with(['caseStudy', 'category', 'author'])->published()->byType('casestudy')->latest('published_at')->orderBy('sort_order')->get();
-        // ── Featured case study ───────────────────────────────
         $featuredCase = $caseStudies->where('is_featured', true)->first() ?? $caseStudies->first();
-        // ── Dynamic categories for filters ────────────────────
         $categories = $caseStudies->pluck('category.name')->filter()->unique()->values();
-        // ── Stats ─────────────────────────────────────────────
         $stats = [
             'projects' => $caseStudies->count(),
             'industries' => $caseStudies->pluck('caseStudy.client_industry')->filter()->unique()->count(),
@@ -66,5 +61,11 @@ class PagesController extends Controller
         return view('pages.case-studies', compact('caseStudies', 'featuredCase', 'categories', 'stats'));
     }
 
+    public function showCasestudyDetails($slug){
+        $caseStudy = Page::with(['caseStudy', 'category', 'author'])->where('page_type', 'casestudy')->where('slug', $slug)->where('status', 'published')->firstOrFail();
+        // Related Case Studies
+        $relatedCaseStudies = Page::with('caseStudy')->where('page_type', 'casestudy')->where('id', '!=', $caseStudy->id)->where('status', 'published')->latest()->take(3)->get();
+        return view('pages.child.case_study_details', compact('caseStudy', 'relatedCaseStudies'));
+    }
 
 }

@@ -4,7 +4,184 @@
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+<style>
+.cs-hero{
+    position:relative;
+    overflow:hidden;
+    padding:90px 0 80px;
+    background:#0f172a;
+    isolation:isolate;
+}
 
+.cs-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(15,23,42,.92) 0%, rgba(15,23,42,.84) 45%, rgba(13,71,161,.70) 100%), url('{{ asset("assets/images/kawach_main_bg.png") }}') center center / cover no-repeat;
+    z-index:0;
+}
+
+.cs-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: radial-gradient( circle at top right, rgba(59,130,246,.18), transparent 40% );
+    z-index:1;
+}
+
+.cs-hero .hero-bg-layer{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    opacity:.55;
+}
+
+.cs-hero .code-line, .cs-hero .circuit-node, .cs-hero .data-packet, .cs-hero .binary-col{
+    opacity:.42;
+}
+
+.cs-hero .container{
+    position:relative;
+    z-index:3;
+}
+
+.cs-back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+    color:#93c5fd;
+    font-size:.92rem;
+    font-weight:700;
+    text-decoration:none;
+    transition:all .25s ease;
+}
+
+.cs-back-link:hover{
+    color:#fff;
+    transform:translateX(-4px);
+}
+
+.cs-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(59,130,246,.12);
+    border:1px solid rgba(59,130,246,.18);
+    color:#dbeafe;
+    font-size:.8rem;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:22px;
+    backdrop-filter:blur(10px);
+}
+
+.cs-hero-title{
+    font-family:'Nunito',sans-serif;
+    font-size:3.2rem;
+    font-weight:900;
+    line-height:1.15;
+    color:#fff;
+    margin-bottom:24px;
+}
+
+.cs-hero-subtitle{
+    color:#c7d8ea;
+    font-size:1.08rem;
+    line-height:1.9;
+    max-width:720px;
+    margin-bottom:34px;
+}
+
+.cs-info-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:34px;
+}
+
+.cs-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 16px;
+    border-radius:999px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.10);
+    color:#dbeafe;
+    font-size:.82rem;
+    font-weight:700;
+    backdrop-filter:blur(12px);
+}
+
+.cs-hero-ctas{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.cs-hero-stat-card{
+    position:relative;
+    padding:34px;
+    border-radius:28px;
+    background: linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.10);
+    backdrop-filter:blur(18px);
+    box-shadow: 0 30px 60px rgba(0,0,0,.28);
+    overflow:hidden;
+}
+.cs-hero-stat-card::before{
+    content:"";
+    position:absolute;
+    width:240px;
+    height:240px;
+    top:-120px;
+    right:-120px;
+    background: radial-gradient( circle, rgba(59,130,246,.25), transparent 70% );
+}
+@media(max-width:1200px){
+    .cs-hero-title{
+        font-size:2.7rem;
+    }
+}
+@media(max-width:991px){
+    .cs-hero{
+        padding:75px 0 65px;
+    }
+    .cs-hero-title{
+        font-size:2.2rem;
+    }
+}
+
+@media(max-width:767px){
+    .cs-hero{
+        padding:60px 0 55px;
+    }
+    .cs-hero-title{
+        font-size:1.8rem;
+        line-height:1.3;
+    }
+    .cs-hero-subtitle{
+        font-size:.98rem;
+    }
+    .cs-pill{
+        width:100%;
+        justify-content:flex-start;
+    }
+    .cs-hero-ctas{
+        flex-direction:column;
+    }
+    .btn-cs-primary, .btn-cs-outline{
+        width:100%;
+        text-align:center;
+    }
+    .binary-col, .code-line:nth-child(n+8){
+        display:none;
+    }
+}
+</style>
 </head>
 <body>
 
@@ -14,6 +191,53 @@
      HERO SECTION
 ═══════════════════════════════════════════ --}}
 <section class="cs-hero" id="top">
+
+    <div class="hero-bg-layer">
+        {{-- Floating code lines --}}
+        <div class="code-line cl-1"></div>
+        <div class="code-line cl-2"></div>
+        <div class="code-line cl-3"></div>
+        <div class="code-line cl-4"></div>
+        <div class="code-line cl-5"></div>
+        <div class="code-line cl-6"></div>
+        <div class="code-line cl-7"></div>
+        <div class="code-line cl-8"></div>
+        <div class="code-line cl-9"></div>
+        <div class="code-line cl-10"></div>
+        <div class="code-line cl-11"></div>
+        <div class="code-line cl-12"></div>
+        <div class="code-line cl-13"></div>
+        <div class="code-line cl-14"></div>
+        <div class="code-line cl-15"></div>
+        {{-- Circuit nodes --}}
+        <div class="circuit-node cn-1"></div>
+        <div class="circuit-node cn-2"></div>
+        <div class="circuit-node cn-3"></div>
+        <div class="circuit-node cn-4"></div>
+        <div class="circuit-node cn-5"></div>
+        <div class="circuit-node cn-6"></div>
+        <div class="circuit-node cn-7"></div>
+        <div class="circuit-node cn-8"></div>
+        <div class="circuit-node cn-9"></div>
+        <div class="circuit-node cn-10"></div>
+        {{-- Data packets --}}
+        <div class="data-packet dp-blue dp-1"></div>
+        <div class="data-packet dp-green dp-2"></div>
+        <div class="data-packet dp-white dp-3"></div>
+        <div class="data-packet dp-blue dp-4"></div>
+        <div class="data-packet dp-green dp-5"></div>
+        <div class="data-packet dp-white dp-6"></div>
+        <div class="data-packet dp-blue dp-7"></div>
+        <div class="data-packet dp-green dp-8"></div>
+        {{-- Binary rain --}}
+        <div class="binary-col bc-1">1&#10;0&#10;1&#10;1&#10;0&#10;0&#10;1&#10;0</div>
+        <div class="binary-col bc-2">0&#10;1&#10;0&#10;0&#10;1&#10;1&#10;0&#10;1</div>
+        <div class="binary-col bc-3">1&#10;1&#10;0&#10;1&#10;0&#10;1&#10;1&#10;0</div>
+        <div class="binary-col bc-4">0&#10;0&#10;1&#10;0&#10;1&#10;0&#10;0&#10;1</div>
+        {{-- Scan line --}}
+        <div class="hero-scan-line"></div>
+    </div>
+
   <div class="container">
     <div class="row align-items-center g-5">
 
@@ -22,21 +246,27 @@
         <a href="{{ url('/case-studies') }}" class="cs-back-link">
           <i class="fas fa-arrow-left"></i> Back to Case Studies
         </a>
-        <div class="cs-eyebrow">Case Study — Healthcare</div>
+        <div class="cs-eyebrow"> Case Study — {{ $caseStudy->caseStudy->client_industry ?? 'Technology' }}</div>
         <h1 class="cs-hero-title">
-          Scalable Telehealth Platform for a Multi-State Healthcare Provider
+            {{ $caseStudy->title }}
         </h1>
         <p class="cs-hero-subtitle">
-          How Kawach Technology built a HIPAA-compliant telemedicine platform that reduced patient wait times by 40%, automated billing workflows, and scaled to thousands of concurrent users.
+            {{ strip_tags($caseStudy->meta_description) }}
         </p>
 
         <div class="cs-info-pills">
-          <span class="cs-pill"><i class="fas fa-industry"></i> Healthcare</span>
-          <span class="cs-pill"><i class="fas fa-globe"></i> USA</span>
-          <span class="cs-pill"><i class="fas fa-code"></i> Web + Mobile</span>
-          <span class="cs-pill"><i class="fas fa-clock"></i> 6 Months</span>
-          <span class="cs-pill"><i class="fas fa-users"></i> Enterprise</span>
-          <span class="cs-pill"><i class="fas fa-shield-alt"></i> HIPAA Compliant</span>
+            @if($caseStudy->caseStudy->client_industry)
+                <span class="cs-pill"><i class="fas fa-industry"></i>{{ $caseStudy->caseStudy->client_industry }}</span>
+            @endif
+            @if($caseStudy->caseStudy->project_duration)
+                <span class="cs-pill"><i class="fas fa-clock"></i>{{ $caseStudy->caseStudy->project_duration }}</span>
+            @endif
+            @if($caseStudy->published_at)
+                <span class="cs-pill"><i class="fas fa-calendar"></i>{{ $caseStudy->published_at->format('M Y') }}</span>
+            @endif
+            @if($caseStudy->caseStudy->project_url)
+                <span class="cs-pill"><i class="fas fa-globe"></i>Live Project</span>
+            @endif
         </div>
 
         <div class="cs-hero-ctas">
@@ -122,9 +352,9 @@
       <div class="col-lg-5">
         <div class="side-line"></div>
         <div class="section-eyebrow">Client Overview</div>
-        <h2 class="section-heading">Who Is the Client?</h2>
+        <h2 class="section-heading">{{ $caseStudy->caseStudy->client_name }}</h2>
         <p class="section-sub mb-4">
-          A rapidly growing multi-state healthcare provider operating across 12 US states needed a modern telehealth platform to replace fragmented legacy systems and scale remote patient care operations.
+            {!! \Illuminate\Support\Str::limit(strip_tags($caseStudy->caseStudy->challenge),400) !!}
         </p>
         <p class="section-sub">
           With over 3,000 doctors and 500,000 active patients, they required a HIPAA-compliant, cloud-native solution capable of handling high-concurrency video consultations, real-time EHR synchronisation, and automated billing workflows.
@@ -481,27 +711,20 @@
       <p class="section-sub mx-auto" style="max-width:520px;">Numbers measured at 6 months post-launch, independently verified by the client's operations team.</p>
     </div>
 
-    <div class="results-kpi-grid">
-      @php
-      $kpis = [
-        ['icon'=>'fas fa-user-clock','bg'=>'#e8f1fd','color'=>'var(--primary-blue)','num'=>'40%','label'=>'Reduction in Patient Wait Time'],
-        ['icon'=>'fas fa-dollar-sign','bg'=>'#d4f5ec','color'=>'#00a87c','num'=>'25%','label'=>'Operational Cost Savings'],
-        ['icon'=>'fas fa-server','bg'=>'#ede9fe','color'=>'#6d28d9','num'=>'99.9%','label'=>'Platform Uptime Achieved'],
-        ['icon'=>'fas fa-chart-line','bg'=>'#fff4d6','color'=>'#b8860b','num'=>'9mo','label'=>'Time to Positive ROI'],
-        ['icon'=>'fas fa-user-md','bg'=>'#ffe2e8','color'=>'var(--red)','num'=>'40%','label'=>'More Patients Per Doctor/Day'],
-        ['icon'=>'fas fa-calendar-times','bg'=>'#d4f5ec','color'=>'#00a87c','num'=>'35%','label'=>'Reduction in No-Shows'],
-        ['icon'=>'fas fa-star','bg'=>'#fff4d6','color'=>'#b8860b','num'=>'4.8★','label'=>'Patient App Store Rating'],
-        ['icon'=>'fas fa-clock','bg'=>'#e8f1fd','color'=>'var(--primary-blue)','num'=>'45min','label'=>'Daily Documentation Saved Per Doctor'],
-      ];
-      @endphp
-      @foreach($kpis as $k)
-      <div class="kpi-card">
-        <div class="kpi-icon" style="background:{{ $k['bg'] }};"><i class="{{ $k['icon'] }}" style="color:{{ $k['color'] }};font-size:1.1rem;"></i></div>
-        <div class="kpi-num" style="color:{{ $k['color'] }};">{{ $k['num'] }}</div>
-        <div class="kpi-label">{{ $k['label'] }}</div>
-      </div>
-      @endforeach
-    </div>
+    @if(is_array($caseStudy->caseStudy->kpis))
+        <div class="results-kpi-grid">
+            @foreach($caseStudy->caseStudy->kpis as $kpi)
+            <div class="kpi-card">
+                <div class="kpi-num">
+                    {{ $kpi['value'] ?? '100%' }}
+                </div>
+                <div class="kpi-label">
+                    {{ $kpi['label'] ?? 'Growth' }}
+                </div>
+            </div>
+            @endforeach
+        </div>
+    @endif
 
     {{-- Before / After --}}
     <div class="mt-5">
