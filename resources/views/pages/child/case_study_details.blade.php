@@ -14,19 +14,61 @@
 }
 
 .cs-hero::before{
-    content:"";
+    content:""; 
     position:absolute;
     inset:0;
-    background: linear-gradient(135deg, rgba(15,23,42,.92) 0%, rgba(15,23,42,.84) 45%, rgba(13,71,161,.70) 100%), url('{{ asset("assets/images/kawach_main_bg.png") }}') center center / cover no-repeat;
-    z-index:0;
+    background: linear-gradient(135deg, rgba(15,23,42,.92) 0%, rgba(15,23,42,.84) 45%, rgba(13,71,161,.70) 100%);
+    z-index:1;
 }
 
 .cs-hero::after{
     content:"";
     position:absolute;
     inset:0;
-    background: radial-gradient( circle at top right, rgba(59,130,246,.18), transparent 40% );
+    background: radial-gradient( circle at top right, rgba(94, 150, 241, 0.18), transparent 40% );
     z-index:1;
+}
+
+.cs-hero-image-wrap{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cs-hero-bg-blur{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:blur(18px);
+    transform:scale(1.15);
+    opacity:.45;
+}
+
+.cs-hero-bg-image{
+    position:relative;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    z-index:1;
+    opacity:.88;
+}
+
+.cs-hero{
+    position:relative;
+    min-height:760px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    isolation:isolate;
 }
 
 .cs-hero .hero-bg-layer{
@@ -181,6 +223,22 @@
         display:none;
     }
 }
+
+@media(max-width:991px){
+    .cs-hero{
+        min-height:auto;
+        padding:90px 0 70px;
+    }
+}
+
+@media(max-width:767px){
+    .cs-hero{
+        padding:70px 0 55px;
+    }
+    .cs-hero-bg-image{
+        transform:scale(1.12);
+    }
+}
 </style>
 </head>
 <body>
@@ -191,6 +249,11 @@
      HERO SECTION
 ═══════════════════════════════════════════ --}}
 <section class="cs-hero" id="top">
+    {{-- Background Image --}}
+    <div class="cs-hero-image-wrap">
+        <img src="{{ config('app.images_path') . $caseStudy->featured_image }}" alt="{{ $caseStudy->title }}" class="cs-hero-bg-blur">
+        <img src="{{ config('app.images_path') . $caseStudy->featured_image }}" alt="{{ $caseStudy->title }}" title="{{ $caseStudy->title }}" class="cs-hero-bg-image">
+    </div>
 
     <div class="hero-bg-layer">
         {{-- Floating code lines --}}
@@ -491,9 +554,7 @@
   </div>
 </section>
 
-{{-- ═══════════════════════════════════════════
-     3. SOLUTION
-═══════════════════════════════════════════ --}}
+{{-- ═══════════════════════════════════════════ 3. SOLUTION ═══════════════════════════════════════════ --}}
 <section class="cs-section cs-section-alt" id="sec-solution">
   <div class="container">
     <div class="row g-5">
@@ -540,9 +601,7 @@
   </div>
 </section>
 
-{{-- ═══════════════════════════════════════════
-     4. FEATURES
-═══════════════════════════════════════════ --}}
+{{-- ═══════════════════════════════════════════ 4. FEATURES ═══════════════════════════════════════════ --}}
 <section class="cs-section" id="sec-features">
   <div class="container">
     <div class="text-center mb-5">
@@ -619,6 +678,7 @@
     </div>
   </div>
 </section>
+
 
 {{-- ═══════════════════════════════════════════
      6. PROCESS / TIMELINE
