@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
     <meta name="description" content="{{ $post->meta_description }}">
-    <meta property="og:title" content="{{ $post->og_title ?? $post->title }}">
-    <meta property="og:description" content="{{ $post->og_description ?? $post->meta_description }}">
+    <meta name="keywords" content="{{ $post->focus_keyword }}">
+    <meta name="robots" content="{{ $post->seo->robots ?? 'index,follow' }}">
+    <link rel="canonical" href="{{ $post->seo->canonical_url ?? url()->current() }}">
+    <meta property="og:title" content="{{ $post->seo->og_title ?? $post->title }}">
+    <meta property="og:description" content="{{ $post->seo->og_description ?? $post->meta_description }}">
     <meta property="og:image" content="{{ config('app.images_path') . $post->featured_image }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $post->seo->twitter_title ?? $post->title }}">
+    <meta name="twitter:description" content="{{ $post->seo->twitter_description ?? $post->meta_description }}">
+    <meta name="twitter:image" content="{{ config('app.images_path') . ($post->seo->twitter_image ?? $post->featured_image) }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <style>
       .article-hero{
@@ -208,28 +215,46 @@
 
       }
     </style>
-    @verbatim
-      <script type="application/ld+json">
-          {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "{{ $post->title }}",
-          "description": "{{ $post->meta_description }}",
-          "image": "{{ config('app.images_path') . $post->featured_image }}",
-          "datePublished": "{{ $post->published_at }}",
-          "author": {
-              "@type": "Person",
-              "name": "{{ $post->author_name ?? 'Kawach Team' }}"
-          }
-          }
-      </script>
-    @endverbatim
+    @php
+      $schema = [
+          "@context" => "https://schema.org",
+          "@type" => $post->seo->schema_type ?? "BlogPosting",
+          "headline" => $post->title,
+          "description" => strip_tags($post->meta_description),
+          "image" => config('app.images_path') . $post->featured_image,
+          "datePublished" => optional($post->published_at)->toIso8601String(),
+          "dateModified" => optional($post->updated_at)->toIso8601String(),
+
+          "author" => [
+              "@type" => "Person",
+              "name" => optional($post->author)->name ?: "Kawach Team",
+          ],
+
+          "publisher" => [
+              "@type" => "Organization",
+              "name" => "Kawach Technology",
+
+              "logo" => [
+                  "@type" => "ImageObject",
+                  "url" => asset('assets/images/logo.png'),
+              ],
+          ],
+
+          "mainEntityOfPage" => [
+              "@type" => "WebPage",
+              "@id" => url()->current(),
+          ],
+      ];
+    @endphp
+
+    <script type="application/ld+json">
+      {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 </head>
+<body>
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
-<body>
-
 <!-- Reading Progress Bar -->
 <div class="reading-progress" id="readingProgress"></div>
 <!-- NAVBAR -->
@@ -285,22 +310,21 @@
         <div class="hero-author">
           <div class="hero-avatar">AK</div>
           <div class="hero-author-info">
-            <div class="author-name">Arjun Kumar</div>
-            <div class="author-role">Lead AI Engineer</div>
+            <div class="author-name"> {{ $post->author->name ?? 'Kawach Team' }} </div>
+            <div class="author-role"> Content Author </div>
           </div>
         </div>
         <span class="hero-meta-pill"><i class="fas fa-calendar-alt"></i> {{ $post->published_at->format('M d, Y') }}</span>
         <span class="hero-meta-pill"><i class="fas fa-clock"></i> {{ $post->reading_time ?? 5 }} min read</span>
         <span class="hero-meta-pill"><i class="fas fa-eye"></i> {{ number_format($post->views) }} views</span>
-        <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> 14 comments</span>
+        <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> {{ $post->comments_count ?? 0 }} comments</span>
       </div>
     </div>
     <!-- Hero thumb -->
     <div class="container" style="margin-top:0;">
         <div class="article-hero-thumb">
-            <img src="{{ config('app.images_path') . $post->featured_image }}" alt="{{ $post->title }}" title="{{ $post->title }}" class="article-hero-image">
+            <img src="{{ config('app.images_path') . $post->featured_image }}" loading="lazy" alt="{{ $post->image_alt ?? $post->title }}" title="{{ $post->image_title ?? $post->title }}" class="article-hero-image">
         </div>
-    </div>
     </div>
   </div>
 </section>
@@ -319,10 +343,30 @@
             <div style="display:flex;align-items:center;gap:12px;">
               <span class="share-label">Share</span>
               <div class="share-btns">
-                <a href="#" class="share-btn sb-linkedin"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="share-btn sb-twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="share-btn sb-facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="share-btn sb-link"><i class="fas fa-link"></i></a>
+
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}"
+                    target="_blank"
+                    class="share-btn sb-linkedin">
+                      <i class="fab fa-linkedin-in"></i>
+                  </a>
+
+                  <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($post->title) }}"
+                    target="_blank"
+                    class="share-btn sb-twitter">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+
+                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                    target="_blank"
+                    class="share-btn sb-facebook">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+
+                  <a href="#"
+                    class="share-btn sb-link">
+                      <i class="fas fa-link"></i>
+                  </a>
+
               </div>
             </div>
             <div class="read-time-badge">
@@ -331,17 +375,24 @@
           </div>
 
           <!-- Article body -->
-            <div class="article-body">
+            <div class="article-body" id="articleContent">
                 {!! $post->content !!}
             </div>
           <!-- /article-body -->
+        @if($post->tags->count())
+          <div class="article-tags">
+              @foreach($post->tags as $tag)
+                  <a href="{{ url('/blog/tag/' . $tag->slug) }}" class="tag-pill"> #{{ $tag->name }}</a>
+              @endforeach
+          </div>
+        @endif
         </div><!-- /article-content-wrap -->
 
         <!-- AUTHOR BIO -->
         <div class="author-bio">
           <div class="bio-avatar">AK</div>
           <div>
-            <div class="bio-name">{{ $post->author_name ?? 'Kawach Team' }}</div>
+            <div class="bio-name"> {{ $post->author->name ?? 'Kawach Team' }} </div>
             <div class="bio-role">Lead AI Engineer, KawachTech Solutions</div>
             <p class="bio-text">Arjun leads AI strategy and implementation across KawachTech's enterprise client portfolio. With over 10 years in software engineering and 4 years specialising in applied ML, he has guided organisations across finance, healthcare, and logistics through large-scale AI adoption programmes.</p>
             <div class="bio-socials">
@@ -350,6 +401,19 @@
               <a href="#" class="bio-social-btn" style="background:#1a73e8;"><i class="fas fa-globe"></i></a>
             </div>
           </div>
+        </div>
+
+        <div class="article-navigation">
+            @if($prev)
+            <a href="{{ route('blog.show', $prev->slug) }}" class="nav-prev">
+                ← {{ $prev->title }}
+            </a>
+            @endif
+            @if($next)
+            <a href="{{ route('blog.show', $next->slug) }}" class="nav-next">
+                {{ $next->title }} →
+            </a>
+            @endif
         </div>
 
       </div><!-- /col main -->
@@ -614,6 +678,19 @@
       btn.innerHTML = '<i class="fas fa-check"></i>';
       setTimeout(() => btn.innerHTML = orig, 1500);
     });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+      const content = document.getElementById("articleContent");
+      const toc = document.querySelector(".toc-list");
+      if(!content || !toc) return;
+      const headings = content.querySelectorAll("h2, h3");
+      toc.innerHTML = "";
+      headings.forEach((heading, index) => {
+          const id = "section-" + index;
+          heading.id = id;
+          toc.innerHTML += ` <li> <a href="#${id}"> <span class="toc-num">${index + 1}</span> ${heading.innerText} </a> </li> `;
+      });
   });
 </script>
 </body>

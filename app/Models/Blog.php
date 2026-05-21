@@ -44,5 +44,8 @@ class Blog extends Model
     public function seo() {
         return $this->hasOne(BlogSeo::class);
     }
-    
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 }

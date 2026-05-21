@@ -139,7 +139,7 @@ class FrontBlogController extends Controller
      */
     public function show(string $slug)
     {
-        $post = Blog::with(['category', 'tags', 'seo'])
+        $post = Blog::with(['category', 'tags', 'seo', 'author'])
             ->where('slug', $slug)
             ->where('status', 'published')
             ->whereNotNull('published_at')
