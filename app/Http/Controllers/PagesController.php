@@ -39,7 +39,7 @@ class PagesController extends Controller
                         ->where('status', 'published');
                 })->limit(3)->get();
         });
-
+        
         $seoTitle = $service->page->meta_title ?? $service->page->title . ' | Kawach Technology';
         $seoDescription = $service->page->meta_description ?? $service->short_description;
         $seoKeywords = $service->page->meta_keywords ?? $service->page->title . ', software development, Kawach Technology';

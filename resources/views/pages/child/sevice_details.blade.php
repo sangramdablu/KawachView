@@ -289,45 +289,71 @@
         </article>
 
         {{-- Key Features --}}
-        @if(isset($service->service->features) && $service->service->features->count())
-        <div class="content-card anim d1">
-          <h2 class="content-card-title"><i class="fas fa-star"></i> Key Features</h2>
-          <div class="features-grid">
-            @foreach($service->service->features as $feature)
-            <div class="feature-item">
-              <div class="feature-item-icon"><i class="{{ $feature->icon ?? 'fas fa-check' }}"></i></div>
-              <div>
-                <div class="feature-item-title">{{ $feature->title }}</div>
-                <div class="feature-item-desc">{{ $feature->description }}</div>
+          @if(!empty($service->features) && is_array($service->features))
+          <div class="content-card anim d1">
+              <h2 class="content-card-title"><i class="fas fa-star"></i> Key Features </h2>
+              <div class="features-grid">
+                  @foreach($service->features as $feature)
+                  <div class="feature-item">
+                      <div class="feature-item-icon">
+                          <i class="{{ $feature['icon'] ?? 'fas fa-check-circle' }}"></i>
+                      </div>
+                      <div>
+                          <div class="feature-item-title">
+                              {{ $feature['title'] ?? 'Feature Title' }}
+                          </div>
+                          <div class="feature-item-desc">
+                              {{ $feature['description'] ?? '' }}
+                          </div>
+                      </div>
+                  </div>
+                  @endforeach
               </div>
-            </div>
-            @endforeach
           </div>
-        </div>
-        @else
-        {{-- Fallback static features --}}
-        <div class="content-card anim d1">
-          <h2 class="content-card-title"><i class="fas fa-star"></i> Key Features</h2>
-          <div class="features-grid">
-            @foreach([
-    ['icon' => 'fas fa-rocket', 'title' => 'Fast Delivery', 'desc' => 'Agile sprints and milestone-based releases so you see results quickly.'],
-    ['icon' => 'fas fa-shield-alt', 'title' => 'Enterprise Security', 'desc' => 'Built-in best practices — encrypted data, secure auth, and OWASP compliance.'],
-    ['icon' => 'fas fa-expand-arrows-alt', 'title' => 'Fully Scalable', 'desc' => 'Architecture designed to grow with your user base without costly rewrites.'],
-    ['icon' => 'fas fa-headset', 'title' => 'Dedicated Support', 'desc' => 'Post-launch support, monitoring, and a dedicated point of contact.'],
-    ['icon' => 'fas fa-code-branch', 'title' => 'Clean Codebase', 'desc' => 'Readable, documented code following industry-standard patterns.'],
-    ['icon' => 'fas fa-chart-line', 'title' => 'Data-Driven', 'desc' => 'Analytics and performance tracking built in from day one.'],
-  ] as $f)
-            <div class="feature-item">
-              <div class="feature-item-icon"><i class="{{ $f['icon'] }}"></i></div>
-              <div>
-                <div class="feature-item-title">{{ $f['title'] }}</div>
-                <div class="feature-item-desc">{{ $f['desc'] }}</div>
+          @else
+          {{-- FALLBACK STATIC FEATURES --}}
+          <div class="content-card anim d1">
+              <h2 class="content-card-title"><i class="fas fa-star"></i> Key Features </h2>
+              <div class="features-grid">
+                  @foreach([
+                      [
+                          'icon' => 'fas fa-rocket',
+                          'title' => 'Fast Delivery',
+                          'desc' => 'Agile sprints and milestone-based releases.'
+                      ],
+                      [
+                          'icon' => 'fas fa-shield-alt',
+                          'title' => 'Enterprise Security',
+                          'desc' => 'Secure architecture with best practices.'
+                      ],
+                      [
+                          'icon' => 'fas fa-expand-arrows-alt',
+                          'title' => 'Fully Scalable',
+                          'desc' => 'Infrastructure designed for growth.'
+                      ],
+                      [
+                          'icon' => 'fas fa-headset',
+                          'title' => 'Dedicated Support',
+                          'desc' => 'Post-launch support and monitoring.'
+                      ]
+                  ] as $f)
+                  <div class="feature-item">
+                      <div class="feature-item-icon">
+                          <i class="{{ $f['icon'] }}"></i>
+                      </div>
+                      <div>
+                          <div class="feature-item-title">
+                              {{ $f['title'] }}
+                          </div>
+                          <div class="feature-item-desc">
+                              {{ $f['desc'] }}
+                          </div>
+                      </div>
+                  </div>
+                  @endforeach
               </div>
-            </div>
-            @endforeach
           </div>
-        </div>
-        @endif
+          @endif
 
         @include('sections.ourprocess')
 
@@ -351,12 +377,12 @@
               @endforeach
             @else
               @foreach([
-    ['How long does a typical project take?', 'Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
-    ['What does your development process look like?', 'We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
-    ['Do you offer post-launch support?', 'Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
-    ['How do you handle project communication?', 'We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
-    ['What happens if the scope changes mid-project?', 'Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
-  ] as $i => $qa)
+                  ['How long does a typical project take?', 'Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
+                  ['What does your development process look like?', 'We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
+                  ['Do you offer post-launch support?', 'Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
+                  ['How do you handle project communication?', 'We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
+                  ['What happens if the scope changes mid-project?', 'Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
+                ] as $i => $qa)
               <div class="faq-item {{ $i === 0 ? 'open' : '' }}" onclick="toggleFaq(this)">
                 <div class="faq-question">
                   <span class="faq-q-text">{{ $qa[0] }}</span>
@@ -380,13 +406,11 @@
             <div class="col-sm-6 col-md-4">
               <a href="{{ url('/services/' . $related->slug) }}" class="related-card">
                 <div class="related-card-img">
-                  <img src="{{ config('app.images_path') . $related->featured_image }}"
-                       alt="{{ $related->image_alt ?? $related->title }}"
-                       loading="lazy" width="64" height="64"/>
+                  <img src="{{ config('app.images_path') . $related->featured_image }}" alt="{{ $related->image_alt ?? $related->title }}" loading="lazy" width="64" height="64"/>
                 </div>
                 <div class="related-card-body">
                   <div class="related-card-title">{{ $related->title }}</div>
-                  <p class="related-card-desc">{{ Str::limit($related->service->short_description, 70) }}</p>
+                  <p class="related-card-desc">{{ Str::limit($related->short_description, 70) }}</p>
                   <div class="related-card-link">Learn More <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></div>
                 </div>
               </a>
