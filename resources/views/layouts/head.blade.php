@@ -51,25 +51,49 @@
     <!-- CSRF -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Kawach Technology",
-      "url": "https://www.kawachtech.com",
-      "logo": "https://www.kawachtech.com/assets/images/logo.png",
-      "sameAs": [
-        "https://www.linkedin.com/",
-        "https://www.facebook.com/",
-        "https://twitter.com/"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-XXXXXXXXXX",
-        "contactType": "customer support",
-        "areaServed": ["US","GB","DE","FR","NL","ES","IT","AU","IN"],
-        "availableLanguage": ["English"]
-      }
-    }
-    </script>
+    @php
+      $schema = [
+          "@context" => "https://schema.org",
+          "@type" => "Organization",
+          "name" => "Kawach Technology",
+          "url" => url('/'),
+          "logo" => [
+              "@type" => "ImageObject",
+              "url" => asset('assets/images/kawach.png'),
+          ],
+          "description" => "Kawach Technology is a custom software development company providing web development, mobile app development, AI solutions, cloud applications, and enterprise software services for businesses worldwide.",
+          "sameAs" => [
+              "https://www.linkedin.com/",
+              "https://www.facebook.com/",
+              "https://twitter.com/",
+          ],
+          "contactPoint" => [
+              "@type" => "ContactPoint",
+              "telephone" => "+91-XXXXXXXXXX",
+              "contactType" => "customer support",
+              "areaServed" => [
+                  "US",
+                  "GB",
+                  "DE",
+                  "FR",
+                  "NL",
+                  "ES",
+                  "IT",
+                  "AU",
+                  "IN"
+              ],
+              "availableLanguage" => [
+                  "English"
+              ],
+          ],
+          "address" => [
+              "@type" => "PostalAddress",
+              "addressCountry" => "IN"
+          ],
+      ];
+  @endphp
+
+  <script type="application/ld+json">
+      {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+  </script>
 </head>
