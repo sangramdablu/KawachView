@@ -289,25 +289,48 @@
         </article>
 
         {{-- Key Features --}}
-          @if(!empty($service->features) && is_array($service->features))
+        @php
+          $features = [];
+          if (!empty($service->features)) {
+              $features = is_string($service->features) ? json_decode($service->features, true) : $service->features;
+              if (!is_array($features)) {
+                  $features = [];
+              }
+          }
+        @endphp
+          @if(count($features))
           <div class="content-card anim d1">
               <h2 class="content-card-title"><i class="fas fa-star"></i> Key Features </h2>
               <div class="features-grid">
-                  @foreach($service->features as $feature)
-                  <div class="feature-item">
-                      <div class="feature-item-icon">
-                          <i class="{{ $feature['icon'] ?? 'fas fa-check-circle' }}"></i>
-                      </div>
-                      <div>
-                          <div class="feature-item-title">
-                              {{ $feature['title'] ?? 'Feature Title' }}
-                          </div>
-                          <div class="feature-item-desc">
-                              {{ $feature['description'] ?? '' }}
-                          </div>
-                      </div>
-                  </div>
-                  @endforeach
+                  @foreach($features as $feature)
+                    @php
+                      $title = strtolower($feature['title'] ?? '');
+                      $icon = match (true) {
+                          str_contains($title, 'api') => 'fas fa-plug',
+                          str_contains($title, 'security') => 'fas fa-shield-alt',
+                          str_contains($title, 'cloud') => 'fas fa-cloud',
+                          str_contains($title, 'mobile') => 'fas fa-mobile-alt',
+                          str_contains($title, 'web') => 'fas fa-globe',
+                          str_contains($title, 'design') => 'fas fa-palette',
+                          str_contains($title, 'database') => 'fas fa-database',
+                          str_contains($title, 'support') => 'fas fa-headset',
+                          str_contains($title, 'performance') => 'fas fa-gauge-high',
+                          str_contains($title, 'integration') => 'fas fa-code-branch',
+                          default => 'fas fa-check-circle'
+                      };
+                    @endphp
+                    <div class="feature-item">
+                        <div class="feature-item-icon"> <i class="{{ $icon }}"></i> </div>
+                        <div>
+                            <div class="feature-item-title">
+                                {{ $feature['title'] ?? 'Feature Title' }}
+                            </div>
+                            <div class="feature-item-desc">
+                                {{ \Illuminate\Support\Str::limit(strip_tags($feature['description'] ?? ''), 180) }}
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
               </div>
           </div>
           @else
