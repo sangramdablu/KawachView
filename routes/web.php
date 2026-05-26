@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontBlogController;
+use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
     return view('pages.index');
-});
+})->name('home');
 
 Route::get('/blog', [FrontBlogController::class, 'index'])->name('blog');
 Route::get('/blog/{slug}', [FrontBlogController::class, 'show'])->name('blog.show')->where('slug', '[a-z0-9\-]+');
@@ -24,9 +25,6 @@ Route::get('/case-studies', function () {
 Route::get('/case-studies/see', function () {
     return view('pages.child.case_study_details');
 })->name('casestudy');
-Route::get('/contact', function () {
-    return view('pages.contact');   
-})->name('contact');
  
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
@@ -35,5 +33,13 @@ Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetail
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/schedule', [QuoteController::class, 'scheduleCall'])->name('schedule.store');
+
+Route::get('/contact', [ContactController::class, 'index'])
+    ->name('contact');
+ 
+// throttle: max 5 submissions per minute per IP
+Route::post('/contact', [ContactController::class, 'store'])
+    ->name('contact.store')
+    ->middleware('throttle:5,1');
 
  
