@@ -276,7 +276,7 @@
 
                   {{-- Full Name --}}
                   <div class="col-md-6">
-                    <label class="form-label" for="full_name">Full Name *</label>
+                    <label class="form-label" for="full_name">Full Name <span style="color:#e53935">*</span></label>
                     <input type="text"
                            id="full_name"
                            name="full_name"
@@ -306,7 +306,7 @@
 
                   {{-- Email --}}
                   <div class="col-md-6">
-                    <label class="form-label" for="email">Email Address *</label>
+                    <label class="form-label" for="email">Email Address <span style="color:#e53935">*</span></label>
                     <input type="email"
                            id="email"
                            name="email"
@@ -336,7 +336,7 @@
 
                   {{-- Subject --}}
                   <div class="col-12">
-                    <label class="form-label" for="subject">Subject *</label>
+                    <label class="form-label" for="subject">Subject <span style="color:#e53935">*</span></label>
                     <select id="subject"
                             name="subject"
                             class="form-select @error('subject') is-invalid @enderror">
@@ -407,7 +407,7 @@
 
                   {{-- Message --}}
                   <div class="col-12">
-                    <label class="form-label" for="message">Message *</label>
+                    <label class="form-label" for="message">Message <span style="color:#e53935">*</span></label>
                     <textarea id="message"
                               name="message"
                               class="form-control @error('message') is-invalid @enderror"

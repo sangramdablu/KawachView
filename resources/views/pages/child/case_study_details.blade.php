@@ -842,7 +842,7 @@
 {{-- ═══════════════════════════════════════════
      GALLERY (Screenshots)
 ═══════════════════════════════════════════ --}}
-<section class="cs-section">
+{{-- <section class="cs-section">
   <div class="container">
     <div class="text-center mb-5">
       <div class="side-line mx-auto"></div>
@@ -859,7 +859,7 @@
     </div>
     <p class="text-center mt-3" style="font-size:.8rem;color:var(--text-muted);">Screenshots replaced with design mockups. Actual product screenshots under NDA.</p>
   </div>
-</section>
+</section> --}}
 
 {{-- ═══════════════════════════════════════════
      ACHIEVEMENTS
