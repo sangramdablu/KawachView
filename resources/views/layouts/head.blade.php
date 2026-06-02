@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Primary SEO -->
     <title>
-        Custom Software Development Company USA & Europe | Kawach
+        Affordable Custom Software Development Company in USA & Europe | Kawach Technology
     </title>
-    <meta name="description" content="Kawach is a global software development company providing affordable custom software, web, mobile app, AI, cloud, and enterprise solutions for businesses in the USA, UK, and Europe.">
+    <meta name="description" content="Kawach Technology helps startups and enterprises build scalable web, mobile, AI, SaaS, and cloud applications at affordable pricing for USA and European businesses.">
     <meta name="keywords" content="software development company, custom software development, mobile app development company, web development services, AI software development, affordable software company USA, enterprise software solutions, SaaS development company, cloud application development, software outsourcing company">
     <meta name="author" content="Kawach Technology">
     <!-- INDEXING -->

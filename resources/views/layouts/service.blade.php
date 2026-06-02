@@ -34,7 +34,6 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 
       <div class="svc-track-wrap">
         <div class="svc-track" id="svcTrack">
-          <div class="svc-track" id="svcTrack">
             @forelse($services as $service)
                 @php
                     $gradient = $gradients[$loop->index % count($gradients)];
@@ -53,12 +52,8 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
                     <div class="svc-card-body text-start">
                         <div class="svc-card-title"> {{ $service->title }} </div>
                           <p class="svc-card-desc"> {{ \Illuminate\Support\Str::words( strip_tags( $service->service->short_description ?? $service->service->content ?? '' ), 6, '...' ) }}
-                          <a href="{{ $service->canonical_url ?: url('/services/' . $service->slug) }}" class="svc-read-more"> Read More </a>
+                          <a href="{{ $service->canonical_url ?: url('/services/' . $service->slug) }}" class="svc-read-more text-decoration-none"> Read More </a>
                           </p>
-                        {{-- TAG --}}
-                        <span class="svc-tag">
-                            {{ $service->focus_keyword  ?? $service->service->billing_cycle  ?? 'Technology'  }}
-                        </span>
                     </div>
                 </div>
             @empty
@@ -103,8 +98,13 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     return Math.max(1, Math.floor((w + GAP) / (cardWidth() + GAP)));
   }
 
-  const total = track.children.length;
-  function maxIndex() { return Math.max(0, total - visibleCount()); }
+  function totalCards() {
+    return track.children.length;
+  }
+
+  function maxIndex() {
+      return Math.max(0, totalCards() - visibleCount());
+  }
 
   // ── Core scroll ───────────────────────────────────────────────
   function goTo(idx, animate = true) {
@@ -164,7 +164,13 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
   track.addEventListener('mousedown', e => {
     isDragging = true;
     dragStartX = e.clientX;
-    const m = track.style.transform.match(/-?([\d.]+)/);
+    const matrix = window.getComputedStyle(track).transform;
+    if (matrix !== 'none') {
+        const values = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
+        dragStartOffset = Math.abs(parseFloat(values[4]));
+    } else {
+        dragStartOffset = 0;
+    }
     dragStartOffset = m ? parseFloat(m[1]) : 0;
     track.style.transition = 'none';
     clearInterval(autoTimer);

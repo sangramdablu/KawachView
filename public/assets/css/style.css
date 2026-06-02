@@ -503,6 +503,7 @@
     .services-section {
       background: var(--bg-light);
       padding: 70px 0;
+      overflow:hidden;
     }
 
     .section-title {
@@ -548,7 +549,9 @@
       align-items: center;
       justify-content: center;
     }
-
+    .svc-track{
+        touch-action: pan-y;
+    }
     .service-card-img i {
       font-size: 3.5rem;
       color: var(--primary-blue);
@@ -812,9 +815,18 @@
 
     /* ── Mobile ──────────────────────────────────────────────────── */
     @media (max-width: 576px) {
-      .svc-track-wrap { margin: 0 48px; }
-      .svc-progress   { margin: 10px 48px 0; }
-      .svc-card       { flex: 0 0 240px; }
+        .svc-track-wrap {
+            margin: 0 14px;
+        }
+        .svc-progress {
+            margin: 10px 14px 0;
+        }
+        .svc-card {
+            flex: 0 0 calc(100vw - 60px);
+        }
+        .svc-arrow {
+            display:none;
+        }
     }
 
     /* ── PROJECTS ── */

@@ -34,12 +34,9 @@ Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetail
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/schedule', [QuoteController::class, 'scheduleCall'])->name('schedule.store');
 
-Route::get('/contact', [ContactController::class, 'index'])
-    ->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
  
 // throttle: max 5 submissions per minute per IP
-Route::post('/contact', [ContactController::class, 'store'])
-    ->name('contact.store')
-    ->middleware('throttle:5,1');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:5,1');
 
  
