@@ -129,4 +129,5 @@ return [
     'linkedin' => env('KAWACH_LINKEDIN', 'default/path'),
     'insta' => env('KAWACH_INSTA', 'default/path'),
     'mobile' => env('KAWACH_MOBILE', 'default/path'),
+    'neha_linkedin' => env('NEHA_LINKEDIN', 'default/path'),
 ];

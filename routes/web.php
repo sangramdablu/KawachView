@@ -25,6 +25,10 @@ Route::get('/case-studies', function () {
 Route::get('/case-studies/see', function () {
     return view('pages.child.case_study_details');
 })->name('casestudy');
+
+Route::get('/about/founder', function () {
+    return view('pages.founder.neha');
+})->name('casestudy');
  
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');

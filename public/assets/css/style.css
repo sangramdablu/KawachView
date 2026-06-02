@@ -1069,6 +1069,9 @@
 
     .social-linkedin { background: #0077b5; }
     .social-twitter  { background: #1da1f2; }
+    .social-instagram {
+        background: #E1306C;
+    }
     .social-facebook { background: #1877f2; }
 
     .footer-bottom {
@@ -1083,9 +1086,6 @@
       font-size: 0.8rem;
       margin: 0;
     }
-
-
-
 
 
 
