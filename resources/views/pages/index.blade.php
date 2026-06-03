@@ -21,11 +21,14 @@
 <!-- PROJECTS -->
 @include('layouts.project')
 
-<!-- ── TESTIMONIALS ── -->
-@include('layouts.testmonials')
+<!-- ── USAGE TECHNOLOGIES ── -->
+@include('layouts.technologies.usagetech')
 
 <!-- ── INDUSTRIES ── -->
 @include('layouts.industry')
+
+<!-- ── TESTIMONIALS ── -->
+@include('layouts.testmonials')
 
 <!-- CTA -->
 <section class="cta-section text-center">

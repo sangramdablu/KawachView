@@ -1,6 +1,6 @@
 <section class="features-strip">
   <div class="container">
-    <div class="row g-0">
+    <div class="row g-4">
       <div class="col-md-4">
         <div class="feature-item">
           <div class="feature-icon-wrap">

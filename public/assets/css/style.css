@@ -427,28 +427,7 @@
         max-width: 260px;
       }
     }
-    /* .screen-bar {
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(33,150,243,0.5);
-      margin-bottom: 6px;
-    }
-
-    .screen-bar-short {
-      width: 60%;
-    }
-
-    .screen-bar-medium {
-      width: 80%;
-    }
-
-    .screen-bar-full {
-      width: 100%;
-    } */
-
-    /* .screen-content {
-      padding: 14px;
-    } */
+    
 
     /* ── FEATURES STRIP ── */
     .features-strip {
@@ -462,11 +441,7 @@
       align-items: center;
       gap: 14px;
       padding: 10px 20px;
-      border-right: 1px solid var(--border-light);
-    }
-
-    .feature-item:last-child {
-      border-right: none;
+      cursor: pointer;
     }
 
     .feature-icon-wrap {
@@ -497,6 +472,25 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       margin: 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(15,23,42,.05);
+      transition: all .25s ease;
+      height: 100%;
+    }
+
+    .feature-item:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(15,23,42,.10);
+        border-color: rgba(26,115,232,.18);
     }
 
     /* ── SERVICES ── */

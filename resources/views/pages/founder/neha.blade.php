@@ -96,7 +96,7 @@
   }
 
   /* ─── SECTION WRAPPER ─── */
-  .section { padding: 5rem 2rem; max-width: 1140px; margin: 0 auto; }
+  .section { padding: 2rem; max-width: 1140px; margin: 0 auto; }
   .section-label {
     display: inline-block;
     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
@@ -379,7 +379,7 @@
     <!-- STICKY CARD -->
     <aside class="founder-card fade-up">
       <div class="founder-image-wrap">
-        <img src="/assets/images/neha-kawach-technology-ceo.jpg" alt="">
+        <img src="{{ config('app.images_path') . 'assets/images/neha-kawach-technology-ceo.jpg' }}" alt="CEO of Kawach Technology pvt ltd" title="Sraddha Gupta Ceo of Kawach Technology">
         <span class="founder-badge">CEO &amp; Co-Founder</span> 
       </div>
       <div class="founder-info">
@@ -568,7 +568,7 @@
 </section>
 
 <!-- ─── CTA ─── -->
-<div style="padding: 5rem 2rem 5rem;">
+<div style="padding: 3rem 2rem 3rem;">
   <div class="cta-strip">
     <h2>Ready to Build Something Extraordinary?</h2>
     <p>Speak directly with Arjun or Sofia about your project — we offer free 30-minute consultations with no obligation.</p>
