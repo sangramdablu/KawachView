@@ -375,7 +375,7 @@
 
         {{-- Form --}}
         <div id="quoteFormWrap">
-          <form class="modal-form" id="quoteForm" novalidate autocomplete="off">
+          <form class="modal-form" id="quoteForm" method="POST" action="/quote" novalidate autocomplete="off" onsubmit="return false;">
             <div class="row g-3">
 
               {{-- Full Name --}}
@@ -745,80 +745,196 @@
   }
 
   // ── SUBMIT ───────────────────────────────────────────────────────
-  sendBtn.addEventListener('click', async () => {
-    // 1. Clear previous errors
-    hideServerError();
-    ['q_full_name', 'q_company', 'q_email', 'q_phone', 'q_description'].forEach(id => {
-      clearServerError(id);
-    });
+  form.addEventListener('submit', async function (e) {
 
-    // 2. Front-end validate
-    if (!validateAll()) {
-      // Scroll first invalid field into view
-      const firstInvalid = form.querySelector('.is-invalid');
-      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
+      e.preventDefault();
+      e.stopPropagation();
 
-    // 3. Build FormData
-    const data = new FormData(form);
-    // CSRF from meta tag (standard Laravel setup)
-    const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-    if (csrfMeta) data.set('_token', csrfMeta.getAttribute('content'));
+      hideServerError();
 
-    // 4. Show loader
-    showLoading();
+      ['q_full_name', 'q_company', 'q_email', 'q_phone', 'q_description']
+          .forEach(id => clearServerError(id));
 
-    try {
-      const response = await fetch('{{ route("quote.store") }}', {
-        method: 'POST',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'Accept': 'application/json',
-          // Don't set Content-Type — browser sets multipart boundary for FormData
-          ...(csrfMeta ? { 'X-CSRF-TOKEN': csrfMeta.getAttribute('content') } : {}),
-        },
-        body: data,
-      });
+      if (!validateAll()) {
+          const firstInvalid = form.querySelector('.is-invalid');
 
-      const json = await response.json();
+          if (firstInvalid) {
+              firstInvalid.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+              });
+          }
 
-      if (response.ok && json.success) {
-        // ── SUCCESS ──────────────────────────────────────────────
-        hideLoading();
-        // Small delay so overlay fade is visible before showing success
-        await delay(300);
-
-        formWrap.style.display = 'none';
-        footer.style.display   = 'none';
-        successBox.style.display = 'block';
-
-        // Auto-close modal after 3 seconds
-        setTimeout(() => {
-          const bsModal = bootstrap.Modal.getInstance(modalEl);
-          if (bsModal) bsModal.hide();
-        }, 3000);
-
-      } else if (response.status === 422 && json.errors) {
-        // ── LARAVEL VALIDATION ERRORS ─────────────────────────
-        hideLoading();
-        applyFieldErrors(json.errors);
-        const firstMsg = Object.values(json.errors)[0];
-        showServerError(Array.isArray(firstMsg) ? firstMsg[0] : firstMsg);
-
-      } else {
-        // ── SERVER ERROR ──────────────────────────────────────
-        hideLoading();
-        showServerError(json.message || 'Something went wrong. Please try again.');
+          return false;
       }
 
-    } catch (networkErr) {
-      // ── NETWORK / FETCH ERROR ─────────────────────────────────
-      hideLoading();
-      showServerError('Network error — please check your connection and try again.');
-      console.error('Quote submission error:', networkErr);
-    }
+      const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+
+      const data = new FormData(form);
+
+      if (csrfMeta) {
+          data.append('_token', csrfMeta.content);
+      }
+
+      showLoading();
+
+      try {
+
+          // ABSOLUTE CURRENT-ORIGIN URL
+          const endpoint = `${window.location.origin}/quote`;
+
+          const response = await fetch(endpoint, {
+              method: 'POST',
+              body: data,
+              credentials: 'same-origin',
+              redirect: 'follow',
+              headers: {
+                  'Accept': 'application/json',
+                  'X-Requested-With': 'XMLHttpRequest',
+                  ...(csrfMeta ? {
+                      'X-CSRF-TOKEN': csrfMeta.content
+                  } : {})
+              }
+          });
+
+          let json = {};
+
+          try {
+              json = await response.json();
+          } catch (_) {}
+
+          hideLoading();
+
+          if (response.ok && json.success) {
+
+              formWrap.style.display = 'none';
+              footer.style.display   = 'none';
+              successBox.style.display = 'block';
+
+              setTimeout(() => {
+                  const bsModal = bootstrap.Modal.getInstance(modalEl);
+
+                  if (bsModal) {
+                      bsModal.hide();
+                  }
+              }, 3000);
+
+              return;
+          }
+
+          if (response.status === 422 && json.errors) {
+
+              applyFieldErrors(json.errors);
+
+              const firstMsg = Object.values(json.errors)[0];
+
+              showServerError(
+                  Array.isArray(firstMsg)
+                      ? firstMsg[0]
+                      : firstMsg
+              );
+
+              return;
+          }
+
+          showServerError(
+              json.message || 'Something went wrong. Please try again.'
+          );
+
+      } catch (err) {
+
+          hideLoading();
+
+          console.error(err);
+
+          showServerError(
+              'Network/server error. Please try again.'
+          );
+      }
+
+      return false;
   });
+
+  // Trigger form submit from button
+  sendBtn.addEventListener('click', function () {
+      form.requestSubmit();
+  });
+
+
+  // sendBtn.addEventListener('click', async () => {
+  //   // 1. Clear previous errors
+  //   hideServerError();
+  //   ['q_full_name', 'q_company', 'q_email', 'q_phone', 'q_description'].forEach(id => {
+  //     clearServerError(id);
+  //   });
+
+  //   // 2. Front-end validate
+  //   if (!validateAll()) {
+  //     // Scroll first invalid field into view
+  //     const firstInvalid = form.querySelector('.is-invalid');
+  //     if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  //     return;
+  //   }
+
+  //   // 3. Build FormData
+  //   const data = new FormData(form);
+  //   // CSRF from meta tag (standard Laravel setup)
+  //   const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+  //   if (csrfMeta) data.set('_token', csrfMeta.getAttribute('content'));
+
+  //   // 4. Show loader
+  //   showLoading();
+
+  //   try {
+  //     const response = await fetch('{{ secure_url("/quote") }}', {
+  //       method: 'POST',
+  //       headers: {
+  //         'X-Requested-With': 'XMLHttpRequest',
+  //         'Accept': 'application/json',
+  //         // Don't set Content-Type — browser sets multipart boundary for FormData
+  //         ...(csrfMeta ? { 'X-CSRF-TOKEN': csrfMeta.getAttribute('content') } : {}),
+  //       },
+  //       body: data,
+  //     });
+
+  //     const json = await response.json();
+
+  //     if (response.ok && json.success) {
+  //       // ── SUCCESS ──────────────────────────────────────────────
+  //       hideLoading();
+  //       // Small delay so overlay fade is visible before showing success
+  //       await delay(300);
+
+  //       formWrap.style.display = 'none';
+  //       footer.style.display   = 'none';
+  //       successBox.style.display = 'block';
+
+  //       // Auto-close modal after 3 seconds
+  //       setTimeout(() => {
+  //         const bsModal = bootstrap.Modal.getInstance(modalEl);
+  //         if (bsModal) bsModal.hide();
+  //       }, 3000);
+
+  //     } else if (response.status === 422 && json.errors) {
+  //       // ── LARAVEL VALIDATION ERRORS ─────────────────────────
+  //       hideLoading();
+  //       applyFieldErrors(json.errors);
+  //       const firstMsg = Object.values(json.errors)[0];
+  //       showServerError(Array.isArray(firstMsg) ? firstMsg[0] : firstMsg);
+
+  //     } else {
+  //       // ── SERVER ERROR ──────────────────────────────────────
+  //       hideLoading();
+  //       showServerError(json.message || 'Something went wrong. Please try again.');
+  //     }
+
+  //   } catch (networkErr) {
+  //     // ── NETWORK / FETCH ERROR ─────────────────────────────────
+  //     hideLoading();
+  //     showServerError('Network error — please check your connection and try again.');
+  //     console.error('Quote submission error:', networkErr);
+  //   }
+  // });
 
   // ── Reset modal when closed ──────────────────────────────────────
   modalEl.addEventListener('hidden.bs.modal', () => {

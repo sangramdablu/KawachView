@@ -6,7 +6,6 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontBlogController;
 use App\Http\Controllers\ContactController;
 
-
 Route::get('/', function () {
     return view('pages.index');
 })->name('home');

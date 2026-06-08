@@ -9,6 +9,7 @@ use App\Mail\QuoteRequestMail;
 use App\Models\QuoteRequest;
 use Illuminate\Validation\Rule;
 use App\Models\ScheduledCall;
+use App\Jobs\SendQuoteRequestAdminMailJob;
 
 class QuoteController extends Controller
 {
@@ -50,7 +51,7 @@ class QuoteController extends Controller
                 'ip_address'  => $request->ip(),
                 'user_agent'  => $request->userAgent(),
             ]);
- 
+            SendQuoteRequestAdminMailJob::dispatch($quote);
             // ── Send notification email ─────────────────────────────
             // Mail::to(config('mail.quote_recipient', 'hello@innovatetech.io'))
             //     ->send(new QuoteRequestMail($quote));
