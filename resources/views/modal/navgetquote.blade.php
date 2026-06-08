@@ -493,7 +493,7 @@
 
         <div class="btn-submit-wrap" id="quoteBtnWrap">
           <div class="disabled-tip" id="quoteDisabledTip">Fill in required fields first</div>
-          <button class="btn-modal-submit" id="quoteSendBtn" disabled>
+          <button type="button" class="btn-modal-submit" id="quoteSendBtn" disabled>
             <span id="quoteBtnContent" style="display:flex;align-items:center;gap:8px;">
               Send Quote Request <i class="fas fa-arrow-right"></i>
             </span>
