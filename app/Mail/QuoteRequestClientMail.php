@@ -9,30 +9,23 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class QuoteRequestAdminMail extends Mailable
+class QuoteRequestClientMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /*
-     * WHY removed build():
-     * build() is Laravel 8 syntax. In Laravel 9+ the correct API is
-     * envelope() + content(). Mixing Queueable with the old build()
-     * method causes silent failures when the mail is sent from a job.
-     */
     public function __construct(public readonly QuoteRequest $quote) {}
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '[New Quote] ' . $this->quote->full_name
-                . ' — ' . ($this->quote->company ?? 'Individual'),
+            subject: 'We received your quote request — ' . config('app.name'),
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            view: 'email.quote_adminmail',   // see blade file below
+            view: 'email.quote_thankyoumail',  // see blade file below
         );
     }
 

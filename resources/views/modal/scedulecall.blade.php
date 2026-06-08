@@ -442,7 +442,7 @@
 
         {{-- Form --}}
         <div id="scheduleFormWrap">
-          <form class="modal-form" id="scheduleForm" method="POST" action="{{ route('schedule.store') }}" novalidate autocomplete="off">
+          <form class="modal-form" id="scheduleForm" novalidate autocomplete="off">
             @csrf
             <div class="row g-3">
 
@@ -707,7 +707,7 @@
 
         <div class="sch-btn-wrap">
           <div class="disabled-tip" id="schDisabledTip">Fill in required fields first</div>
-          <button type="button" class="btn-sch-submit" id="schSendBtn" disabled>
+          <button class="btn-sch-submit" id="schSendBtn" disabled>
             <span id="schBtnContent" style="display:flex;align-items:center;gap:8px;">
               Confirm My Call <i class="fas fa-arrow-right"></i>
             </span>
@@ -1047,8 +1047,7 @@
   }
 
   // ── SUBMIT ────────────────────────────────────────────────────────
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  sendBtn.addEventListener('click', async () => {
     hideServerBanner();
     // Clear all server errors
     ['sc_name','sc_email','sc_phone','sc_date','sc_timezone','sc_timeslot','sc_topic','sc_platform'].forEach(id => {
