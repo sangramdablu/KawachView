@@ -5,240 +5,304 @@
 @include('modal.navgetquote')
 @include('modal.scedulecall')
 <style>
-.cs-hero{
-    position:relative;
-    overflow:hidden;
-    padding:90px 0 80px;
-    background:#0f172a;
-    isolation:isolate;
-}
+  .cs-hero{
+      position:relative;
+      overflow:hidden;
+      padding:90px 0 80px;
+      background:#0f172a;
+      isolation:isolate;
+  }
 
-.cs-hero::before{
-    content:""; 
-    position:absolute;
-    inset:0;
-    background: linear-gradient(135deg, rgba(15,23,42,.92) 0%, rgba(15,23,42,.84) 45%, rgba(13,71,161,.70) 100%);
-    z-index:1;
-}
+  .cs-hero::before{
+      content:""; 
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(15,23,42,.92) 0%, rgba(15,23,42,.84) 45%, rgba(13,71,161,.70) 100%);
+      z-index:1;
+  }
 
-.cs-hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: radial-gradient( circle at top right, rgba(94, 150, 241, 0.18), transparent 40% );
-    z-index:1;
-}
+  .cs-hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient( circle at top right, rgba(94, 150, 241, 0.18), transparent 40% );
+      z-index:1;
+  }
 
-.cs-hero-image-wrap{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:0;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+  .cs-hero-image-wrap{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+  }
 
-.cs-hero-bg-blur{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:blur(18px);
-    transform:scale(1.15);
-    opacity:.45;
-}
+  .cs-hero-bg-blur{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:blur(18px);
+      transform:scale(1.15);
+      opacity:.45;
+  }
 
-.cs-hero-bg-image{
-    position:relative;
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    object-position:center;
-    z-index:1;
-    opacity:.88;
-}
+  .cs-hero-bg-image{
+      position:relative;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      z-index:1;
+      opacity:.88;
+  }
 
-.cs-hero{
-    position:relative;
-    min-height:760px;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    isolation:isolate;
-}
+  .cs-hero{
+      position:relative;
+      min-height:760px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      isolation:isolate;
+  }
 
-.cs-hero .hero-bg-layer{
-    position:absolute;
-    inset:0;
-    z-index:2;
-    pointer-events:none;
-    opacity:.55;
-}
+  .cs-hero .hero-bg-layer{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      opacity:.55;
+  }
 
-.cs-hero .code-line, .cs-hero .circuit-node, .cs-hero .data-packet, .cs-hero .binary-col{
-    opacity:.42;
-}
+  .cs-hero .code-line, .cs-hero .circuit-node, .cs-hero .data-packet, .cs-hero .binary-col{
+      opacity:.42;
+  }
 
-.cs-hero .container{
-    position:relative;
-    z-index:3;
-}
+  .cs-hero .container{
+      position:relative;
+      z-index:3;
+  }
 
-.cs-back-link{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:22px;
-    color:#93c5fd;
-    font-size:.92rem;
-    font-weight:700;
-    text-decoration:none;
-    transition:all .25s ease;
-}
+  .cs-back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:22px;
+      color:#93c5fd;
+      font-size:.92rem;
+      font-weight:700;
+      text-decoration:none;
+      transition:all .25s ease;
+  }
 
-.cs-back-link:hover{
-    color:#fff;
-    transform:translateX(-4px);
-}
+  .cs-back-link:hover{
+      color:#fff;
+      transform:translateX(-4px);
+  }
 
-.cs-eyebrow{
-    display:inline-flex;
-    align-items:center;
-    padding:8px 18px;
-    border-radius:999px;
-    background:rgba(59,130,246,.12);
-    border:1px solid rgba(59,130,246,.18);
-    color:#dbeafe;
-    font-size:.8rem;
-    font-weight:800;
-    letter-spacing:.5px;
-    margin-bottom:22px;
-    backdrop-filter:blur(10px);
-}
+  .cs-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 18px;
+      border-radius:999px;
+      background:rgba(59,130,246,.12);
+      border:1px solid rgba(59,130,246,.18);
+      color:#dbeafe;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.5px;
+      margin-bottom:22px;
+      backdrop-filter:blur(10px);
+  }
 
-.cs-hero-title{
-    font-family:'Nunito',sans-serif;
-    font-size:3.2rem;
-    font-weight:900;
-    line-height:1.15;
-    color:#fff;
-    margin-bottom:24px;
-}
+  .cs-hero-title{
+      font-family:'Nunito',sans-serif;
+      font-size:3.2rem;
+      font-weight:900;
+      line-height:1.15;
+      color:#fff;
+      margin-bottom:24px;
+  }
 
-.cs-hero-subtitle{
-    color:#c7d8ea;
-    font-size:1.08rem;
-    line-height:1.9;
-    max-width:720px;
-    margin-bottom:34px;
-}
+  .cs-hero-subtitle{
+      color:#c7d8ea;
+      font-size:1.08rem;
+      line-height:1.9;
+      max-width:720px;
+      margin-bottom:34px;
+  }
 
-.cs-info-pills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:34px;
-}
+  .cs-info-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:34px;
+  }
 
-.cs-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:11px 16px;
-    border-radius:999px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.10);
-    color:#dbeafe;
-    font-size:.82rem;
-    font-weight:700;
-    backdrop-filter:blur(12px);
-}
+  .cs-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.10);
+      color:#dbeafe;
+      font-size:.82rem;
+      font-weight:700;
+      backdrop-filter:blur(12px);
+  }
 
-.cs-hero-ctas{
-    display:flex;
-    gap:16px;
-    flex-wrap:wrap;
-}
+  .cs-hero-ctas{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+  }
 
-.cs-hero-stat-card{
-    position:relative;
-    padding:34px;
-    border-radius:28px;
-    background: linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
-    border:1px solid rgba(255,255,255,.10);
-    backdrop-filter:blur(18px);
-    box-shadow: 0 30px 60px rgba(0,0,0,.28);
-    overflow:hidden;
-}
-.cs-hero-stat-card::before{
-    content:"";
-    position:absolute;
-    width:240px;
-    height:240px;
-    top:-120px;
-    right:-120px;
-    background: radial-gradient( circle, rgba(59,130,246,.25), transparent 70% );
-}
-@media(max-width:1200px){
-    .cs-hero-title{
-        font-size:2.7rem;
-    }
-}
-@media(max-width:991px){
-    .cs-hero{
-        padding:75px 0 65px;
-    }
-    .cs-hero-title{
-        font-size:2.2rem;
-    }
-}
+  .cs-hero-stat-card{
+      position:relative;
+      padding:34px;
+      border-radius:28px;
+      background: linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter:blur(18px);
+      box-shadow: 0 30px 60px rgba(0,0,0,.28);
+      overflow:hidden;
+  }
+  .cs-hero-stat-card::before{
+      content:"";
+      position:absolute;
+      width:240px;
+      height:240px;
+      top:-120px;
+      right:-120px;
+      background: radial-gradient( circle, rgba(59,130,246,.25), transparent 70% );
+  }
+  @media(max-width:1200px){
+      .cs-hero-title{
+          font-size:2.7rem;
+      }
+  }
+  @media(max-width:991px){
+      .cs-hero{
+          padding:75px 0 65px;
+      }
+      .cs-hero-title{
+          font-size:2.2rem;
+      }
+  }
 
-@media(max-width:767px){
-    .cs-hero{
-        padding:60px 0 55px;
-    }
-    .cs-hero-title{
-        font-size:1.8rem;
-        line-height:1.3;
-    }
-    .cs-hero-subtitle{
-        font-size:.98rem;
-    }
-    .cs-pill{
-        width:100%;
-        justify-content:flex-start;
-    }
-    .cs-hero-ctas{
-        flex-direction:column;
-    }
-    .btn-cs-primary, .btn-cs-outline{
-        width:100%;
-        text-align:center;
-    }
-    .binary-col, .code-line:nth-child(n+8){
-        display:none;
-    }
-}
+  @media(max-width:767px){
+      .cs-hero{
+          padding:60px 0 55px;
+      }
+      .cs-hero-title{
+          font-size:1.8rem;
+          line-height:1.3;
+      }
+      .cs-hero-subtitle{
+          font-size:.98rem;
+      }
+      .cs-pill{
+          width:100%;
+          justify-content:flex-start;
+      }
+      .cs-hero-ctas{
+          flex-direction:column;
+      }
+      .btn-cs-primary, .btn-cs-outline{
+          width:100%;
+          text-align:center;
+      }
+      .binary-col, .code-line:nth-child(n+8){
+          display:none;
+      }
+  }
 
-@media(max-width:991px){
-    .cs-hero{
-        min-height:auto;
-        padding:90px 0 70px;
-    }
-}
+  @media(max-width:991px){
+      .cs-hero{
+          min-height:auto;
+          padding:90px 0 70px;
+      }
+  }
 
-@media(max-width:767px){
-    .cs-hero{
-        padding:70px 0 55px;
-    }
-    .cs-hero-bg-image{
-        transform:scale(1.12);
-    }
-}
+  @media(max-width:767px){
+      .cs-hero{
+          padding:70px 0 55px;
+      }
+      .cs-hero-bg-image{
+          transform:scale(1.12);
+      }
+  }
+
+  .challenge-content-wrapper{
+      max-width: 950px;
+      margin: 0 auto;
+  }
+
+  /* Headings */
+  .challenge-content-wrapper h1,
+  .challenge-content-wrapper h2,
+  .challenge-content-wrapper h3,
+  .challenge-content-wrapper h4,
+  .challenge-content-wrapper h5,
+  .challenge-content-wrapper h6{
+      font-family:'Nunito',sans-serif;
+      font-weight:800;
+      color:var(--text-dark);
+      margin-top:40px;
+      margin-bottom:18px;
+      line-height:1.3;
+  }
+
+  /* Paragraph */
+  .challenge-content-wrapper p{
+      color:var(--text-muted);
+      line-height:1.9;
+      font-size:1rem;
+      margin-bottom:18px;
+  }
+
+  /* Lists */
+  .challenge-content-wrapper ul,
+  .challenge-content-wrapper ol{
+      padding-left:22px;
+      margin-bottom:24px;
+  }
+
+  .challenge-content-wrapper li{
+      color:var(--text-muted);
+      line-height:1.9;
+      margin-bottom:10px;
+  }
+
+  /* Strong */
+  .challenge-content-wrapper strong{
+      color:var(--text-dark);
+      font-weight:700;
+  }
+
+  /* Remove ugly inline styles from editor */
+  .challenge-content-wrapper span{
+      background:none !important;
+      color:inherit !important;
+  }
+
+  /* Remove pre/code styling */
+  .challenge-content-wrapper pre{
+      background:transparent;
+      padding:0;
+      border:none;
+      white-space:normal;
+      overflow:visible;
+      font-family:inherit;
+  }
+
 </style>
 </head>
 <body>
@@ -405,9 +469,7 @@
   </div>
 </nav>
 
-{{-- ═══════════════════════════════════════════
-     1. CLIENT OVERVIEW
-═══════════════════════════════════════════ --}}
+{{-- ═══════════════════════════════════════════ 1. CLIENT OVERVIEW ══════════════════════════════════════════ --}}
 <section class="cs-section" id="sec-overview">
   <div class="container">
     <div class="row g-5 align-items-start">
@@ -470,89 +532,30 @@
   </div>
 </section>
 
-{{-- ═══════════════════════════════════════════
-     2. CHALLENGE
-═══════════════════════════════════════════ --}}
+{{-- ═══════════════════════════════════════════ 2. CHALLENGE ═══════════════════════════════════════════ --}}
 <section class="cs-section cs-section-alt" id="sec-challenge">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="side-line mx-auto"></div>
-      <div class="section-eyebrow">The Challenge</div>
-      <h2 class="section-heading">What We Were Up Against</h2>
-      <p class="section-sub mx-auto" style="max-width:580px;">Solving healthcare's most complex technical and compliance challenges at enterprise scale.</p>
-    </div>
-
-    <div class="challenge-grid">
-      <div class="challenge-card">
-        <div class="challenge-card-icon cc-red"><i class="fas fa-database"></i></div>
-        <h4>Fragmented Data Systems</h4>
-        <p>Patient data was siloed across 12 incompatible legacy EHR systems with no unified API layer, making cross-state care coordination impossible. Data migration alone required processing 18M+ patient records without downtime.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-card-icon cc-yellow"><i class="fas fa-shield-alt"></i></div>
-        <h4>HIPAA Compliance at Scale</h4>
-        <p>Every element of the platform — storage, transit, video streams, audit logs — required HIPAA-compliant architecture. Zero shortcuts could be made while ensuring low-latency performance for thousands of concurrent video consultations.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-card-icon cc-blue"><i class="fas fa-video"></i></div>
-        <h4>Real-Time Video at Scale</h4>
-        <p>Supporting 5,000+ simultaneous video consultations with sub-100ms latency, automatic failover, and mobile compatibility across iOS, Android, and Web — without sacrificing video quality or call reliability.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-card-icon cc-purple"><i class="fas fa-file-invoice-dollar"></i></div>
-        <h4>Complex Billing Automation</h4>
-        <p>Healthcare billing involves insurance verification, ICD-10 coding, claim submission, co-pay calculation, and denial management — all requiring real-time integration with 14 different insurance providers and payment gateways.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-card-icon cc-green"><i class="fas fa-expand-arrows-alt"></i></div>
-        <h4>Scalability Under Peak Load</h4>
-        <p>Morning appointment rushes created unpredictable 10× traffic spikes. The system needed elastic auto-scaling that could provision capacity in under 30 seconds without cold-start latency issues.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-card-icon cc-red"><i class="fas fa-mobile-alt"></i></div>
-        <h4>Cross-Platform UX</h4>
-        <p>Patients ranged from 18 to 85 years old across varied devices and internet speeds. The UX had to be intuitive for first-time users on 3G connections while remaining feature-rich for power users on desktop.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{{-- ═══════════════════════════════════════════
-     GOALS
-═══════════════════════════════════════════ --}}
-<section class="cs-section" id="sec-goals">
-  <div class="container">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-5">
-        <div class="side-line"></div>
-        <div class="section-eyebrow">Goals & Objectives</div>
-        <h2 class="section-heading">What Success Looked Like</h2>
-        <p class="section-sub">Clear, measurable objectives defined at the outset. Every technical decision was evaluated against these targets.</p>
-      </div>
-      <div class="col-lg-7">
-        <div class="row g-3">
-          @php
-          $goals = [
-            ['icon'=>'fas fa-user-clock','color'=>'cc-blue','title'=>'Reduce Patient Wait Time','desc'=>'Cut average appointment wait time from 45 minutes to under 15 minutes through smart scheduling.'],
-            ['icon'=>'fas fa-chart-line','color'=>'cc-green','title'=>'Increase Doctor Productivity','desc'=>'Enable each doctor to see 40% more patients per day via streamlined digital workflows.'],
-            ['icon'=>'fas fa-cloud','color'=>'cc-purple','title'=>'Cloud-Native Infrastructure','desc'=>'Build on AWS with auto-scaling, 99.9% uptime SLA, and full disaster recovery capability.'],
-            ['icon'=>'fas fa-lock','color'=>'cc-yellow','title'=>'Full HIPAA Compliance','desc'=>'Pass all HIPAA security audits and achieve SOC 2 Type II certification within 6 months.'],
-          ];
-          @endphp
-          @foreach($goals as $g)
-          <div class="col-sm-6">
-            <div class="challenge-card h-100">
-              <div class="challenge-card-icon {{ $g['color'] }}"><i class="{{ $g['icon'] }}"></i></div>
-              <h4>{{ $g['title'] }}</h4>
-              <p>{{ $g['desc'] }}</p>
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="side-line mx-auto"></div>
+            <div class="section-eyebrow">
+                The Challenge
             </div>
-          </div>
-          @endforeach
+            <h2 class="section-heading">
+                What We Were Up Against
+            </h2>
         </div>
-      </div>
+        @php
+            $challengeContent = $caseStudy->caseStudy->challenge ?? '';
+            $challengeContent = html_entity_decode($challengeContent);
+            $challengeContent = preg_replace('/<pre.*?>/si', '', $challengeContent);
+            $challengeContent = str_replace('</pre>', '', $challengeContent);
+        @endphp
+        <div class="challenge-content-wrapper">
+            {!! $challengeContent !!}
+        </div>
     </div>
-  </div>
 </section>
+
 
 {{-- ═══════════════════════════════════════════ 3. SOLUTION ═══════════════════════════════════════════ --}}
 <section class="cs-section cs-section-alt" id="sec-solution">
@@ -601,6 +604,42 @@
   </div>
 </section>
 
+{{-- ═══════════════════════════════════════════ GOALS ═══════════════════════════════════════════ --}}
+<section class="cs-section" id="sec-goals">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5">
+        <div class="side-line"></div>
+        <div class="section-eyebrow">Goals & Objectives</div>
+        <h2 class="section-heading">What Success Looked Like</h2>
+        <p class="section-sub">Clear, measurable objectives defined at the outset. Every technical decision was evaluated against these targets.</p>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-3">
+          @php
+            $goals = [
+              ['icon'=>'fas fa-user-clock','color'=>'cc-blue','title'=>'Reduce Patient Wait Time','desc'=>'Cut average appointment wait time from 45 minutes to under 15 minutes through smart scheduling.'],
+              ['icon'=>'fas fa-chart-line','color'=>'cc-green','title'=>'Increase Doctor Productivity','desc'=>'Enable each doctor to see 40% more patients per day via streamlined digital workflows.'],
+              ['icon'=>'fas fa-cloud','color'=>'cc-purple','title'=>'Cloud-Native Infrastructure','desc'=>'Build on AWS with auto-scaling, 99.9% uptime SLA, and full disaster recovery capability.'],
+              ['icon'=>'fas fa-lock','color'=>'cc-yellow','title'=>'Full HIPAA Compliance','desc'=>'Pass all HIPAA security audits and achieve SOC 2 Type II certification within 6 months.'],
+            ];
+          @endphp
+          @foreach($goals as $g)
+            <div class="col-sm-6">
+              <div class="challenge-card h-100">
+                <div class="challenge-card-icon {{ $g['color'] }}"><i class="{{ $g['icon'] }}"></i></div>
+                <h4>{{ $g['title'] }}</h4>
+                <p>{{ $g['desc'] }}</p>
+              </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 {{-- ═══════════════════════════════════════════ 4. FEATURES ═══════════════════════════════════════════ --}}
 <section class="cs-section" id="sec-features">
   <div class="container">
@@ -637,9 +676,7 @@
   </div>
 </section>
 
-{{-- ═══════════════════════════════════════════
-     5. TECH STACK
-═══════════════════════════════════════════ --}}
+{{-- ═══════════════════════════════════════════ 5. TECH STACK ═══════════════════════════════════════════ --}}
 <section class="cs-section cs-section-alt" id="sec-tech">
   <div class="container">
     <div class="row g-5 align-items-start">
@@ -680,9 +717,7 @@
 </section>
 
 
-{{-- ═══════════════════════════════════════════
-     6. PROCESS / TIMELINE
-═══════════════════════════════════════════ --}}
+{{-- ═══════════════════════════════════════════ 6. PROCESS / TIMELINE ═══════════════════════════════════════════ --}}
 <section class="cs-section" id="sec-process">
   <div class="container">
     <div class="row g-5 align-items-start">

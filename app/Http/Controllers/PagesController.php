@@ -61,11 +61,27 @@ class PagesController extends Controller
         return view('pages.case-studies', compact('caseStudies', 'featuredCase', 'categories', 'stats'));
     }
 
-    public function showCasestudyDetails($slug){
-        $caseStudy = Page::with(['caseStudy', 'category', 'author'])->where('page_type', 'casestudy')->where('slug', $slug)->where('status', 'published')->firstOrFail();
-        // Related Case Studies
-        $relatedCaseStudies = Page::with('caseStudy')->where('page_type', 'casestudy')->where('id', '!=', $caseStudy->id)->where('status', 'published')->latest()->take(3)->get();
-        return view('pages.child.case_study_details', compact('caseStudy', 'relatedCaseStudies'));
+    public function showCasestudyDetails($slug)
+    {
+        $caseStudy = Page::with(['caseStudy', 'category', 'author'])
+            ->where('page_type', 'casestudy')
+            ->where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        $relatedCaseStudies = Page::with('caseStudy')
+            ->where('page_type', 'casestudy')
+            ->where('id', '!=', $caseStudy->id)
+            ->where('status', 'published')
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $seoTitle       = $caseStudy->meta_title ?: $caseStudy->title . ' — Case Study | Kawach Technology';
+        $seoDescription = $caseStudy->meta_description ?: \Illuminate\Support\Str::limit(strip_tags($caseStudy->caseStudy->challenge ?? ''), 160);
+        $seoKeywords    = $caseStudy->meta_keywords ?: trim(($caseStudy->focus_keyword ?? '') . ', ' . ($caseStudy->caseStudy->client_industry ?? '') . ', case study, Kawach Technology');
+
+        return view('pages.child.case_study_details', compact('caseStudy', 'relatedCaseStudies', 'seoTitle', 'seoDescription', 'seoKeywords'));
     }
 
 }
