@@ -3,7 +3,7 @@
   <div class="container">
     <a class="navbar-brand" href="/">
       Kawach<span class="brand-highlight">TECH</span>
-      <span class="brand-sub">S O L U T I O N S</span>
+      <span class="brand-sub">AI • CLOUD • SOFTWARE</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon text-white"></span>

@@ -394,63 +394,6 @@
             </div>
           </div>
 
-          <div class="clutch-review-card">
-            <div class="review-card-header">
-              <div class="review-card-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <div class="clutch-pill"><i class="fas fa-check-circle"></i> Verified</div>
-            </div>
-            <div class="review-title">"Delivered our SaaS product in 10 weeks — on time, on budget"</div>
-            <div class="review-body">Weekly sprint reviews kept us in the loop. No surprises, no hidden costs. The team built our multi-tenant SaaS from scratch and the architecture they chose is still scaling 18 months later.</div>
-            <div class="review-service-tag">SaaS · Web &amp; Mobile</div>
-            <div class="reviewer-row">
-              <div class="reviewer-avatar av-c-purple">LB</div>
-              <div>
-                <div class="reviewer-name">Laura Bennett</div>
-                <div class="reviewer-meta">Product Lead, Taskify · Canada</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="clutch-review-card">
-            <div class="review-card-header">
-              <div class="review-card-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <div class="clutch-pill"><i class="fas fa-check-circle"></i> Verified</div>
-            </div>
-            <div class="review-title">"Our logistics platform now handles 3× the volume at the same cost"</div>
-            <div class="review-body">KawachTech re-architected our route optimisation engine with Kubernetes and a machine learning model. Fleet utilisation jumped by 28%. The ROI paid for itself in under 4 months.</div>
-            <div class="review-service-tag">Logistics · AI &amp; Automation</div>
-            <div class="reviewer-row">
-              <div class="reviewer-avatar av-c-teal">RO</div>
-              <div>
-                <div class="reviewer-name">Raj Oberoi</div>
-                <div class="reviewer-meta">COO, SwiftRoute Logistics · India</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="clutch-review-card">
-            <div class="review-card-header">
-              <div class="review-card-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              </div>
-              <div class="clutch-pill"><i class="fas fa-check-circle"></i> Verified</div>
-            </div>
-            <div class="review-title">"The mobile app exceeded our quality expectations significantly"</div>
-            <div class="review-body">React Native app for both iOS and Android, with offline-first sync and push notifications. It launched on time and App Store ratings are consistently above 4.7. Great communication throughout.</div>
-            <div class="review-service-tag">EdTech · Mobile App</div>
-            <div class="reviewer-row">
-              <div class="reviewer-avatar av-c-pink">EK</div>
-              <div>
-                <div class="reviewer-name">Elena Kovač</div>
-                <div class="reviewer-meta">CEO, LearnSpark · Slovenia</div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 

@@ -93,14 +93,21 @@
         <div class="logo-name">Kawach<span>.</span>Tech</div>
       </div>
     </div>
-    <div class="badge"><span class="badge-dot"></span> New Quote Request</div>
-    <div class="hd-title">New Quote Request Received</div>
+    <div class="badge">
+        <span class="badge-dot"></span>
+        Consultation Request
+    </div>
+
+    <div class="hd-title">
+        New Consultation Request Received
+    </div>
     <div class="hd-sub">Submitted {{ $quote->created_at->format('D, d M Y \a\t H:i') }} UTC</div>
   </div>
 
   {{-- Alert --}}
   <div class="alert-bar">
-    &#x2709; <strong>{{ $quote->full_name }}</strong> has submitted a quote request and is waiting for your response.
+    📅 <strong>{{ $consultation->full_name }}</strong>
+has booked a free consultation and is waiting for your response.
   </div>
 
   {{-- Body --}}

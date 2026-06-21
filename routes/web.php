@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontBlogController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
@@ -35,6 +36,7 @@ Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('c
 Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetails'])->name('case-studies.show');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
+Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
 Route::post('/schedule', [QuoteController::class, 'scheduleCall'])->name('schedule.store');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
