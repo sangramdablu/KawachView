@@ -129,7 +129,7 @@
                     </div>
                     <div>
                         <span class="kw-contact-label">Email</span>
-                        <span class="kw-contact-value">{{ config('app.support_email') }}</span>
+                        <span class="kw-contact-value">{{ config('app.main_email') }}</span>
                     </div>
                 </div>
 

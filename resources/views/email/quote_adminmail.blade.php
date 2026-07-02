@@ -106,7 +106,7 @@
 
   {{-- Alert --}}
   <div class="alert-bar">
-    📅 <strong>{{ $consultation->full_name }}</strong>
+    📅 <strong>{{ $quote->full_name }}</strong>
 has booked a free consultation and is waiting for your response.
   </div>
 

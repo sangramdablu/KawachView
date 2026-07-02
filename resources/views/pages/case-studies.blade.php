@@ -64,10 +64,12 @@
 }
 </script>
 @endverbatim
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+
 <style>
   .case-hero-section{
       position: relative;
