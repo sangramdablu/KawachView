@@ -24,7 +24,7 @@
 
         @if($consultation->role)
         <tr>
-            <td><strong>Your Role:</strong></td>
+            <td><strong>Your Role:</strong></td>    
             <td>{{ $consultation->role }}</td>
         </tr>
         @endif
