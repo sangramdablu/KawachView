@@ -1,49 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Primary SEO Meta Tags -->
-<title>Case Studies | Kawach Technology Pvt Ltd</title>
 
-<meta name="title" content="Case Studies | Healthcare, SaaS & Web Development Projects | Kawach">
-<meta name="description" content="Explore Kawach case studies featuring scalable healthcare platforms, SaaS applications, enterprise web development, cloud infrastructure, and custom software solutions for global clients.">
-<meta name="keywords" content="web development company USA, software development company Canada, healthcare software development, SaaS development services, custom web application development, enterprise software development, telehealth platform development, HIPAA compliant software development, cloud application development, React development company, Node.js development services, AWS cloud solutions, healthcare app development company, custom software agency Europe">
-<meta name="author" content="Kawach">
-<meta name="robots" content="index, follow">
-<meta name="language" content="English">
-<meta name="revisit-after" content="7 days">
-<!-- Geo Targeting -->
-<meta name="geo.region" content="US-CA">
-<meta name="geo.placename" content="United States">
-<meta name="distribution" content="global">
-
-<!-- Canonical -->
-<link rel="canonical" href="{{ url()->current() }}" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ url()->current() }}">
-<meta property="og:title" content="Case Studies | Healthcare, SaaS & Web Development Projects | Kawach">
-<meta property="og:description" content="Discover how Kawach delivers scalable healthcare platforms, SaaS products, cloud-native applications, and enterprise software solutions for clients worldwide.">
-<meta property="og:image" content="{{ asset('assets/images/case-study-og.jpg') }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="Kawach">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="{{ url()->current() }}">
-<meta name="twitter:title" content="Case Studies | Healthcare, SaaS & Web Development Projects | Kawach">
-<meta name="twitter:description" content="Explore healthcare software, SaaS, enterprise web apps, and cloud-native development case studies built by Kawach.">
-
-<meta name="twitter:image" content="{{ asset('assets/images/case-study-og.jpg') }}">
-
-<!-- Theme -->
-<meta name="theme-color" content="#0A0A0A">
-
-<!-- Mobile SEO -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@php
+    $seoTitle       = 'Case Studies | Healthcare, SaaS & Web Development Projects | Kawach Technology';
+    $seoDescription = 'Explore Kawach Technology case studies featuring scalable healthcare platforms, SaaS applications, enterprise web development, cloud infrastructure, and custom software solutions for global clients.';
+    $seoKeywords    = 'web development company USA, software development company Canada, healthcare software development, SaaS development services, custom web application development, enterprise software development, telehealth platform development, HIPAA compliant software development, cloud application development, React development company, Node.js development services, AWS cloud solutions, healthcare app development company, custom software agency Europe';
+    $seoCanonical   = url('/case-studies');
+    $seoImage       = asset('assets/images/case-study-og.jpg');
+@endphp
 
 <!-- Schema.org JSON-LD -->
+@push('schema')
 @verbatim
 <script type="application/ld+json">
 {
@@ -64,6 +31,7 @@
 }
 </script>
 @endverbatim
+@endpush
 
 @include('layouts.head')
 @include('modal.getquote')

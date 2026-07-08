@@ -1,35 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{{-- ═══════════════════════════════════════════════════════════
-     SEO META TAGS
-════════════════════════════════════════════════════════════ --}}
-<head>
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+@php
+    $seoTitle       = 'Blog & Insights | Kawach Technology';
+    $seoDescription = 'Expert articles on AI, cloud computing, software development, and digital transformation from the Kawach Technology team.';
+    $seoKeywords    = 'software development blog, AI insights, cloud computing, DevOps, tech articles, Kawach Technology';
+    $seoCanonical   = url('/blog');
+    $seoImage       = asset('images/og-default.jpg');
+@endphp
 
-{{-- Primary --}}
-<title>Blog & Insights | Kawach Technology</title>
-<meta name="description" content="Expert articles on AI, cloud computing, software development, and digital transformation from the Kawach Technology team."/>
-<meta name="keywords"    content="software development blog, AI insights, cloud computing, DevOps, tech articles, Kawach Technology"/>
-<meta name="author"      content="Kawach Technology"/>
-<meta name="robots"      content="index, follow, max-snippet:-1, max-image-preview:large"/>
-<link rel="canonical"    href="{{ url('/blog') }}"/>
-
-{{-- Open Graph --}}
-<meta property="og:type"        content="website"/>
-<meta property="og:site_name"   content="Kawach Technology"/>
-<meta property="og:url"         content="{{ url('/blog') }}"/>
-<meta property="og:title"       content="Blog & Insights | Kawach Technology"/>
-<meta property="og:description" content="Expert articles on AI, cloud computing, software development, and digital transformation."/>
-<meta property="og:image"       content="{{ asset('images/og-default.jpg') }}"/>
-
-{{-- Twitter --}}
-<meta name="twitter:card"        content="summary_large_image"/>
-<meta name="twitter:title"       content="Blog & Insights | Kawach Technology"/>
-<meta name="twitter:description" content="Expert articles on AI, cloud computing, software development, and digital transformation."/>
-<meta name="twitter:image"       content="{{ asset('images/og-default.jpg') }}"/>
 <style>
 .page-hero, .blog-page-hero{
     position: relative;
@@ -164,7 +143,8 @@
     }
 }
 </style>
-{{-- JSON-LD Blog structured data --}}
+
+@push('schema')
 @verbatim
 <script type="application/ld+json">
 {
@@ -182,7 +162,7 @@
 }
 </script>
 @endverbatim
-</head>
+@endpush
 
 @include('layouts.head')
 @include('modal.getquote')

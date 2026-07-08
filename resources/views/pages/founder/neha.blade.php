@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<title>Sraddha Gupta | Founder of Kawach Technology</title>
+@php
+    $seoTitle       = 'Sraddha Gupta | Founder of Kawach Technology';
+    $seoDescription = 'Sraddha Gupta is the Founder of Kawach Technology, a software development company specializing in scalable web, mobile, SaaS, AI, and healthcare solutions for startups and businesses worldwide.';
+    $seoKeywords    = 'Sraddha Gupta, Kawach Technology founder, software company founder, SaaS development expert, AI software development, healthcare software solutions, startup software development';
+    $seoCanonical   = url('/about/founder');
+    $seoImage       = asset('assets/images/neha-kawach-technology-ceo.jpg');
+    $seoType        = 'profile';
+@endphp
 
-<meta name="description" content="Sraddha Gupta is the Founder of Kawach Technology, a software development company specializing in scalable web, mobile, SaaS, AI, and healthcare solutions for startups and businesses worldwide.">
-<meta name="keywords" content="Sraddha Gupta, Kawach Technology founder, software company founder, SaaS development expert, AI software development, healthcare software solutions, startup software development">
-<link rel="canonical" href="https://kawachtech.com/about/founder/">
-<meta property="og:type" content="profile">
-<meta property="og:title" content="Sraddha Gupta | Founder of Kawach Technology">
-<meta property="og:description" content="Meet Sraddha Gupta, Founder of Kawach Technology, building scalable software solutions for startups and enterprises worldwide.">
-<meta property="og:url" content="https://kawachtech.com/about/founder/">
-<meta property="og:image" content="https://kawachtech.com/assets/images/neha-kawach-technology-ceo.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sraddha Gupta | Founder of Kawach Technology">
-<meta name="twitter:description" content="Founder-led software development company focused on SaaS, AI, healthcare, and scalable digital products.">
-<meta name="twitter:image" content="https://kawachtech.com/assets/images/neha-kawach-technology-ceo.jpg">
+@push('schema')
+@php
+    $personSchema = [
+        "@context" => "https://schema.org",
+        "@type" => "Person",
+        "name" => "Sraddha Gupta",
+        "jobTitle" => "Founder & CEO",
+        "url" => $seoCanonical,
+        "image" => $seoImage,
+        "worksFor" => [
+            "@type" => "Organization",
+            "name" => "Kawach Technology",
+            "url" => url('/'),
+        ],
+    ];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($personSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @include('layouts.head')
 @include('modal.getquote')

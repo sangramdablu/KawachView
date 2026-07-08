@@ -45,5 +45,21 @@ class PageService extends Model
         if (!$this->technologies) return [];
         return array_filter(array_map('trim', explode(',', $this->technologies)));
     }
+
+    /**
+     * Proxy Page fields (title, slug, meta_*, featured_image, ...) so templates
+     * can read $service->title instead of $service->page->title. Requires the
+     * 'page' relation to be eager-loaded (controllers already do this).
+     */
+    public function __get($key)
+    {
+        $value = parent::__get($key);
+
+        if ($value === null && $key !== 'page' && $this->relationLoaded('page') && $this->page) {
+            return $this->page->{$key};
+        }
+
+        return $value;
+    }
 }
  

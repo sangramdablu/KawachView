@@ -6,6 +6,9 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontBlogController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SitemapController;
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/', function () {
     return view('pages.index');
@@ -19,17 +22,11 @@ Route::post('/newsletter/subscribe', [FrontBlogController::class, 'newsletterSub
 Route::get('/about-us', function () {
     return view('pages.about');
 })->name('about');
-Route::get('/case-studies', function () {
-    return view('pages.case-studies');
-})->name('casestudy');
-Route::get('/case-studies/see', function () {
-    return view('pages.child.case_study_details');
-})->name('casestudy');
 
 Route::get('/about/founder', function () {
     return view('pages.founder.neha');
-})->name('casestudy');
- 
+})->name('founder');
+
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');

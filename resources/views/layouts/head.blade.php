@@ -3,17 +3,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Mobile Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    @php
+        // Per-page overrides: set these via @php before @include('layouts.head').
+        // Falls back to homepage defaults if a page doesn't set them.
+        $seoTitle       = $seoTitle       ?? 'Affordable Custom Software Development Company in USA & Europe | Kawach Technology';
+        $seoDescription = $seoDescription ?? 'Kawach Technology helps startups and enterprises build scalable web, mobile, AI, SaaS, and cloud applications at affordable pricing for USA and European businesses.';
+        $seoKeywords    = $seoKeywords    ?? 'software development company, custom software development, mobile app development company, web development services, AI software development, affordable software company USA, enterprise software solutions, SaaS development company, cloud application development, software outsourcing company';
+        $seoCanonical   = $seoCanonical   ?? url()->current();
+        $seoImage       = $seoImage       ?? asset('assets/images/og-image.jpg');
+        $seoRobots      = $seoRobots      ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+        $seoType        = $seoType        ?? 'website';
+    @endphp
+
     <!-- Primary SEO -->
-    <title>
-        Affordable Custom Software Development Company in USA & Europe | Kawach Technology
-    </title>
-    <meta name="description" content="Kawach Technology helps startups and enterprises build scalable web, mobile, AI, SaaS, and cloud applications at affordable pricing for USA and European businesses.">
-    <meta name="keywords" content="software development company, custom software development, mobile app development company, web development services, AI software development, affordable software company USA, enterprise software solutions, SaaS development company, cloud application development, software outsourcing company">
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $seoDescription }}">
+    <meta name="keywords" content="{{ $seoKeywords }}">
     <meta name="author" content="Kawach Technology">
     <!-- INDEXING -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content="{{ $seoRobots }}">
     <!-- Canonical -->
-    <link rel="canonical" href="https://www.kawachtech.com/">
+    <link rel="canonical" href="{{ $seoCanonical }}">
     <!-- Language -->
     <meta http-equiv="content-language" content="en">
     <!-- GEO SEO -->
@@ -25,19 +36,19 @@
     <!-- Theme -->
     <meta name="theme-color" content="#0d6efd">
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $seoType }}">
     <meta property="og:site_name" content="Kawach Technology">
-    <meta property="og:title" content="Custom Software Development Company | Kawach">
-    <meta property="og:description" content="Affordable custom software development services for startups and enterprises in the USA, UK, and Europe. Build scalable web, mobile, and AI applications with Kawach.">
-    <meta property="og:url" content="https://www.kawachtech.com/">
-    <meta property="og:image" content="https://www.kawachtech.com/assets/images/og-image.jpg">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDescription }}">
+    <meta property="og:url" content="{{ $seoCanonical }}">
+    <meta property="og:image" content="{{ $seoImage }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Affordable Software Development Company | Kawach">
-    <meta name="twitter:description" content="Custom software, mobile app, and web development services for global businesses.">
-    <meta name="twitter:image" content="https://www.kawachtech.com/assets/images/og-image.jpg">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDescription }}">
+    <meta name="twitter:image" content="{{ $seoImage }}">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
     <!-- Fonts -->
@@ -103,6 +114,27 @@
   <script type="application/ld+json">
       {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
   </script>
+
+  @php
+      $websiteSchema = [
+          "@context" => "https://schema.org",
+          "@type" => "WebSite",
+          "name" => "Kawach Technology",
+          "url" => url('/'),
+          "potentialAction" => [
+              "@type" => "SearchAction",
+              "target" => [
+                  "@type" => "EntryPoint",
+                  "urlTemplate" => url('/blog') . "?search={search_term_string}",
+              ],
+              "query-input" => "required name=search_term_string",
+          ],
+      ];
+  @endphp
+
+  <script type="application/ld+json">
+      {!! json_encode($websiteSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+  </script>
     <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMZVRRJZBP"></script>
   <script>
@@ -112,4 +144,6 @@
 
     gtag('config', 'G-TMZVRRJZBP');
   </script>
+  <!-- Page-specific structured data (Service/Article/Person/FAQ/Breadcrumb schema) -->
+  @stack('schema')
 </head>

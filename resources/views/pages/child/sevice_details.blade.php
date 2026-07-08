@@ -1,37 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
-<head>
-  {{-- ══════════════════  PRIMARY META TAGS  ════════════════ --}}
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  {{-- Title --}}
-  <title>{{ $seoTitle ?? $seoTitle }} | Kawach Technology</title>
-  {{-- Core SEO --}}
-  <meta name="description" content="{{ $service->meta_description ?? $service->short_description }}"/>
-  <meta name="keywords"    content="{{ $service->meta_keywords ?? $service->title . ', Kawach Technology, software development' }}"/>
-  <meta name="author"      content="Kawach Technology"/>
-  <meta name="robots"      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
-  <link rel="canonical"    href="{{ url('/services/' . $service->slug) }}"/>
-  {{-- ── Open Graph (Facebook / LinkedIn) ──────────────────── --}}
-  <meta property="og:type"        content="website"/>
-  <meta property="og:site_name"   content="Kawach Technology"/>
-  <meta property="og:locale"      content="en_US"/>
-  <meta property="og:url"         content="{{ url('/services/' . $service->slug) }}"/>
-  <meta property="og:title"       content="{{ $service->meta_title ?? $service->title }} | Kawach Technology"/>
-  <meta property="og:description" content="{{ $service->meta_description ?? $service->short_description }}"/>
-  <meta property="og:image"       content="{{ asset('images/og-default.jpg') }}"/>
-  <meta property="og:image:width"  content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:image:alt"    content="{{ $service->title }} - Kawach Technology"/>
-  {{-- ── Twitter Card ─────────────────────────────────────── --}}
-  <meta name="twitter:card"        content="summary_large_image"/>
-  <meta name="twitter:site"        content="@kawachtech"/>
-  <meta name="twitter:creator"     content="@kawachtech"/>
-  <meta name="twitter:title"       content="{{ $service->meta_title ?? $service->title }} | Kawach Technology"/>
-  <meta name="twitter:description" content="{{ $service->meta_description ?? $service->short_description }}"/>
-  <meta name="twitter:image"       content="{{ asset('images/og-default.jpg') }}"/>
-  <meta name="twitter:image:alt"   content="{{ $service->title }} - Kawach Technology"/>
+
+@php
+    $seoDescription = $seoDescription ?? $service->short_description;
+    $seoCanonical   = url('/services/' . $service->slug);
+    $seoImage       = $service->featured_image
+        ? config('app.images_path') . $service->featured_image
+        : asset('images/og-default.jpg');
+@endphp
+
+@push('schema')
   @verbatim
   <script type="application/ld+json">
   {
@@ -120,7 +98,10 @@
   }
   </script>
   @endverbatim
-  @include('layouts.head')
+@endpush
+
+@include('layouts.head')
+
   <style>
     .svc-detail-hero{
         position: relative;

@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ $post->meta_title ?? $post->title }} — KawachTech Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-    <meta name="description" content="{{ $post->meta_description }}">
-    <meta name="keywords" content="{{ $post->focus_keyword }}">
-    <meta name="robots" content="{{ $post->seo->robots ?? 'index,follow' }}">
-    <link rel="canonical" href="{{ $post->seo->canonical_url ?? url()->current() }}">
-    <meta property="og:title" content="{{ $post->seo->og_title ?? $post->title }}">
-    <meta property="og:description" content="{{ $post->seo->og_description ?? $post->meta_description }}">
-    <meta property="og:image" content="{{ config('app.images_path') . $post->featured_image }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $post->seo->twitter_title ?? $post->title }}">
-    <meta name="twitter:description" content="{{ $post->seo->twitter_description ?? $post->meta_description }}">
-    <meta name="twitter:image" content="{{ config('app.images_path') . ($post->seo->twitter_image ?? $post->featured_image) }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <style>
+
+@php
+    $seoTitle       = ($post->meta_title ?? $post->title) . ' — Kawach Technology';
+    $seoDescription = $post->meta_description;
+    $seoKeywords    = $post->focus_keyword;
+    $seoRobots      = $post->seo->robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    $seoCanonical   = $post->seo->canonical_url ?? url()->current();
+    $seoImage       = config('app.images_path') . ($post->seo->twitter_image ?? $post->featured_image);
+    $seoType        = 'article';
+@endphp
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+<style>
       .article-hero{
           position:relative;
           overflow:hidden;
@@ -215,6 +211,7 @@
 
       }
     </style>
+    @push('schema')
     @php
       $schema = [
           "@context" => "https://schema.org",
@@ -250,7 +247,10 @@
     <script type="application/ld+json">
       {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
-</head>
+    @endpush
+
+@include('layouts.head')
+
 <body>
 @include('modal.getquote')
 @include('modal.navgetquote')

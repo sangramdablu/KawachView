@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta property="og:title" content="Our Services - Kawach Technology">
-<meta property="og:description" content="Explore our software development services">
-<meta property="og:image" content="{{ asset('images/og-default.jpg') }}">
-<meta property="og:url" content="{{ url('/services') }}">
-<meta property="og:type" content="website">
 
-<meta name="twitter:title" content="Our Services - Kawach Technology">
-<meta name="twitter:description" content="Explore our services">
-<meta name="twitter:image" content="{{ asset('images/og-default.jpg') }}">
+@php
+    $seoTitle       = 'Our Services | Custom Software Development Company | Kawach Technology';
+    $seoDescription = "Explore Kawach Technology's full range of software development services — web, mobile, AI, cloud, and SaaS solutions for businesses in the USA and Europe.";
+    $seoKeywords    = 'software development services, web development services, mobile app development, AI development services, cloud application development, SaaS development';
+    $seoCanonical   = url('/services');
+@endphp
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')

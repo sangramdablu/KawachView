@@ -1,5 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
+@php
+    $seoCanonical = url('/case-studies/' . $caseStudy->slug);
+    $seoImage     = $caseStudy->featured_image
+        ? config('app.images_path') . $caseStudy->featured_image
+        : asset('assets/images/og-image.jpg');
+    $seoType      = 'article';
+@endphp
+
+@push('schema')
+@php
+    $caseStudySchema = [
+        "@context" => "https://schema.org",
+        "@graph" => [
+            [
+                "@type" => "Article",
+                "@id" => $seoCanonical . "#article",
+                "headline" => $caseStudy->title,
+                "description" => $seoDescription,
+                "image" => $seoImage,
+                "url" => $seoCanonical,
+                "datePublished" => optional($caseStudy->published_at)->toIso8601String(),
+                "dateModified" => optional($caseStudy->updated_at)->toIso8601String(),
+                "author" => [
+                    "@type" => "Organization",
+                    "name" => "Kawach Technology",
+                ],
+                "publisher" => [
+                    "@type" => "Organization",
+                    "name" => "Kawach Technology",
+                    "logo" => [
+                        "@type" => "ImageObject",
+                        "url" => asset('assets/images/kawach.png'),
+                    ],
+                ],
+            ],
+            [
+                "@type" => "BreadcrumbList",
+                "itemListElement" => [
+                    ["@type" => "ListItem", "position" => 1, "name" => "Home", "item" => url('/')],
+                    ["@type" => "ListItem", "position" => 2, "name" => "Case Studies", "item" => url('/case-studies')],
+                    ["@type" => "ListItem", "position" => 3, "name" => $caseStudy->title, "item" => $seoCanonical],
+                ],
+            ],
+        ],
+    ];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($caseStudySchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
@@ -907,7 +959,7 @@
           <div class="related-body">
             <div class="related-category">{{ $r->caseStudy->client_industry ?? '' }}</div>
             <div class="related-title">{{ $r->title }}</div>
-            <a href="{{ route('case-study.details', $r->slug) }}" class="btn-related">View Case Study <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-related">View Case Study <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>

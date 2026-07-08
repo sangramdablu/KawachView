@@ -11,6 +11,14 @@
      ============================================================ --}}
 <!DOCTYPE html>
 <html lang="en">
+
+@php
+    $seoTitle       = 'Contact Us | Kawach Technology — Custom Software Development';
+    $seoDescription = 'Get in touch with Kawach Technology for custom software, web, mobile, AI, and cloud development services. Book a free consultation with our team today.';
+    $seoKeywords    = 'contact Kawach Technology, software development quote, hire software developers, free consultation software company';
+    $seoCanonical   = url('/contact');
+@endphp
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')

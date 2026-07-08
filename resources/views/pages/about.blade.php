@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
+@php
+    $seoTitle       = 'About Us | Custom Software Development Company in USA & Europe | Kawach Technology';
+    $seoDescription = 'Learn about Kawach Technology — a custom software development company building scalable web, mobile, AI, and SaaS solutions for startups and enterprises across the USA and Europe.';
+    $seoKeywords    = 'about Kawach Technology, custom software development company, software development team, software development company USA, software development company Europe';
+    $seoCanonical   = url('/about-us');
+@endphp
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
