@@ -49,17 +49,19 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 
 .svc-card{
     flex:0 0 calc(25% - 18px);
+    display:flex;
+    flex-direction:column;
 
     background:#fff;
 
-    border-radius:24px;
+    border-radius:20px;
 
     overflow:hidden;
 
-    border:1px solid rgba(0,0,0,.05);
+    border:1px solid rgba(15,23,42,.06);
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.05);
+    0 6px 18px rgba(15,23,42,.06);
 
     transition:.35s ease;
 
@@ -67,14 +69,16 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 }
 
 .svc-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-6px);
+    border-color:rgba(33,150,243,.25);
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,.12);
+    0 18px 40px rgba(15,23,42,.14);
 }
 
 .svc-card-img{
-    height:240px;
+    height:150px;
+    flex-shrink:0;
     overflow:hidden;
     position:relative;
 }
@@ -87,8 +91,8 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     background:
     linear-gradient(
     to top,
-    rgba(0,0,0,.25),
-    transparent
+    rgba(0,0,0,.35),
+    transparent 60%
     );
 }
 
@@ -104,6 +108,14 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     transform:scale(1.08);
 }
 
+/* Fallback gradient backgrounds when a service has no featured image */
+.svc-blue  { background:linear-gradient(135deg,#2196f3,#1565c0); }
+.svc-purple{ background:linear-gradient(135deg,#8e5bf2,#5e35b1); }
+.svc-teal  { background:linear-gradient(135deg,#26c6da,#00838f); }
+.svc-green { background:linear-gradient(135deg,#43c882,#1b8a53); }
+.svc-amber { background:linear-gradient(135deg,#ffb74d,#e8760a); }
+.svc-coral { background:linear-gradient(135deg,#ff7a7a,#d63f3f); }
+
 .svc-icon-wrap{
     display:flex;
     align-items:center;
@@ -113,38 +125,77 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 }
 
 .svc-icon-wrap i{
-    font-size:60px;
+    font-size:26px;
     color:#fff;
+
+    width:56px;
+    height:56px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:16px;
+    backdrop-filter:blur(4px);
 }
 
 .svc-card-body{
-    padding:25px;
+    padding:20px 22px 22px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
 }
 
 .svc-card-title{
-    font-size:1.25rem;
+    font-size:1.08rem;
     font-weight:700;
-    margin-bottom:12px;
+    margin-bottom:8px;
+    line-height:1.35;
 }
 
 .svc-card-desc{
     color:#6b7280;
-    line-height:1.7;
+    line-height:1.6;
+    font-size:.92rem;
+    margin-bottom:16px;
+    flex:1;
+
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
 }
 
 .svc-read-more{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    align-self:flex-start;
+
     text-decoration:none;
     font-weight:600;
-    color:inherit;
-}
+    font-size:.88rem;
+    color:#0d6efd;
 
-.svc-read-more::after{
-    content:' →';
+    padding:8px 16px;
+    border-radius:30px;
+    background:rgba(13,110,253,.08);
     transition:.3s;
 }
 
-.svc-read-more:hover::after{
-    margin-left:6px;
+.svc-read-more i{
+    font-size:.78rem;
+    transition:.3s;
+}
+
+.svc-read-more:hover{
+    background:#0d6efd;
+    color:#fff;
+}
+
+.svc-read-more:hover i{
+    transform:translateX(3px);
 }
 
 /* ARROWS */
@@ -234,11 +285,11 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     }
 
     .svc-card-img{
-        height:220px;
+        height:140px;
     }
 
     .svc-card-body{
-        padding:20px;
+        padding:18px 20px 20px;
     }
 
 }
@@ -281,7 +332,12 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
                             alt="{{ $service->image_alt ?? $service->title }}"
                             title="{{ $service->image_title ?? $service->title }}"
                             class="svc-card-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                         >
+
+                        <div class="svc-icon-wrap" style="display:none;">
+                            <i class="{{ $icon }}"></i>
+                        </div>
 
                         @else
 
@@ -319,7 +375,7 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
                             href="{{ $service->canonical_url ?: url('/services/'.$service->slug) }}"
                             class="svc-read-more"
                         >
-                            Read More
+                            Read More <i class="fa-solid fa-arrow-right"></i>
                         </a>
 
                     </div>
