@@ -295,9 +295,7 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 }
 </style>
 <section class="services-section">
-
     <div class="container">
-
         <div class="text-center mb-5">
             <div class="section-divider"></div>
             <h2 class="section-title">Our Services</h2>
@@ -307,24 +305,17 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
         </div>
 
         <div class="svc-slider">
-
             <button class="svc-arrow svc-prev">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-
             <div class="svc-track" id="svcTrack">
-
                 @forelse($services as $service)
-
                 @php
                 $gradient = $gradients[$loop->index % count($gradients)];
                 $icon = $icons[$loop->index % count($icons)];
                 @endphp
-
                 <div class="svc-card">
-
                     <div class="svc-card-img {{ $gradient }}">
-
                         @if($service->featured_image)
 
                         <img
@@ -332,139 +323,82 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
                             alt="{{ $service->image_alt ?? $service->title }}"
                             title="{{ $service->image_title ?? $service->title }}"
                             class="svc-card-image"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
-
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="svc-icon-wrap" style="display:none;">
                             <i class="{{ $icon }}"></i>
                         </div>
-
                         @else
-
                         <div class="svc-icon-wrap">
                             <i class="{{ $icon }}"></i>
                         </div>
-
                         @endif
-
                     </div>
-
                     <div class="svc-card-body">
-
                         <h3 class="svc-card-title">
                             {{ $service->title }}
                         </h3>
-
                         <p class="svc-card-desc">
-
-                            {{
-                                \Illuminate\Support\Str::words(
-                                strip_tags(
-                                $service->service->short_description ??
-                                $service->service->content ??
-                                ''
-                                ),
-                                12,
-                                '...'
-                                )
-                            }}
-
+                            {{ \Illuminate\Support\Str::words( strip_tags( $service->service->short_description ?? $service->service->content ?? '' ), 12, '...' ) }}
                         </p>
-
-                        <a
-                            href="{{ $service->canonical_url ?: url('/services/'.$service->slug) }}"
-                            class="svc-read-more"
-                        >
+                        <a href="{{ route('pages.child.sevice_details', $service->slug) }}" class="svc-read-more">
                             Read More <i class="fa-solid fa-arrow-right"></i>
                         </a>
-
                     </div>
-
                 </div>
-
                 @empty
-
                 <div class="w-100 text-center py-5">
                     No Services Available
                 </div>
-
                 @endforelse
-
             </div>
-
             <button class="svc-arrow svc-next">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
-
         </div>
-
     </div>
-
 </section>
 <script>
-
 document.addEventListener('DOMContentLoaded', () => {
-
     const track = document.querySelector('#svcTrack');
     const next  = document.querySelector('.svc-next');
     const prev  = document.querySelector('.svc-prev');
-
     let autoSlide;
-
     function getScrollAmount(){
-
         const card = track.querySelector('.svc-card');
-
         if(!card) return 300;
-
         const gap = 24;
-
         return card.offsetWidth + gap;
     }
-
     next?.addEventListener('click', () => {
-
         track.scrollBy({
             left:getScrollAmount(),
             behavior:'smooth'
         });
-
     });
 
     prev?.addEventListener('click', () => {
-
         track.scrollBy({
             left:-getScrollAmount(),
             behavior:'smooth'
         });
-
     });
 
     function startAuto(){
-
         autoSlide = setInterval(() => {
-
             const maxScroll =
             track.scrollWidth - track.clientWidth;
-
             if(track.scrollLeft >= maxScroll - 10){
-
                 track.scrollTo({
                     left:0,
                     behavior:'smooth'
                 });
-
             }else{
-
                 track.scrollBy({
                     left:getScrollAmount(),
                     behavior:'smooth'
                 });
-
             }
-
         },4000);
-
     }
 
     function stopAuto(){

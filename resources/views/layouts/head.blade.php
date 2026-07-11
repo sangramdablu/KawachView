@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     @php
-        // Per-page overrides: set these via @php before @include('layouts.head').
         // Falls back to homepage defaults if a page doesn't set them.
         $seoTitle       = $seoTitle       ?? 'Affordable Custom Software Development Company in USA & Europe | Kawach Technology';
         $seoDescription = $seoDescription ?? 'Kawach Technology helps startups and enterprises build scalable web, mobile, AI, SaaS, and cloud applications at affordable pricing for USA and European businesses.';
