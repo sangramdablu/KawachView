@@ -112,10 +112,10 @@
             <div class="kw-col">
                 <p class="kw-col-label">Legal</p>
                 <ul class="kw-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
                     <li><a href="#">Refund Policy</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="{{ route('cookie-policy') }}">Cookie Policy</a></li>
                 </ul>
             </div>
 

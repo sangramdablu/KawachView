@@ -27,6 +27,9 @@ class SitemapController extends Controller
                 '/case-studies' => ['weekly', '0.8'],
                 '/blog' => ['daily', '0.8'],
                 '/contact' => ['monthly', '0.7'],
+                '/privacy-policy' => ['yearly', '0.3'],
+                '/terms-conditions' => ['yearly', '0.3'],
+                '/cookie-policy' => ['yearly', '0.3'],
             ];
 
             foreach ($static as $path => [$changefreq, $priority]) {
