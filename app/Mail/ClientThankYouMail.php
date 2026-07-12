@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Contact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -17,9 +18,8 @@ class ClientThankYouMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public readonly Contact $contact)
     {
-        //
     }
 
     /**
