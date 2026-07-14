@@ -69,6 +69,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- CSRF -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Google Consent Mode defaults (must run before GTM/gtag load) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'denied',
+        'personalization_storage': 'denied',
+        'security_storage': 'granted'
+      });
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

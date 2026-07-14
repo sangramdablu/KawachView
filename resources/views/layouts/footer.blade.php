@@ -110,6 +110,7 @@
                     <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
                     <li><a href="{{ route('refund-policy') }}">Refund Policy</a></li>
                     <li><a href="{{ route('cookie-policy') }}">Cookie Policy</a></li>
+                    <li><a href="#" onclick="return window.kwOpenCookieSettings && window.kwOpenCookieSettings(event);">Cookie Settings</a></li>
                 </ul>
             </div>
 
@@ -638,3 +639,5 @@
     }
 }
 </style>
+
+@include('modal.cookie-consent')

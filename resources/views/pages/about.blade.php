@@ -300,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ── TEAM ── -->
-<section class="team-section" id="team">
+{{-- <section class="team-section" id="team">
   <div class="container">
     <div class="text-center mb-5">
       <div class="section-divider"></div>
@@ -419,7 +419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </div>
   </div>
-</section>
+</section> --}}
 
 <!-- ── TIMELINE ── -->
 <section class="timeline-section">
@@ -427,23 +427,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="text-center mb-5">
       <div class="section-divider"></div>
       <h2 class="section-title">Our Journey</h2>
-      <p class="section-subtitle">A decade of growth, milestones, and impact</p>
+      <p class="section-subtitle">A growth, milestones, and impact</p>
     </div>
     <ul class="timeline">
 
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2014 — Founded</div>
+          <div class="timeline-year">2018 — Founded</div>
           <div class="timeline-event">Company Established</div>
-          <p class="timeline-detail">KawachTech Solutions launched from a co-working space in New York with a team of three and a vision to democratise enterprise software.</p>
+          <p class="timeline-detail">KawachTech Solutions launched from a co-working space in New Delhi with a team of three and a vision to democratise enterprise software.</p>
         </div>
       </li>
 
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2016 — First Milestone</div>
+          <div class="timeline-year">2020 — First Milestone</div>
           <div class="timeline-event">Reached 25 Clients</div>
           <p class="timeline-detail">After two years of bootstrapped growth, we crossed our first 25-client milestone and expanded the team to 12 engineers.</p>
         </div>
@@ -452,20 +452,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2018 — AI Division</div>
+          <div class="timeline-year">2022 — AI Division</div>
           <div class="timeline-event">Launched AI &amp; ML Practice</div>
           <p class="timeline-detail">Established a dedicated AI &amp; Machine Learning division, delivering our first predictive analytics product for a Fortune 500 client.</p>
         </div>
       </li>
 
-      <li class="timeline-item">
+      {{-- <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-year">2020 — Global Expansion</div>
           <div class="timeline-event">Offices in 3 Continents</div>
           <p class="timeline-detail">Opened offices in London and Singapore, enabling us to serve clients across EMEA and APAC with localised expertise.</p>
         </div>
-      </li>
+      </li> --}}
 
       <li class="timeline-item">
         <div class="timeline-dot"></div>
@@ -481,7 +481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-card">
           <div class="timeline-year">2024 — Today</div>
           <div class="timeline-event">150+ Projects &amp; Counting</div>
-          <p class="timeline-detail">With 50+ team members, 150+ completed projects, and clients in 20+ countries, we're just getting started on our next decade of impact.</p>
+          <p class="timeline-detail">With 80+ team members, 150+ completed projects, and clients in 6+ countries, we're just getting started on our next decade of impact.</p>
         </div>
       </li>
 
@@ -531,7 +531,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="award-icon"><i class="fas fa-trophy"></i></div>
           <div class="award-title">Top Software Development Company</div>
           <div class="award-org">Clutch Global</div>
-          <div class="award-year">2022, 2023, 2024</div>
+          <div class="award-year">2024, 2025</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
@@ -539,7 +539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="award-icon"><i class="fas fa-medal"></i></div>
           <div class="award-title">Best AI Solutions Provider</div>
           <div class="award-org">G2 Awards</div>
-          <div class="award-year">2023 &amp; 2024</div>
+          <div class="award-year">2024, 2025</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
@@ -547,7 +547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="award-icon"><i class="fas fa-star"></i></div>
           <div class="award-title">Tech Innovator of the Year</div>
           <div class="award-org">Forbes Tech Council</div>
-          <div class="award-year">2023</div>
+          <div class="award-year">2026</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
@@ -555,7 +555,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="award-icon"><i class="fas fa-award"></i></div>
           <div class="award-title">Best Workplace in Tech</div>
           <div class="award-org">Built In</div>
-          <div class="award-year">2024</div>
+          <div class="award-year">2026</div>
         </div>
       </div>
     </div>
