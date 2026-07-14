@@ -31,6 +31,7 @@ class SitemapController extends Controller
                 '/privacy-policy' => ['yearly', '0.3', 'pages.privacy-policy'],
                 '/terms-conditions' => ['yearly', '0.3', 'pages.terms-conditions'],
                 '/cookie-policy' => ['yearly', '0.3', 'pages.cookie-policy'],
+                '/refund-policy' => ['yearly', '0.3', 'pages.refund-policy'],
             ];
 
             foreach ($static as $path => [$changefreq, $priority, $view]) {

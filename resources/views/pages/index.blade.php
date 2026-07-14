@@ -40,7 +40,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="cta-subtitle">Let's discuss your project and find the best solution</p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
       <button class="btn btn-cta-primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">Schedule a Call</button>
-      <a href="#" class="btn btn-cta-outline" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</a>
+      <a class="btn btn-cta-outline" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</a>
     </div>
   </div>
 </section>

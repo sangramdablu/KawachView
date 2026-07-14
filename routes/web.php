@@ -53,3 +53,7 @@ Route::get('/cookie-policy', function () {
     return view('pages.cookie-policy');
 })->name('cookie-policy');
 
+Route::get('/refund-policy', function () {
+    return view('pages.refund-policy');
+})->name('refund-policy');
+
