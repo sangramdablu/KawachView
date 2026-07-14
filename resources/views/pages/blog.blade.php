@@ -6,7 +6,7 @@
     $seoDescription = 'Expert articles on AI, cloud computing, software development, and digital transformation from the Kawach Technology team.';
     $seoKeywords    = 'software development blog, AI insights, cloud computing, DevOps, tech articles, Kawach Technology';
     $seoCanonical   = url('/blog');
-    $seoImage       = asset('images/og-default.jpg');
+    $seoImage       = asset('assets/images/kawach.png');
 @endphp
 
 <style>

@@ -16,25 +16,27 @@ class SitemapController extends Controller
 
             $urls->push([
                 'loc' => url('/'),
+                'lastmod' => $this->viewLastMod('pages.index'),
                 'changefreq' => 'weekly',
                 'priority' => '1.0',
             ]);
 
             $static = [
-                '/about-us' => ['monthly', '0.8'],
-                '/about/founder' => ['monthly', '0.5'],
-                '/services' => ['weekly', '0.9'],
-                '/case-studies' => ['weekly', '0.8'],
-                '/blog' => ['daily', '0.8'],
-                '/contact' => ['monthly', '0.7'],
-                '/privacy-policy' => ['yearly', '0.3'],
-                '/terms-conditions' => ['yearly', '0.3'],
-                '/cookie-policy' => ['yearly', '0.3'],
+                '/about-us' => ['monthly', '0.8', 'pages.about'],
+                '/about/founder' => ['monthly', '0.5', 'pages.founder.neha'],
+                '/services' => ['weekly', '0.9', 'pages.services'],
+                '/case-studies' => ['weekly', '0.8', 'pages.case-studies'],
+                '/blog' => ['daily', '0.8', 'pages.blog'],
+                '/contact' => ['monthly', '0.7', 'pages.contact'],
+                '/privacy-policy' => ['yearly', '0.3', 'pages.privacy-policy'],
+                '/terms-conditions' => ['yearly', '0.3', 'pages.terms-conditions'],
+                '/cookie-policy' => ['yearly', '0.3', 'pages.cookie-policy'],
             ];
 
-            foreach ($static as $path => [$changefreq, $priority]) {
+            foreach ($static as $path => [$changefreq, $priority, $view]) {
                 $urls->push([
                     'loc' => url($path),
+                    'lastmod' => $this->viewLastMod($view),
                     'changefreq' => $changefreq,
                     'priority' => $priority,
                 ]);
@@ -73,5 +75,16 @@ class SitemapController extends Controller
         $xml = view('sitemap', compact('urls'))->render();
 
         return Response::make($xml, 200, ['Content-Type' => 'application/xml']);
+    }
+
+    private function viewLastMod(string $view): ?string
+    {
+        if (! view()->exists($view)) {
+            return null;
+        }
+
+        $path = view()->getFinder()->find($view);
+
+        return date(DATE_ATOM, filemtime($path));
     }
 }

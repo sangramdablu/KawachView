@@ -5,7 +5,7 @@
     $seoCanonical = url('/case-studies/' . $caseStudy->slug);
     $seoImage     = $caseStudy->featured_image
         ? config('app.images_path') . $caseStudy->featured_image
-        : asset('assets/images/og-image.jpg');
+        : asset('assets/images/kawach.png');
     $seoType      = 'article';
 @endphp
 

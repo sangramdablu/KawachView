@@ -6,31 +6,54 @@
     $seoDescription = 'Explore Kawach Technology case studies featuring scalable healthcare platforms, SaaS applications, enterprise web development, cloud infrastructure, and custom software solutions for global clients.';
     $seoKeywords    = 'web development company USA, software development company Canada, healthcare software development, SaaS development services, custom web application development, enterprise software development, telehealth platform development, HIPAA compliant software development, cloud application development, React development company, Node.js development services, AWS cloud solutions, healthcare app development company, custom software agency Europe';
     $seoCanonical   = url('/case-studies');
-    $seoImage       = asset('assets/images/case-study-og.jpg');
+    $seoImage       = asset('assets/images/kawach.png');
 @endphp
 
 <!-- Schema.org JSON-LD -->
 @push('schema')
-@verbatim
+@php
+    $caseStudiesSchema = [
+        "@context" => "https://schema.org",
+        "@graph" => [
+            [
+                "@type" => "CollectionPage",
+                "name" => "Kawach Case Studies",
+                "url" => $seoCanonical,
+                "description" => $seoDescription,
+                "publisher" => [
+                    "@type" => "Organization",
+                    "name" => "Kawach Technology",
+                    "url" => url('/'),
+                    "logo" => [
+                        "@type" => "ImageObject",
+                        "url" => asset('assets/images/kawach.png'),
+                    ],
+                ],
+            ],
+            [
+                "@type" => "ItemList",
+                "itemListElement" => $caseStudies->values()->map(function ($page, $i) {
+                    return [
+                        "@type" => "ListItem",
+                        "position" => $i + 1,
+                        "url" => url('/case-studies/' . $page->slug),
+                        "name" => $page->title,
+                    ];
+                })->all(),
+            ],
+            [
+                "@type" => "BreadcrumbList",
+                "itemListElement" => [
+                    ["@type" => "ListItem", "position" => 1, "name" => "Home", "item" => url('/')],
+                    ["@type" => "ListItem", "position" => 2, "name" => "Case Studies", "item" => url('/case-studies')],
+                ],
+            ],
+        ],
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Kawach Case Studies",
-  "url": "{{ url()->current() }}",
-  "description": "Explore software development case studies including healthcare platforms, SaaS products, enterprise applications, and cloud-native solutions developed by Kawach.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Kawach",
-    "url": "{{ url('/') }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ asset('assets/images/logo.png') }}"
-    }
-  }
-}
+{!! json_encode($caseStudiesSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
-@endverbatim
 @endpush
 
 @include('layouts.head')

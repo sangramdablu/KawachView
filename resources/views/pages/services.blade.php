@@ -8,6 +8,50 @@
     $seoCanonical   = url('/services');
 @endphp
 
+@push('schema')
+@php
+    $servicesSchema = [
+        "@context" => "https://schema.org",
+        "@graph" => [
+            [
+                "@type" => "CollectionPage",
+                "name" => $seoTitle,
+                "url" => $seoCanonical,
+                "description" => $seoDescription,
+            ],
+            [
+                "@type" => "ItemList",
+                "itemListElement" => $services->values()->map(function ($page, $i) {
+                    return [
+                        "@type" => "ListItem",
+                        "position" => $i + 1,
+                        "item" => [
+                            "@type" => "Service",
+                            "name" => $page->title,
+                            "url" => url('/services/' . $page->slug),
+                            "provider" => [
+                                "@type" => "Organization",
+                                "name" => "Kawach Technology",
+                            ],
+                        ],
+                    ];
+                })->all(),
+            ],
+            [
+                "@type" => "BreadcrumbList",
+                "itemListElement" => [
+                    ["@type" => "ListItem", "position" => 1, "name" => "Home", "item" => url('/')],
+                    ["@type" => "ListItem", "position" => 2, "name" => "Services", "item" => url('/services')],
+                ],
+            ],
+        ],
+    ];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($servicesSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
@@ -41,21 +85,6 @@
       z-index: 3;
     }
 </style>
-@verbatim
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "{{ $services->title }}",
-  "description": "{{ $services->meta_description }}",
-  "provider": {
-    "@type": "Organization",
-    "name": "Kawach Technology",
-    "url": "{{ url('/') }}"
-  }
-}
-</script>
-@endverbatim
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7J267VF"

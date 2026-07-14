@@ -6,7 +6,7 @@
     $seoCanonical   = url('/services/' . $service->slug);
     $seoImage       = $service->featured_image
         ? config('app.images_path') . $service->featured_image
-        : asset('images/og-default.jpg');
+        : asset('assets/images/kawach.png');
 @endphp
 
 @push('schema')

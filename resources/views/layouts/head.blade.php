@@ -3,14 +3,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Mobile Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="google-site-verification" content="64vVBBuPHvwTVNFAg7ZkphMawtQoVbKcHUy4wWmclAI" />
 
     @php
         // Falls back to homepage defaults if a page doesn't set them.
-        $seoTitle       = $seoTitle       ?? 'Affordable Custom Software Development Company in USA & Europe | Kawach Technology';
-        $seoDescription = $seoDescription ?? 'Kawach Technology helps startups and enterprises build scalable web, mobile, AI, SaaS, and cloud applications at affordable pricing for USA and European businesses.';
+        $seoTitle       = $seoTitle       ?? 'Software Development Company USA & Europe | Kawach Tech';
+        $seoDescription = $seoDescription ?? 'Kawach Technology builds scalable web, mobile, AI, SaaS, and cloud software for startups and enterprises across the USA and Europe. Get a free consultation.';
         $seoKeywords    = $seoKeywords    ?? 'software development company, custom software development, mobile app development company, web development services, AI software development, affordable software company USA, enterprise software solutions, SaaS development company, cloud application development, software outsourcing company';
         $seoCanonical   = $seoCanonical   ?? url()->current();
-        $seoImage       = $seoImage       ?? asset('assets/images/og-image.jpg');
+        $usingFallbackImage = !isset($seoImage);
+        $seoImage       = $seoImage       ?? asset('assets/images/kawach.png');
+        $seoImageWidth  = $seoImageWidth  ?? ($usingFallbackImage ? 225 : null);
+        $seoImageHeight = $seoImageHeight ?? ($usingFallbackImage ? 225 : null);
         $seoRobots      = $seoRobots      ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
         $seoType        = $seoType        ?? 'website';
     @endphp
@@ -24,12 +28,15 @@
     <meta name="robots" content="{{ $seoRobots }}">
     <!-- Canonical -->
     <link rel="canonical" href="{{ $seoCanonical }}">
+    <!-- Hreflang: single global English site serving US & Europe -->
+    <link rel="alternate" href="{{ $seoCanonical }}" hreflang="en">
+    <link rel="alternate" href="{{ $seoCanonical }}" hreflang="en-us">
+    <link rel="alternate" href="{{ $seoCanonical }}" hreflang="en-gb">
+    <link rel="alternate" href="{{ $seoCanonical }}" hreflang="x-default">
     <!-- Language -->
     <meta http-equiv="content-language" content="en">
-    <!-- GEO SEO -->
-    <meta name="geo.region" content="US">
-    <meta name="geo.position" content="40.7128;-74.0060">
-    <meta name="ICBM" content="40.7128, -74.0060">
+    <!-- GEO SEO (accurate HQ; service area is global — see areaServed in schema) -->
+    <meta name="geo.region" content="IN">
     <!-- Brand -->
     <meta name="application-name" content="Kawach Technology">
     <!-- Theme -->
@@ -41,8 +48,10 @@
     <meta property="og:description" content="{{ $seoDescription }}">
     <meta property="og:url" content="{{ $seoCanonical }}">
     <meta property="og:image" content="{{ $seoImage }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    @if($seoImageWidth && $seoImageHeight)
+    <meta property="og:image:width" content="{{ $seoImageWidth }}">
+    <meta property="og:image:height" content="{{ $seoImageHeight }}">
+    @endif
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $seoTitle }}">
@@ -79,14 +88,15 @@
               "url" => asset('assets/images/kawach.png'),
           ],
           "description" => "Kawach Technology is a custom software development company providing web development, mobile app development, AI solutions, cloud applications, and enterprise software services for businesses worldwide.",
-          "sameAs" => [
-              "https://www.linkedin.com/",
-              "https://www.facebook.com/",
-              "https://twitter.com/",
-          ],
+          "email" => config('app.main_email'),
+          "sameAs" => array_values(array_filter([
+              config('app.linkedin'),
+              config('app.insta'),
+          ])),
           "contactPoint" => [
               "@type" => "ContactPoint",
-              "telephone" => "+91-XXXXXXXXXX",
+              "telephone" => config('app.mobile'),
+              "email" => config('app.main_email'),
               "contactType" => "customer support",
               "areaServed" => [
                   "US",
