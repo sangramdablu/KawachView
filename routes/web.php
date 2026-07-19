@@ -7,6 +7,7 @@ use App\Http\Controllers\FrontBlogController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\HireDeveloperController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
@@ -31,6 +32,10 @@ Route::get('/services', [PagesController::class, 'showServices'])->name('service
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');
 Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetails'])->name('case-studies.show');
+
+Route::get('/hire-developer', [HireDeveloperController::class, 'index'])->name('hire-developer.index');
+Route::get('/hire-developer/{slug}', [HireDeveloperController::class, 'show'])->name('hire-developer.show')->where('slug', '[a-z0-9\-]+');
+Route::post('/hire-developer/{slug}', [HireDeveloperController::class, 'store'])->name('hire-developer.store')->where('slug', '[a-z0-9\-]+')->middleware('throttle:5,1');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');

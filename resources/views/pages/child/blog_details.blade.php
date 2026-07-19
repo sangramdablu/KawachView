@@ -2,13 +2,14 @@
 <html lang="en">
 
 @php
-    $seoTitle       = ($post->meta_title ?? $post->title) . ' — Kawach Technology';
-    $seoDescription = $post->meta_description;
-    $seoKeywords    = $post->focus_keyword;
-    $seoRobots      = $post->seo->robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
-    $seoCanonical   = $post->seo->canonical_url ?? url()->current();
-    $seoImage       = config('app.images_path') . ($post->seo->twitter_image ?? $post->featured_image);
+    $seoTitle       = ($post->seo?->og_title ?? $post->meta_title ?? $post->title) . ' — Kawach Technology';
+    $seoDescription = $post->seo?->og_description ?? $post->meta_description;
+    $seoKeywords    = $post->seo?->meta_keywords ?? $post->focus_keyword ?? $post->tags->pluck('name')->implode(', ');
+    $seoRobots      = $post->seo?->robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    $seoCanonical   = $post->seo?->canonical_url ?? url()->current();
+    $seoImage       = config('app.images_path') . ($post->seo?->og_image ?? $post->seo?->twitter_image ?? $post->featured_image);
     $seoType        = 'article';
+    $twitterCard    = $post->seo?->twitter_card ?? 'summary_large_image';
 @endphp
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
@@ -215,16 +216,19 @@
     @php
       $schema = [
           "@context" => "https://schema.org",
-          "@type" => $post->seo->schema_type ?? "BlogPosting",
+          "@type" => $post->seo?->schema_type ?? "BlogPosting",
           "headline" => $post->title,
           "description" => strip_tags($post->meta_description),
           "image" => config('app.images_path') . $post->featured_image,
-          "datePublished" => optional($post->published_at)->toIso8601String(),
-          "dateModified" => optional($post->updated_at)->toIso8601String(),
+          "datePublished" => $post->published_at?->toIso8601String(),
+          "dateModified" => $post->updated_at?->toIso8601String(),
+          "keywords" => $seoKeywords,
+          "articleSection" => $post->category?->name,
+          "wordCount" => str_word_count(strip_tags($post->content)),
 
           "author" => [
               "@type" => "Person",
-              "name" => optional($post->author)->name ?: "Kawach Team",
+              "name" => $post->author?->name ?: "Kawach Team",
           ],
 
           "publisher" => [
@@ -242,10 +246,38 @@
               "@id" => url()->current(),
           ],
       ];
+
+      $breadcrumbSchema = [
+          "@context" => "https://schema.org",
+          "@type" => "BreadcrumbList",
+          "itemListElement" => [
+              [
+                  "@type" => "ListItem",
+                  "position" => 1,
+                  "name" => "Home",
+                  "item" => url('/'),
+              ],
+              [
+                  "@type" => "ListItem",
+                  "position" => 2,
+                  "name" => "Blog",
+                  "item" => route('blog'),
+              ],
+              [
+                  "@type" => "ListItem",
+                  "position" => 3,
+                  "name" => $post->title,
+                  "item" => url()->current(),
+              ],
+          ],
+      ];
     @endphp
 
     <script type="application/ld+json">
       {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+    <script type="application/ld+json">
+      {!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
     @endpush
 
@@ -383,6 +415,14 @@
           <div class="article-tags">
               @foreach($post->tags as $tag)
                   <a href="{{ url('/blog/tag/' . $tag->slug) }}" class="tag-pill"> #{{ $tag->name }}</a>
+              @endforeach
+          </div>
+        @endif
+        @if($seoKeywords)
+          <div class="article-keywords">
+              <span class="keywords-label"><i class="fas fa-tags"></i> Keywords:</span>
+              @foreach(array_filter(array_map('trim', explode(',', $seoKeywords))) as $keyword)
+                  <span class="keyword-chip">{{ $keyword }}</span>
               @endforeach
           </div>
         @endif

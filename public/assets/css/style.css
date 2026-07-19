@@ -4969,6 +4969,33 @@
         background: #e8f1fd;
         }
 
+        /* Keywords (SEO/AEO) */
+        .article-keywords {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        padding-top: 16px;
+        margin-top: 16px;
+        }
+        .keywords-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .keyword-chip {
+        background: #eef4fc;
+        border: 1.5px solid var(--border-light);
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        color: var(--primary-blue);
+        }
+
         /* ── AUTHOR BIO ── */
         .author-bio {
         background: var(--white);

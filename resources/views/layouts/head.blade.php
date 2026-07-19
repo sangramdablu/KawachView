@@ -17,6 +17,7 @@
         $seoImageHeight = $seoImageHeight ?? ($usingFallbackImage ? 225 : null);
         $seoRobots      = $seoRobots      ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
         $seoType        = $seoType        ?? 'website';
+        $twitterCard    = $twitterCard    ?? 'summary_large_image';
     @endphp
 
     <!-- Primary SEO -->
@@ -53,7 +54,7 @@
     <meta property="og:image:height" content="{{ $seoImageHeight }}">
     @endif
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="{{ $twitterCard }}">
     <meta name="twitter:title" content="{{ $seoTitle }}">
     <meta name="twitter:description" content="{{ $seoDescription }}">
     <meta name="twitter:image" content="{{ $seoImage }}">

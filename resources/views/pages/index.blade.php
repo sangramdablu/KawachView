@@ -18,6 +18,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FEATURES STRIP -->
 @include('layouts.features')
 
+
 <!-- SERVICES -->
 @include('layouts.service')
 
@@ -30,6 +31,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ── INDUSTRIES ── -->
 @include('layouts.industry')
 
+{{-- <!-- ── CLIENT VOICES ── -->
+@include('layouts.client-voices') --}}
+
+<!-- ── RESULTS ── -->
+@include('layouts.results')
 <!-- ── TESTIMONIALS ── -->
 @include('layouts.testmonials')
 

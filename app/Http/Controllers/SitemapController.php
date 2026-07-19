@@ -26,6 +26,7 @@ class SitemapController extends Controller
                 '/about/founder' => ['monthly', '0.5', 'pages.founder.neha'],
                 '/services' => ['weekly', '0.9', 'pages.services'],
                 '/case-studies' => ['weekly', '0.8', 'pages.case-studies'],
+                '/hire-developer' => ['monthly', '0.8', 'pages.hire-developer'],
                 '/blog' => ['daily', '0.8', 'pages.blog'],
                 '/contact' => ['monthly', '0.7', 'pages.contact'],
                 '/privacy-policy' => ['yearly', '0.3', 'pages.privacy-policy'],
@@ -40,6 +41,15 @@ class SitemapController extends Controller
                     'lastmod' => $this->viewLastMod($view),
                     'changefreq' => $changefreq,
                     'priority' => $priority,
+                ]);
+            }
+
+            foreach (array_keys(config('hire_developers')) as $slug) {
+                $urls->push([
+                    'loc' => url('/hire-developer/' . $slug),
+                    'lastmod' => null,
+                    'changefreq' => 'monthly',
+                    'priority' => '0.6',
                 ]);
             }
 

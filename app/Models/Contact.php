@@ -29,15 +29,14 @@ class Contact extends Model
      *
      * - email         → encrypted string  (searchable via manual hash if needed)
      * - phone         → encrypted string
-     * - message       → encrypted string
-     * - services      → encrypted JSON array
+     * - message       → plain string (not encrypted, needs to stay readable/searchable)
+     * - services      → plain JSON array (not encrypted)
      * - ip_address    → encrypted string
      */
     protected $casts = [
         'email'      => 'encrypted',
         'phone'      => 'encrypted',
-        'message'    => 'encrypted',
-        'services'   => 'encrypted:array',
+        'services'   => 'array',
         'ip_address' => 'encrypted',
     ];
     /**
