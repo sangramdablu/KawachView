@@ -18,7 +18,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FEATURES STRIP -->
 @include('layouts.features')
 
-
 <!-- SERVICES -->
 @include('layouts.service')
 
