@@ -70,7 +70,7 @@
         <div class="hero-mockup position-relative">
             <!-- Image -->
             <div class="hero-image">
-              <img src="{{ asset('assets/images/kawach_modelgirl.png') }}" alt="Kawach Technology — custom software development, cloud, security and support solutions">
+              <img src="{{ config('app.images_path') . 'assets/images/kawach_modelgirl.png' }}" alt="Kawach Technology — custom software development, cloud, security and support solutions">
             </div>
 
           {{-- <div class="laptop-frame">
