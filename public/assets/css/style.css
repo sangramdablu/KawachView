@@ -341,57 +341,23 @@
 
     .hero-illustration {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: flex-end;
+      align-self: flex-end;
+      /* Pull down past the section's own bottom padding so the image's
+         bottom edge lands exactly on the hero-section's bottom border. */
+      margin-bottom: -60px;
     }
 
     .hero-mockup {
       width: 100%;
-      max-width: 500px;
       position: relative;
-    }
-
-    .floating-card {
-      position: absolute;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--white);
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-
-    .floating-card .fc-dot {
-      width: 8px;
-      height: 8px;
-      background: #4caf50;
-      border-radius: 50%;
-    }
-
-    .fc-1 {
-      top: 20px;
-      right: -30px;
-    }
-
-    .fc-2 {
-      bottom: 40px;
-      right: -40px;
-    }
-
-    .fc-3 {
-      top: 60px;
-      left: -40px;
     }
 
     .hero-image {
       position: relative;
       width: 100%;
-      max-width: 500px;
+      max-width: 720px;
       margin: 0 auto;
     }
 
@@ -399,13 +365,14 @@
       width: 100%;
       height: auto;
       display: block;
-      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
+      -webkit-mask-image: radial-gradient(ellipse 85% 130% at 50% 100%, #000 55%, transparent 100%);
+      mask-image: radial-gradient(ellipse 85% 130% at 50% 100%, #000 55%, transparent 100%);
     }
 
     /* 📱 Tablet */
     @media (max-width: 992px) {
       .hero-image {
-        max-width: 420px;
+        max-width: 520px;
       }
     }
 
@@ -413,18 +380,21 @@
     @media (max-width: 768px) {
       .hero-illustration {
         justify-content: center;
+        align-items: center;
+        align-self: auto;
         margin-top: 40px;
+        margin-bottom: 0;
       }
 
       .hero-image {
-        max-width: 320px;
+        max-width: 380px;
       }
     }
 
     /* 📱 Small Mobile */
     @media (max-width: 480px) {
       .hero-image {
-        max-width: 260px;
+        max-width: 300px;
       }
     }
     

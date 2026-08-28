@@ -68,19 +68,9 @@
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
         <div class="hero-mockup position-relative">
-          <!-- Floating cards -->
-          <div class="floating-card fc-1">
-            <div class="fc-dot"></div> System Active
-          </div>
-          <div class="floating-card fc-2">
-            <i class="fas fa-chart-line" style="color:#4caf50;font-size:0.8rem;"></i> +150% Growth
-          </div>
-          <div class="floating-card fc-3">
-            <i class="fas fa-shield-alt" style="color:#2196f3;font-size:0.8rem;"></i> Secure
-          </div>
             <!-- Image -->
             <div class="hero-image">
-              <img src="assets/images/kawach-software-solutions.png" alt="Software Illustration">
+              <img src="{{ asset('assets/images/kawach_modelgirl.png') }}" alt="Kawach Technology — custom software development, cloud, security and support solutions">
             </div>
 
           {{-- <div class="laptop-frame">
