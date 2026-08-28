@@ -402,7 +402,7 @@
     <!-- CTA -->
     <div class="clutch-cta">
       <div class="clutch-cta-text">
-        <strong>See all 8 verified reviews on Clutch.co</strong>
+        <strong>See all verified reviews on Clutch.co</strong>
         <span>We maintain a 4.9 ★ rating across all project categories — verified by real clients.</span>
       </div>
       <a href="https://clutch.co/profile/kawach-technology" target="_blank" rel="noopener noreferrer" class="btn-clutch">

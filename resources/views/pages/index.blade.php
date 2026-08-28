@@ -35,6 +35,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ── RESULTS ── -->
 @include('layouts.results')
+
+<!-- ── TRUST & ASSURANCE ── -->
+@include('layouts.trust')
+
 <!-- ── TESTIMONIALS ── -->
 @include('layouts.testmonials')
 

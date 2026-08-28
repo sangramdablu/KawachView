@@ -2,34 +2,79 @@
 {{-- ── SERVICES CAROUSEL SECTION ──────────────────────────────── --}}
 @php
 use App\Models\Page;
-$services = Page::with('service')->published()->byType('service')->orderBy('sort_order')->limit(10)->get();
-$gradients = [ 'svc-blue', 'svc-purple', 'svc-teal', 'svc-green', 'svc-amber', 'svc-coral' ];
-$icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas fa-shield-alt', 'fas fa-database', 'fas fa-paint-brush', 'fas fa-robot', 'fas fa-chart-line', 'fas fa-mobile-alt', 'fas fa-server' ];
+$services = Page::with('service')->published()->byType('service')->orderBy('sort_order')->orderBy('id')->get();
+$gradients = ['svc-blue', 'svc-purple', 'svc-teal', 'svc-green', 'svc-amber', 'svc-coral'];
+
+if (!function_exists('svcIcon')) {
+    function svcIcon(string $title): string {
+        $t = strtolower($title);
+        return match(true) {
+            str_contains($t, 'custom software') => 'fas fa-laptop-code',
+            str_contains($t, 'web') => 'fas fa-globe',
+            str_contains($t, 'mobile') || str_contains($t, 'app develop') => 'fas fa-mobile-alt',
+            str_contains($t, 'ui') || str_contains($t, 'ux') || str_contains($t, 'design') => 'fas fa-palette',
+            str_contains($t, 'cloud') || str_contains($t, 'devops') => 'fas fa-cloud',
+            str_contains($t, 'ai') || str_contains($t, 'machine learning') || str_contains($t, 'ml') => 'fas fa-brain',
+            str_contains($t, 'dedicated') || str_contains($t, 'team') || str_contains($t, 'hire') => 'fas fa-users-gear',
+            str_contains($t, 'quality') || str_contains($t, 'testing') || str_contains($t, 'qa') => 'fas fa-vial',
+            str_contains($t, 'api') || str_contains($t, 'integration') => 'fas fa-plug',
+            str_contains($t, 'security') => 'fas fa-shield-alt',
+            str_contains($t, 'database') => 'fas fa-database',
+            default => 'fas fa-layer-group',
+        };
+    }
+}
 @endphp
 <style>
 .services-section{
-    padding:90px 0;
+    padding:100px 0;
     overflow:hidden;
     position:relative;
-    background: #f0f4fb;
+    background:var(--bg-light, #f4f6fb);
 }
 
-.section-title{
-    font-size:clamp(2rem,4vw,3rem);
+.services-section .section-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.78rem;
     font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--primary-blue, #1a73e8);
+    background:rgba(26,115,232,.08);
+    padding:6px 16px;
+    border-radius:30px;
+    margin-bottom:18px;
 }
 
-.section-subtitle{
-    color:#6b7280;
+.services-section .section-title{
+    font-size:clamp(2rem,4vw,2.75rem);
+    font-weight:800;
+    color:var(--text-dark, #1a1a2e);
+    max-width:680px;
+    margin:0 auto 18px;
+    line-height:1.2;
 }
+
+.services-section .section-intro{
+    max-width:700px;
+    margin:0 auto;
+    color:var(--text-muted, #6c757d);
+    font-size:1.02rem;
+    line-height:1.75;
+}
+
+/* SLIDER */
 
 .svc-slider{
     position:relative;
+    margin-top:56px;
 }
 
 .svc-track{
     display:flex;
-    gap:24px;
+    gap:26px;
 
     overflow-x:auto;
     overflow-y:hidden;
@@ -39,6 +84,7 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 
     scrollbar-width:none;
     -ms-overflow-style:none;
+    padding:6px 6px 10px;
 }
 
 .svc-track::-webkit-scrollbar{
@@ -48,36 +94,30 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 /* CARD */
 
 .svc-card{
-    flex:0 0 calc(25% - 18px);
+    flex:0 0 calc(33.333% - 18px);
     display:flex;
     flex-direction:column;
 
     background:#fff;
-
     border-radius:20px;
-
     overflow:hidden;
 
-    border:1px solid rgba(15,23,42,.06);
+    border:1px solid var(--border-light, #e2e8f0);
+    box-shadow:0 6px 18px rgba(15,23,42,.06);
 
-    box-shadow:
-    0 6px 18px rgba(15,23,42,.06);
-
+    text-decoration:none;
     transition:.35s ease;
-
     scroll-snap-align:start;
 }
 
 .svc-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(33,150,243,.25);
-
-    box-shadow:
-    0 18px 40px rgba(15,23,42,.14);
+    transform:translateY(-8px);
+    border-color:transparent;
+    box-shadow:0 24px 48px rgba(13,27,62,.16);
 }
 
 .svc-card-img{
-    height:150px;
+    height:170px;
     flex-shrink:0;
     overflow:hidden;
     position:relative;
@@ -87,20 +127,13 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     content:'';
     position:absolute;
     inset:0;
-
-    background:
-    linear-gradient(
-    to top,
-    rgba(0,0,0,.35),
-    transparent 60%
-    );
+    background:linear-gradient(to top, rgba(0,0,0,.4), transparent 65%);
 }
 
 .svc-card-image{
     width:100%;
     height:100%;
     object-fit:cover;
-
     transition:.7s ease;
 }
 
@@ -108,7 +141,7 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     transform:scale(1.08);
 }
 
-/* Fallback gradient backgrounds when a service has no featured image */
+/* Category gradient banners — shown when a service has no featured image */
 .svc-blue  { background:linear-gradient(135deg,#2196f3,#1565c0); }
 .svc-purple{ background:linear-gradient(135deg,#8e5bf2,#5e35b1); }
 .svc-teal  { background:linear-gradient(135deg,#26c6da,#00838f); }
@@ -116,55 +149,96 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 .svc-amber { background:linear-gradient(135deg,#ffb74d,#e8760a); }
 .svc-coral { background:linear-gradient(135deg,#ff7a7a,#d63f3f); }
 
+.svc-card-img.has-photo .svc-icon-badge{
+    position:absolute;
+    left:20px;
+    bottom:-24px;
+    z-index:2;
+}
+
 .svc-icon-wrap{
     display:flex;
     align-items:center;
     justify-content:center;
-
     height:100%;
 }
 
-.svc-icon-wrap i{
-    font-size:26px;
+.svc-icon-wrap i,
+.svc-icon-badge i{
+    font-size:24px;
     color:#fff;
+}
 
+.svc-icon-wrap i{
     width:56px;
     height:56px;
     display:flex;
     align-items:center;
     justify-content:center;
-
     background:rgba(255,255,255,.18);
     border:1px solid rgba(255,255,255,.35);
     border-radius:16px;
     backdrop-filter:blur(4px);
 }
 
+.svc-icon-badge{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--primary-blue,#1a73e8),var(--accent-blue,#2196f3));
+    box-shadow:0 8px 20px rgba(26,115,232,.35);
+    border:3px solid #fff;
+}
+
 .svc-card-body{
-    padding:20px 22px 22px;
+    padding:24px 24px 22px;
     display:flex;
     flex-direction:column;
     flex:1;
 }
 
+.svc-card-img.has-photo + .svc-card-body{
+    padding-top:36px;
+}
+
 .svc-card-title{
-    font-size:1.08rem;
+    font-size:1.1rem;
     font-weight:700;
+    color:var(--text-dark, #1a1a2e);
     margin-bottom:8px;
     line-height:1.35;
 }
 
 .svc-card-desc{
-    color:#6b7280;
+    color:var(--text-muted, #6c757d);
     line-height:1.6;
     font-size:.92rem;
     margin-bottom:16px;
-    flex:1;
 
     display:-webkit-box;
-    -webkit-line-clamp:2;
+    -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
     overflow:hidden;
+}
+
+.svc-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.svc-tag{
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--light-navy, #1f3a6e);
+    background:var(--bg-light, #f4f6fb);
+    border:1px solid var(--border-light, #e2e8f0);
+    padding:4px 11px;
+    border-radius:20px;
 }
 
 .svc-read-more{
@@ -172,15 +246,15 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     align-items:center;
     gap:8px;
     align-self:flex-start;
+    margin-top:auto;
 
-    text-decoration:none;
-    font-weight:600;
+    font-weight:700;
     font-size:.88rem;
-    color:#0d6efd;
+    color:var(--primary-blue, #1a73e8);
 
     padding:8px 16px;
     border-radius:30px;
-    background:rgba(13,110,253,.08);
+    background:rgba(26,115,232,.08);
     transition:.3s;
 }
 
@@ -189,12 +263,12 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     transition:.3s;
 }
 
-.svc-read-more:hover{
-    background:#0d6efd;
+.svc-card:hover .svc-read-more{
+    background:var(--primary-blue, #1a73e8);
     color:#fff;
 }
 
-.svc-read-more:hover i{
+.svc-card:hover .svc-read-more i{
     transform:translateX(3px);
 }
 
@@ -203,64 +277,125 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
 .svc-arrow{
     width:54px;
     height:54px;
-
     border:none;
     border-radius:50%;
-
     background:#fff;
-
     position:absolute;
     top:50%;
-
     transform:translateY(-50%);
-
     z-index:20;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.12);
-
+    color:var(--text-dark, #1a1a2e);
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
     transition:.3s;
 }
 
 .svc-arrow:hover{
+    background:var(--primary-blue, #1a73e8);
+    color:#fff;
     transform:translateY(-50%) scale(1.08);
 }
 
-.svc-prev{
-    left:-25px;
+.svc-prev{ left:-25px; }
+.svc-next{ right:-25px; }
+
+.svc-empty{
+    width:100%;
+    text-align:center;
+    padding:60px 0;
+    color:var(--text-muted, #6c757d);
 }
 
-.svc-next{
-    right:-25px;
+/* CTA STRIP */
+
+.svc-cta-strip{
+    margin-top:50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+    background:linear-gradient(120deg,var(--dark-navy,#0d1b3e),var(--mid-navy,#162447));
+    border-radius:20px;
+    padding:38px 42px;
+}
+
+.svc-cta-strip-text h3{
+    color:#fff;
+    font-size:1.35rem;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.svc-cta-strip-text p{
+    color:rgba(255,255,255,.7);
+    font-size:.95rem;
+    margin:0;
+}
+
+.svc-cta-strip-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.svc-cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:10px;
+    font-weight:700;
+    font-size:.92rem;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:.3s;
+    border:1px solid transparent;
+}
+
+.svc-cta-btn.primary{
+    background:var(--primary-blue, #1a73e8);
+    color:#fff;
+}
+
+.svc-cta-btn.primary:hover{
+    background:var(--accent-blue, #2196f3);
+    color:#fff;
+}
+
+.svc-cta-btn.outline{
+    border-color:rgba(255,255,255,.3);
+    color:#fff;
+    background:transparent;
+}
+
+.svc-cta-btn.outline:hover{
+    background:rgba(255,255,255,.1);
+    border-color:rgba(255,255,255,.5);
 }
 
 /* LAPTOP */
-
 @media(max-width:1200px){
-
     .svc-card{
-        flex:0 0 calc(33.333% - 16px);
+        flex:0 0 calc(50% - 13px);
     }
-
 }
 
 /* TABLET */
-
 @media(max-width:991px){
-
-    .svc-card{
-        flex:0 0 calc(50% - 12px);
-    }
-
     .svc-arrow{
         display:none;
     }
-
+    .svc-cta-strip{
+        justify-content:center;
+        text-align:center;
+    }
 }
 
 /* MOBILE */
-
 @media(max-width:576px){
+    .services-section{
+        padding:70px 0;
+    }
 
     .services-section .container{
         max-width:100%;
@@ -268,10 +403,15 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
         padding-right:0;
     }
 
-    .section-title,
-    .section-subtitle{
+    .section-eyebrow,
+    .services-section .section-title,
+    .services-section .section-intro{
         padding-left:20px;
         padding-right:20px;
+    }
+
+    .svc-slider{
+        margin-top:36px;
     }
 
     .svc-track{
@@ -285,45 +425,60 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
     }
 
     .svc-card-img{
-        height:140px;
+        height:150px;
     }
 
-    .svc-card-body{
-        padding:18px 20px 20px;
+    .svc-cta-strip{
+        margin:36px 20px 0;
+        padding:30px 24px;
     }
-
 }
 </style>
-<section class="services-section">
+<section class="services-section" id="services" aria-labelledby="services-heading">
     <div class="container">
-        <div class="text-center mb-5">
-            <div class="section-divider"></div>
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">
-                Expert Solutions for Every Industry
+        <div class="text-center mb-2">
+            <span class="section-eyebrow"><i class="fas fa-layer-group"></i> Our Expertise</span>
+            <h2 class="section-title mx-auto" id="services-heading">
+                Software Development Services Built Around Your Business
+            </h2>
+            <p class="section-intro">
+                Kawach Technology delivers end-to-end software development services — from custom software and
+                web &amp; mobile applications to cloud, AI, and dedicated engineering teams — helping startups and
+                enterprises across the USA, Europe, and beyond ship reliable products faster.
             </p>
         </div>
 
         <div class="svc-slider">
-            <button class="svc-arrow svc-prev">
+            <button class="svc-arrow svc-prev" aria-label="Previous services">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <div class="svc-track" id="svcTrack">
+            <div class="svc-track" id="svcTrack" itemscope itemtype="https://schema.org/ItemList">
                 @forelse($services as $service)
                 @php
-                $gradient = $gradients[$loop->index % count($gradients)];
-                $icon = $icons[$loop->index % count($icons)];
+                    $gradient = $gradients[$loop->index % count($gradients)];
+                    $icon = svcIcon($service->title);
+                    $features = $service->service->features ?? [];
+                    if (is_string($features)) { $features = json_decode($features, true) ?? []; }
+                    $tagList = collect($features)->pluck('title')->filter()->take(3);
+                    $hasImage = !empty($service->featured_image);
                 @endphp
-                <div class="svc-card">
-                    <div class="svc-card-img {{ $gradient }}">
-                        @if($service->featured_image)
+                <a href="{{ route('pages.child.sevice_details', $service->slug) }}"
+                   class="svc-card"
+                   itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
+                    <meta itemprop="position" content="{{ $loop->iteration }}">
+                    <meta itemprop="url" content="{{ route('pages.child.sevice_details', $service->slug) }}">
 
+                    <div class="svc-card-img {{ $gradient }} {{ $hasImage ? 'has-photo' : '' }}">
+                        @if($hasImage)
                         <img
                             src="{{ config('app.images_path').$service->featured_image }}"
                             alt="{{ $service->image_alt ?? $service->title }}"
                             title="{{ $service->image_title ?? $service->title }}"
                             class="svc-card-image"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            itemprop="image"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.classList.remove('has-photo'); this.parentElement.querySelector('.svc-icon-badge').style.display='none'; this.parentElement.querySelector('.svc-icon-wrap').style.display='flex';">
+                        <div class="svc-icon-badge"><i class="{{ $icon }}"></i></div>
                         <div class="svc-icon-wrap" style="display:none;">
                             <i class="{{ $icon }}"></i>
                         </div>
@@ -333,72 +488,86 @@ $icons = [ 'fas fa-laptop-code', 'fas fa-brain', 'fas fa-cloud-upload-alt', 'fas
                         </div>
                         @endif
                     </div>
+
                     <div class="svc-card-body">
-                        <h3 class="svc-card-title">
+                        <h3 class="svc-card-title" itemprop="name">
                             {{ $service->title }}
                         </h3>
-                        <p class="svc-card-desc">
-                            {{ \Illuminate\Support\Str::words( strip_tags( $service->service->short_description ?? $service->service->content ?? '' ), 12, '...' ) }}
+                        <p class="svc-card-desc" itemprop="description">
+                            {{ \Illuminate\Support\Str::words(strip_tags($service->service->short_description ?? $service->service->content ?? ''), 24, '...') }}
                         </p>
-                        <a href="{{ route('pages.child.sevice_details', $service->slug) }}" class="svc-read-more">
+
+                        @if($tagList->isNotEmpty())
+                        <div class="svc-tags">
+                            @foreach($tagList as $tag)
+                            <span class="svc-tag">{{ $tag }}</span>
+                            @endforeach
+                        </div>
+                        @endif
+
+                        <span class="svc-read-more">
                             Read More <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                        </span>
                     </div>
-                </div>
+                </a>
                 @empty
-                <div class="w-100 text-center py-5">
-                    No Services Available
-                </div>
+                <div class="svc-empty">No Services Available</div>
                 @endforelse
             </div>
-            <button class="svc-arrow svc-next">
+            <button class="svc-arrow svc-next" aria-label="Next services">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
+        </div>
+
+        <div class="svc-cta-strip">
+            <div class="svc-cta-strip-text">
+                <h3>Don't see exactly what you need?</h3>
+                <p>Talk to our team about a tailored solution for your project.</p>
+            </div>
+            <div class="svc-cta-strip-actions">
+                <a href="{{ route('services') }}" class="svc-cta-btn outline">
+                    <i class="fas fa-th-large"></i> View All Services
+                </a>
+                <button class="svc-cta-btn primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">
+                    <i class="fas fa-comments"></i> Get Free Consultation
+                </button>
+            </div>
         </div>
     </div>
 </section>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('#svcTrack');
-    const next  = document.querySelector('.svc-next');
-    const prev  = document.querySelector('.svc-prev');
+    if (!track) return;
+
+    const next = document.querySelector('.svc-next');
+    const prev = document.querySelector('.svc-prev');
     let autoSlide;
+
     function getScrollAmount(){
         const card = track.querySelector('.svc-card');
         if(!card) return 300;
-        const gap = 24;
+        const gap = 26;
         return card.offsetWidth + gap;
     }
+
     next?.addEventListener('click', () => {
-        track.scrollBy({
-            left:getScrollAmount(),
-            behavior:'smooth'
-        });
+        track.scrollBy({ left:getScrollAmount(), behavior:'smooth' });
     });
 
     prev?.addEventListener('click', () => {
-        track.scrollBy({
-            left:-getScrollAmount(),
-            behavior:'smooth'
-        });
+        track.scrollBy({ left:-getScrollAmount(), behavior:'smooth' });
     });
 
     function startAuto(){
         autoSlide = setInterval(() => {
-            const maxScroll =
-            track.scrollWidth - track.clientWidth;
+            const maxScroll = track.scrollWidth - track.clientWidth;
             if(track.scrollLeft >= maxScroll - 10){
-                track.scrollTo({
-                    left:0,
-                    behavior:'smooth'
-                });
+                track.scrollTo({ left:0, behavior:'smooth' });
             }else{
-                track.scrollBy({
-                    left:getScrollAmount(),
-                    behavior:'smooth'
-                });
+                track.scrollBy({ left:getScrollAmount(), behavior:'smooth' });
             }
-        },4000);
+        }, 4000);
     }
 
     function stopAuto(){
@@ -407,12 +576,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.addEventListener('mouseenter', stopAuto);
     track.addEventListener('mouseleave', startAuto);
-
     track.addEventListener('touchstart', stopAuto);
     track.addEventListener('touchend', startAuto);
 
     startAuto();
-
 });
-
 </script>

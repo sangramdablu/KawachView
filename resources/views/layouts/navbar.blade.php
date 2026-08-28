@@ -24,13 +24,13 @@
     position: absolute;
     top: calc(100% + 16px);
     left: 50%;
-    width: 620px;
+    width: 780px;
     max-width: calc(100vw - 32px);
     background: #fff;
     border: 1px solid #e2e8f0;
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: 0 24px 60px rgba(13,27,62,.22);
-    padding: 22px 26px 18px;
+    padding: 0 0 20px;
     z-index: 1050;
     opacity: 0;
     visibility: hidden;
@@ -50,10 +50,46 @@
                 visibility 0s linear 0s;
   }
 
+  /* ── Header ───────────────────────────────────────────────────── */
+  .nav-hire-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 26px 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #edf2fa;
+    background: linear-gradient(180deg, #f7faff, transparent);
+    border-radius: 16px 16px 0 0;
+  }
+  .nav-hire-header-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1a73e8, #2196f3);
+    color: #fff;
+    font-size: 18px;
+  }
+  .nav-hire-header-title {
+    font-size: .98rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    line-height: 1.3;
+  }
+  .nav-hire-header-sub {
+    font-size: .78rem;
+    color: #6c757d;
+    margin: 2px 0 0;
+  }
+
   .nav-hire-panel-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px 28px;
+    gap: 8px 32px;
+    padding: 0 26px;
   }
   .nav-hire-col-title {
     font-size: .72rem;
@@ -64,23 +100,39 @@
     margin-bottom: 6px;
     padding: 0 10px;
   }
-  .nav-hire-col + .nav-hire-col { border-left: 1px solid #edf2fa; padding-left: 24px; }
+  .nav-hire-col + .nav-hire-col { border-left: 1px solid #edf2fa; padding-left: 28px; }
 
   .nav-hire-link {
-    display: block;
-    padding: 8px 10px;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 10px;
+    border-radius: 10px;
     font-size: .85rem;
     font-weight: 600;
     color: #1a1a2e;
     text-decoration: none;
     transition: background .18s, color .18s;
   }
+  .nav-hire-link-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #e8f1fd;
+    color: #1a73e8;
+    font-size: .82rem;
+    transition: background .18s, color .18s;
+  }
   .nav-hire-link:hover { background: #edf4fe; color: #1a73e8; }
+  .nav-hire-link:hover .nav-hire-link-icon { background: #1a73e8; color: #fff; }
 
   .nav-hire-footer {
     margin-top: 14px;
-    padding-top: 14px;
+    padding: 14px 26px 0;
     border-top: 1px solid #edf2fa;
     display: flex;
     align-items: center;
@@ -121,7 +173,15 @@
       transition: max-height .32s ease;
     }
     .nav-hire-panel { max-height: 0; }
-    .nav-hire-panel.open { max-height: 640px; }
+    .nav-hire-panel.open { max-height: 720px; }
+    .nav-hire-header {
+      padding: 10px 10px 12px;
+      margin-bottom: 6px;
+      background: transparent;
+      border-bottom-color: rgba(255,255,255,.1);
+    }
+    .nav-hire-header-title { color: #fff; }
+    .nav-hire-header-sub { color: #aac4e0; }
     .nav-hire-panel-inner {
       grid-template-columns: 1fr;
       gap: 2px;
@@ -130,7 +190,9 @@
     .nav-hire-col + .nav-hire-col { border-left: none; padding-left: 0; margin-top: 8px; }
     .nav-hire-col-title { color: #7fa8e0; }
     .nav-hire-link { color: #ccd9ea; }
+    .nav-hire-link-icon { background: rgba(255,255,255,.08); color: #7fa8e0; }
     .nav-hire-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .nav-hire-link:hover .nav-hire-link-icon { background: #1a73e8; color: #fff; }
     .nav-hire-footer { border-top-color: rgba(255,255,255,.1); padding: 12px 10px 4px; }
     .nav-hire-footer span { color: #aac4e0; }
   }
@@ -154,13 +216,23 @@
             Hire Developer <i class="fas fa-chevron-down nav-hire-arrow"></i>
           </a>
           <div class="nav-hire-panel" id="hireDevPanel">
+            <div class="nav-hire-header">
+              <div class="nav-hire-header-icon"><i class="fas fa-user-tie"></i></div>
+              <div>
+                <div class="nav-hire-header-title">Hire Developers</div>
+                <p class="nav-hire-header-sub">Pick a role or technology stack to get started</p>
+              </div>
+            </div>
             <div class="nav-hire-panel-inner">
               @foreach (['By Role', 'By Technology'] as $hireCategory)
                 <div class="nav-hire-col">
                   <div class="nav-hire-col-title">{{ $hireCategory }}</div>
                   @foreach (config('hire_developers') as $hireSlug => $hireDev)
                     @continue($hireDev['category'] !== $hireCategory)
-                    <a href="{{ route('hire-developer.show', $hireSlug) }}" class="nav-hire-link">{{ $hireDev['title'] }}</a>
+                    <a href="{{ route('hire-developer.show', $hireSlug) }}" class="nav-hire-link">
+                      <span class="nav-hire-link-icon"><i class="{{ $hireDev['icon'] }}"></i></span>
+                      {{ $hireDev['title'] }}
+                    </a>
                   @endforeach
                 </div>
               @endforeach
@@ -182,13 +254,18 @@
 
 <script>
 (function () {
+  var item    = document.querySelector('.nav-hire-item');
   var trigger = document.getElementById('hireDevTrigger');
   var panel   = document.getElementById('hireDevPanel');
-  if (!trigger || !panel) return;
+  if (!item || !trigger || !panel) return;
+
+  var isDesktop = function () { return window.matchMedia('(min-width: 992px)').matches; };
+  var closeTimer = null;
 
   function isOpen() { return panel.classList.contains('open'); }
 
   function openPanel() {
+    clearTimeout(closeTimer);
     panel.classList.add('open');
     trigger.classList.add('open');
     trigger.setAttribute('aria-expanded', 'true');
@@ -198,13 +275,26 @@
     trigger.classList.remove('open');
     trigger.setAttribute('aria-expanded', 'false');
   }
+  function closePanelDelayed() {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(closePanel, 180);
+  }
   function togglePanel(e) {
     e.preventDefault();
     e.stopPropagation();
     isOpen() ? closePanel() : openPanel();
   }
 
-  trigger.addEventListener('click', togglePanel);
+  // Desktop: hover the trigger or the panel to open; leaving both closes it
+  // (with a short delay so moving the cursor from the link into the panel
+  // doesn't cause a flicker). Click still works too, for touch/keyboard.
+  item.addEventListener('mouseenter', function () { if (isDesktop()) openPanel(); });
+  item.addEventListener('mouseleave', function () { if (isDesktop()) closePanelDelayed(); });
+
+  trigger.addEventListener('click', function (e) {
+    if (isDesktop()) { e.preventDefault(); e.stopPropagation(); return; }
+    togglePanel(e);
+  });
 
   document.addEventListener('click', function (e) {
     if (isOpen() && !panel.contains(e.target) && e.target !== trigger) closePanel();

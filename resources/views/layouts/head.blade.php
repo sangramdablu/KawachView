@@ -19,7 +19,6 @@
         $seoType        = $seoType        ?? 'website';
         $twitterCard    = $twitterCard    ?? 'summary_large_image';
     @endphp
-
     <!-- Primary SEO -->
     <title>{{ $seoTitle }}</title>
     <meta name="description" content="{{ $seoDescription }}">
@@ -137,9 +136,9 @@
       ];
   @endphp
 
-  <script type="application/ld+json">
-      {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
-  </script>
+    <script type="application/ld+json">
+        {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 
   @php
       $websiteSchema = [
