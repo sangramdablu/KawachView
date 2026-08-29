@@ -33,14 +33,14 @@
               </div>
             </div>
 
-            <div class="contact-item">
+            {{-- <div class="contact-item">
               <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div>
                 <div class="contact-item-label">Our Office</div>
                 <div class="contact-item-value">123 Tech Avenue, Suite 400</div>
                 <div class="contact-item-sub">New York, NY 10001, USA</div>
               </div>
-            </div>
+            </div> --}}
 
             <div class="contact-item" style="border-bottom:none;padding-bottom:0;">
               <div class="contact-item-icon"><i class="fas fa-share-alt"></i></div>

@@ -84,6 +84,131 @@
       position: relative;
       z-index: 3;
     }
+
+    /* ── Decorative background for the "Expert Solutions" grid
+         (cubes, blurred blobs, dot pattern, arc) — same treatment as
+         the homepage services carousel. ── */
+    .solutions-section{
+        position:relative;
+        overflow:hidden;
+    }
+
+    .solutions-section .container{
+        position:relative;
+        z-index:1;
+    }
+
+    .svc-bg-deco{
+        position:absolute;
+        inset:0;
+        z-index:0;
+        overflow:hidden;
+        pointer-events:none;
+    }
+
+    .svc-blob{
+        position:absolute;
+        border-radius:50%;
+        filter:blur(50px);
+    }
+
+    .svc-blob-1{
+        width:340px;
+        height:340px;
+        left:-120px;
+        bottom:-100px;
+        background:radial-gradient(circle,rgba(59,130,246,.30),transparent 70%);
+    }
+
+    .svc-blob-2{
+        width:220px;
+        height:220px;
+        right:-60px;
+        top:-40px;
+        background:radial-gradient(circle,rgba(99,102,241,.22),transparent 70%);
+    }
+
+    .svc-blob-3{
+        width:200px;
+        height:200px;
+        right:6%;
+        bottom:6%;
+        background:radial-gradient(circle,rgba(59,130,246,.18),transparent 70%);
+    }
+
+    .svc-dots{
+        position:absolute;
+        top:-20px;
+        right:0;
+        width:360px;
+        height:360px;
+        background-image:radial-gradient(rgba(26,115,232,.35) 1.5px, transparent 1.5px);
+        background-size:18px 18px;
+        -webkit-mask-image:radial-gradient(circle at 70% 30%, #000 0%, transparent 70%);
+        mask-image:radial-gradient(circle at 70% 30%, #000 0%, transparent 70%);
+        opacity:.6;
+    }
+
+    .svc-arc{
+        position:absolute;
+        top:50%;
+        left:-260px;
+        width:480px;
+        height:480px;
+        border:1px solid rgba(26,115,232,.16);
+        border-radius:50%;
+        transform:translateY(-50%);
+    }
+
+    /* Isometric CSS cubes */
+    .svc-cube{
+        position:absolute;
+    }
+
+    .svc-cube .cube-face{
+        position:absolute;
+        width:100%;
+        height:100%;
+    }
+
+    .svc-cube .cube-top{
+        background:linear-gradient(135deg,#dce9ff,#aecbfa);
+        clip-path:polygon(50% 0%, 100% 25%, 50% 50%, 0% 25%);
+    }
+
+    .svc-cube .cube-left{
+        background:linear-gradient(135deg,#9fc0f0,#7fa8e6);
+        clip-path:polygon(0% 25%, 50% 50%, 50% 100%, 0% 75%);
+    }
+
+    .svc-cube .cube-right{
+        background:linear-gradient(135deg,#bcd6fa,#8fb6ee);
+        clip-path:polygon(50% 50%, 100% 25%, 100% 75%, 50% 100%);
+    }
+
+    .svc-cube-1{
+        top:8%;
+        left:3%;
+        width:92px;
+        height:106px;
+        opacity:.85;
+        transform:rotate(-4deg);
+    }
+
+    .svc-cube-2{
+        top:38%;
+        right:9%;
+        width:52px;
+        height:60px;
+        opacity:.4;
+        transform:rotate(8deg);
+    }
+
+    @media(max-width:576px){
+        .svc-cube-1{ width:60px; height:70px; }
+        .svc-cube-2{ display:none; }
+        .svc-dots{ width:220px; height:220px; }
+    }
 </style>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -169,6 +294,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ── EXPERT SOLUTIONS ── -->
 <section class="solutions-section">
+  <div class="svc-bg-deco" aria-hidden="true">
+      <div class="svc-arc"></div>
+      <div class="svc-dots"></div>
+      <div class="svc-blob svc-blob-1"></div>
+      <div class="svc-blob svc-blob-2"></div>
+      <div class="svc-blob svc-blob-3"></div>
+      <div class="svc-cube svc-cube-1">
+          <div class="cube-face cube-top"></div>
+          <div class="cube-face cube-left"></div>
+          <div class="cube-face cube-right"></div>
+      </div>
+      <div class="svc-cube svc-cube-2">
+          <div class="cube-face cube-top"></div>
+          <div class="cube-face cube-left"></div>
+          <div class="cube-face cube-right"></div>
+      </div>
+  </div>
   <div class="container">
     <div class="text-center mb-5">
       <div class="section-divider"></div>

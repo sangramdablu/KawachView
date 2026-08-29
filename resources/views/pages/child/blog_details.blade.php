@@ -112,6 +112,28 @@
           backdrop-filter:blur(12px);
       }
 
+      .like-btn-pill{
+          cursor:pointer;
+          transition:background .2s, border-color .2s, color .2s, transform .12s;
+      }
+      .like-btn-pill i{
+          color:#ff6b81;
+      }
+      .like-btn-pill:hover{
+          background:rgba(255,255,255,.16);
+          transform:translateY(-1px);
+      }
+      .like-btn-pill.is-liked{
+          background:rgba(255,77,109,.18);
+          border-color:rgba(255,77,109,.4);
+          color:#fff;
+      }
+      .like-btn-pill:disabled{
+          opacity:.6;
+          cursor:default;
+          transform:none;
+      }
+
       .hero-author{
           display:flex;
           align-items:center;
@@ -210,6 +232,105 @@
               display:none;
           }
 
+      }
+
+      /* ── COMMENTS ── */
+      .comments-card{
+          margin-top:28px;
+      }
+      .comment-empty{
+          color:var(--text-muted);
+          font-size:0.88rem;
+          padding:6px 0 4px;
+      }
+      .comment-list{
+          list-style:none;
+          margin:0 0 8px;
+          padding:0;
+      }
+      .comment-item{
+          display:flex;
+          gap:14px;
+          padding:16px 0;
+          border-bottom:1px solid var(--border-light);
+      }
+      .comment-item:first-child{
+          padding-top:6px;
+      }
+      .comment-item:last-child{
+          border-bottom:none;
+      }
+      .comment-avatar{
+          width:40px;
+          height:40px;
+          border-radius:50%;
+          flex-shrink:0;
+          background:linear-gradient(135deg,#2563eb,#1d4ed8);
+          color:#fff;
+          font-weight:800;
+          font-family:'Nunito',sans-serif;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+      }
+      .comment-meta{
+          display:flex;
+          align-items:center;
+          gap:10px;
+          margin-bottom:4px;
+          flex-wrap:wrap;
+      }
+      .comment-name{
+          font-family:'Nunito',sans-serif;
+          font-weight:800;
+          font-size:0.88rem;
+          color:var(--text-dark);
+      }
+      .comment-date{
+          font-size:0.72rem;
+          color:var(--text-muted);
+      }
+      .comment-text{
+          font-size:0.86rem;
+          color:var(--text-dark);
+          line-height:1.6;
+          margin:0;
+      }
+      .comment-alert{
+          border-radius:8px;
+          padding:12px 16px;
+          font-size:0.85rem;
+          margin-bottom:16px;
+      }
+      .comment-alert-success{
+          background:#e6f7ef;
+          color:#0f7a45;
+          border:1px solid #bfe8d3;
+      }
+      .comment-form-wrap{
+          margin-top:18px;
+          padding-top:18px;
+          border-top:1px solid var(--border-light);
+      }
+      .comment-form .form-control{
+          font-size:0.86rem;
+      }
+      .comment-note{
+          display:inline-block;
+          margin-left:12px;
+          font-size:0.76rem;
+          color:var(--text-muted);
+      }
+      /* Honeypot — kept in the accessibility tree & focusable so real
+         hidden-input-skipping bots still catch it, but never visible. */
+      .hp-field{
+          position:absolute;
+          width:1px;
+          height:1px;
+          overflow:hidden;
+          clip:rect(0 0 0 0);
+          clip-path:inset(50%);
+          white-space:nowrap;
       }
     </style>
     @push('schema')
@@ -349,7 +470,10 @@
         <span class="hero-meta-pill"><i class="fas fa-calendar-alt"></i> {{ $post->published_at->format('M d, Y') }}</span>
         <span class="hero-meta-pill"><i class="fas fa-clock"></i> {{ $post->reading_time ?? 5 }} min read</span>
         <span class="hero-meta-pill"><i class="fas fa-eye"></i> {{ number_format($post->views) }} views</span>
-        <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> {{ $post->comments_count ?? 0 }} comments</span>
+        <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> {{ $commentCount }} comments</span>
+        <button type="button" id="likeBtn" class="hero-meta-pill like-btn-pill {{ $liked ? 'is-liked' : '' }}" data-slug="{{ $post->slug }}" aria-pressed="{{ $liked ? 'true' : 'false' }}">
+          <i class="{{ $liked ? 'fas' : 'far' }} fa-heart"></i> <span id="likeCount">{{ $likeCount }}</span> <span id="likeLabel">{{ $liked ? 'Liked' : 'Like' }}</span>
+        </button>
       </div>
     </div>
     <!-- Hero thumb -->
@@ -456,6 +580,72 @@
             @endif
         </div>
 
+        <!-- COMMENTS -->
+        <div class="sidebar-card comments-card" id="comments">
+          <div class="sidebar-heading">Comments ({{ $commentCount }})</div>
+
+          @if(session('success'))
+            <div class="comment-alert comment-alert-success">
+              <i class="fas fa-check-circle"></i> {{ session('success') }}
+            </div>
+          @endif
+
+          @if($commentCount === 0)
+            <p class="comment-empty">Be the first to comment.</p>
+          @else
+            <ul class="comment-list">
+              @foreach($comments as $comment)
+                <li class="comment-item">
+                  <div class="comment-avatar">{{ strtoupper(substr($comment->name, 0, 1)) }}</div>
+                  <div class="comment-body">
+                    <div class="comment-meta">
+                      <span class="comment-name">{{ $comment->name }}</span>
+                      <span class="comment-date">{{ $comment->created_at->diffForHumans() }}</span>
+                    </div>
+                    <p class="comment-text">{{ $comment->comment }}</p>
+                  </div>
+                </li>
+              @endforeach
+            </ul>
+          @endif
+
+          <div class="comment-form-wrap">
+            <div class="sidebar-heading" style="margin-top:8px;">Leave a Comment</div>
+            <form method="POST" action="{{ route('blog.comment.store', $post->slug) }}" class="comment-form">
+              @csrf
+
+              {{-- Honeypot: visually hidden (off-screen), NOT type="hidden" —
+                   some spam bots skip real hidden inputs but still fill this. --}}
+              <div class="hp-field" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" placeholder="Your name">
+                  @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-md-6">
+                  <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Your email">
+                  @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-12">
+                  <textarea name="comment" rows="4" class="form-control @error('comment') is-invalid @enderror" placeholder="Write your comment…">{{ old('comment') }}</textarea>
+                  @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-sidebar-subscribe" style="width:auto;padding:11px 26px;">
+                    <i class="fas fa-paper-plane me-1"></i> Post Comment
+                  </button>
+                  <span class="comment-note">Comments are reviewed before they appear publicly.</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /COMMENTS -->
+
       </div><!-- /col main -->
 
       <!-- SIDEBAR -->
@@ -507,49 +697,55 @@
         </div>
 
         <!-- Related Articles -->
+        @if($related->count())
+        @php
+            if (!function_exists('relatedMiniIcon')) {
+                // Keyword-matched against the category name rather than an exact
+                // slug match — real category names won't reliably equal one of
+                // the handful of short CSS codes (ai/cloud/dev/saas/sec/mob).
+                function relatedMiniIcon(?string $category): string {
+                    $c = strtolower($category ?? '');
+                    return match(true) {
+                        str_contains($c, 'ai') || str_contains($c, 'machine learning') => 'fas fa-robot',
+                        str_contains($c, 'cloud') || str_contains($c, 'devops') => 'fas fa-server',
+                        str_contains($c, 'saas') || str_contains($c, 'software') => 'fas fa-cubes',
+                        str_contains($c, 'security') => 'fas fa-shield-alt',
+                        str_contains($c, 'mobile') => 'fas fa-mobile-alt',
+                        str_contains($c, 'web') || str_contains($c, 'design') => 'fas fa-globe',
+                        str_contains($c, 'data') => 'fas fa-database',
+                        default => 'fas fa-newspaper',
+                    };
+                }
+                function relatedMiniThumbClass(?string $category): string {
+                    $c = strtolower($category ?? '');
+                    return match(true) {
+                        str_contains($c, 'ai') || str_contains($c, 'machine learning') => 'thumb-ai',
+                        str_contains($c, 'cloud') || str_contains($c, 'devops') => 'thumb-cloud',
+                        str_contains($c, 'saas') || str_contains($c, 'software') => 'thumb-saas',
+                        str_contains($c, 'security') => 'thumb-sec',
+                        str_contains($c, 'mobile') => 'thumb-mob',
+                        str_contains($c, 'data') => 'thumb-data',
+                        default => 'thumb-dev',
+                    };
+                }
+            }
+        @endphp
         <div class="sidebar-card" style="margin-top:24px;">
           <div class="sidebar-heading">Related Articles</div>
 
-          <a href="#" class="related-mini">
-            <div class="related-thumb-mini thumb-ai">
-              <i class="fas fa-robot"></i>
+          @foreach($related as $item)
+          <a href="{{ route('blog.show', $item->slug) }}" class="related-mini">
+            <div class="related-thumb-mini {{ relatedMiniThumbClass($item->category->name ?? null) }}">
+              <i class="{{ relatedMiniIcon($item->category->name ?? null) }}"></i>
             </div>
             <div>
-              <div class="related-mini-title">RAG vs Fine-Tuning: Which Approach Makes Your LLM Actually Useful?</div>
-              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 8 min read</div>
+              <div class="related-mini-title">{{ $item->title }}</div>
+              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> {{ $item->reading_time ?? 5 }} min read</div>
             </div>
           </a>
-
-          <a href="#" class="related-mini">
-            <div class="related-thumb-mini thumb-cloud">
-              <i class="fas fa-server"></i>
-            </div>
-            <div>
-              <div class="related-mini-title">Kubernetes vs Docker Swarm: Choosing the Right Orchestration for Scale</div>
-              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 6 min read</div>
-            </div>
-          </a>
-
-          <a href="#" class="related-mini">
-            <div class="related-thumb-mini thumb-saas">
-              <i class="fas fa-cubes"></i>
-            </div>
-            <div>
-              <div class="related-mini-title">Building Multi-Tenant SaaS: Architecture Patterns That Scale</div>
-              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 8 min read</div>
-            </div>
-          </a>
-
-          <a href="#" class="related-mini">
-            <div class="related-thumb-mini" style="background:linear-gradient(135deg,#0d1b3e,#1565c0);">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div>
-              <div class="related-mini-title">Zero Trust Architecture: A Step-by-Step Implementation Guide</div>
-              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> 7 min read</div>
-            </div>
-          </a>
+          @endforeach
         </div>
+        @endif
 
         <!-- Share sticky -->
         <div class="sidebar-card">
@@ -657,7 +853,7 @@
         <div class="footer-heading">Contact Us</div>
         <div class="footer-contact-item"><i class="fas fa-envelope"></i> hello@KawachTech.io</div>
         <div class="footer-contact-item"><i class="fas fa-phone"></i> +1 234 567 9900</div>
-        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, NY</div>
+        {{-- <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, NY</div> --}}
         <div class="footer-social">
           <a href="#" class="social-btn social-linkedin"><i class="fab fa-linkedin-in"></i></a>
           <a href="#" class="social-btn social-twitter"><i class="fab fa-twitter"></i></a>
@@ -730,6 +926,48 @@
           const id = "section-" + index;
           heading.id = id;
           toc.innerHTML += ` <li> <a href="#${id}"> <span class="toc-num">${index + 1}</span> ${heading.innerText} </a> </li> `;
+      });
+  });
+
+  // Like button — anonymous, one-per-visitor (IP), toggleable
+  document.addEventListener('DOMContentLoaded', () => {
+      const likeBtn = document.getElementById('likeBtn');
+      if (!likeBtn) return;
+
+      likeBtn.addEventListener('click', () => {
+          const slug = likeBtn.dataset.slug;
+          const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+          likeBtn.disabled = true;
+
+          fetch(`/blog/${slug}/like`, {
+              method: 'POST',
+              headers: {
+                  'X-CSRF-TOKEN': csrfToken,
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+              },
+          })
+          .then(res => res.json())
+          .then(data => {
+              const countEl = document.getElementById('likeCount');
+              const labelEl = document.getElementById('likeLabel');
+              const icon = likeBtn.querySelector('i');
+              countEl.textContent = data.count;
+              likeBtn.setAttribute('aria-pressed', data.liked ? 'true' : 'false');
+              if (data.liked) {
+                  likeBtn.classList.add('is-liked');
+                  icon.classList.remove('far');
+                  icon.classList.add('fas');
+                  labelEl.textContent = 'Liked';
+              } else {
+                  likeBtn.classList.remove('is-liked');
+                  icon.classList.remove('fas');
+                  icon.classList.add('far');
+                  labelEl.textContent = 'Like';
+              }
+          })
+          .catch(() => {})
+          .finally(() => { likeBtn.disabled = false; });
       });
   });
 </script>

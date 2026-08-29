@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\BlogSeo;
+use App\Models\BlogComment;
+use App\Models\BlogLike;
 
 class Blog extends Model
 {
@@ -53,5 +55,13 @@ class Blog extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function comments() {
+        return $this->hasMany(BlogComment::class);
+    }
+
+    public function likes() {
+        return $this->hasMany(BlogLike::class);
     }
 }

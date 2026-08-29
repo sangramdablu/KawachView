@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/blog', [FrontBlogController::class, 'index'])->name('blog');
 Route::get('/blog/{slug}', [FrontBlogController::class, 'show'])->name('blog.show')->where('slug', '[a-z0-9\-]+');
+Route::post('/blog/{slug}/like', [FrontBlogController::class, 'toggleLike'])->name('blog.like')->where('slug', '[a-z0-9\-]+')->middleware('throttle:20,1');
+Route::post('/blog/{slug}/comment', [FrontBlogController::class, 'storeComment'])->name('blog.comment.store')->where('slug', '[a-z0-9\-]+')->middleware('throttle:5,1');
 Route::post('/newsletter/subscribe', [FrontBlogController::class, 'newsletterSubscribe'])->name('newsletter.subscribe');
 
 

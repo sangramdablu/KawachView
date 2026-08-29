@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\BlogComment;
+use App\Models\BlogLike;
 use Illuminate\Support\Str;
 
 class FrontBlogController extends Controller
@@ -137,7 +139,7 @@ class FrontBlogController extends Controller
      * GET /blog/{slug}
      * Single blog post detail page.
      */
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
         $post = Blog::with(['category', 'tags', 'seo', 'author'])
             ->where('slug', $slug)
@@ -168,7 +170,87 @@ class FrontBlogController extends Controller
             ->oldest('published_at')
             ->first(['id','title','slug']);
 
-        return view('pages.child.blog_details', compact('post', 'related', 'prev', 'next'));
+        // ── Likes & Comments — always a live COUNT(), never a cached number ──
+        $likeCount = $post->likes()->count();
+        $liked = $post->likes()->where('ip_address', $request->ip())->exists();
+        $comments = $post->comments()->approved()->oldest()->get();
+        $commentCount = $comments->count();
+
+        return view('pages.child.blog_details', compact('post', 'related', 'prev', 'next', 'likeCount', 'liked', 'comments', 'commentCount'));
+    }
+
+    /**
+     * POST /blog/{slug}/like
+     *
+     * Anonymous, one-per-visitor (tracked by IP), toggleable like.
+     * The unique(blog_id, ip_address) DB constraint is the real source of
+     * truth — this just adds/removes the row and reports the fresh count.
+     */
+    public function toggleLike(Request $request, string $slug)
+    {
+        $post = Blog::where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        $ip = $request->ip();
+
+        $existing = BlogLike::where('blog_id', $post->id)
+            ->where('ip_address', $ip)
+            ->first();
+
+        if ($existing) {
+            $existing->delete();
+            $liked = false;
+        } else {
+            BlogLike::create([
+                'blog_id' => $post->id,
+                'ip_address' => $ip,
+            ]);
+            $liked = true;
+        }
+
+        return response()->json([
+            'liked' => $liked,
+            'count' => $post->likes()->count(),
+        ]);
+    }
+
+    /**
+     * POST /blog/{slug}/comment
+     *
+     * Comments are moderated: every submission is stored as 'pending' and
+     * only shown publicly once an admin approves it from KawachAdmin.
+     */
+    public function storeComment(Request $request, string $slug)
+    {
+        $post = Blog::where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        // Honeypot — a hidden-but-focusable field real visitors never fill in.
+        // Bots that auto-fill every input trip it; we pretend success so we
+        // don't tip them off that they were caught.
+        if ($request->filled('website')) {
+            return back()->with('success', 'Thanks! Your comment is awaiting approval and will appear once reviewed.');
+        }
+
+        $validated = $request->validate([
+            'name'    => 'required|string|max:100',
+            'email'   => 'required|email|max:255',
+            'comment' => 'required|string|min:3|max:2000',
+        ]);
+
+        BlogComment::create([
+            'blog_id'    => $post->id,
+            'name'       => $validated['name'],
+            'email'      => $validated['email'],
+            'comment'    => $validated['comment'],
+            'status'     => 'pending',
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+
+        return back()->with('success', 'Thanks! Your comment is awaiting approval and will appear once reviewed.');
     }
 
     /**

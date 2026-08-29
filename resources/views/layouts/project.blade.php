@@ -21,31 +21,52 @@ $fallbackProjects = [
         'desc'  => 'A scalable online storefront with custom checkout, inventory sync, and analytics dashboard.',
         'tag'   => 'E-Commerce',
         'tech'  => ['Laravel', 'React', 'Stripe'],
-        'thumb' => 'proj-thumb-ecom',
+        'icon'  => 'fas fa-cart-shopping',
     ],
     [
         'title' => 'AI-Powered CRM',
         'desc'  => 'A CRM with automated lead scoring and AI-assisted follow-ups to shorten sales cycles.',
         'tag'   => 'AI & CRM',
         'tech'  => ['Python', 'Node.js', 'PostgreSQL'],
-        'thumb' => 'proj-thumb-crm',
+        'icon'  => 'fas fa-robot',
     ],
     [
         'title' => 'Logistics Management System',
         'desc'  => 'A real-time fleet and inventory tracking platform built to streamline supply chain operations.',
         'tag'   => 'Logistics',
         'tech'  => ['Vue.js', 'Laravel', 'AWS'],
-        'thumb' => 'proj-thumb-lms',
+        'icon'  => 'fas fa-truck-fast',
     ],
 ];
 
 $slotsNeeded = max(0, 3 - $recentCaseStudies->count());
 $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
+
+if (!function_exists('projMockIcon')) {
+    function projMockIcon(?string $industry): string {
+        $i = strtolower($industry ?? '');
+        return match(true) {
+            str_contains($i, 'health') => 'fas fa-stethoscope',
+            str_contains($i, 'real estate') => 'fas fa-building',
+            str_contains($i, 'logistic') => 'fas fa-truck-fast',
+            str_contains($i, 'commerce') || str_contains($i, 'retail') => 'fas fa-cart-shopping',
+            str_contains($i, 'ai') || str_contains($i, 'crm') => 'fas fa-robot',
+            str_contains($i, 'finance') || str_contains($i, 'bank') => 'fas fa-chart-line',
+            default => 'fas fa-display',
+        };
+    }
+}
 @endphp
 <style>
 .projects-section{
-    padding:100px 0;
-    background:var(--white, #fff);
+    --pj-navy:#0b1b3a;
+    --pj-blue:#1677ff;
+    --pj-blue-soft:rgba(22,119,255,.08);
+    --pj-muted:#5b6b8c;
+    --pj-border:#e7ecf5;
+
+    padding:110px 0;
+    background:#fff;
 }
 
 .projects-section .section-eyebrow{
@@ -56,26 +77,31 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     font-weight:700;
     letter-spacing:1.5px;
     text-transform:uppercase;
-    color:var(--primary-blue, #1a73e8);
-    background:rgba(26,115,232,.08);
-    padding:6px 16px;
+    color:var(--pj-blue);
+    background:var(--pj-blue-soft);
+    padding:7px 18px;
     border-radius:30px;
-    margin-bottom:18px;
+    margin-bottom:24px;
 }
 
 .projects-section .section-title{
-    font-size:clamp(2rem,4vw,2.75rem);
+    font-size:clamp(2.1rem,4vw,2.9rem);
     font-weight:800;
-    color:var(--text-dark, #1a1a2e);
-    max-width:680px;
-    margin:0 auto 18px;
-    line-height:1.2;
+    color:var(--pj-navy);
+    max-width:640px;
+    margin:0 auto 20px;
+    line-height:1.22;
+}
+
+.projects-section .section-title .title-accent{
+    display:block;
+    color:var(--pj-blue);
 }
 
 .projects-section .section-intro{
-    max-width:700px;
+    max-width:640px;
     margin:0 auto;
-    color:var(--text-muted, #6c757d);
+    color:var(--pj-muted);
     font-size:1.02rem;
     line-height:1.75;
 }
@@ -85,25 +111,50 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 .proj-stats{
     display:flex;
     justify-content:center;
+    align-items:stretch;
     flex-wrap:wrap;
-    gap:44px;
-    margin-top:38px;
-    padding-bottom:38px;
-    border-bottom:1px solid var(--border-light, #e2e8f0);
+    margin-top:52px;
+    padding-bottom:52px;
+}
+
+.proj-stat-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:0 40px;
+    border-right:1px solid var(--pj-border);
+}
+
+.proj-stat-item:last-child{
+    border-right:none;
+}
+
+.proj-stat-icon{
+    width:46px;
+    height:46px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:var(--pj-blue-soft);
+    color:var(--pj-blue);
+    font-size:18px;
 }
 
 .proj-stat-val{
-    font-size:1.7rem;
+    font-size:1.6rem;
     font-weight:800;
-    color:var(--primary-blue, #1a73e8);
+    color:var(--pj-navy);
     line-height:1.1;
 }
 
 .proj-stat-label{
-    font-size:.82rem;
-    color:var(--text-muted, #6c757d);
+    font-size:.8rem;
+    color:var(--pj-muted);
     font-weight:600;
-    margin-top:4px;
+    margin-top:2px;
+    white-space:nowrap;
 }
 
 /* GRID */
@@ -112,31 +163,34 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:28px;
-    margin-top:48px;
+    margin-top:8px;
 }
 
 .proj-card{
     display:flex;
     flex-direction:column;
+    height:100%;
     background:#fff;
-    border:1px solid var(--border-light, #e2e8f0);
-    border-radius:20px;
+    border:1px solid var(--pj-border);
+    border-radius:18px;
     overflow:hidden;
     text-decoration:none;
-    transition:.35s ease;
+    box-shadow:0 2px 10px rgba(11,27,58,.04);
+    transition:.3s ease;
 }
 
 .proj-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-6px);
     border-color:transparent;
-    box-shadow:0 24px 48px rgba(13,27,62,.14);
+    box-shadow:0 20px 44px rgba(11,27,58,.12);
 }
 
 .proj-thumb{
     position:relative;
-    height:220px;
+    height:230px;
     flex-shrink:0;
     overflow:hidden;
+    background:linear-gradient(180deg,#f6f8fc 0%,#eef2f9 100%);
 }
 
 .proj-thumb img{
@@ -148,15 +202,11 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 }
 
 .proj-card:hover .proj-thumb img{
-    transform:scale(1.08);
+    transform:scale(1.06);
 }
 
-.proj-thumb-ecom{ background:linear-gradient(135deg,#2c3e50,#3498db); }
-.proj-thumb-crm { background:linear-gradient(135deg,#1a3a6e,#2196f3); }
-.proj-thumb-lms { background:linear-gradient(135deg,#0d2137,#1976d2); }
-.proj-thumb-default{ background:linear-gradient(135deg,var(--dark-navy,#0d1b3e),var(--accent-blue,#2196f3)); }
-
-.proj-thumb-mockup{
+/* Product-mockup illustration — used when there's no real photo */
+.proj-mock{
     position:absolute;
     inset:0;
     display:flex;
@@ -164,41 +214,70 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     justify-content:center;
 }
 
-.proj-mock-browser{
-    width:78%;
-    background:rgba(255,255,255,.1);
-    border-radius:8px;
-    padding:10px;
-    backdrop-filter:blur(4px);
-    border:1px solid rgba(255,255,255,.2);
+.proj-mock-device{
+    width:74%;
+    background:#fff;
+    border-radius:10px;
+    padding:14px;
+    box-shadow:0 18px 34px rgba(11,27,58,.12);
+    border:1px solid var(--pj-border);
 }
 
 .proj-mock-bar{
     display:flex;
     gap:5px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .proj-mock-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-}
-
-.proj-mock-dot.r{ background:#ff5f57; }
-.proj-mock-dot.y{ background:#febc2e; }
-.proj-mock-dot.g{ background:#28c840; }
-
-.proj-mock-line{
+    width:6px;
     height:6px;
-    border-radius:3px;
-    background:rgba(255,255,255,.3);
-    margin-bottom:7px;
+    border-radius:50%;
+    background:var(--pj-border);
 }
 
-.proj-mock-line.short{ width:50%; }
-.proj-mock-line.med{ width:75%; }
-.proj-mock-line.full{ width:100%; }
+.proj-mock-cards{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+}
+
+.proj-mock-cards span{
+    flex:1;
+    height:26px;
+    border-radius:6px;
+    background:var(--pj-blue-soft);
+}
+
+.proj-mock-chart{
+    display:flex;
+    align-items:flex-end;
+    gap:5px;
+    height:44px;
+}
+
+.proj-mock-chart span{
+    flex:1;
+    border-radius:3px 3px 0 0;
+    background:linear-gradient(180deg,var(--pj-blue),#5aa2ff);
+    opacity:.85;
+}
+
+.proj-mock-accessory{
+    position:absolute;
+    right:22px;
+    bottom:20px;
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 10px 22px rgba(11,27,58,.14);
+    color:var(--pj-blue);
+    font-size:16px;
+}
 
 .proj-tag{
     position:absolute;
@@ -207,11 +286,10 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     z-index:2;
     font-size:.72rem;
     font-weight:700;
-    letter-spacing:.3px;
-    color:#fff;
-    background:rgba(13,27,62,.55);
-    backdrop-filter:blur(6px);
-    border:1px solid rgba(255,255,255,.25);
+    letter-spacing:.2px;
+    color:var(--pj-navy);
+    background:#fff;
+    box-shadow:0 4px 12px rgba(11,27,58,.1);
     padding:6px 14px;
     border-radius:20px;
 }
@@ -224,7 +302,7 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     max-width:180px;
     background:#fff;
     border-radius:14px;
-    box-shadow:0 10px 24px rgba(13,27,62,.16);
+    box-shadow:0 10px 24px rgba(11,27,58,.16);
     padding:10px 16px;
     text-align:center;
 }
@@ -232,14 +310,14 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 .proj-metric-val{
     font-size:.92rem;
     font-weight:800;
-    color:var(--primary-blue, #1a73e8);
+    color:var(--pj-blue);
     line-height:1.25;
 }
 
 .proj-metric-label{
     font-size:.66rem;
     font-weight:600;
-    color:var(--text-muted, #6c757d);
+    color:var(--pj-muted);
     text-transform:uppercase;
     letter-spacing:.3px;
 }
@@ -256,15 +334,15 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 }
 
 .proj-title{
-    font-size:1.12rem;
+    font-size:1.1rem;
     font-weight:700;
-    color:var(--text-dark, #1a1a2e);
+    color:var(--pj-navy);
     margin-bottom:8px;
     line-height:1.35;
 }
 
 .proj-desc{
-    color:var(--text-muted, #6c757d);
+    color:var(--pj-muted);
     line-height:1.6;
     font-size:.92rem;
     margin-bottom:18px;
@@ -282,10 +360,9 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 .proj-tech span{
     font-size:.72rem;
     font-weight:600;
-    color:var(--light-navy, #1f3a6e);
-    background:var(--bg-light, #f4f6fb);
-    border:1px solid var(--border-light, #e2e8f0);
-    padding:4px 11px;
+    color:var(--pj-blue);
+    background:var(--pj-blue-soft);
+    padding:5px 12px;
     border-radius:20px;
 }
 
@@ -295,10 +372,8 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     gap:8px;
     font-weight:700;
     font-size:.9rem;
-    color:var(--primary-blue, #1a73e8);
+    color:var(--pj-blue);
     margin-top:auto;
-    padding-top:16px;
-    border-top:1px solid var(--border-light, #e2e8f0);
 }
 
 .proj-read-more i{
@@ -319,20 +394,40 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     justify-content:space-between;
     gap:24px;
     flex-wrap:wrap;
-    background:linear-gradient(120deg,var(--dark-navy,#0d1b3e),var(--mid-navy,#162447));
+    background:var(--pj-navy);
     border-radius:20px;
     padding:38px 42px;
 }
 
+.proj-cta-strip-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.proj-cta-strip-icon{
+    width:52px;
+    height:52px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(22,119,255,.18);
+    border:1px solid rgba(22,119,255,.35);
+    color:#fff;
+    font-size:18px;
+}
+
 .proj-cta-strip-text h3{
     color:#fff;
-    font-size:1.35rem;
+    font-size:1.3rem;
     font-weight:700;
     margin-bottom:6px;
 }
 
 .proj-cta-strip-text p{
-    color:rgba(255,255,255,.7);
+    color:rgba(255,255,255,.65);
     font-size:.95rem;
     margin:0;
 }
@@ -358,12 +453,12 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 }
 
 .proj-cta-btn.primary{
-    background:var(--primary-blue, #1a73e8);
+    background:var(--pj-blue);
     color:#fff;
 }
 
 .proj-cta-btn.primary:hover{
-    background:var(--accent-blue, #2196f3);
+    background:#3d8bff;
     color:#fff;
 }
 
@@ -383,8 +478,15 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
     .proj-grid{
         grid-template-columns:repeat(2,1fr);
     }
+    .proj-stat-item{
+        padding:0 22px;
+    }
     .proj-cta-strip{
         justify-content:center;
+        text-align:center;
+    }
+    .proj-cta-strip-left{
+        flex-direction:column;
         text-align:center;
     }
 }
@@ -395,12 +497,18 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
         padding:70px 0;
     }
     .proj-stats{
-        gap:28px;
+        gap:18px 0;
+    }
+    .proj-stat-item{
+        border-right:none;
+        padding:0 14px;
+        flex:0 0 50%;
+        justify-content:center;
     }
     .proj-grid{
         grid-template-columns:1fr;
         gap:20px;
-        margin-top:40px;
+        margin-top:36px;
     }
     .proj-cta-strip{
         padding:30px 24px;
@@ -409,9 +517,9 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
 </style>
 <section class="projects-section" id="projects" aria-labelledby="projects-heading">
     <div class="container text-center">
-        <span class="section-eyebrow"><i class="fas fa-diagram-project"></i> Our Portfolio</span>
+        <span class="section-eyebrow"><i class="fas fa-briefcase"></i> Our Portfolio</span>
         <h2 class="section-title mx-auto" id="projects-heading">
-            Projects That Deliver Real Business Impact
+            Projects That Deliver Real<span class="title-accent">Business Impact</span>
         </h2>
         <p class="section-intro">
             From startups to enterprises, we've partnered with clients across healthcare, real estate, logistics,
@@ -419,21 +527,33 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
         </p>
 
         <div class="proj-stats">
-            <div>
-                <div class="proj-stat-val">200+</div>
-                <div class="proj-stat-label">Happy Clients</div>
+            <div class="proj-stat-item">
+                <div class="proj-stat-icon"><i class="fas fa-users"></i></div>
+                <div>
+                    <div class="proj-stat-val">200+</div>
+                    <div class="proj-stat-label">Happy Clients</div>
+                </div>
             </div>
-            <div>
-                <div class="proj-stat-val">20+</div>
-                <div class="proj-stat-label">Countries Served</div>
+            <div class="proj-stat-item">
+                <div class="proj-stat-icon"><i class="fas fa-earth-americas"></i></div>
+                <div>
+                    <div class="proj-stat-val">20+</div>
+                    <div class="proj-stat-label">Countries Served</div>
+                </div>
             </div>
-            <div>
-                <div class="proj-stat-val">50+</div>
-                <div class="proj-stat-label">Team Experts</div>
+            <div class="proj-stat-item">
+                <div class="proj-stat-icon"><i class="fas fa-award"></i></div>
+                <div>
+                    <div class="proj-stat-val">50+</div>
+                    <div class="proj-stat-label">Team Experts</div>
+                </div>
             </div>
-            <div>
-                <div class="proj-stat-val">98%</div>
-                <div class="proj-stat-label">Satisfaction Rate</div>
+            <div class="proj-stat-item">
+                <div class="proj-stat-icon"><i class="fas fa-thumbs-up"></i></div>
+                <div>
+                    <div class="proj-stat-val">98%</div>
+                    <div class="proj-stat-label">Satisfaction Rate</div>
+                </div>
             </div>
         </div>
 
@@ -448,26 +568,35 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
                 $firstKpi = $kpis[0] ?? null;
                 $techList = collect($cs->tech_array ?? [])->take(3);
                 $excerpt = Str::limit(strip_tags($cs->challenge ?? ''), 110) ?: Str::limit(strip_tags($case->meta_description ?? ''), 110);
+                $mockIcon = projMockIcon($cs->client_industry ?? null);
             @endphp
             <a href="{{ route('case-studies.show', $case->slug) }}" class="proj-card">
-                <div class="proj-thumb {{ $case->featured_image ? '' : 'proj-thumb-default' }}">
+                <div class="proj-thumb">
                     <span class="proj-tag">{{ $cs->client_industry ?? 'Case Study' }}</span>
                     @if($case->featured_image)
                         <img src="{{ config('app.images_path') . $case->featured_image }}" alt="{{ $case->image_alt ?? $case->title }}" loading="lazy">
                     @else
-                        <div class="proj-thumb-mockup">
-                            <div class="proj-mock-browser">
+                        <div class="proj-mock">
+                            <div class="proj-mock-device">
                                 <div class="proj-mock-bar">
-                                    <div class="proj-mock-dot r"></div>
-                                    <div class="proj-mock-dot y"></div>
-                                    <div class="proj-mock-dot g"></div>
+                                    <div class="proj-mock-dot"></div>
+                                    <div class="proj-mock-dot"></div>
+                                    <div class="proj-mock-dot"></div>
                                 </div>
-                                <div class="proj-mock-line full"></div>
-                                <div class="proj-mock-line med"></div>
-                                <div class="proj-mock-line short"></div>
-                                <div class="proj-mock-line full"></div>
+                                <div class="proj-mock-cards">
+                                    <span></span><span></span>
+                                </div>
+                                <div class="proj-mock-chart">
+                                    <span style="height:40%;"></span>
+                                    <span style="height:70%;"></span>
+                                    <span style="height:55%;"></span>
+                                    <span style="height:90%;"></span>
+                                    <span style="height:65%;"></span>
+                                    <span style="height:80%;"></span>
+                                </div>
                             </div>
                         </div>
+                        <div class="proj-mock-accessory"><i class="{{ $mockIcon }}"></i></div>
                     @endif
                     @if($firstKpi)
                     <div class="proj-metric">
@@ -494,20 +623,29 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
             {{-- ── Illustrative examples (fill remaining slots) ──── --}}
             @foreach($fallbackToShow as $proj)
             <div class="proj-card" style="cursor:default;">
-                <div class="proj-thumb {{ $proj['thumb'] }}">
+                <div class="proj-thumb">
                     <span class="proj-tag">{{ $proj['tag'] }}</span>
-                    <div class="proj-thumb-mockup">
-                        <div class="proj-mock-browser">
+                    <div class="proj-mock">
+                        <div class="proj-mock-device">
                             <div class="proj-mock-bar">
-                                <div class="proj-mock-dot r"></div>
-                                <div class="proj-mock-dot y"></div>
-                                <div class="proj-mock-dot g"></div>
+                                <div class="proj-mock-dot"></div>
+                                <div class="proj-mock-dot"></div>
+                                <div class="proj-mock-dot"></div>
                             </div>
-                            <div class="proj-mock-line full"></div>
-                            <div class="proj-mock-line med"></div>
-                            <div class="proj-mock-line short"></div>
+                            <div class="proj-mock-cards">
+                                <span></span><span></span>
+                            </div>
+                            <div class="proj-mock-chart">
+                                <span style="height:35%;"></span>
+                                <span style="height:60%;"></span>
+                                <span style="height:45%;"></span>
+                                <span style="height:85%;"></span>
+                                <span style="height:70%;"></span>
+                                <span style="height:95%;"></span>
+                            </div>
                         </div>
                     </div>
+                    <div class="proj-mock-accessory"><i class="{{ $proj['icon'] }}"></i></div>
                 </div>
                 <div class="proj-body">
                     <h3 class="proj-title">{{ $proj['title'] }}</h3>
@@ -524,16 +662,19 @@ $fallbackToShow = array_slice($fallbackProjects, 0, $slotsNeeded);
         </div>
 
         <div class="proj-cta-strip">
-            <div class="proj-cta-strip-text">
-                <h3>Want results like these for your business?</h3>
-                <p>Let's talk about your project and how we can help you build it.</p>
+            <div class="proj-cta-strip-left">
+                <div class="proj-cta-strip-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="proj-cta-strip-text">
+                    <h3>Want results like these for your business?</h3>
+                    <p>Let's talk about your project and how we can help you build it.</p>
+                </div>
             </div>
             <div class="proj-cta-strip-actions">
                 <a href="{{ route('casestudy') }}" class="proj-cta-btn outline">
                     <i class="fas fa-th-large"></i> View All Case Studies
                 </a>
                 <button class="proj-cta-btn primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">
-                    <i class="fas fa-comments"></i> Start Your Project
+                    <i class="fas fa-paper-plane"></i> Start Your Project
                 </button>
             </div>
         </div>

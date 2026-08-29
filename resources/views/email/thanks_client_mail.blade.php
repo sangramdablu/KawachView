@@ -536,7 +536,7 @@
         <div class="footer-note">
           &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.<br>
           You received this email because you submitted the contact form on our website.<br>
-          123 Tech Avenue, Suite 400, New York, NY 10001
+          {{-- 123 Tech Avenue, Suite 400, New York, NY 10001 --}}
         </div>
       </div>
 
