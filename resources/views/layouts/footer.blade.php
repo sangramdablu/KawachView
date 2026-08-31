@@ -85,7 +85,7 @@
                     <li><a href="{{ route('founder') }}">About Us</a></li>
                     <li><a href="{{ route('casestudy') }}">Case Studies</a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="{{ route('careers') }}">Careers</a></li>
                     <li><a href="{{ route('contact') }}">Contact Us</a></li>
                 </ul>
             </div>
@@ -99,6 +99,7 @@
                     {{-- <li><a href="#">SaaS Development</a></li> --}}
                     <li><a href="https://www.kawachtech.com/services/custom-mobile-web-application-development-services">Web Development</a></li>
                     <li><a href="https://www.kawachtech.com/services/custom-mobile-web-application-development-services">Mobile App Dev</a></li>
+                    <li><a href="{{ route('newsroom') }}">Newsroom</a></li>
                 </ul>
             </div>
 

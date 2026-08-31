@@ -145,10 +145,9 @@
 </style>
 
 @push('schema')
-@verbatim
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Blog",
   "name": "Kawach Technology Blog",
   "url": "{{ url('/blog') }}",
@@ -157,11 +156,10 @@
     "@type": "Organization",
     "name": "Kawach Technology",
     "url": "{{ url('/') }}",
-    "logo": "{{ asset('images/logo.png') }}"
+    "logo": "{{ asset('assets/images/kawach.png') }}"
   }
 }
 </script>
-@endverbatim
 @endpush
 
 @include('layouts.head')

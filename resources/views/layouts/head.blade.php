@@ -7,7 +7,7 @@
 
     @php
         // Falls back to homepage defaults if a page doesn't set them.
-        $seoTitle       = $seoTitle       ?? 'Software Development Company USA & Europe | Kawach Tech';
+        $seoTitle       = $seoTitle       ?? 'Kawach Technology | Custom Software Development Company (USA & Europe)';
         $seoDescription = $seoDescription ?? 'Kawach Technology builds scalable web, mobile, AI, SaaS, and cloud software for startups and enterprises across the USA and Europe. Get a free consultation.';
         $seoKeywords    = $seoKeywords    ?? 'software development company, custom software development, mobile app development company, web development services, AI software development, affordable software company USA, enterprise software solutions, SaaS development company, cloud application development, software outsourcing company';
         $seoCanonical   = $seoCanonical   ?? url()->current();
@@ -98,12 +98,18 @@
           "@context" => "https://schema.org",
           "@type" => "Organization",
           "name" => "Kawach Technology",
+          // Other spellings/short forms used for this same company across the
+          // site and the web — helps Google merge them into one entity instead
+          // of treating "Kawach Tech" as a separate, weaker signal.
+          "alternateName" => ["Kawach Tech", "KawachTech", "KawachTech Solutions"],
+          "legalName" => "Kawach Technology Pvt. Ltd.",
+          "foundingDate" => "2014",
           "url" => url('/'),
           "logo" => [
               "@type" => "ImageObject",
               "url" => asset('assets/images/kawach.png'),
           ],
-          "description" => "Kawach Technology is a custom software development company providing web development, mobile app development, AI solutions, cloud applications, and enterprise software services for businesses worldwide.",
+          "description" => "Kawach Technology is a custom software development company providing web development, mobile app development, AI solutions, cloud applications, and enterprise software services for businesses worldwide. Kawach Technology is an independent software company and is not affiliated with, and should not be confused with, Kavach — the Indian Railways automatic train protection system.",
           "email" => config('app.main_email'),
           "sameAs" => array_values(array_filter([
               config('app.linkedin'),

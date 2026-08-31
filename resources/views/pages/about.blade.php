@@ -6,7 +6,55 @@
     $seoDescription = 'Learn about Kawach Technology — a custom software development company building scalable web, mobile, AI, and SaaS solutions for startups and enterprises across the USA and Europe.';
     $seoKeywords    = 'about Kawach Technology, custom software development company, software development team, software development company USA, software development company Europe';
     $seoCanonical   = url('/about-us');
+
+    // Also rendered further down the page in the visible FAQ section —
+    // defined once here so the @push('schema') block below (which must run
+    // before @include('layouts.head') outputs @stack('schema')) and the
+    // on-page accordion both read from the same source.
+    $aboutFaqs = [
+        [
+            'q' => 'What is Kawach Technology?',
+            'a' => 'Kawach Technology is a custom software development company founded in 2014, building web applications, mobile apps, AI solutions, cloud infrastructure, and SaaS products for startups and enterprises across the USA, Europe, and beyond.',
+        ],
+        [
+            'q' => "Is Kawach Technology related to Indian Railways' Kavach train protection system?",
+            'a' => "No. Kawach Technology is an independent, privately-owned software development company and has no affiliation with Kavach, the Automatic Train Protection (ATP) system deployed by Indian Railways. The similar-sounding name is a coincidence — we're a technology services business, not a railway safety system.",
+        ],
+        [
+            'q' => 'What services does Kawach Technology offer?',
+            'a' => 'We offer custom software development, web and mobile app development, UI/UX design, cloud and DevOps solutions, AI and machine learning development, dedicated development teams, and QA/software testing.',
+        ],
+        [
+            'q' => 'Where is Kawach Technology located?',
+            'a' => 'Kawach Technology is headquartered in India, with a globally distributed team serving clients across the USA, UK, Europe, Australia, and beyond.',
+        ],
+        [
+            'q' => 'How can I get in touch with Kawach Technology?',
+            'a' => 'You can reach us through our Contact page, or request a free consultation directly from any page on this site — our team typically responds within 24 hours.',
+        ],
+    ];
 @endphp
+
+@push('schema')
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        @foreach($aboutFaqs as $faq)
+        {
+            "@type": "Question",
+            "name": {!! json_encode($faq['q']) !!},
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {!! json_encode($faq['a']) !!}
+            }
+        }{{ !$loop->last ? ',' : '' }}
+        @endforeach
+    ]
+}
+</script>
+@endpush
 
 @include('layouts.head')
 @include('modal.getquote')
@@ -158,7 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="av-brand-line">
               <div class="av-brand-dot"><i class="fas fa-code"></i></div>
               <div>
-                <div class="av-brand-name">KawachTech Solutions</div>
+                <div class="av-brand-name">Kawach Technology</div>
                 <div class="av-brand-sub">Building the Future, One Line at a Time</div>
               </div>
             </div>
@@ -232,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="who-label">Our Story</div>
         <h2 class="who-title">We Build Software That<br>Drives Real Results</h2>
         <p class="who-desc">
-          KawachTech Solutions was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 20+ countries.
+          Kawach Technology was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 20+ countries.
         </p>
         <p class="who-desc">
           We believe technology is only as powerful as the human needs it serves. That's why we pair deep technical expertise with genuine business understanding — listening first, building second, and measuring success by our clients' outcomes.
@@ -436,7 +484,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-card">
           <div class="timeline-year">2018 — Founded</div>
           <div class="timeline-event">Company Established</div>
-          <p class="timeline-detail">KawachTech Solutions launched from a co-working space in New Delhi with a team of three and a vision to democratise enterprise software.</p>
+          <p class="timeline-detail">Kawach Technology launched from a co-working space in New Delhi with a team of three and a vision to democratise enterprise software.</p>
         </div>
       </li>
 
@@ -558,6 +606,120 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="award-year">2026</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<style>
+.about-faq-section{
+    padding:90px 0;
+    background:var(--bg-light, #f4f6fb);
+}
+
+.about-faq-section .section-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--primary-blue, #1a73e8);
+    background:rgba(26,115,232,.08);
+    padding:6px 16px;
+    border-radius:30px;
+    margin-bottom:18px;
+}
+
+.about-faq-section .section-title{
+    font-size:clamp(1.9rem,3.6vw,2.5rem);
+    font-weight:800;
+    color:var(--text-dark, #1a1a2e);
+    margin-bottom:14px;
+}
+
+.about-faq-section .section-intro{
+    max-width:640px;
+    margin:0 auto;
+    color:var(--text-muted, #6c757d);
+    font-size:1rem;
+    line-height:1.7;
+}
+
+.about-faq-list{
+    max-width:820px;
+    margin:44px auto 0;
+}
+
+.about-faq-item{
+    background:#fff;
+    border:1px solid var(--border-light, #e2e8f0);
+    border-radius:14px;
+    margin-bottom:14px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.about-faq-question{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:20px 24px;
+    font-weight:700;
+    font-size:.98rem;
+    color:var(--text-dark, #1a1a2e);
+}
+
+.about-faq-question i{
+    flex-shrink:0;
+    color:var(--primary-blue, #1a73e8);
+    transition:.25s;
+}
+
+.about-faq-item.open .about-faq-question i{
+    transform:rotate(180deg);
+}
+
+.about-faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:.3s ease;
+    padding:0 24px;
+}
+
+.about-faq-item.open .about-faq-answer{
+    max-height:260px;
+    padding:0 24px 22px;
+}
+
+.about-faq-answer p{
+    color:var(--text-muted, #6c757d);
+    font-size:.92rem;
+    line-height:1.7;
+    margin:0;
+}
+</style>
+<section class="about-faq-section" id="faq" aria-labelledby="about-faq-heading">
+  <div class="container text-center">
+    <span class="section-eyebrow"><i class="fas fa-circle-question"></i> Frequently Asked Questions</span>
+    <h2 class="section-title" id="about-faq-heading">Get to Know Kawach Technology</h2>
+    <p class="section-intro">
+        A few quick answers about who we are — including a question we get asked more often than you'd expect.
+    </p>
+
+    <div class="about-faq-list text-start">
+      @foreach($aboutFaqs as $i => $faq)
+      <div class="about-faq-item {{ $i === 0 ? 'open' : '' }}" onclick="this.classList.toggle('open')">
+        <div class="about-faq-question">
+            {{ $faq['q'] }} <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="about-faq-answer">
+            <p>{{ $faq['a'] }}</p>
+        </div>
+      </div>
+      @endforeach
     </div>
   </div>
 </section>

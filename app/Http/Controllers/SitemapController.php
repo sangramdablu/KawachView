@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\News;
 use App\Models\Page;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Response;
@@ -27,7 +28,9 @@ class SitemapController extends Controller
                 '/services' => ['weekly', '0.9', 'pages.services'],
                 '/case-studies' => ['weekly', '0.8', 'pages.case-studies'],
                 '/hire-developer' => ['monthly', '0.8', 'pages.hire-developer'],
+                '/careers' => ['weekly', '0.7', 'pages.careers'],
                 '/blog' => ['daily', '0.8', 'pages.blog'],
+                '/newsroom' => ['daily', '0.8', 'pages.newsroom'],
                 '/contact' => ['monthly', '0.7', 'pages.contact'],
                 '/privacy-policy' => ['yearly', '0.3', 'pages.privacy-policy'],
                 '/terms-conditions' => ['yearly', '0.3', 'pages.terms-conditions'],
@@ -79,6 +82,19 @@ class SitemapController extends Controller
                     'priority' => '0.6',
                 ]);
             });
+
+            News::where('status', 'published')
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->get()
+                ->each(function (News $post) use ($urls) {
+                    $urls->push([
+                        'loc' => url('/newsroom/' . $post->slug),
+                        'lastmod' => $post->updated_at?->toAtomString(),
+                        'changefreq' => $post->seo?->sitemap_changefreq ?? 'monthly',
+                        'priority' => $post->seo?->sitemap_priority ?? '0.6',
+                    ]);
+                });
 
             return $urls;
         });

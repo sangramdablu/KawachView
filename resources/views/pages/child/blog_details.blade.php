@@ -557,7 +557,7 @@
           <div class="bio-avatar">AK</div>
           <div>
             <div class="bio-name"> {{ $post->author->name ?? 'Kawach Team' }} </div>
-            <div class="bio-role">Lead AI Engineer, KawachTech Solutions</div>
+            <div class="bio-role">Lead AI Engineer, Kawach Technology</div>
             <p class="bio-text">Arjun leads AI strategy and implementation across KawachTech's enterprise client portfolio. With over 10 years in software engineering and 4 years specialising in applied ML, he has guided organisations across finance, healthcare, and logistics through large-scale AI adoption programmes.</p>
             <div class="bio-socials">
               <a href="#" class="bio-social-btn" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
@@ -862,7 +862,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 KawachTech Solutions. All rights reserved.</p>
+      <p>© {{ date('Y') }} Kawach Technology. All rights reserved.</p>
     </div>
   </div>
 </footer>

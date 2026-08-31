@@ -10,10 +10,9 @@
 @endphp
 
 @push('schema')
-  @verbatim
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
@@ -27,11 +26,8 @@
           "@id": "{{ url('/') }}#organization",
           "name": "Kawach Technology",
           "url": "{{ url('/') }}",
-          "logo": "{{ asset('images/logo.png') }}",
-          "sameAs": [
-            "https://linkedin.com/company/kawachtech",
-            "https://twitter.com/kawachtech"
-          ]
+          "logo": "{{ asset('assets/images/kawach.png') }}",
+          "sameAs": {!! json_encode(array_values(array_filter([config('app.linkedin'), config('app.insta')]))) !!}
         },
         "areaServed": "Worldwide",
         "serviceType": "{{ $service->title }}",
@@ -97,7 +93,6 @@
     ]
   }
   </script>
-  @endverbatim
 @endpush
 
 @include('layouts.head')

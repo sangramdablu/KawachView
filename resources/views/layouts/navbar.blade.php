@@ -245,6 +245,7 @@
         </li>
         <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">Blog</a></li>
+        {{-- <li class="nav-item"><a class="nav-link" href="{{ route('careers') }}">Careers</a></li> --}}
         <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
       </ul>
       <button class="btn btn-quote" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</button>

@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontBlogController;
+use App\Http\Controllers\FrontNewsController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\HireDeveloperController;
+use App\Http\Controllers\CareerController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
@@ -20,6 +22,9 @@ Route::get('/blog/{slug}', [FrontBlogController::class, 'show'])->name('blog.sho
 Route::post('/blog/{slug}/like', [FrontBlogController::class, 'toggleLike'])->name('blog.like')->where('slug', '[a-z0-9\-]+')->middleware('throttle:20,1');
 Route::post('/blog/{slug}/comment', [FrontBlogController::class, 'storeComment'])->name('blog.comment.store')->where('slug', '[a-z0-9\-]+')->middleware('throttle:5,1');
 Route::post('/newsletter/subscribe', [FrontBlogController::class, 'newsletterSubscribe'])->name('newsletter.subscribe');
+
+Route::get('/newsroom', [FrontNewsController::class, 'index'])->name('newsroom');
+Route::get('/newsroom/{slug}', [FrontNewsController::class, 'show'])->name('newsroom.show')->where('slug', '[a-z0-9\-]+');
 
 
 Route::get('/about-us', function () {
@@ -38,6 +43,9 @@ Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetail
 Route::get('/hire-developer', [HireDeveloperController::class, 'index'])->name('hire-developer.index');
 Route::get('/hire-developer/{slug}', [HireDeveloperController::class, 'show'])->name('hire-developer.show')->where('slug', '[a-z0-9\-]+');
 Route::post('/hire-developer/{slug}', [HireDeveloperController::class, 'store'])->name('hire-developer.store')->where('slug', '[a-z0-9\-]+')->middleware('throttle:5,1');
+
+Route::get('/careers', [CareerController::class, 'index'])->name('careers');
+Route::post('/careers/apply', [CareerController::class, 'apply'])->name('careers.apply')->middleware('throttle:5,1');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
