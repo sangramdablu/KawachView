@@ -213,12 +213,23 @@
     text-decoration:none;
 }
 
+.nd-title-row{
+    display:flex;
+    align-items:flex-start;
+    gap:32px;
+    margin-bottom:22px;
+}
+
+.nd-title-col{
+    flex:1 1 auto;
+    min-width:0;
+}
+
 .nd-title{
     font-size:clamp(1.6rem,3.4vw,2.5rem);
     font-weight:800;
     color:var(--text-dark, #1a1a2e);
     line-height:1.3;
-    max-width:900px;
     margin-bottom:14px;
 }
 
@@ -228,8 +239,7 @@
     font-size:1.15rem;
     color:var(--text-muted, #6c757d);
     line-height:1.6;
-    max-width:760px;
-    margin-bottom:22px;
+    margin-bottom:0;
 }
 
 .nd-dateline{
@@ -290,9 +300,8 @@
    full-bleed hero. Professional news portals (AP, Reuters, PR Newswire)
    keep the lead image modest and captioned, not dominant. ── */
 .nd-image-figure{
+    flex:0 0 420px;
     max-width:420px;
-    margin:0 auto 6px;
-    padding:0 24px;
 }
 
 .nd-image{
@@ -300,7 +309,6 @@
     max-height:260px;
     object-fit:cover;
     border-radius:10px;
-    margin-top:28px;
     box-shadow:0 10px 24px rgba(15,23,42,.1);
     display:block;
 }
@@ -310,7 +318,6 @@
     color:var(--text-muted, #6c757d);
     text-align:center;
     margin-top:8px;
-    padding:0 24px;
     font-style:italic;
 }
 
@@ -544,6 +551,8 @@
     .nd-body-card{ padding:28px 22px; }
     .nd-dateline{ flex-direction:column; align-items:flex-start; gap:12px; }
     .nd-topbar .current{ display:none; }
+    .nd-title-row{ flex-direction:column; align-items:stretch; gap:18px; }
+    .nd-image-figure{ flex-basis:auto; max-width:100%; }
 }
 </style>
 
@@ -587,11 +596,25 @@
       @endif
     </div>
 
-    <h1 class="nd-title">{{ $post->title }}</h1>
+    <div class="nd-title-row">
+      <div class="nd-title-col">
+        <h1 class="nd-title">{{ $post->title }}</h1>
 
-    @if($post->excerpt)
-    <p class="nd-deck">{{ $post->excerpt }}</p>
-    @endif
+        @if($post->excerpt)
+        <p class="nd-deck">{{ $post->excerpt }}</p>
+        @endif
+      </div>
+
+      @if($post->featured_image)
+      <div class="nd-image-figure">
+        <img src="{{ config('app.images_path') . $post->featured_image }}" loading="eager"
+             alt="{{ $post->image_alt ?? $post->title }}" title="{{ $post->image_title ?? $post->title }}" class="nd-image">
+        @if($post->image_caption)
+        <p class="nd-image-caption">{{ $post->image_caption }}</p>
+        @endif
+      </div>
+      @endif
+    </div>
 
     <div class="nd-dateline">
       <div class="nd-byline">
@@ -614,16 +637,6 @@
       <span class="nd-meta-pill"><i class="fas fa-eye"></i> {{ number_format($post->views) }} views</span>
     </div>
   </div>
-
-  @if($post->featured_image)
-  <div class="nd-image-figure">
-    <img src="{{ config('app.images_path') . $post->featured_image }}" loading="eager"
-         alt="{{ $post->image_alt ?? $post->title }}" title="{{ $post->image_title ?? $post->title }}" class="nd-image">
-  </div>
-  @if($post->image_caption)
-  <p class="nd-image-caption">{{ $post->image_caption }}</p>
-  @endif
-  @endif
 </section>
 
 {{-- ═══ BODY LAYOUT ═══ --}}
