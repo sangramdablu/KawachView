@@ -4,7 +4,26 @@
 @php
     $seoTitle       = ($post->seo?->og_title ?? $post->meta_title ?? $post->title) . ' — Kawach Technology Newsroom';
     $seoDescription = $post->seo?->og_description ?? $post->meta_description;
-    $seoKeywords    = $post->seo?->meta_keywords ?? $post->focus_keyword ?? $post->tags->pluck('name')->implode(', ');
+
+    // Merge EVERY dynamic keyword source the admin can set for this article —
+    // manual SEO keywords, the focus keyword, tags, and category — into one
+    // deduplicated list. A ??-fallback chain would silently drop whichever
+    // sources aren't the first non-empty one; search engines and AI answer
+    // engines both benefit from the fuller topical signal, not just one field.
+    $seoKeywords = collect([
+            $post->seo?->meta_keywords,
+            $post->focus_keyword,
+            $post->tags->pluck('name')->implode(','),
+            $post->category?->name,
+        ])
+        ->filter()
+        ->flatMap(fn ($k) => explode(',', $k))
+        ->map(fn ($k) => trim($k))
+        ->filter()
+        ->unique()
+        ->values()
+        ->implode(', ');
+
     $seoRobots      = $post->seo?->robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
     $seoCanonical   = $post->seo?->canonical_url ?? url()->current();
     $seoImage       = config('app.images_path') . ($post->seo?->og_image ?? $post->seo?->twitter_image ?? $post->featured_image);
@@ -34,6 +53,17 @@
         "keywords" => $seoKeywords,
         "articleSection" => $post->category?->name,
         "wordCount" => str_word_count(strip_tags($post->content)),
+
+        // Explicit topical entity for the admin-set focus keyword — a
+        // stronger, more structured AEO/GEO signal than keywords alone for
+        // what this specific article is "about" when an AI answer engine
+        // is deciding whether to cite it for a given topic.
+        ...($post->focus_keyword ? [
+            "about" => [
+                "@type" => "Thing",
+                "name" => $post->focus_keyword,
+            ],
+        ] : []),
 
         "author" => [
             "@type" => "Organization",
@@ -189,6 +219,16 @@
     color:var(--text-dark, #1a1a2e);
     line-height:1.3;
     max-width:900px;
+    margin-bottom:14px;
+}
+
+/* Deck / standfirst — the excerpt, shown larger + lighter under the
+   headline, standard broadsheet/press convention for a one-line summary. */
+.nd-deck{
+    font-size:1.15rem;
+    color:var(--text-muted, #6c757d);
+    line-height:1.6;
+    max-width:760px;
     margin-bottom:22px;
 }
 
@@ -246,20 +286,32 @@
     font-size:.78rem;
 }
 
-/* ── HERO IMAGE (secondary, below dateline — not the dominant element) ── */
-.nd-image-wrap{
-    max-width:1000px;
-    margin:0 auto;
+/* ── ARTICLE IMAGE — deliberately small, like a press-photo/figure, not a
+   full-bleed hero. Professional news portals (AP, Reuters, PR Newswire)
+   keep the lead image modest and captioned, not dominant. ── */
+.nd-image-figure{
+    max-width:420px;
+    margin:0 auto 6px;
     padding:0 24px;
 }
 
 .nd-image{
     width:100%;
-    max-height:460px;
+    max-height:260px;
     object-fit:cover;
-    border-radius:14px;
-    margin-top:32px;
-    box-shadow:0 20px 44px rgba(15,23,42,.12);
+    border-radius:10px;
+    margin-top:28px;
+    box-shadow:0 10px 24px rgba(15,23,42,.1);
+    display:block;
+}
+
+.nd-image-caption{
+    font-size:.78rem;
+    color:var(--text-muted, #6c757d);
+    text-align:center;
+    margin-top:8px;
+    padding:0 24px;
+    font-style:italic;
 }
 
 /* ── BODY LAYOUT ── */
@@ -292,6 +344,14 @@
 
 .nd-body p{
     margin-bottom:20px;
+}
+
+/* Lead paragraph — set slightly larger, standard press-release convention
+   for the opening who/what/when/where/why paragraph. */
+.nd-body > p:first-of-type{
+    font-size:1.12rem;
+    font-weight:500;
+    color:var(--text-dark, #1a1a2e);
 }
 
 .nd-body h2, .nd-body h3{
@@ -529,12 +589,22 @@
 
     <h1 class="nd-title">{{ $post->title }}</h1>
 
+    @if($post->excerpt)
+    <p class="nd-deck">{{ $post->excerpt }}</p>
+    @endif
+
     <div class="nd-dateline">
       <div class="nd-byline">
-        <div class="nd-byline-mark">KT</div>
+        @if($post->author?->avatar)
+          <img src="{{ $post->author->avatar_url }}" alt="{{ $post->author->name }}" class="nd-byline-mark" style="object-fit:cover;">
+        @elseif($post->author)
+          <div class="nd-byline-mark">{{ $post->author->initials }}</div>
+        @else
+          <div class="nd-byline-mark">KT</div>
+        @endif
         <div>
-          <div class="nd-byline-name">{{ $post->author->name ?? 'Kawach Technology' }}</div>
-          <div class="nd-byline-role">Corporate Communications</div>
+          <div class="nd-byline-name">{{ $post->author?->name ?? 'Kawach Technology' }}</div>
+          <div class="nd-byline-role">{{ $post->author?->designation ?? 'Corporate Communications' }}</div>
         </div>
       </div>
       <span class="nd-meta-pill"><i class="fas fa-calendar-alt"></i> {{ $post->published_at->format('F d, Y') }}</span>
@@ -546,10 +616,13 @@
   </div>
 
   @if($post->featured_image)
-  <div class="nd-image-wrap">
+  <div class="nd-image-figure">
     <img src="{{ config('app.images_path') . $post->featured_image }}" loading="eager"
          alt="{{ $post->image_alt ?? $post->title }}" title="{{ $post->image_title ?? $post->title }}" class="nd-image">
   </div>
+  @if($post->image_caption)
+  <p class="nd-image-caption">{{ $post->image_caption }}</p>
+  @endif
   @endif
 </section>
 
@@ -561,9 +634,11 @@
       <div class="col-lg-8">
         <div class="nd-body-card">
 
+          @if(!$post->external_source_name)
           <div class="nd-dateline-inline">
-            {{ strtoupper($post->category->name ?? 'KAWACH TECHNOLOGY') }} — {{ $post->published_at->format('F d, Y') }}
+            NEW DELHI, INDIA — {{ $post->published_at->format('F d, Y') }}
           </div>
+          @endif
 
           <div class="nd-body">
             {!! $post->content !!}

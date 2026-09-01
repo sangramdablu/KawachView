@@ -4,7 +4,21 @@
 @php
     $seoTitle       = 'Newsroom | Kawach Technology';
     $seoDescription = 'Company announcements, milestones, and media coverage from Kawach Technology.';
-    $seoKeywords    = 'kawach technology news, company announcements, press releases, kawach technology newsroom';
+
+    // Base keyword set plus every dynamic keyword surfaced by the articles
+    // currently listed (category names + each article's admin-set focus
+    // keyword + tags) — merged and deduplicated, so the listing page's own
+    // <meta name="keywords"> and schema stay in sync with whatever the
+    // admin is actually publishing, not a hardcoded static string alone.
+    $seoKeywords = collect(['kawach technology news', 'company announcements', 'press releases', 'kawach technology newsroom'])
+        ->merge($categories->pluck('name'))
+        ->merge($posts->pluck('focus_keyword'))
+        ->merge($posts->flatMap(fn ($p) => $p->tags->pluck('name')))
+        ->filter()
+        ->unique()
+        ->values()
+        ->implode(', ');
+
     $seoCanonical   = url('/newsroom');
     $seoImage       = asset('assets/images/kawach.png');
 @endphp
@@ -190,12 +204,14 @@
 }
 
 .news-lead{
-    display:block;
+    display:flex;
+    align-items:stretch;
+    gap:0;
     background:#fff;
     border:1px solid var(--border-light, #e2e8f0);
     border-left:5px solid var(--primary-blue, #1a73e8);
     border-radius:16px;
-    padding:34px 38px;
+    overflow:hidden;
     margin-bottom:36px;
     text-decoration:none;
     transition:.25s;
@@ -205,6 +221,42 @@
 .news-lead:hover{
     box-shadow:0 16px 36px rgba(15,23,42,.1);
     transform:translateY(-3px);
+}
+
+.news-lead-media{
+    flex:0 0 38%;
+    position:relative;
+    min-height:220px;
+    background:linear-gradient(135deg,var(--primary-blue,#1a73e8),var(--dark-navy,#0d1b3e));
+}
+
+.news-lead-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.news-lead-media .news-lead-icon{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(255,255,255,.85);
+    font-size:2.4rem;
+}
+
+.news-lead-body{
+    flex:1;
+    padding:32px 36px;
+    min-width:0;
+}
+
+@media(max-width:767px){
+    .news-lead{ flex-direction:column; }
+    .news-lead-media{ min-height:170px; }
+    .news-lead-body{ padding:24px; }
 }
 
 .news-lead-top{
@@ -348,6 +400,27 @@
     text-transform:uppercase;
     color:var(--text-muted, #6c757d);
     letter-spacing:.5px;
+}
+
+.news-item-thumb{
+    flex-shrink:0;
+    width:88px;
+    height:88px;
+    border-radius:10px;
+    overflow:hidden;
+    background:linear-gradient(135deg,var(--primary-blue,#1a73e8),var(--dark-navy,#0d1b3e));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(255,255,255,.85);
+    font-size:1.1rem;
+}
+
+.news-item-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
 .news-item-body{
@@ -522,10 +595,12 @@
     .news-hero{ padding:70px 0 0; }
     .news-wire-strip{ margin-top:30px; }
     .news-wire-item{ padding:16px 18px; flex:0 0 50%; border-bottom:1px solid rgba(255,255,255,.12); }
-    .news-lead{ padding:24px; }
     .news-lead-title{ font-size:1.25rem; }
-    .news-item{ flex-direction:column; gap:10px; padding:18px; }
-    .news-item-date{ width:auto; text-align:left; display:flex; align-items:baseline; gap:6px; }
+    .news-item{ flex-wrap:wrap; gap:12px; padding:16px; }
+    .news-item-date{ width:auto; order:1; text-align:left; display:flex; align-items:baseline; gap:6px; }
+    .news-item-thumb{ order:2; width:56px; height:56px; margin-left:auto; }
+    .news-item-body{ order:3; flex:1 0 100%; }
+    .news-item-arrow{ display:none; }
     .news-media-strip{ padding:28px 24px; }
     .news-media-left{ flex-direction:column; text-align:center; }
 }
@@ -587,19 +662,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {{-- ── LEAD STORY ── --}}
     @if(!request('category') && $posts->currentPage() === 1 && $featured)
     <a href="{{ route('newsroom.show', $featured->slug) }}" class="news-lead">
-      <div class="news-lead-top">
-        <span class="news-tag-latest"><i class="fas fa-bolt"></i> Latest</span>
-        @if($featured->category)
-          <span class="news-tag-category">{{ $featured->category->name }}</span>
+      <div class="news-lead-media">
+        @if($featured->featured_image)
+          <img src="{{ config('app.images_path') . $featured->featured_image }}" alt="{{ $featured->image_alt ?? $featured->title }}" loading="eager">
+        @else
+          <div class="news-lead-icon"><i class="fas fa-bullhorn"></i></div>
         @endif
-        @if($featured->external_source_name)
-          <span class="news-tag-source"><i class="fas fa-external-link-alt"></i> Featured in {{ $featured->external_source_name }}</span>
-        @endif
-        <span class="news-lead-date">{{ \Carbon\Carbon::parse($featured->published_at)->format('F d, Y') }}</span>
       </div>
-      <h2 class="news-lead-title">{{ $featured->title }}</h2>
-      <p class="news-lead-excerpt">{{ $featured->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($featured->content), 200) }}</p>
-      <span class="news-lead-link">Read Full Announcement <i class="fas fa-arrow-right"></i></span>
+      <div class="news-lead-body">
+        <div class="news-lead-top">
+          <span class="news-tag-latest"><i class="fas fa-bolt"></i> Latest</span>
+          @if($featured->category)
+            <span class="news-tag-category">{{ $featured->category->name }}</span>
+          @endif
+          @if($featured->external_source_name)
+            <span class="news-tag-source"><i class="fas fa-external-link-alt"></i> Featured in {{ $featured->external_source_name }}</span>
+          @endif
+          <span class="news-lead-date">{{ \Carbon\Carbon::parse($featured->published_at)->format('F d, Y') }}</span>
+        </div>
+        <h2 class="news-lead-title">{{ $featured->title }}</h2>
+        <p class="news-lead-excerpt">{{ $featured->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($featured->content), 200) }}</p>
+        <span class="news-lead-link">Read Full Announcement <i class="fas fa-arrow-right"></i></span>
+      </div>
     </a>
     @endif
 
@@ -630,6 +714,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="news-item-date">
             <div class="day">{{ \Carbon\Carbon::parse($post->published_at)->format('d') }}</div>
             <div class="mon">{{ \Carbon\Carbon::parse($post->published_at)->format('M Y') }}</div>
+          </div>
+          <div class="news-item-thumb">
+            @if($post->featured_image)
+              <img src="{{ config('app.images_path') . $post->featured_image }}" alt="{{ $post->image_alt ?? $post->title }}" loading="lazy">
+            @else
+              <i class="fas fa-newspaper"></i>
+            @endif
           </div>
           <div class="news-item-body">
             <div class="news-item-tags">

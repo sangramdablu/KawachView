@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\BlogComment;
 use App\Models\BlogLike;
+use App\Models\NewsletterSubscriber;
+use App\Models\BlogViewLog;
 use Illuminate\Support\Str;
 
 class FrontBlogController extends Controller
@@ -150,6 +152,15 @@ class FrontBlogController extends Controller
 
         Blog::where('id', $post->id)->increment('views');
 
+        // Timestamped view event — powers the real "Views — Last 30 Days"
+        // chart in the admin Stats modal. The `views` column above is just
+        // a running total; this is what makes a daily trend possible at all.
+        // `viewed_at` is set explicitly from PHP's now() rather than left to
+        // the column's DB-level default — the DB server's clock was found to
+        // differ from PHP's app timezone by several hours in this
+        // environment, which would otherwise bucket views into the wrong day.
+        BlogViewLog::create(['blog_id' => $post->id, 'viewed_at' => now()]);
+
         $related = Blog::with('category')
             ->where('status', 'published')
             ->where('id', '!=', $post->id)
@@ -258,19 +269,34 @@ class FrontBlogController extends Controller
      */
     public function newsletterSubscribe(Request $request)
     {
-        $request->validate(['email' => 'required|email|max:254']);
+        $validated = $request->validate([
+            'email' => 'required|email:rfc|max:254',
+            'source' => 'nullable|string|max:50',
+        ]);
 
-        // ── Integrate your newsletter provider here ──────────────
-        // e.g. Mailchimp, ConvertKit, a subscribers table, etc.
-        // Example — save to a `newsletter_subscribers` table:
-        // \DB::table('newsletter_subscribers')->updateOrInsert(    
-        //     ['email' => $request->email],
-        //     ['subscribed_at' => now(), 'status' => 'active']
-        // );
+        $subscriber = NewsletterSubscriber::where('email', $validated['email'])->first();
+
+        if ($subscriber && $subscriber->status === 'active') {
+            return response()->json([
+                'success' => true,
+                'message' => "You're already subscribed to Kawach Insights!",
+            ]);
+        }
+
+        NewsletterSubscriber::updateOrCreate(
+            ['email' => $validated['email']],
+            [
+                'status' => 'active',
+                'source' => $validated['source'] ?? 'blog',
+                'ip_address' => $request->ip(),
+                'subscribed_at' => now(),
+                'unsubscribed_at' => null,
+            ]
+        );
 
         return response()->json([
             'success' => true,
-            'message' => 'You\'re subscribed! Welcome to Kawach Insights.',
+            'message' => "You're subscribed! Welcome to Kawach Insights.",
         ]);
     }
 }

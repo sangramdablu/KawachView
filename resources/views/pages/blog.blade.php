@@ -525,6 +525,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+{{-- ═══════════════════════════════════════════════════════════
+     CTA
+════════════════════════════════════════════════════════════ --}}
+<section class="cta-section text-center">
+  <div class="container" style="position:relative;">
+    <h2 class="cta-title">Ready to Transform Your Business?</h2>
+    <p class="cta-subtitle">Let's discuss your project and find the best solution</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <button type="button" class="btn-cta-primary" data-bs-toggle="modal" data-bs-target="#consultModal">
+        <i class="fas fa-comments"></i> Get a Free Consultation
+      </button>
+      <button type="button" class="btn-cta-outline" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</button>
+    </div>
+  </div>
+</section>
+
 @include('layouts.footer')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>

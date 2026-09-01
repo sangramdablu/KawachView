@@ -461,15 +461,19 @@
       </h1>
       <div class="article-hero-meta">
         <div class="hero-author">
-          <div class="hero-avatar">AK</div>
+          @if($post->author?->avatar)
+            <img src="{{ $post->author->avatar_url }}" alt="{{ $post->author->name }}" class="hero-avatar" style="object-fit:cover;">
+          @elseif($post->author)
+            <div class="hero-avatar">{{ $post->author->initials }}</div>
+          @else
+            <div class="hero-avatar">KT</div>
+          @endif
           <div class="hero-author-info">
-            <div class="author-name"> {{ $post->author->name ?? 'Kawach Team' }} </div>
-            <div class="author-role"> Content Author </div>
+            <div class="author-name"> {{ $post->author?->name ?? 'Kawach Team' }} </div>
+            <div class="author-role"> {{ $post->author?->designation ?? 'Corporate Communications' }} </div>
           </div>
         </div>
         <span class="hero-meta-pill"><i class="fas fa-calendar-alt"></i> {{ $post->published_at->format('M d, Y') }}</span>
-        <span class="hero-meta-pill"><i class="fas fa-clock"></i> {{ $post->reading_time ?? 5 }} min read</span>
-        <span class="hero-meta-pill"><i class="fas fa-eye"></i> {{ number_format($post->views) }} views</span>
         <span class="hero-meta-pill"><i class="fas fa-comment-alt"></i> {{ $commentCount }} comments</span>
         <button type="button" id="likeBtn" class="hero-meta-pill like-btn-pill {{ $liked ? 'is-liked' : '' }}" data-slug="{{ $post->slug }}" aria-pressed="{{ $liked ? 'true' : 'false' }}">
           <i class="{{ $liked ? 'fas' : 'far' }} fa-heart"></i> <span id="likeCount">{{ $likeCount }}</span> <span id="likeLabel">{{ $liked ? 'Liked' : 'Like' }}</span>
@@ -556,7 +560,7 @@
         <div class="author-bio">
           <div class="bio-avatar">AK</div>
           <div>
-            <div class="bio-name"> {{ $post->author->name ?? 'Kawach Team' }} </div>
+            <div class="bio-name"> {{ $post->author?->name ?? 'Kawach Team' }} </div>
             <div class="bio-role">Lead AI Engineer, Kawach Technology</div>
             <p class="bio-text">Arjun leads AI strategy and implementation across KawachTech's enterprise client portfolio. With over 10 years in software engineering and 4 years specialising in applied ML, he has guided organisations across finance, healthcare, and logistics through large-scale AI adoption programmes.</p>
             <div class="bio-socials">
@@ -651,8 +655,19 @@
       <!-- SIDEBAR -->
       <div class="col-lg-4">
 
+        <!-- Newsletter -->
+        <div class="sidebar-newsletter">
+          <div class="sidebar-newsletter-title">Stay in the Loop</div>
+          <div class="sidebar-newsletter-sub">Get our best articles delivered weekly to your inbox.</div>
+          <form id="sidebarNlForm" onsubmit="handleSidebarNewsletter(event)">
+            <input type="email" name="email" id="sidebarNlEmail" class="sidebar-nl-input" placeholder="Your email address" required/>
+            <button type="submit" class="btn-sidebar-subscribe" id="sidebarNlBtn">Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:0.75rem;"></i></button>
+          </form>
+          <p id="sidebarNlMsg" style="display:none;font-size:.78rem;margin:10px 0 0;"></p>
+        </div>
+
         <!-- Table of Contents -->
-        <div class="sidebar-card">
+        <div class="sidebar-card" style="margin-top:24px;">
           <div class="sidebar-heading">Table of Contents</div>
           <ul class="toc-list">
             <li>
@@ -686,14 +701,6 @@
               </a>
             </li>
           </ul>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="sidebar-newsletter">
-          <div class="sidebar-newsletter-title">Stay in the Loop</div>
-          <div class="sidebar-newsletter-sub">Get our best articles delivered weekly to your inbox.</div>
-          <input type="email" class="sidebar-nl-input" placeholder="Your email address"/>
-          <button class="btn-sidebar-subscribe">Subscribe <i class="fas fa-paper-plane ms-1" style="font-size:0.75rem;"></i></button>
         </div>
 
         <!-- Related Articles -->
@@ -735,12 +742,22 @@
 
           @foreach($related as $item)
           <a href="{{ route('blog.show', $item->slug) }}" class="related-mini">
+            @if($item->featured_image)
+            <div class="related-thumb-mini" style="padding:0;overflow:hidden;">
+              <img src="{{ config('app.images_path') . $item->featured_image }}"
+                   alt="{{ $item->image_alt ?? $item->title }}"
+                   loading="lazy"
+                   style="width:100%;height:100%;object-fit:cover;display:block;"
+                   onerror="this.style.display='none'; this.parentElement.classList.add('{{ relatedMiniThumbClass($item->category->name ?? null) }}'); this.nextElementSibling.style.display='flex';">
+              <i class="{{ relatedMiniIcon($item->category->name ?? null) }}" style="display:none;"></i>
+            </div>
+            @else
             <div class="related-thumb-mini {{ relatedMiniThumbClass($item->category->name ?? null) }}">
               <i class="{{ relatedMiniIcon($item->category->name ?? null) }}"></i>
             </div>
+            @endif
             <div>
               <div class="related-mini-title">{{ $item->title }}</div>
-              <div class="related-mini-date"><i class="fas fa-clock" style="color:var(--primary-blue);font-size:0.65rem;"></i> {{ $item->reading_time ?? 5 }} min read</div>
             </div>
           </a>
           @endforeach
@@ -751,15 +768,18 @@
         <div class="sidebar-card">
           <div class="sidebar-heading">Share This Article</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="#" class="share-btn sb-linkedin" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
+            <button type="button" onclick="nativeShareArticle()" id="nativeShareBtn" class="share-btn" style="display:none;width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;align-items:center;height:36px;background:var(--primary-blue);color:#fff;border:none;">
+              <i class="fas fa-share-alt"></i> Share
+            </button>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}" target="_blank" rel="noopener" class="share-btn sb-linkedin" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
               <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
-            <a href="#" class="share-btn sb-twitter" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
+            <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($post->title) }}" target="_blank" rel="noopener" class="share-btn sb-twitter" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
               <i class="fab fa-twitter"></i> Twitter
             </a>
-            <a href="#" class="share-btn sb-link" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;">
+            <button type="button" id="sidebarCopyLink" class="share-btn sb-link" style="width:auto;padding:0 16px;border-radius:6px;font-size:0.8rem;gap:7px;display:flex;align-items:center;height:36px;border:none;">
               <i class="fas fa-link"></i> Copy Link
-            </a>
+            </button>
           </div>
         </div>
 
@@ -809,8 +829,10 @@
     <h2 class="cta-title">Ready to Transform Your Business?</h2>
     <p class="cta-subtitle">Let's discuss your project and find the best AI-powered solution</p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
-      <a href="#" class="btn-cta-primary">Schedule a Call</a>
-      <a href="#" class="btn-cta-outline">Get a Quote</a>
+      <button type="button" class="btn-cta-primary" data-bs-toggle="modal" data-bs-target="#consultModal">
+        <i class="fas fa-comments"></i> Get a Free Consultation
+      </button>
+      <button type="button" class="btn-cta-outline" data-bs-toggle="modal" data-bs-target="#quoteModal">Get a Quote</button>
     </div>
   </div>
 </section>
@@ -905,7 +927,7 @@
     });
   });
 
-  // Copy link button
+  // Copy link button(s) — sidebar's "Copy Link" reuses this same class.
   document.querySelectorAll('.sb-link').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -915,6 +937,66 @@
       setTimeout(() => btn.innerHTML = orig, 1500);
     });
   });
+
+  // Native "choose an app" share sheet (WhatsApp, Mail, Messages, etc.) —
+  // only shown where the browser actually supports it; the LinkedIn/Twitter/
+  // Copy Link buttons stay as the fallback everywhere else.
+  const nativeShareBtn = document.getElementById('nativeShareBtn');
+  if (nativeShareBtn && navigator.share) {
+    nativeShareBtn.style.display = 'flex';
+  }
+  function nativeShareArticle() {
+    navigator.share({
+      title: {!! json_encode($post->title) !!},
+      text: {!! json_encode($post->excerpt ?? '') !!},
+      url: window.location.href,
+    }).catch(() => {});
+  }
+
+  // Sidebar newsletter — same endpoint/response shape as the footer
+  // newsletter form on the blog listing page (pages/blog.blade.php).
+  function handleSidebarNewsletter(e) {
+    e.preventDefault();
+    const btn = document.getElementById('sidebarNlBtn');
+    const msg = document.getElementById('sidebarNlMsg');
+    const emailInput = document.getElementById('sidebarNlEmail');
+
+    btn.disabled = true;
+    const origBtnHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+    fetch('{{ route('newsletter.subscribe') }}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+      },
+      body: JSON.stringify({ email: emailInput.value, source: 'blog-sidebar' }),
+    })
+      .then(r => r.json().then(data => ({ ok: r.ok, data })))
+      .then(({ ok, data }) => {
+        msg.style.display = 'block';
+        if (ok && data.success) {
+          msg.innerHTML = '<i class="fas fa-check" style="color:#4caf50;"></i> ' + (data.message || "You're subscribed!");
+          msg.style.color = '#4caf50';
+          emailInput.value = '';
+        } else {
+          const firstError = data.errors ? Object.values(data.errors)[0]?.[0] : null;
+          msg.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#e53935;"></i> ' + (firstError || data.message || 'Something went wrong. Please try again.');
+          msg.style.color = '#e53935';
+        }
+      })
+      .catch(() => {
+        msg.style.display = 'block';
+        msg.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#e53935;"></i> Network error. Please try again.';
+        msg.style.color = '#e53935';
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = origBtnHtml;
+      });
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
       const content = document.getElementById("articleContent");
