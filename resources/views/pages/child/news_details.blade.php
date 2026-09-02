@@ -631,10 +631,6 @@
         </div>
       </div>
       <span class="nd-meta-pill"><i class="fas fa-calendar-alt"></i> {{ $post->published_at->format('F d, Y') }}</span>
-      @if($post->reading_time)
-      <span class="nd-meta-pill"><i class="fas fa-clock"></i> {{ $post->reading_time }} min read</span>
-      @endif
-      <span class="nd-meta-pill"><i class="fas fa-eye"></i> {{ number_format($post->views) }} views</span>
     </div>
   </div>
 </section>

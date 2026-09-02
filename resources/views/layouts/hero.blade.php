@@ -60,17 +60,16 @@
     <div class="row align-items-center">
       <div class="col-lg-6 col-md-7">
         <h1 class="hero-title">
-          Building Smart Software Solutions<br>
-          <strong>Solutions</strong> <span>for Your Business</span>
+          We Build Custom Software That Helps Businesses Scale
         </h1>
-        <p class="hero-subtitle">Custom software development to drive your success.</p>
+        <p class="hero-subtitle">From SaaS platforms and AI automation to complex web and mobile applications, Kawach Technology helps startups and enterprises turn business problems into scalable software.</p>
         <button class="btn btn-consultation" data-bs-toggle="modal" data-bs-target="#consultModal">Get a Free Consultation</button>
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
         <div class="hero-mockup position-relative">
             <!-- Image -->
             <div class="hero-image">
-              <img src="{{ config('app.images_path') . 'assets/images/kawach_modelgirl.png' }}" alt="Kawach Technology — custom software development, cloud, security and support solutions">
+              <img src="{{ asset('assets/images/kawach_modelgirl.png') }}" alt="Kawach Technology — custom software development, cloud, security and support solutions">
             </div>
 
           {{-- <div class="laptop-frame">
