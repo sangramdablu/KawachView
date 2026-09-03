@@ -35,6 +35,22 @@ Route::get('/about/founder', function () {
     return view('pages.founder.neha');
 })->name('founder');
 
+Route::get('/markets/usa/software-development', function () {
+    return view('pages.countrypages.usa');
+})->name('country.usa');
+
+Route::get('/markets/uk/software-development', function () {
+    return view('pages.countrypages.uk');
+})->name('country.uk');
+
+Route::get('/markets/germany/software-development', function () {
+    return view('pages.countrypages.germany');
+})->name('country.germany');
+
+Route::get('/markets/europe/software-development', function () {
+    return view('pages.countrypages.europe');
+})->name('country.europe');
+
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');

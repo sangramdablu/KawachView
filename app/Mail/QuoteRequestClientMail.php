@@ -8,7 +8,6 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Attachment;
 
 class QuoteRequestClientMail extends Mailable
 {
@@ -34,13 +33,6 @@ class QuoteRequestClientMail extends Mailable
 
     public function attachments(): array
     {
-        return [
-            Attachment::fromStorageDisk(
-                'public',
-                'brochures/Kawach-Company-Profile.pdf'
-            )
-            ->as('Kawach-Company-Profile.pdf')
-            ->withMime('application/pdf'),
-        ];
+        return [];
     }
 }

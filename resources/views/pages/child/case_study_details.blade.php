@@ -509,7 +509,7 @@
       <a href="#sec-results"    class="cs-nav-tab">Results</a>
       <a href="#sec-faq"        class="cs-nav-tab">FAQ</a>
     </div>
-    <button class="cs-nav-cta" data-bs-toggle="modal" data-bs-target="#getQuoteModal">
+    <button class="cs-nav-cta" data-bs-toggle="modal" data-bs-target="#quoteModal">
       Start Your Project
     </button>
   </div>
@@ -984,8 +984,8 @@
       <button class="btn-cs-primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">
         <i class="fas fa-calendar-alt me-2"></i> Schedule a Call
       </button>
-      <button class="btn-cs-outline" data-bs-toggle="modal" data-bs-target="#getQuoteModal">
-        Get a Free Quote
+      <button class="btn-cs-outline" data-bs-toggle="modal" data-bs-target="#consultModal">
+        Get a Free Consultation
       </button>
       <a href="{{ url('/case-studies') }}" class="btn-cs-outline">
         View All Case Studies
