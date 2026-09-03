@@ -155,6 +155,7 @@
   /* ── Mobile: inline accordion inside collapsed nav ──────────── */
   @media (max-width: 991.98px) {
     .nav-hire-item { width: 100%; }
+    .nav-hire-trigger { width: 100%; justify-content: center; padding: 6px 18px; }
     .nav-hire-panel,
     .nav-hire-panel.open {
       position: static;

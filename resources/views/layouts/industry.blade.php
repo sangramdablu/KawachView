@@ -9,7 +9,7 @@
       <div class="col-6 col-md-4 col-lg-2">
         <div class="industry-item">
           <div class="industry-icon"><i class="fas fa-shopping-bag"></i></div>
-          <div>
+          <div class="industry-text">
             <div class="industry-name">Retail</div>
             <div class="industry-count">18 projects</div>
           </div>
@@ -18,7 +18,7 @@
       <div class="col-6 col-md-4 col-lg-2">
         <div class="industry-item">
           <div class="industry-icon"><i class="fas fa-heartbeat"></i></div>
-          <div>
+          <div class="industry-text">
             <div class="industry-name">Healthcare</div>
             <div class="industry-count">14 projects</div>
           </div>
@@ -27,7 +27,7 @@
       <div class="col-6 col-md-4 col-lg-2">
         <div class="industry-item">
           <div class="industry-icon"><i class="fas fa-university"></i></div>
-          <div>
+          <div class="industry-text">
             <div class="industry-name">FinTech</div>
             <div class="industry-count">22 projects</div>
           </div>
@@ -36,7 +36,7 @@
       <div class="col-6 col-md-4 col-lg-2">
         <div class="industry-item">
           <div class="industry-icon"><i class="fas fa-graduation-cap"></i></div>
-          <div>
+          <div class="industry-text">
             <div class="industry-name">Education</div>
             <div class="industry-count">16 projects</div>
           </div>
@@ -45,7 +45,7 @@
       <div class="col-6 col-md-4 col-lg-2">
         <div class="industry-item">
           <div class="industry-icon"><i class="fas fa-truck"></i></div>
-          <div>
+          <div class="industry-text">
             <div class="industry-name">Logistics</div>
             <div class="industry-count">20 projects</div>
           </div>
@@ -54,7 +54,7 @@
       <div class="col-6 col-md-4 col-lg-2">
         <div class="industry-item">
           <div class="industry-icon"><i class="fas fa-industry"></i></div>
-          <div>
+          <div class="industry-text">
             <div class="industry-name">Manufacturing</div>
             <div class="industry-count">12 projects</div>
           </div>

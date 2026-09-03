@@ -66,6 +66,7 @@
 
     .navbar-toggler{
       background-color: #ffffff;
+      flex-shrink: 0;
     }
 
     .btn-quote {
@@ -81,6 +82,56 @@
     .btn-quote:hover {
       background-color: #1558b0;
       color: var(--white);
+    }
+
+    /* ── NAVBAR — RESPONSIVE (tablet & mobile, <992px) ──────────────────
+       Root cause of the toggler appearing to "vanish": .brand-sub's 5px
+       letter-spacing made the tagline text wider than the whole visible
+       viewport on small screens, so the flex-wrap navbar pushed the
+       toggler button onto its own line, off past the visible fold. */
+    @media (max-width: 991.98px) {
+      .navbar-brand {
+        font-size: 1.15rem;
+        min-width: 0;
+      }
+      .navbar-brand .brand-sub {
+        font-size: 0.46rem;
+        letter-spacing: 1.5px;
+        white-space: nowrap;
+      }
+      .navbar-collapse {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255,255,255,.12);
+      }
+      .navbar-nav {
+        width: 100%;
+        margin-right: 0 !important;
+      }
+      .navbar-nav .nav-link {
+        padding: 12px 10px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+      .navbar-nav li:last-child .nav-link {
+        border-bottom: none;
+      }
+      .navbar-collapse .btn-quote {
+        display: block;
+        width: 100%;
+        margin-top: 14px;
+        padding: 12px 22px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 359.98px) {
+      .navbar-brand {
+        font-size: 1rem;
+      }
+      .navbar-brand .brand-sub {
+        font-size: 0.4rem;
+        letter-spacing: 1px;
+      }
     }
     /* ── HERO ── */
     
@@ -2447,6 +2498,19 @@
       border: 1px solid var(--border-light);
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: default;
+      max-width: 100%;
+    }
+
+    /* Flex items default to min-width:auto, which refuses to shrink below
+       the unwrapped width of "Manufacturing" — that's what was forcing
+       this card wider than its column and breaking the grid on mobile. */
+    .industry-text {
+      min-width: 0;
+    }
+
+    .industry-name,
+    .industry-count {
+      overflow-wrap: break-word;
     }
 
     .industry-item:hover {
@@ -2480,6 +2544,26 @@
     .industry-count {
       font-size: 0.75rem;
       color: var(--text-muted);
+    }
+
+    @media (max-width: 575.98px) {
+      .industry-item {
+        gap: 10px;
+        padding: 12px 14px;
+      }
+      .industry-icon {
+        width: 36px;
+        height: 36px;
+      }
+      .industry-icon i {
+        font-size: 1rem;
+      }
+      .industry-name {
+        font-size: 0.82rem;
+      }
+      .industry-count {
+        font-size: 0.68rem;
+      }
     }
 
     /* ── CTA BANNER ── */
@@ -4493,70 +4577,12 @@
 
         /* Blog Details Css Code */
 
-        :root {
-        --primary-blue: #1a73e8;
-        --dark-navy: #0d1b3e;
-        --mid-navy: #162447;
-        --light-navy: #1f3a6e;
-        --accent-blue: #2196f3;
-        --text-dark: #1a1a2e;
-        --text-muted: #6c757d;
-        --bg-light: #f4f6fb;
-        --white: #ffffff;
-        --border-light: #e2e8f0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-        font-family: 'Open Sans', sans-serif;
-        color: var(--text-dark);
-        overflow-x: hidden;
-        }
-
-        /* ── NAVBAR ── */
-        .navbar {
-        background-color: var(--dark-navy);
-        padding: 14px 0;
-        }
-        .navbar-brand {
-        font-family: 'Nunito', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: var(--white);
-        letter-spacing: 1px;
-        text-decoration: none;
-        }
-        .navbar-brand span.brand-highlight { color: var(--accent-blue); }
-        .navbar-brand .brand-sub {
-        display: block;
-        font-size: 0.55rem;
-        font-weight: 600;
-        letter-spacing: 5px;
-        color: #aac4e0;
-        margin-top: -4px;
-        }
-        .navbar-nav .nav-link {
-        color: #ccd9ea;
-        font-size: 0.92rem;
-        font-weight: 600;
-        padding: 6px 18px;
-        transition: color 0.2s;
-        }
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active { color: var(--white); }
-        .btn-quote {
-        background-color: var(--primary-blue);
-        color: var(--white);
-        border: none;
-        border-radius: 6px;
-        padding: 8px 22px;
-        font-weight: 700;
-        font-size: 0.9rem;
-        transition: background 0.2s;
-        text-decoration: none;
-        }
-        .btn-quote:hover { background-color: #1558b0; color: var(--white); }
+        /* NOTE: this section used to re-declare :root, *, body, and every
+           .navbar*/.btn-quote rule already defined at the top of this file.
+           Because CSS resolves same-specificity ties by source order, that
+           unconditional duplicate was silently overriding the responsive
+           navbar fixes above (and always would, being both duplicate AND
+           later in the file) — removed rather than kept in sync by hand. */
 
         /* ── BREADCRUMB ── */
         .breadcrumb-bar {
