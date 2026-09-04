@@ -92,3 +92,8 @@ Route::get('/refund-policy', function () {
     return view('pages.refund-policy');
 })->name('refund-policy');
 
+
+Route::get('/donald/ember&sky', function () {
+    return view('demo.ember');
+});
+
