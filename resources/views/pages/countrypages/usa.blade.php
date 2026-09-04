@@ -122,7 +122,9 @@
                 "@type" => "BreadcrumbList",
                 "itemListElement" => [
                     ["@type" => "ListItem", "position" => 1, "name" => "Home", "item" => url('/')],
-                    ["@type" => "ListItem", "position" => 2, "name" => "Custom Software Development Company in USA", "item" => $seoCanonical],
+                    ["@type" => "ListItem", "position" => 2, "name" => "Markets", "item" => url('/markets')],
+                    ["@type" => "ListItem", "position" => 3, "name" => "USA", "item" => $seoCanonical],
+                    ["@type" => "ListItem", "position" => 4, "name" => "Software Development", "item" => $seoCanonical],
                 ],
             ],
         ],
@@ -217,7 +219,7 @@
   <section class="usa-hero">
     <div class="usa-container usa-hero-inner">
       <div class="usa-breadcrumb">
-        <a href="{{ url('/') }}">Home</a> <span>/</span> Custom Software Development Company in USA
+        <a href="{{ url('/') }}">Home</a> <span>/</span> <a href="{{ route('markets') }}">Markets</a> <span>/</span> USA / Software Development
       </div>
       <h1>Custom Software Development Company for Businesses in the USA</h1>
       <p class="usa-hero-lede">
@@ -723,7 +725,28 @@
     .usa-faq-answer{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
     .usa-faq-item.open .usa-faq-answer{ max-height:400px; }
     .usa-faq-answer p{ color:var(--text-muted); font-size:.9rem; line-height:1.7; margin:14px 0 0; }
+    .usa-other-markets{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; }
+    .usa-other-markets a{
+      display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border-light);
+      border-radius:30px; padding:10px 20px; font-size:.86rem; font-weight:700; color:var(--text-dark); text-decoration:none;
+    }
+    .usa-other-markets a:hover{ border-color:var(--primary); color:var(--primary); }
   </style>
+
+  {{-- ═══ OTHER MARKETS + CONTACT (crawlable links, not just modal CTAs) ═══ --}}
+  <section class="usa-section" style="padding-top:0;">
+    <div class="usa-container" style="text-align:center;">
+      <p style="color:var(--text-muted); font-size:.92rem; margin-bottom:16px;">
+        Also serving businesses in other markets, or prefer to talk directly?
+      </p>
+      <div class="usa-other-markets">
+        <a href="{{ route('country.uk') }}"><i class="fas fa-landmark"></i> Software Development Company UK</a>
+        <a href="{{ route('country.germany') }}"><i class="fas fa-industry"></i> Software Development Company Germany</a>
+        <a href="{{ route('country.europe') }}"><i class="fas fa-earth-europe"></i> Software Development for European Businesses</a>
+        <a href="{{ route('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a>
+      </div>
+    </div>
+  </section>
 
   {{-- ═══ FAQ ═══ --}}
   <section class="usa-section bg-light">

@@ -35,6 +35,10 @@ Route::get('/about/founder', function () {
     return view('pages.founder.neha');
 })->name('founder');
 
+Route::get('/markets', function () {
+    return view('pages.markets');
+})->name('markets');
+
 Route::get('/markets/usa/software-development', function () {
     return view('pages.countrypages.usa');
 })->name('country.usa');

@@ -419,6 +419,55 @@
         </div>
         @endif
 
+        {{-- Software Development Services by Market — only on the flagship
+             custom software development page, not every service page. --}}
+        @if($service->slug === 'custom-software-development')
+        <div class="anim" style="margin-top:32px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div class="section-label"><i class="fas fa-earth-americas"></i> Software Development Services by Market</div>
+          </div>
+          <p style="color:var(--text-muted, #6c757d); font-size:.95rem; margin-bottom:18px;">
+            KawachTech works with businesses across the USA, United Kingdom, Germany and Europe to design,
+            develop and scale custom software products — each market page covers the specific business
+            challenges, communication approach and compliance considerations relevant there.
+          </p>
+          <div class="row g-3">
+            <div class="col-sm-6 col-md-3">
+              <a href="{{ route('country.usa') }}" class="related-card" style="align-items:center;text-align:center;">
+                <div class="related-card-body">
+                  <div class="related-card-title">Custom Software Development USA</div>
+                  <div class="related-card-link">Explore &rarr;</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <a href="{{ route('country.uk') }}" class="related-card" style="align-items:center;text-align:center;">
+                <div class="related-card-body">
+                  <div class="related-card-title">Software Development Company UK</div>
+                  <div class="related-card-link">Explore &rarr;</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <a href="{{ route('country.germany') }}" class="related-card" style="align-items:center;text-align:center;">
+                <div class="related-card-body">
+                  <div class="related-card-title">Software Development Company Germany</div>
+                  <div class="related-card-link">Explore &rarr;</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <a href="{{ route('country.europe') }}" class="related-card" style="align-items:center;text-align:center;">
+                <div class="related-card-body">
+                  <div class="related-card-title">Software Development for European Businesses</div>
+                  <div class="related-card-link">Explore &rarr;</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        @endif
+
       </div>{{-- /col-lg-8 --}}
 
       {{-- ── SIDEBAR (RIGHT) ────────────────────────────────── --}}

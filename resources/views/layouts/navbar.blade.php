@@ -154,7 +154,7 @@
 
   /* ── Mobile: inline accordion inside collapsed nav ──────────── */
   @media (max-width: 991.98px) {
-    .nav-hire-item { width: 100%; }
+    .nav-hire-item, .nav-markets-item { width: 100%; }
     .nav-hire-trigger { width: 100%; justify-content: center; padding: 6px 18px; }
     .nav-hire-panel,
     .nav-hire-panel.open {
@@ -212,6 +212,44 @@
       <ul class="navbar-nav align-items-center me-3">
         <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('casestudy') }}">Case Studies</a></li>
+        <li class="nav-item nav-markets-item">
+          <a href="{{ route('markets') }}" class="nav-link nav-hire-trigger" id="marketsTrigger" aria-haspopup="true" aria-expanded="false">
+            Markets <i class="fas fa-chevron-down nav-hire-arrow"></i>
+          </a>
+          <div class="nav-hire-panel" id="marketsPanel">
+            <div class="nav-hire-header">
+              <div class="nav-hire-header-icon"><i class="fas fa-earth-americas"></i></div>
+              <div>
+                <div class="nav-hire-header-title">Markets We Serve</div>
+                <p class="nav-hire-header-sub">Software development tailored to your region</p>
+              </div>
+            </div>
+            <div class="nav-hire-panel-inner" style="grid-template-columns:1fr;">
+              <div class="nav-hire-col">
+                <a href="{{ route('country.usa') }}" class="nav-hire-link">
+                  <span class="nav-hire-link-icon"><i class="fas fa-flag-usa"></i></span>
+                  USA
+                </a>
+                <a href="{{ route('country.uk') }}" class="nav-hire-link">
+                  <span class="nav-hire-link-icon"><i class="fas fa-landmark"></i></span>
+                  United Kingdom
+                </a>
+                <a href="{{ route('country.germany') }}" class="nav-hire-link">
+                  <span class="nav-hire-link-icon"><i class="fas fa-industry"></i></span>
+                  Germany
+                </a>
+                <a href="{{ route('country.europe') }}" class="nav-hire-link">
+                  <span class="nav-hire-link-icon"><i class="fas fa-earth-europe"></i></span>
+                  Europe
+                </a>
+              </div>
+            </div>
+            <div class="nav-hire-footer">
+              <span>Not sure which fits?</span>
+              <a href="{{ route('markets') }}" class="nav-hire-cta">View all markets <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </li>
         <li class="nav-item nav-hire-item">
           <a href="{{ route('hire-developer.index') }}" class="nav-link nav-hire-trigger" id="hireDevTrigger" aria-haspopup="true" aria-expanded="false">
             Hire Developer <i class="fas fa-chevron-down nav-hire-arrow"></i>
@@ -256,60 +294,68 @@
 
 <script>
 (function () {
-  var item    = document.querySelector('.nav-hire-item');
-  var trigger = document.getElementById('hireDevTrigger');
-  var panel   = document.getElementById('hireDevPanel');
-  if (!item || !trigger || !panel) return;
-
   var isDesktop = function () { return window.matchMedia('(min-width: 992px)').matches; };
-  var closeTimer = null;
 
-  function isOpen() { return panel.classList.contains('open'); }
+  // Shared hover/click/escape dropdown behavior, applied once per nav
+  // dropdown (Hire Developer, Markets) rather than duplicated per instance.
+  function initNavDropdown(itemSelector, triggerId, panelId) {
+    var item    = document.querySelector(itemSelector);
+    var trigger = document.getElementById(triggerId);
+    var panel   = document.getElementById(panelId);
+    if (!item || !trigger || !panel) return;
 
-  function openPanel() {
-    clearTimeout(closeTimer);
-    panel.classList.add('open');
-    trigger.classList.add('open');
-    trigger.setAttribute('aria-expanded', 'true');
+    var closeTimer = null;
+
+    function isOpen() { return panel.classList.contains('open'); }
+
+    function openPanel() {
+      clearTimeout(closeTimer);
+      panel.classList.add('open');
+      trigger.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+    function closePanel() {
+      panel.classList.remove('open');
+      trigger.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    function closePanelDelayed() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(closePanel, 180);
+    }
+    function togglePanel(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      isOpen() ? closePanel() : openPanel();
+    }
+
+    // Desktop: hover the trigger or the panel to open; leaving both closes it
+    // (with a short delay so moving the cursor from the link into the panel
+    // doesn't cause a flicker). Click still works too, for touch/keyboard.
+    item.addEventListener('mouseenter', function () { if (isDesktop()) openPanel(); });
+    item.addEventListener('mouseleave', function () { if (isDesktop()) closePanelDelayed(); });
+
+    trigger.addEventListener('click', function (e) {
+      if (isDesktop()) { e.preventDefault(); e.stopPropagation(); return; }
+      togglePanel(e);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (isOpen() && !panel.contains(e.target) && e.target !== trigger) closePanel();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) closePanel();
+    });
+
+    // Real routed links — let them navigate normally, just close the panel
+    // first for a clean transition.
+    panel.querySelectorAll('.nav-hire-link, .nav-hire-cta').forEach(function (link) {
+      link.addEventListener('click', function () { closePanel(); });
+    });
   }
-  function closePanel() {
-    panel.classList.remove('open');
-    trigger.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-  }
-  function closePanelDelayed() {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(closePanel, 180);
-  }
-  function togglePanel(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    isOpen() ? closePanel() : openPanel();
-  }
 
-  // Desktop: hover the trigger or the panel to open; leaving both closes it
-  // (with a short delay so moving the cursor from the link into the panel
-  // doesn't cause a flicker). Click still works too, for touch/keyboard.
-  item.addEventListener('mouseenter', function () { if (isDesktop()) openPanel(); });
-  item.addEventListener('mouseleave', function () { if (isDesktop()) closePanelDelayed(); });
-
-  trigger.addEventListener('click', function (e) {
-    if (isDesktop()) { e.preventDefault(); e.stopPropagation(); return; }
-    togglePanel(e);
-  });
-
-  document.addEventListener('click', function (e) {
-    if (isOpen() && !panel.contains(e.target) && e.target !== trigger) closePanel();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && isOpen()) closePanel();
-  });
-
-  // Tech/role links and the footer CTA are real routed pages — let them
-  // navigate normally, just close the panel first for a clean transition.
-  panel.querySelectorAll('.nav-hire-link, .nav-hire-cta').forEach(function (link) {
-    link.addEventListener('click', function () { closePanel(); });
-  });
+  initNavDropdown('.nav-hire-item', 'hireDevTrigger', 'hireDevPanel');
+  initNavDropdown('.nav-markets-item', 'marketsTrigger', 'marketsPanel');
 })();
 </script>

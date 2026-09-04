@@ -30,6 +30,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ── INDUSTRIES ── -->
 @include('layouts.industry')
 
+@include('layouts.global-markets')
+
 {{-- <!-- ── CLIENT VOICES ── -->
 @include('layouts.client-voices') --}}
 

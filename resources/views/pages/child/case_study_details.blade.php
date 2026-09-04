@@ -7,6 +7,21 @@
         ? config('app.images_path') . $caseStudy->featured_image
         : asset('assets/images/kawach.png');
     $seoType      = 'article';
+
+    // Map this case study's real, already-disclosed client location to one
+    // of the 4 market pages — never assign a market that isn't genuinely
+    // reflected in the location text itself.
+    $csLocation = $caseStudy->caseStudy->location ?? '';
+    $csMarket   = null;
+    if (Str::contains($csLocation, ['USA', 'United States'])) {
+        $csMarket = ['route' => 'country.usa', 'label' => 'the USA'];
+    } elseif (Str::contains($csLocation, ['UK', 'United Kingdom'])) {
+        $csMarket = ['route' => 'country.uk', 'label' => 'the UK'];
+    } elseif (Str::contains($csLocation, 'Germany')) {
+        $csMarket = ['route' => 'country.germany', 'label' => 'Germany'];
+    } elseif (Str::contains($csLocation, ['Netherlands', 'France', 'Sweden', 'Ireland', 'Switzerland', 'Italy', 'Spain', 'Portugal'])) {
+        $csMarket = ['route' => 'country.europe', 'label' => 'Europe'];
+    }
 @endphp
 
 @push('schema')
@@ -548,7 +563,15 @@
               @if($caseStudy->caseStudy->location)
               <div class="co-item">
                 <div class="co-item-icon"><i class="fas fa-globe-americas"></i></div>
-                <div><div class="co-item-label">Location</div><div class="co-item-val">{{ $caseStudy->caseStudy->location }}</div></div>
+                <div>
+                  <div class="co-item-label">Location</div>
+                  <div class="co-item-val">
+                    {{ $caseStudy->caseStudy->location }}
+                    @if($csMarket)
+                      &middot; <a href="{{ route($csMarket['route']) }}">Software development in {{ $csMarket['label'] }}</a>
+                    @endif
+                  </div>
+                </div>
               </div>
               @endif
               @if($caseStudy->caseStudy->business_model)
@@ -991,6 +1014,10 @@
         View All Case Studies
       </a>
     </div>
+    <p style="margin-top:22px; color:var(--text-muted, #6c757d); font-size:.9rem;">
+      Want a similar result for your business?
+      <a href="{{ route('pages.child.sevice_details', 'custom-software-development') }}">Explore our custom software development services</a>@if($csMarket) or see how we work with businesses in <a href="{{ route($csMarket['route']) }}">{{ $csMarket['label'] }}</a>@endif.
+    </p>
   </div>
 </section>
 

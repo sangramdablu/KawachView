@@ -115,7 +115,9 @@
                 "@type" => "BreadcrumbList",
                 "itemListElement" => [
                     ["@type" => "ListItem", "position" => 1, "name" => "Home", "item" => url('/')],
-                    ["@type" => "ListItem", "position" => 2, "name" => "Software Development Services for European Businesses", "item" => $seoCanonical],
+                    ["@type" => "ListItem", "position" => 2, "name" => "Markets", "item" => url('/markets')],
+                    ["@type" => "ListItem", "position" => 3, "name" => "Europe", "item" => $seoCanonical],
+                    ["@type" => "ListItem", "position" => 4, "name" => "Software Development", "item" => $seoCanonical],
                 ],
             ],
         ],
@@ -272,6 +274,12 @@
   .usa-challenge-grid, .usa-svc-grid, .usa-trust-grid, .usa-cs-grid, .usa-eng-grid, .usa-process-row{ grid-template-columns:1fr; }
   .usa-ind-grid{ grid-template-columns:repeat(2,1fr); }
 }
+.usa-other-markets{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; }
+.usa-other-markets a{
+  display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border-light);
+  border-radius:30px; padding:10px 20px; font-size:.86rem; font-weight:700; color:var(--text-dark); text-decoration:none;
+}
+.usa-other-markets a:hover{ border-color:var(--primary); color:var(--primary); }
 </style>
 
 <div class="usa-page">
@@ -280,7 +288,7 @@
   <section class="usa-hero">
     <div class="usa-container usa-hero-inner">
       <div class="usa-breadcrumb">
-        <a href="{{ url('/') }}">Home</a> <span>/</span> Software Development Services for European Businesses
+        <a href="{{ url('/') }}">Home</a> <span>/</span> <a href="{{ route('markets') }}">Markets</a> <span>/</span> Europe / Software Development
       </div>
       <h1>Software Development Services for Businesses Across Europe</h1>
       <p class="usa-hero-lede">
@@ -612,6 +620,21 @@
           <li><i class="fas fa-clipboard-list"></i><span><strong>A shared project board</strong> (Jira, Linear, or your existing tool) and written updates so status is never a mystery between syncs.</span></li>
           <li><i class="fas fa-user"></i><span><strong>One dedicated point of contact</strong> on our side, reachable throughout your working day.</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  {{-- ═══ OTHER MARKETS + CONTACT (crawlable links, not just modal CTAs) ═══ --}}
+  <section class="usa-section" style="padding-top:0;">
+    <div class="usa-container" style="text-align:center;">
+      <p style="color:var(--text-muted); font-size:.92rem; margin-bottom:16px;">
+        Looking for a market-specific page, or prefer to talk directly?
+      </p>
+      <div class="usa-other-markets">
+        <a href="{{ route('country.usa') }}"><i class="fas fa-flag-usa"></i> Custom Software Development Company USA</a>
+        <a href="{{ route('country.uk') }}"><i class="fas fa-landmark"></i> Software Development Company UK</a>
+        <a href="{{ route('country.germany') }}"><i class="fas fa-industry"></i> Software Development Company Germany</a>
+        <a href="{{ route('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a>
       </div>
     </div>
   </section>
