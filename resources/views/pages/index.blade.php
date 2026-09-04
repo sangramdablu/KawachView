@@ -41,8 +41,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ── TRUST & ASSURANCE ── -->
 @include('layouts.trust')
 
-<!-- ── TESTIMONIALS ── -->
-@include('layouts.testmonials')
+{{-- ── CLUTCH REVIEWS — disabled per request, restore by uncommenting ── --}}
+{{-- <!-- ── TESTIMONIALS ── -->
+@include('layouts.testmonials') --}}
+
+<!-- ── CLIENT REVIEWS (from case studies) ── -->
+@include('layouts.client-reviews')
 
 <!-- CTA -->
 <section class="cta-section text-center">

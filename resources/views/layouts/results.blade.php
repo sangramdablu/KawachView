@@ -71,7 +71,7 @@
 
       <div class="result-item">
         <div class="result-icon"><i class="fas fa-diagram-project"></i></div>
-        <div class="result-number" data-count-to="150" data-suffix="+">0</div>
+        <div class="result-number" data-count-to="400" data-suffix="+">0</div>
         <div class="result-label">Projects Delivered</div>
       </div>
 

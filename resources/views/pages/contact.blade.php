@@ -195,7 +195,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-icon"><i class="fas fa-handshake"></i></div>
-            <div><div class="hero-stat-value">200+</div><div class="hero-stat-label">Happy Clients</div></div>
+            <div><div class="hero-stat-value">500+</div><div class="hero-stat-label">Happy Clients</div></div>
           </div>
         </div>
       </div>

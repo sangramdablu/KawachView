@@ -530,7 +530,7 @@ if (!function_exists('projMockIcon')) {
             <div class="proj-stat-item">
                 <div class="proj-stat-icon"><i class="fas fa-users"></i></div>
                 <div>
-                    <div class="proj-stat-val">200+</div>
+                    <div class="proj-stat-val">500+</div>
                     <div class="proj-stat-label">Happy Clients</div>
                 </div>
             </div>

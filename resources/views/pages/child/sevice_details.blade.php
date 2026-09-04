@@ -184,7 +184,7 @@
           <div class="hero-chip">
             <div class="hero-chip-icon"><i class="fas fa-users"></i></div>
             <div>
-              <div class="hero-chip-val">200+</div>
+              <div class="hero-chip-val">500+</div>
               <div class="hero-chip-label">Happy Clients</div>
             </div>
           </div>

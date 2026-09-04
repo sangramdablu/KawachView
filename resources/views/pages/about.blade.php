@@ -175,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="stat-label">Years of Experience</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">150<span>+</span></div>
+            <div class="stat-number">400<span>+</span></div>
             <div class="stat-label">Projects Delivered</div>
           </div>
           <div class="stat-item">
@@ -212,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="av-stat-row">
               <div class="av-stat-box">
-                <div class="av-stat-num">150<span>+</span></div>
+                <div class="av-stat-num">400<span>+</span></div>
                 <div class="av-stat-lbl">Projects</div>
               </div>
               <div class="av-stat-box">
@@ -528,8 +528,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-year">2024 — Today</div>
-          <div class="timeline-event">150+ Projects &amp; Counting</div>
-          <p class="timeline-detail">With 80+ team members, 150+ completed projects, and clients in 6+ countries, we're just getting started on our next decade of impact.</p>
+          <div class="timeline-event">400+ Projects &amp; Counting</div>
+          <p class="timeline-detail">With 80+ team members, 400+ completed projects, and clients in 6+ countries, we're just getting started on our next decade of impact.</p>
         </div>
       </li>
 

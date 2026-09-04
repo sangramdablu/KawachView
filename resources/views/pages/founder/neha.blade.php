@@ -401,7 +401,7 @@
         <p class="role">Chief Executive Officer &amp; Co-Founder</p>
         <div class="stat-grid">
           <div class="stat-cell"><div class="val">10+</div><div class="key">Years at KawachTech</div></div>
-          <div class="stat-cell"><div class="val">150+</div><div class="key">Projects Shipped</div></div>
+          <div class="stat-cell"><div class="val">400+</div><div class="key">Projects Shipped</div></div>
           {{-- <div class="stat-cell"><div class="val">20+</div><div class="key">Countries Served</div></div>
           <div class="stat-cell"><div class="val">$50M+</div><div class="key">Client Revenue</div></div> --}}
         </div>
