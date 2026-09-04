@@ -32,6 +32,7 @@ class SitemapController extends Controller
                 '/markets/uk/software-development' => ['monthly', '0.9', 'pages.countrypages.uk'],
                 '/markets/germany/software-development' => ['monthly', '0.9', 'pages.countrypages.germany'],
                 '/markets/europe/software-development' => ['monthly', '0.9', 'pages.countrypages.europe'],
+                '/products/orbit' => ['monthly', '0.7', 'pages.products.orbit'],
                 '/hire-developer' => ['monthly', '0.8', 'pages.hire-developer'],
                 '/careers' => ['weekly', '0.7', 'pages.careers'],
                 '/blog' => ['daily', '0.8', 'pages.blog'],

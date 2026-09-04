@@ -55,6 +55,10 @@ Route::get('/markets/europe/software-development', function () {
     return view('pages.countrypages.europe');
 })->name('country.europe');
 
+Route::get('/products/orbit', function () {
+    return view('pages.products.orbit');
+})->name('products.orbit');
+
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');
