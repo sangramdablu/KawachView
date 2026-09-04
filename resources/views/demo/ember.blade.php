@@ -215,7 +215,22 @@ h1,h2,h3,h4,p{ margin:0; }
   position:relative; z-index:2; flex:1; display:flex; align-items:center;
   padding-block: 2rem;
 }
-.hero-grid{ position:relative; width:100%; padding-left: clamp(1.25rem, 14vw, 220px); }
+.hero-grid{ position:relative; padding-left: clamp(1.25rem, 14vw, 220px); }
+@media(max-width: 979.98px){
+  .hero-grid{ padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+@media(min-width: 980px){
+  .hero-grid{
+    padding-left: clamp(1.5rem, 6vw, 5rem);
+    padding-right: clamp(1.5rem, 6vw, 5rem);
+    display:flex;
+    flex-wrap: wrap;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+  }
+  .hero-copy{ flex:1 1 480px; min-width:0; }
+}
 
 .hero-eyebrow{ margin-bottom: 1.3rem; display:flex; align-items:center; gap:0.7rem; }
 .hero-eyebrow::before{ content:''; width: 28px; height:1px; background: var(--accent-light); }
@@ -240,12 +255,17 @@ h1,h2,h3,h4,p{ margin:0; }
 }
 .hero-reserve-title{ font-size: 0.76rem; letter-spacing: 0.1em; color: var(--gold); font-weight:600; }
 .hero-reserve-fields{ display:grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-.hero-reserve-fields .field-sm{ display:flex; flex-direction:column; gap:0.4rem; grid-column: span 1; }
+.hero-reserve-fields .field-sm{ display:flex; flex-direction:column; gap:0.4rem; grid-column: span 1; min-width: 0; }
 .hero-reserve-fields .field-sm:last-child{ grid-column: 1 / -1; }
 .hero-reserve-fields label{ font-size: 0.72rem; color: var(--muted); }
 .hero-reserve-fields input, .hero-reserve-fields select{
   background: rgba(244,235,221,0.06); border: 1px solid var(--line); border-radius: var(--radius-sm);
   color: var(--cream); padding: 0.65rem 0.8rem; font-size: 0.88rem; min-height: 42px;
+  width: 100%; min-width: 0;
+}
+@media(max-width: 380px){
+  .hero-reserve-fields{ grid-template-columns: 1fr; }
+  .hero-reserve-fields .field-sm{ grid-column: 1 / -1; }
 }
 .hero-reserve-fields input:focus, .hero-reserve-fields select:focus{ border-color: var(--accent-light); outline: none; }
 .hero-reserve .btn{ width:100%; justify-content:center; }
@@ -277,7 +297,9 @@ h1,h2,h3,h4,p{ margin:0; }
 }
 @media(min-width: 980px){
   .hero-reserve{
-    position:absolute; right: clamp(1.25rem, 14vw, 220px); bottom:0; margin-top:0;
+    flex: 0 0 400px;
+    max-width: 400px;
+    margin-top:0;
   }
 }
 
@@ -325,10 +347,14 @@ h1,h2,h3,h4,p{ margin:0; }
 .menu-item{ background: var(--bg); display:grid; grid-template-columns: 110px 1fr; gap: 1.2rem; padding: 1.4rem; align-items:center; }
 .menu-item .thumb{ width:110px; height:110px; border-radius: var(--radius-sm); overflow:hidden; }
 .menu-item .thumb img{ width:100%; height:100%; object-fit:cover; }
-.menu-item .info{ display:flex; flex-direction:column; gap:0.35rem; }
+.menu-item .info{ display:flex; flex-direction:column; gap:0.35rem; min-width: 0; }
 .menu-item .row{ display:flex; justify-content:space-between; gap:1rem; align-items:baseline; }
-.menu-item h4{ font-family: var(--font-display); font-size: 1.25rem; font-weight:500; }
-.menu-item .price{ font-family: var(--font-display); font-size: 1.15rem; color: var(--accent-light); white-space:nowrap; }
+.menu-item h4{ font-family: var(--font-display); font-size: 1.25rem; font-weight:500; min-width: 0; }
+.menu-item .price{ font-family: var(--font-display); font-size: 1.15rem; color: var(--accent-light); white-space:nowrap; flex-shrink:0; }
+@media(max-width: 380px){
+  .menu-item{ grid-template-columns: 84px 1fr; gap: 0.9rem; padding: 1.1rem; }
+  .menu-item .thumb{ width:84px; height:84px; }
+}
 .menu-item p{ color: var(--muted); font-size: 0.9rem; }
 .menu-item .add{
   align-self:flex-start; margin-top:0.4rem; border:1px solid var(--line); border-radius: var(--radius-sm);
@@ -577,7 +603,7 @@ h1,h2,h3,h4,p{ margin:0; }
 
   <div class="hero-body">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-copy">
         <p class="eyebrow hero-eyebrow">ROOFTOP DINING · LIVE FIRE · GOOD TIMES</p>
         <h1 class="display">Flavour above the ordinary</h1>
         <p class="hero-sub">Live-fire BBQ, fresh seafood and handcrafted drinks, served under open London skies. Come for the view, stay for the smoke.</p>
