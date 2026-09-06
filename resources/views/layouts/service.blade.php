@@ -247,11 +247,6 @@ if (!function_exists('svcIcon')) {
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.7s ease;
-}
-
-.svc-card:hover .svc-card-image{
-    transform:scale(1.08);
 }
 
 /* Category gradient banners — shown when a service has no featured image */

@@ -28,6 +28,9 @@ class User extends Authenticatable
         'designation',
         'team_role',
         'responsibilities',
+        'bio',
+        'linkedin_url',
+        'years_experience',
         'avatar',
     ];
 
@@ -52,6 +55,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_team_member'    => 'boolean',
+            'years_experience'  => 'integer',
         ];
     }
 
@@ -90,5 +94,31 @@ class User extends Authenticatable
     public function getAvatarColorAttribute(): string
     {
         return self::AVATAR_COLORS[$this->id % count(self::AVATAR_COLORS)];
+    }
+
+    /**
+     * Leadership ordering for the public team page/section, based on the
+     * free-text `designation` field admins already fill in via KawachAdmin's
+     * Team module (roles/index.blade.php edit-user modal) — no extra schema
+     * needed. Lower number = shown first. Used to surface the CEO/CTO/PM on
+     * the homepage without a dedicated "featured" flag on users.
+     */
+    private const LEADERSHIP_KEYWORDS = [
+        1 => ['chief executive', 'ceo', 'founder'],
+        2 => ['chief technology', 'cto', 'co-founder'],
+        3 => ['project manager', 'product manager'],
+    ];
+
+    public function getLeadershipRankAttribute(): int
+    {
+        $designation = mb_strtolower($this->designation ?? '');
+        foreach (self::LEADERSHIP_KEYWORDS as $rank => $keywords) {
+            foreach ($keywords as $keyword) {
+                if (str_contains($designation, $keyword)) {
+                    return $rank;
+                }
+            }
+        }
+        return 99;
     }
 }

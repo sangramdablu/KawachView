@@ -44,6 +44,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ── TRUST & ASSURANCE ── -->
 @include('layouts.trust')
 
+<!-- ── OUR TEAM ── -->
+@include('layouts.our-team')
+
 {{-- ── CLUTCH REVIEWS — disabled per request, restore by uncommenting ── --}}
 {{-- <!-- ── TESTIMONIALS ── -->
 @include('layouts.testmonials') --}}

@@ -537,7 +537,7 @@ if (!function_exists('projMockIcon')) {
             <div class="proj-stat-item">
                 <div class="proj-stat-icon"><i class="fas fa-earth-americas"></i></div>
                 <div>
-                    <div class="proj-stat-val">20+</div>
+                    <div class="proj-stat-val">7+</div>
                     <div class="proj-stat-label">Countries Served</div>
                 </div>
             </div>

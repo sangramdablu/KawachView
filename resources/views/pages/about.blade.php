@@ -280,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="who-label">Our Story</div>
         <h2 class="who-title">We Build Software That<br>Drives Real Results</h2>
         <p class="who-desc">
-          Kawach Technology was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 20+ countries.
+          Kawach Technology was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 7+ countries.
         </p>
         <p class="who-desc">
           We believe technology is only as powerful as the human needs it serves. That's why we pair deep technical expertise with genuine business understanding — listening first, building second, and measuring success by our clients' outcomes.

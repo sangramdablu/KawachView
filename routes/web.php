@@ -64,6 +64,8 @@ Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');
 Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetails'])->name('case-studies.show');
 
+Route::get('/team', [PagesController::class, 'teamIndex'])->name('team');
+
 Route::get('/hire-developer', [HireDeveloperController::class, 'index'])->name('hire-developer.index');
 Route::get('/hire-developer/{slug}', [HireDeveloperController::class, 'show'])->name('hire-developer.show')->where('slug', '[a-z0-9\-]+');
 Route::post('/hire-developer/{slug}', [HireDeveloperController::class, 'store'])->name('hire-developer.store')->where('slug', '[a-z0-9\-]+')->middleware('throttle:5,1');

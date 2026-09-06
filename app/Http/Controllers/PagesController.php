@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\PageService;
+use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 
 class PagesController extends Controller
@@ -82,6 +83,19 @@ class PagesController extends Controller
         $seoKeywords    = $caseStudy->meta_keywords ?: trim(($caseStudy->focus_keyword ?? '') . ', ' . ($caseStudy->caseStudy->client_industry ?? '') . ', case study, Kawach Technology');
 
         return view('pages.child.case_study_details', compact('caseStudy', 'relatedCaseStudies', 'seoTitle', 'seoDescription', 'seoKeywords'));
+    }
+
+    public function teamIndex()
+    {
+        $teamMembers = User::where('is_team_member', true)
+            ->get()
+            ->sortBy([
+                fn ($a, $b) => $a->leadership_rank <=> $b->leadership_rank,
+                fn ($a, $b) => $a->name <=> $b->name,
+            ])
+            ->values();
+
+        return view('pages.team', compact('teamMembers'));
     }
 
 }

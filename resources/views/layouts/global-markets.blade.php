@@ -39,7 +39,7 @@
 </section>
 
 <style>
-  .gm-section{ background:var(--white); padding:64px 0; }
+  .gm-section{ background:var(--bg-light); padding:64px 0; }
   .gm-card{
     display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px;
     background:var(--bg-light); border:1px solid var(--border-light); border-radius:12px;

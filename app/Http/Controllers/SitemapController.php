@@ -27,6 +27,7 @@ class SitemapController extends Controller
                 '/about/founder' => ['monthly', '0.5', 'pages.founder.neha'],
                 '/services' => ['weekly', '0.9', 'pages.services'],
                 '/case-studies' => ['weekly', '0.8', 'pages.case-studies'],
+                '/team' => ['monthly', '0.6', 'pages.team'],
                 '/markets' => ['monthly', '0.8', 'pages.markets'],
                 '/markets/usa/software-development' => ['monthly', '0.9', 'pages.countrypages.usa'],
                 '/markets/uk/software-development' => ['monthly', '0.9', 'pages.countrypages.uk'],
