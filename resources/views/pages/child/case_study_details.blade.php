@@ -758,11 +758,11 @@
         <div class="side-line"></div>
         <div class="section-eyebrow">Development Process</div>
         <h2 class="section-heading">How We Delivered It</h2>
-        <p class="section-sub">6-month Agile delivery with 2-week sprints, weekly client demos, and continuous deployment. Full transparency at every stage.</p>
+        <p class="section-sub">Agile delivery with regular demos and continuous deployment. Full transparency at every stage.</p>
         <div style="margin-top:24px;background:#e8f1fd;border-radius:10px;padding:16px;">
           <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--primary-blue);margin-bottom:8px;">Total Timeline</div>
-          <div style="font-size:1.6rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--text-dark);">26 Weeks</div>
-          <div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;">Discovery → Live Production</div>
+          <div style="font-size:1.6rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--text-dark);">{{ $caseStudy->caseStudy->project_duration ?? '—' }}</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;">{{ $caseStudy->caseStudy->completion_date ? 'Discovery → Live Production' : 'Started → Ongoing' }}</div>
         </div>
       </div>
       <div class="col-lg-8">

@@ -392,12 +392,9 @@
 
     .hero-illustration {
       display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      align-self: flex-end;
-      /* Pull down past the section's own bottom padding so the image's
-         bottom edge lands exactly on the hero-section's bottom border. */
-      margin-bottom: -60px;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 0;
     }
 
     .hero-mockup {
@@ -405,39 +402,81 @@
       position: relative;
     }
 
-    .hero-image {
+    .hero-video-wrap {
       position: relative;
       width: 100%;
-      max-width: 720px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
-    /* Soft ambient glow behind the subject, echoing the circuit-blue theme */
-    .hero-image::before {
+    /* Soft ambient glow behind the frame, echoing the circuit-blue theme —
+       allowed to bleed outside the frame since this wrapper has no
+       overflow:hidden (that's on .hero-video-frame instead, for the
+       rounded corners on the video itself). */
+    .hero-video-wrap::before {
       content: "";
       position: absolute;
-      inset: 8% 10% 12%;
+      inset: -12%;
       background: radial-gradient(ellipse at center, rgba(33,150,243,0.35), rgba(33,150,243,0) 70%);
-      filter: blur(30px);
+      filter: blur(40px);
       z-index: 0;
       pointer-events: none;
     }
 
-    .hero-image img {
+    /* Outer "bezel" mat — a distinct glass-panel frame that separates the
+       video from the busy circuit-board background, like a screen bezel.
+       This is what makes it read as a deliberately framed card rather than
+       a video just floating on the page. */
+    .hero-video-mat {
       position: relative;
-      width: 100%;
-      height: auto;
-      display: block;
       z-index: 1;
-      filter: drop-shadow(0 25px 40px rgba(0,0,0,0.45));
-      -webkit-mask-image: radial-gradient(ellipse 85% 130% at 50% 100%, #000 55%, transparent 100%);
-      mask-image: radial-gradient(ellipse 85% 130% at 50% 100%, #000 55%, transparent 100%);
+      padding: 12px;
+      border-radius: 26px;
+      background: linear-gradient(155deg, rgba(30, 48, 92, 0.85), rgba(9, 17, 38, 0.9));
+      border: 1px solid rgba(120, 170, 255, 0.45);
+      box-shadow:
+        0 35px 80px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 0 70px rgba(33, 150, 243, 0.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
+
+    .hero-video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0d1b3e;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35) inset;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Corner brackets — a "professional camera frame" accent tying into
+       the hero's circuit/tech background theme. Sit just outside the mat's
+       own edge for a viewfinder feel. */
+    .hero-video-corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-video-corner.tl { top: -8px; left: -8px; border-top: 2px solid rgba(255,255,255,0.65); border-left: 2px solid rgba(255,255,255,0.65); border-radius: 6px 0 0 0; }
+    .hero-video-corner.tr { top: -8px; right: -8px; border-top: 2px solid rgba(255,255,255,0.65); border-right: 2px solid rgba(255,255,255,0.65); border-radius: 0 6px 0 0; }
+    .hero-video-corner.bl { bottom: -8px; left: -8px; border-bottom: 2px solid rgba(255,255,255,0.65); border-left: 2px solid rgba(255,255,255,0.65); border-radius: 0 0 0 6px; }
+    .hero-video-corner.br { bottom: -8px; right: -8px; border-bottom: 2px solid rgba(255,255,255,0.65); border-right: 2px solid rgba(255,255,255,0.65); border-radius: 0 0 6px 0; }
 
     /* 📱 Tablet */
     @media (max-width: 992px) {
-      .hero-image {
-        max-width: 520px;
+      .hero-video-wrap {
+        max-width: 460px;
       }
     }
 
@@ -451,15 +490,15 @@
         margin-bottom: 0;
       }
 
-      .hero-image {
-        max-width: 380px;
+      .hero-video-wrap {
+        max-width: 420px;
       }
     }
 
     /* 📱 Small Mobile */
     @media (max-width: 480px) {
-      .hero-image {
-        max-width: 300px;
+      .hero-video-wrap {
+        max-width: 340px;
       }
     }
     
@@ -2521,8 +2560,8 @@
     .industry-icon {
       width: 44px;
       height: 44px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #e8f1fd, #d0e4fa);
+      border-radius: 0;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2532,6 +2571,13 @@
     .industry-icon i {
       color: var(--primary-blue);
       font-size: 1.15rem;
+    }
+
+    .industry-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .industry-name {

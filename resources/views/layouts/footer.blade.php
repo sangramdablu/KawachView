@@ -13,10 +13,7 @@
 
             <div class="kw-brand">
                 <div class="kw-logo-mark" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2Z" stroke="#2d7cff" stroke-width="1.8" stroke-linejoin="round"/>
-                        <path d="M9 12l2 2 4-4" stroke="#2d7cff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <img src="{{ asset('assets/images/kawach.png') }}" alt="" class="kw-logo-mark-img">
                 </div>
                 <div class="kw-brand-text">
                     <span class="kw-brand-name">Kawach<em>TECH</em></span>
@@ -264,9 +261,18 @@
     width: 48px; height: 48px;
     border-radius: 12px;
     border: 1px solid rgba(45,124,255,.45);
-    background: rgba(45,124,255,.09);
+    background: #fff;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+.kw-logo-mark-img {
+    position: absolute;
+    left: 50%;
+    width: 160%;
+    max-width: none;
+    transform: translateX(-50%);
 }
 .kw-brand-text {
     display: flex;

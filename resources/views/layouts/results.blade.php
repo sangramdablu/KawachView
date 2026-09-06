@@ -33,11 +33,16 @@
     width: 46px; height: 46px;
     margin: 0 auto 14px;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 12px;
-    background: rgba(33,150,243,.15);
-    border: 1px solid rgba(33,150,243,.3);
+    border-radius: 0;
+    overflow: hidden;
     color: #64b5f6;
     font-size: 1.1rem;
+  }
+  .result-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .result-number {
     font-family: 'Nunito', sans-serif;
@@ -70,31 +75,31 @@
     <div class="results-grid">
 
       <div class="result-item">
-        <div class="result-icon"><i class="fas fa-diagram-project"></i></div>
+        <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f680.svg" alt="Projects Delivered" class="result-icon-img" loading="lazy"></div>
         <div class="result-number" data-count-to="400" data-suffix="+">0</div>
         <div class="result-label">Projects Delivered</div>
       </div>
 
       <div class="result-item">
-        <div class="result-icon"><i class="fas fa-calendar-check"></i></div>
+        <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f4c5.svg" alt="Years of Experience" class="result-icon-img" loading="lazy"></div>
         <div class="result-number" data-count-to="10" data-suffix="+">0</div>
         <div class="result-label">Years of Experience</div>
       </div>
 
       <div class="result-item">
-        <div class="result-icon"><i class="fas fa-earth-americas"></i></div>
+        <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f30e.svg" alt="Countries Served" class="result-icon-img" loading="lazy"></div>
         <div class="result-number" data-count-to="7" data-suffix="+">0</div>
         <div class="result-label">Countries Served</div>
       </div>
 
       <div class="result-item">
-        <div class="result-icon"><i class="fas fa-clock"></i></div>
+        <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/23f0.svg" alt="On-Time Delivery" class="result-icon-img" loading="lazy"></div>
         <div class="result-number" data-count-to="98" data-suffix="%">0</div>
         <div class="result-label">On-Time Delivery</div>
       </div>
 
       <div class="result-item">
-        <div class="result-icon"><i class="fas fa-star"></i></div>
+        <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/2b50.svg" alt="Avg. Client Rating" class="result-icon-img" loading="lazy"></div>
         <div class="result-number" data-count-to="4.9" data-decimals="1" data-suffix="★">0</div>
         <div class="result-label">Avg. Client Rating</div>
       </div>

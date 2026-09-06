@@ -136,10 +136,17 @@ if (!function_exists('projMockIcon')) {
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:12px;
-    background:var(--pj-blue-soft);
+    border-radius:0;
+    overflow:hidden;
     color:var(--pj-blue);
     font-size:18px;
+}
+
+.proj-stat-icon-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
 .proj-stat-val{
@@ -528,28 +535,28 @@ if (!function_exists('projMockIcon')) {
 
         <div class="proj-stats">
             <div class="proj-stat-item">
-                <div class="proj-stat-icon"><i class="fas fa-users"></i></div>
+                <div class="proj-stat-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f465.svg" alt="Happy Clients" class="proj-stat-icon-img" loading="lazy"></div>
                 <div>
                     <div class="proj-stat-val">500+</div>
                     <div class="proj-stat-label">Happy Clients</div>
                 </div>
             </div>
             <div class="proj-stat-item">
-                <div class="proj-stat-icon"><i class="fas fa-earth-americas"></i></div>
+                <div class="proj-stat-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f30e.svg" alt="Countries Served" class="proj-stat-icon-img" loading="lazy"></div>
                 <div>
                     <div class="proj-stat-val">7+</div>
                     <div class="proj-stat-label">Countries Served</div>
                 </div>
             </div>
             <div class="proj-stat-item">
-                <div class="proj-stat-icon"><i class="fas fa-award"></i></div>
+                <div class="proj-stat-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f3c6.svg" alt="Team Experts" class="proj-stat-icon-img" loading="lazy"></div>
                 <div>
                     <div class="proj-stat-val">50+</div>
                     <div class="proj-stat-label">Team Experts</div>
                 </div>
             </div>
             <div class="proj-stat-item">
-                <div class="proj-stat-icon"><i class="fas fa-thumbs-up"></i></div>
+                <div class="proj-stat-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f44d.svg" alt="Satisfaction Rate" class="proj-stat-icon-img" loading="lazy"></div>
                 <div>
                     <div class="proj-stat-val">98%</div>
                     <div class="proj-stat-label">Satisfaction Rate</div>

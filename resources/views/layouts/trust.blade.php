@@ -73,10 +73,17 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:12px;
-    background:linear-gradient(135deg,var(--primary-blue,#1a73e8),var(--accent-blue,#2196f3));
+    border-radius:0;
+    overflow:hidden;
     color:#fff;
     font-size:19px;
+}
+
+.trust-icon-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
 .trust-card-title{
@@ -157,7 +164,7 @@
 
         <div class="trust-grid text-start">
             <div class="trust-card">
-                <div class="trust-icon"><i class="fas fa-file-signature"></i></div>
+                <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f50f.svg" alt="NDA & IP Protection" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">NDA &amp; IP Protection</div>
                     <p class="trust-card-desc">A signed confidentiality agreement before kickoff, and 100% ownership of the source code and IP transfers to you.</p>
@@ -165,7 +172,7 @@
             </div>
 
             <div class="trust-card">
-                <div class="trust-icon"><i class="fas fa-users"></i></div>
+                <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f465.svg" alt="Dedicated Team" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Dedicated Team</div>
                     <p class="trust-card-desc">A PM, developers, and QA assigned specifically to your project — not shared across ten other clients.</p>
@@ -173,7 +180,7 @@
             </div>
 
             <div class="trust-card">
-                <div class="trust-icon"><i class="fas fa-arrows-rotate"></i></div>
+                <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f504.svg" alt="Transparent Agile Process" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Transparent Agile Process</div>
                     <p class="trust-card-desc">Two-week sprints with a working demo at every milestone, so you always know exactly where your project stands.</p>
@@ -181,7 +188,7 @@
             </div>
 
             <div class="trust-card">
-                <div class="trust-icon"><i class="fas fa-headset"></i></div>
+                <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f3a7.svg" alt="Post-Launch Support" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Post-Launch Support</div>
                     <p class="trust-card-desc">30 days of free support after launch, then flexible monthly retainer plans for ongoing maintenance.</p>
@@ -189,7 +196,7 @@
             </div>
 
             <div class="trust-card">
-                <div class="trust-icon"><i class="fas fa-earth-americas"></i></div>
+                <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f30e.svg" alt="Global Delivery, Real Time Zones" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Global Delivery, Real Time Zones</div>
                     <p class="trust-card-desc">Clients across the US, UK, EU, Australia, and APAC — with overlapping working hours and clear communication.</p>
@@ -197,7 +204,7 @@
             </div>
 
             <div class="trust-card">
-                <div class="trust-icon"><i class="fas fa-lock"></i></div>
+                <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f512.svg" alt="Data Privacy By Design" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Data Privacy By Design</div>
                     <p class="trust-card-desc">Development practices aligned with GDPR and CCPA principles, with encrypted data handling throughout.</p>

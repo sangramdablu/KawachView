@@ -67,9 +67,29 @@
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
         <div class="hero-mockup position-relative">
-            <!-- Image -->
-            <div class="hero-image">
-              <img src="{{ asset('assets/images/kawach_modelgirl.png') }}" alt="Kawach Technology — custom software development, cloud, security and support solutions">
+            <!-- Video, in a professional framed card. Ambient background loop:
+                 muted + looped + no controls, matching how the static image
+                 it replaces was always simply "on" with no interaction.
+                 playsinline is required for autoplay to work inline on iOS
+                 Safari instead of forcing fullscreen. The old model-girl
+                 image is reused as the poster so there's a real, working
+                 visual the instant this ships — swap in the real .mp4 at
+                 the path below whenever it's ready; nothing breaks either
+                 way since the poster still shows if the source 404s. -->
+            <div class="hero-video-wrap">
+              <div class="hero-video-mat">
+                <div class="hero-video-frame">
+                  <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+                         poster="{{ asset('assets/images/kawach_modelgirl.png') }}"
+                         aria-label="Kawach Technology — custom software development, cloud, security and support solutions">
+                    <source src="{{ asset('assets/videos/kawach-hero.mp4') }}" type="video/mp4">
+                  </video>
+                </div>
+                <span class="hero-video-corner tl" aria-hidden="true"></span>
+                <span class="hero-video-corner tr" aria-hidden="true"></span>
+                <span class="hero-video-corner bl" aria-hidden="true"></span>
+                <span class="hero-video-corner br" aria-hidden="true"></span>
+              </div>
             </div>
 
           {{-- <div class="laptop-frame">
