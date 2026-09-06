@@ -67,15 +67,26 @@
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
         <div class="hero-mockup position-relative">
-            <!-- Video, in a professional framed card. Ambient background loop:
-                 muted + looped + no controls, matching how the static image
-                 it replaces was always simply "on" with no interaction.
-                 playsinline is required for autoplay to work inline on iOS
-                 Safari instead of forcing fullscreen. The old model-girl
-                 image is reused as the poster so there's a real, working
-                 visual the instant this ships — swap in the real .mp4 at
-                 the path below whenever it's ready; nothing breaks either
-                 way since the poster still shows if the source 404s. -->
+            <!-- Video temporarily disabled (production CDN/hosting issues) —
+                 showing the static model-girl image in the same framed card
+                 instead. Re-enable by swapping this <img> block back for the
+                 commented-out <video> block below; both reuse the identical
+                 hero-video-wrap/mat/frame/corner classes so the frame itself
+                 doesn't need to change either way. -->
+            <div class="hero-video-wrap">
+              <div class="hero-video-mat">
+                <div class="hero-video-frame">
+                  <img class="hero-video" src="{{ asset('assets/images/kawach_modelgirl.png') }}"
+                       alt="Kawach Technology — custom software development, cloud, security and support solutions">
+                </div>
+                <span class="hero-video-corner tl" aria-hidden="true"></span>
+                <span class="hero-video-corner tr" aria-hidden="true"></span>
+                <span class="hero-video-corner bl" aria-hidden="true"></span>
+                <span class="hero-video-corner br" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            {{-- Video version — re-enable by uncommenting this and removing the <img> block above.
             <div class="hero-video-wrap">
               <div class="hero-video-mat">
                 <div class="hero-video-frame">
@@ -91,6 +102,7 @@
                 <span class="hero-video-corner br" aria-hidden="true"></span>
               </div>
             </div>
+            --}}
 
           {{-- <div class="laptop-frame">
             <div class="laptop-screen">
