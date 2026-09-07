@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@push('schema')
+@foreach($jobPostingSchema as $schema)
+<script type="application/ld+json">
+{!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endforeach
+@endpush
+
 @include('layouts.head')
 @include('modal.getquote')
 @include('modal.navgetquote')
 @include('modal.scedulecall')
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css">
 
 <style>
 .careers-hero-section{
@@ -72,11 +82,66 @@
     margin-bottom:18px;
 }
 
+.careers-openings-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
 .careers-section .section-title{
     font-size:clamp(1.8rem,3.4vw,2.4rem);
     font-weight:800;
     color:var(--text-dark, #1a1a2e);
-    margin-bottom:14px;
+    margin-bottom:0;
+}
+
+.careers-country-filter{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+}
+
+.careers-country-filter label{
+    font-size:.82rem;
+    font-weight:700;
+    color:var(--text-dark, #1a1a2e);
+    white-space:nowrap;
+}
+
+.careers-country-filter select{
+    border:1px solid var(--border-light, #e2e8f0);
+    border-radius:10px;
+    padding:9px 14px;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--text-dark, #1a1a2e);
+    background:#fff;
+    cursor:pointer;
+}
+
+.careers-country-filter select:focus{
+    outline:none;
+    border-color:var(--primary-blue, #1a73e8);
+}
+
+.careers-geo-note{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.84rem;
+    color:var(--light-navy, #1f3a6e);
+    background:rgba(26,115,232,.07);
+    border:1px solid rgba(26,115,232,.16);
+    padding:8px 16px;
+    border-radius:10px;
+    margin-top:18px;
+}
+
+.careers-geo-note i{
+    color:var(--primary-blue, #1a73e8);
 }
 
 .job-card{
@@ -84,7 +149,7 @@
     border:1px solid var(--border-light, #e2e8f0);
     border-radius:20px;
     padding:36px;
-    margin-top:40px;
+    margin-top:24px;
     box-shadow:0 6px 24px rgba(15,23,42,.05);
 }
 
@@ -125,6 +190,30 @@
     border-radius:20px;
 }
 
+.job-countries{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+}
+
+.job-country-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:.78rem;
+    font-weight:700;
+    color:#1a73e8;
+    background:rgba(26,115,232,.08);
+    border:1px solid rgba(26,115,232,.18);
+    padding:5px 12px;
+    border-radius:20px;
+}
+
+.job-country-badge .fi{
+    border-radius:2px;
+}
+
 .job-apply-btn{
     display:inline-flex;
     align-items:center;
@@ -139,6 +228,7 @@
     text-decoration:none;
     white-space:nowrap;
     transition:.3s;
+    cursor:pointer;
 }
 
 .job-apply-btn:hover{
@@ -186,16 +276,61 @@
     margin-bottom:0;
 }
 
-/* ── APPLICATION FORM ── */
+/* ── APPLY MODAL ── */
+
+.apply-modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.6);
+    z-index:10800;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    backdrop-filter:blur(2px);
+}
+
+.apply-modal-overlay.show{
+    display:flex;
+}
 
 .apply-card{
     background:#fff;
-    border:1px solid var(--border-light, #e2e8f0);
     border-radius:20px;
-    padding:36px;
-    margin-top:24px;
-    box-shadow:0 6px 24px rgba(15,23,42,.05);
-    scroll-margin-top:100px;
+    width:100%;
+    max-width:640px;
+    max-height:90vh;
+    overflow-y:auto;
+    box-shadow:0 30px 70px rgba(6,15,40,.35);
+}
+
+.apply-modal-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    padding:30px 36px 0;
+}
+
+.apply-modal-close{
+    flex-shrink:0;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:none;
+    background:var(--bg-light, #f4f6fb);
+    color:var(--text-muted, #6c757d);
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+}
+
+.apply-modal-close:hover{
+    background:#e2e8f0;
+}
+
+.apply-modal-body{
+    padding:20px 36px 36px;
 }
 
 .apply-card-title{
@@ -359,8 +494,16 @@
 }
 
 @media(max-width:576px){
-    .job-card, .apply-card{
+    .job-card{
         padding:24px;
+    }
+    .apply-modal-header, .apply-modal-body{
+        padding-left:22px;
+        padding-right:22px;
+    }
+    .careers-openings-head{
+        flex-direction:column;
+        align-items:flex-start;
     }
 }
 </style>
@@ -393,10 +536,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="careers-section" id="openings">
   <div class="container">
     <span class="section-eyebrow"><i class="fas fa-briefcase"></i> Open Positions</span>
-    <h2 class="section-title">Current Opening</h2>
 
+    <div class="careers-openings-head">
+      <h2 class="section-title">Current Opening</h2>
+
+      @if($openings->isNotEmpty())
+      <div class="careers-country-filter">
+        <label for="careerCountryFilter">Show jobs for</label>
+        <select id="careerCountryFilter" onchange="filterOpeningsByCountry(this.value)">
+          <option value="">All Countries</option>
+          @foreach($countryOptions as $code => $name)
+            <option value="{{ $code }}" {{ $detectedCountry === $code ? 'selected' : '' }}>{{ $name }}</option>
+          @endforeach
+        </select>
+      </div>
+      @endif
+    </div>
+
+    @if($detectedCountry && isset($countryOptions[$detectedCountry]))
+      <div class="careers-geo-note"><i class="fas fa-location-dot"></i> Showing roles relevant to <strong>{{ $countryOptions[$detectedCountry] }}</strong> first — use the dropdown above to see another country.</div>
+    @endif
+
+    <div id="jobCardsWrap">
     @forelse($openings as $job)
-    <div class="job-card" id="job-{{ $job['slug'] }}">
+    <div class="job-card" id="job-{{ $job['slug'] }}" data-countries="{{ implode(',', $job['countries']) }}">
       <div class="job-card-header">
         <div>
           <div class="job-title">{{ $job['title'] }}</div>
@@ -406,10 +569,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span><i class="fas fa-clock"></i> {{ $job['type'] }}</span>
             <span><i class="fas fa-layer-group"></i> {{ $job['experience_level'] }}</span>
           </div>
+          @if(!empty($job['countries']))
+          <div class="job-countries">
+            @foreach($job['countries'] as $code)
+              <span class="job-country-badge"><span class="fi fi-{{ $code }}"></span> Hiring in {{ $countryOptions[$code] ?? strtoupper($code) }}</span>
+            @endforeach
+          </div>
+          @endif
         </div>
-        <a href="#apply-{{ $job['slug'] }}" class="job-apply-btn">
+        <button type="button" class="job-apply-btn" onclick="openApplyModal('{{ $job['slug'] }}', @js($job['title']))">
             <i class="fas fa-paper-plane"></i> Apply Now
-        </a>
+        </button>
       </div>
 
       <p class="job-summary">{{ $job['summary'] }}</p>
@@ -437,17 +607,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
       @endif
     </div>
+    @empty
+    <div class="job-card text-center">
+        <p class="job-summary mb-0">We don't have any open positions right now — check back soon, or send your resume to
+            <a href="mailto:{{ config('app.main_email') }}">{{ config('app.main_email') }}</a>.
+        </p>
+    </div>
+    @endforelse
+    </div>
+  </div>
+</section>
 
-    <!-- APPLICATION FORM -->
-    <div class="apply-card" id="apply-{{ $job['slug'] }}">
-      <div class="apply-card-title">Apply for {{ $job['title'] }}</div>
-      <p class="apply-card-sub">Fill in your details below — we typically respond within a few business days.</p>
+<!-- CTA -->
+<section class="cta-section text-center">
+  <div class="container">
+    <h2 class="cta-title">Don't See a Role That Fits?</h2>
+    <p class="cta-subtitle">We're always open to hearing from great engineers. Reach out and introduce yourself.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="{{ route('contact') }}" class="btn btn-cta-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
+@include('layouts.footer')
+
+<!-- APPLY MODAL — one shared form, populated per job by openApplyModal() -->
+<div class="apply-modal-overlay" id="applyModalOverlay">
+  <div class="apply-card">
+    <div class="apply-modal-header">
+      <div>
+        <div class="apply-card-title" id="applyModalTitle">Apply</div>
+        <p class="apply-card-sub mb-0">Fill in your details below — we typically respond within a few business days.</p>
+      </div>
+      <button type="button" class="apply-modal-close" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="apply-modal-body">
       <div class="apply-server-alert" id="applyServerError"></div>
 
       <form class="apply-form" id="applyForm" novalidate autocomplete="off">
         @csrf
-        <input type="hidden" name="job_slug" value="{{ $job['slug'] }}">
+        <input type="hidden" name="job_slug" id="applyJobSlug" value="">
 
         {{-- Honeypot --}}
         <div class="apply-hp" aria-hidden="true">
@@ -457,12 +657,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="row g-3">
           <div class="col-md-6">
-            <label class="form-label">Full Name *</label>
+            <label class="form-label">Full Name <span style="color: red;">*</span></label>
             <input type="text" name="full_name" class="form-control" required minlength="2" maxlength="100">
             <div class="invalid-feedback">Please enter your full name.</div>
           </div>
           <div class="col-md-6">
-            <label class="form-label">Email *</label>
+            <label class="form-label">Email <span style="color: red;">*</span></label>
             <input type="email" name="email" class="form-control" required maxlength="254">
             <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>
@@ -486,7 +686,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="invalid-feedback">Please enter a valid URL.</div>
           </div>
           <div class="col-12">
-            <label class="form-label">Resume / CV * <span style="font-weight:400;color:var(--text-muted);">(PDF or Word, max 5MB)</span></label>
+            <label class="form-label">Resume / CV <span style="color: red;">*</span> <span style="font-weight:400;color:var(--text-muted);">(PDF or Word, max 5MB)</span></label>
             <div class="resume-drop" id="resumeDrop">
               <i class="fas fa-cloud-arrow-up"></i>
               <div class="resume-hint">Click to upload your resume</div>
@@ -513,36 +713,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="apply-success-text" id="applySuccessText"></p>
       </div>
     </div>
-    @empty
-    <div class="job-card text-center">
-        <p class="job-summary mb-0">We don't have any open positions right now — check back soon, or send your resume to
-            <a href="mailto:{{ config('app.main_email') }}">{{ config('app.main_email') }}</a>.
-        </p>
-    </div>
-    @endforelse
   </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section text-center">
-  <div class="container">
-    <h2 class="cta-title">Don't See a Role That Fits?</h2>
-    <p class="cta-subtitle">We're always open to hearing from great engineers. Reach out and introduce yourself.</p>
-    <div class="d-flex justify-content-center gap-3 flex-wrap">
-      <a href="{{ route('contact') }}" class="btn btn-cta-outline">Get in Touch</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-@include('layouts.footer')
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('applyModalOverlay');
     const form = document.getElementById('applyForm');
-    if (!form) return;
-
     const submitBtn = document.getElementById('applySubmitBtn');
     const serverError = document.getElementById('applyServerError');
     const successBox = document.getElementById('applySuccess');
@@ -552,6 +730,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const resumeInput = document.getElementById('resumeInput');
     const resumeFilename = document.getElementById('resumeFilename');
     const resumeFeedback = document.getElementById('resumeFeedback');
+
+    function validateForm() {
+        let valid = form.checkValidity();
+        submitBtn.disabled = !valid;
+        return valid;
+    }
+
+    function resetApplyForm() {
+        form.reset();
+        form.style.display = '';
+        successBox.style.display = 'none';
+        serverError.style.display = 'none';
+        resumeFilename.style.display = 'none';
+        resumeFilename.textContent = '';
+        form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
+        form.querySelectorAll('.invalid-feedback').forEach((el) => el.classList.remove('visible'));
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submit Application';
+    }
+
+    window.openApplyModal = function (slug, title) {
+        resetApplyForm();
+        document.getElementById('applyJobSlug').value = slug;
+        document.getElementById('applyModalTitle').textContent = 'Apply for ' + title;
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeApplyModal = function () {
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+    };
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeApplyModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('show')) closeApplyModal();
+    });
 
     resumeDrop.addEventListener('click', () => resumeInput.click());
     resumeInput.addEventListener('change', () => {
@@ -564,23 +781,14 @@ document.addEventListener('DOMContentLoaded', () => {
         validateForm();
     });
 
-    function validateForm() {
-        let valid = form.checkValidity();
-        submitBtn.disabled = !valid;
-        return valid;
-    }
-
     form.querySelectorAll('input, textarea').forEach((el) => {
         el.addEventListener('input', validateForm);
     });
-
-    validateForm();
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         serverError.style.display = 'none';
 
-        // Clear previous invalid states
         form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
         form.querySelectorAll('.invalid-feedback').forEach((el) => el.classList.remove('visible'));
 
@@ -642,6 +850,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Client-side re-rank of already-rendered job cards — no reload needed.
+(function () {
+    const wrap = document.getElementById('jobCardsWrap');
+    if (!wrap) return;
+    const originalOrder = Array.from(wrap.children);
+
+    window.filterOpeningsByCountry = function (code) {
+        if (!code) {
+            originalOrder.forEach((card) => wrap.appendChild(card));
+            return;
+        }
+        const matching = [];
+        const rest = [];
+        originalOrder.forEach((card) => {
+            const countries = (card.dataset.countries || '').split(',').filter(Boolean);
+            (countries.includes(code) ? matching : rest).push(card);
+        });
+        matching.concat(rest).forEach((card) => wrap.appendChild(card));
+    };
+
+    const initial = document.getElementById('careerCountryFilter');
+    if (initial && initial.value) {
+        window.filterOpeningsByCountry(initial.value);
+    }
+})();
 </script>
 </body>
 </html>

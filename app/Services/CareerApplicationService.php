@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Jobs\SendJobApplicationMailJob;
 use App\Models\JobApplication;
+use App\Models\JobPosting;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
@@ -26,8 +27,7 @@ class CareerApplicationService
         unset($validated['website']);
 
         $jobSlug = $validated['job_slug'];
-        $catalogue = config('careers');
-        $jobTitle = $catalogue[$jobSlug]['title'] ?? $jobSlug;
+        $jobTitle = JobPosting::where('slug', $jobSlug)->value('title') ?? $jobSlug;
 
         $resumePath = $resume->store('resumes', 'local');
 

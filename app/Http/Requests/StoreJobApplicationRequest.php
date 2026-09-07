@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\JobPosting;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +17,7 @@ class StoreJobApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'job_slug'      => ['required', 'string', Rule::in(array_keys(config('careers')))],
+            'job_slug'      => ['required', 'string', Rule::in(JobPosting::where('status', 'active')->pluck('slug'))],
             'full_name'     => ['required', 'string', 'min:2', 'max:100', 'regex:/^[\pL\s\-\.\']+$/u'],
             'email'         => ['required', 'email:rfc,dns', 'max:254'],
             'phone'         => ['nullable', 'string', 'regex:/^[\+\d\s\-\(\)]{7,20}$/'],
