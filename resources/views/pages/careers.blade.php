@@ -236,6 +236,56 @@
     color:#fff;
 }
 
+.job-card-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+}
+
+.job-toggle-btn{
+    flex-shrink:0;
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    border:1px solid var(--border-light, #e2e8f0);
+    background:#fff;
+    color:var(--primary-blue, #1a73e8);
+    font-size:.95rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.job-toggle-btn:hover{
+    background:var(--bg-light, #f4f6fb);
+    border-color:var(--primary-blue, #1a73e8);
+}
+
+.job-toggle-btn i{
+    transition:transform .3s ease;
+}
+
+.job-toggle-btn.is-open i{
+    transform:rotate(180deg);
+}
+
+.job-details-wrap{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .35s ease;
+}
+
+.job-details-wrap.show{
+    grid-template-rows:1fr;
+}
+
+.job-details-inner{
+    overflow:hidden;
+}
+
 .job-summary{
     color:var(--text-muted, #6c757d);
     line-height:1.75;
@@ -577,35 +627,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           @endif
         </div>
-        <button type="button" class="job-apply-btn" onclick="openApplyModal('{{ $job['slug'] }}', @js($job['title']))">
-            <i class="fas fa-paper-plane"></i> Apply Now
-        </button>
+        <div class="job-card-actions">
+          <button type="button" class="job-apply-btn" onclick="openApplyModal('{{ $job['slug'] }}', @js($job['title']))">
+              <i class="fas fa-paper-plane"></i> Apply Now
+          </button>
+          <button type="button" class="job-toggle-btn" aria-expanded="false" aria-controls="job-details-{{ $job['slug'] }}" onclick="toggleJobDetails('{{ $job['slug'] }}', this)">
+              <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
       </div>
 
-      <p class="job-summary">{{ $job['summary'] }}</p>
+      <div class="job-details-wrap" id="job-details-{{ $job['slug'] }}">
+        <div class="job-details-inner">
+          <p class="job-summary">{{ $job['summary'] }}</p>
 
-      <div class="job-block-title">Responsibilities</div>
-      <ul class="job-list">
-        @foreach($job['responsibilities'] as $item)
-        <li><i class="fas fa-check"></i> {{ $item }}</li>
-        @endforeach
-      </ul>
+          <div class="job-block-title">Responsibilities</div>
+          <ul class="job-list">
+            @foreach($job['responsibilities'] as $item)
+            <li><i class="fas fa-check"></i> {{ $item }}</li>
+            @endforeach
+          </ul>
 
-      <div class="job-block-title">Requirements</div>
-      <ul class="job-list">
-        @foreach($job['requirements'] as $item)
-        <li><i class="fas fa-check"></i> {{ $item }}</li>
-        @endforeach
-      </ul>
+          <div class="job-block-title">Requirements</div>
+          <ul class="job-list">
+            @foreach($job['requirements'] as $item)
+            <li><i class="fas fa-check"></i> {{ $item }}</li>
+            @endforeach
+          </ul>
 
-      @if(!empty($job['nice_to_have']))
-      <div class="job-block-title">Nice to Have</div>
-      <ul class="job-list">
-        @foreach($job['nice_to_have'] as $item)
-        <li><i class="fas fa-star"></i> {{ $item }}</li>
-        @endforeach
-      </ul>
-      @endif
+          @if(!empty($job['nice_to_have']))
+          <div class="job-block-title">Nice to Have</div>
+          <ul class="job-list">
+            @foreach($job['nice_to_have'] as $item)
+            <li><i class="fas fa-star"></i> {{ $item }}</li>
+            @endforeach
+          </ul>
+          @endif
+        </div>
+      </div>
     </div>
     @empty
     <div class="job-card text-center">
@@ -850,6 +909,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Collapse/expand a job card's details (summary/responsibilities/requirements).
+window.toggleJobDetails = function (slug, btn) {
+    const wrap = document.getElementById('job-details-' + slug);
+    if (!wrap) return;
+    const isOpen = wrap.classList.toggle('show');
+    btn.classList.toggle('is-open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+};
 
 // Client-side re-rank of already-rendered job cards — no reload needed.
 (function () {

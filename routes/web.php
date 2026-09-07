@@ -72,6 +72,9 @@ Route::post('/hire-developer/{slug}', [HireDeveloperController::class, 'store'])
 
 Route::get('/careers', [CareerController::class, 'index'])->name('careers');
 Route::post('/careers/apply', [CareerController::class, 'apply'])->name('careers.apply')->middleware('throttle:5,1');
+Route::get('/careers/applications/{application}/resume', [CareerController::class, 'downloadResume'])
+    ->name('careers.applications.resume')
+    ->middleware('throttle:30,1');
 
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');

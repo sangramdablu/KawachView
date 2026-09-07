@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreJobApplicationRequest;
+use App\Models\JobApplication;
 use App\Models\JobPosting;
 use App\Services\CareerApplicationService;
 use App\Services\GeoLocationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 class CareerController extends Controller
 {
@@ -87,6 +90,38 @@ class CareerController extends Controller
                 'message' => 'Something went wrong on our end. Please try again in a moment.',
             ], 500);
         }
+    }
+
+    /**
+     * Streams a candidate's resume to KawachAdmin's Applications view. The
+     * admin panel is a separate app with no filesystem access to this
+     * app's disk, so it links here with a short-lived HMAC-signed URL
+     * (see KawachAdmin's ResumeLinkService) instead of the file itself
+     * ever leaving this server.
+     */
+    public function downloadResume(Request $request, JobApplication $application)
+    {
+        $expires = (int) $request->query('expires');
+        $signature = (string) $request->query('sig');
+        $secret = (string) config('services.jobs_admin.shared_secret');
+
+        if (!$secret || !$expires || !$signature || $expires < now()->timestamp) {
+            abort(Response::HTTP_FORBIDDEN, 'This resume link has expired.');
+        }
+
+        $expected = hash_hmac('sha256', $application->id . '|' . $expires, $secret);
+        if (!hash_equals($expected, $signature)) {
+            abort(Response::HTTP_FORBIDDEN, 'Invalid resume link.');
+        }
+
+        if (!$application->resume_path || !Storage::disk('local')->exists($application->resume_path)) {
+            abort(Response::HTTP_NOT_FOUND, 'Resume file not found.');
+        }
+
+        return Storage::disk('local')->download(
+            $application->resume_path,
+            $application->resume_original_name ?: 'resume.pdf'
+        );
     }
 
     /**
