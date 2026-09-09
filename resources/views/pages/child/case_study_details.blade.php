@@ -551,7 +551,15 @@
               @if($caseStudy->caseStudy->client_industry)
               <div class="co-item">
                 <div class="co-item-icon"><i class="fas fa-industry"></i></div>
-                <div><div class="co-item-label">Industry</div><div class="co-item-val">{{ $caseStudy->caseStudy->client_industry }}</div></div>
+                <div>
+                  <div class="co-item-label">Industry</div>
+                  <div class="co-item-val">
+                    {{ $caseStudy->caseStudy->client_industry }}
+                    @if($relatedIndustrySlug)
+                      &middot; <a href="{{ route('industries.show', $relatedIndustrySlug) }}">{{ $relatedIndustryName }}</a>
+                    @endif
+                  </div>
+                </div>
               </div>
               @endif
               @if($caseStudy->caseStudy->business_size)
@@ -727,7 +735,7 @@
         <div class="side-line"></div>
         <div class="section-eyebrow">Technology Stack</div>
         <h2 class="section-heading">Built With the Right Tools</h2>
-        <p class="section-sub">We selected every technology based on HIPAA compliance requirements, scalability needs, and long-term maintainability. No trend-chasing — only battle-tested solutions.</p>
+        <p class="section-sub">We selected every technology based on this project's real requirements — {{ !empty($caseStudy->caseStudy->compliance_items) ? 'compliance obligations, ' : '' }}scalability needs, and long-term maintainability. No trend-chasing — only battle-tested solutions.</p>
       </div>
       <div class="col-lg-8">
         @if(!empty($caseStudy->caseStudy->tech_stack))
@@ -895,7 +903,7 @@
     <div class="cs-gallery-grid">
       @foreach($caseStudy->caseStudy->gallery as $img)
       <div class="cs-gallery-item">
-        <img src="{{ config('app.images_path') . $img }}" alt="{{ $caseStudy->title }} screenshot" class="img-fluid" style="border-radius:12px;">
+        <img src="{{ config('app.images_path') . $img }}" alt="{{ $caseStudy->title }} screenshot" class="img-fluid" style="border-radius:12px;" loading="lazy">
       </div>
       @endforeach
     </div>
@@ -911,7 +919,7 @@
         <div class="side-line"></div>
         <div class="section-eyebrow">Key Achievements</div>
         <h2 class="section-heading">Why This Project Matters</h2>
-        <p class="section-sub">Beyond the numbers — this platform has improved healthcare access for patients in underserved communities across 12 US states who previously had no access to specialist care.</p>
+        <p class="section-sub">Beyond the numbers — what this project changed day-to-day for {{ $caseStudy->caseStudy->client_name ?? 'the client' }} and the people who rely on what we built.</p>
       </div>
       <div class="col-lg-8">
         @if(!empty($caseStudy->caseStudy->achievements))
@@ -975,14 +983,14 @@
         <div class="related-card">
           <div class="related-visual" style="background:linear-gradient(135deg,#1a237e,#283593);">
             @if($r->featured_image)
-              <img src="{{ config('app.images_path') . $r->featured_image }}" alt="{{ $r->title }}" style="width:100%;height:100%;object-fit:cover;">
+              <img src="{{ config('app.images_path') . $r->featured_image }}" alt="{{ $r->title }}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
             @endif
             <span class="related-badge">{{ $r->caseStudy->client_industry ?? '' }}</span>
           </div>
           <div class="related-body">
             <div class="related-category">{{ $r->caseStudy->client_industry ?? '' }}</div>
             <div class="related-title">{{ $r->title }}</div>
-            <a href="#" class="btn-related">View Case Study <i class="fas fa-arrow-right"></i></a>
+            <a href="{{ route('case-studies.show', $r->slug) }}" class="btn-related">View Case Study <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -998,7 +1006,11 @@
   <div class="container">
     <div class="section-eyebrow" style="color:var(--accent-blue);margin-bottom:12px;">Ready to Get Started?</div>
     <h2 class="cs-cta-title">
-      Looking for Custom <span class="highlight">Healthcare Software</span> Development?
+      @if($caseStudy->caseStudy->client_industry)
+        Looking for Custom <span class="highlight">{{ $caseStudy->caseStudy->client_industry }}</span> Software Development?
+      @else
+        Looking for Custom <span class="highlight">Software</span> Development?
+      @endif
     </h2>
     <p class="cs-cta-sub">
       Kawach Technology helps startups and enterprises build scalable, secure, and high-performance digital platforms. Let's turn your vision into the next success story.
@@ -1016,7 +1028,7 @@
     </div>
     <p style="margin-top:22px; color:var(--text-muted, #6c757d); font-size:.9rem;">
       Want a similar result for your business?
-      <a href="{{ route('pages.child.sevice_details', 'custom-software-development') }}">Explore our custom software development services</a>@if($csMarket) or see how we work with businesses in <a href="{{ route($csMarket['route']) }}">{{ $csMarket['label'] }}</a>@endif.
+      <a href="{{ route('pages.child.sevice_details', $relatedServiceSlug) }}">Explore our {{ $relatedServiceName }} services</a>@if($relatedIndustrySlug), see our <a href="{{ route('industries.show', $relatedIndustrySlug) }}">{{ $relatedIndustryName }}</a> work @endif @if($csMarket), or see how we work with businesses in <a href="{{ route($csMarket['route']) }}">{{ $csMarket['label'] }}</a> @endif — or <a href="{{ route('contact') }}">get in touch</a> directly.
     </p>
   </div>
 </section>

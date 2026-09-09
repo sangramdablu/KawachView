@@ -171,7 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-number">10<span>+</span></div>
+            <div class="stat-number">12<span>+</span></div>
             <div class="stat-label">Years of Experience</div>
           </div>
           <div class="stat-item">
@@ -199,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <i class="fas fa-users"></i>
             <div>
               <div class="avb-text">50+ Team Members</div>
-              <div class="avb-sub">Across 8 Countries</div>
+              <div class="avb-sub">Across 9+ Countries</div>
             </div>
           </div>
           <div class="av-card-main">
@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="av-stat-lbl">Satisfaction</div>
               </div>
               <div class="av-stat-box">
-                <div class="av-stat-num">10<span>yr</span></div>
+                <div class="av-stat-num">12<span>yr</span></div>
                 <div class="av-stat-lbl">Experience</div>
               </div>
             </div>
@@ -233,8 +233,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="av-progress-bar-bg"><div class="av-progress-fill" style="width:98%;"></div></div>
             </div>
             <div class="av-progress-row">
-              <div class="av-progress-label"><span>Client Satisfaction</span><span>99%</span></div>
-              <div class="av-progress-bar-bg"><div class="av-progress-fill" style="width:99%;"></div></div>
+              <div class="av-progress-label"><span>Client Satisfaction</span><span>98%</span></div>
+              <div class="av-progress-bar-bg"><div class="av-progress-fill" style="width:98%;"></div></div>
             </div>
           </div>
         </div>
@@ -256,15 +256,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="who-img-tagline">
                 Founded in 2014, we've grown from a 3-person startup<br>into a global software powerhouse.
               </p>
-              <div class="who-year-badge">Est. 2014 · 10 Years Strong</div>
+              <div class="who-year-badge">Est. 2014 · 12 Years Strong</div>
             </div>
             <div class="who-overlay-stat">
               <div class="wos-item">
-                <div class="wos-num">40<span>+</span></div>
+                <div class="wos-num">6</div>
                 <div class="wos-lbl">Industries</div>
               </div>
               <div class="wos-item">
-                <div class="wos-num">20<span>+</span></div>
+                <div class="wos-num">9<span>+</span></div>
                 <div class="wos-lbl">Countries</div>
               </div>
               <div class="wos-item">
@@ -280,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="who-label">Our Story</div>
         <h2 class="who-title">We Build Software That<br>Drives Real Results</h2>
         <p class="who-desc">
-          Kawach Technology was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 7+ countries.
+          Kawach Technology was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 9+ countries.
         </p>
         <p class="who-desc">
           We believe technology is only as powerful as the human needs it serves. That's why we pair deep technical expertise with genuine business understanding — listening first, building second, and measuring success by our clients' outcomes.
@@ -347,128 +347,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ── TEAM ── -->
-{{-- <section class="team-section" id="team">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="section-divider"></div>
-      <h2 class="section-title">Meet Our Team</h2>
-      <p class="section-subtitle">The talented people behind every great product we ship</p>
-    </div>
-    <div class="row g-4">
-
-      <div class="col-md-4 col-lg-2-custom col-6">
-        <div class="team-card">
-          <div class="team-avatar-wrap ta-bg-1">
-            <div class="team-avatar-circle">AK</div>
-            <div class="team-role-badge">Leadership</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Arjun Kapoor</div>
-            <div class="team-role">CEO &amp; Co-Founder</div>
-            <p class="team-bio">10+ years leading product strategy and scaling tech teams globally.</p>
-            <div class="team-socials">
-              <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-6">
-        <div class="team-card">
-          <div class="team-avatar-wrap ta-bg-2">
-            <div class="team-avatar-circle">SR</div>
-            <div class="team-role-badge">Leadership</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Sofia Russo</div>
-            <div class="team-role">CTO &amp; Co-Founder</div>
-            <p class="team-bio">Full-stack architect with deep expertise in cloud infrastructure and AI.</p>
-            <div class="team-socials">
-              <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-6">
-        <div class="team-card">
-          <div class="team-avatar-wrap ta-bg-3">
-            <div class="team-avatar-circle">MP</div>
-            <div class="team-role-badge">Design</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Marcus Park</div>
-            <div class="team-role">Head of Design</div>
-            <p class="team-bio">Award-winning UI/UX designer crafting seamless digital experiences.</p>
-            <div class="team-socials">
-              <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="team-social-link"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-6">
-        <div class="team-card">
-          <div class="team-avatar-wrap ta-bg-4">
-            <div class="team-avatar-circle">PN</div>
-            <div class="team-role-badge">Engineering</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Priya Nair</div>
-            <div class="team-role">Lead AI Engineer</div>
-            <p class="team-bio">ML specialist with published research in NLP and predictive analytics.</p>
-            <div class="team-socials">
-              <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-6">
-        <div class="team-card">
-          <div class="team-avatar-wrap ta-bg-5">
-            <div class="team-avatar-circle">DW</div>
-            <div class="team-role-badge">Engineering</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Daniel Wu</div>
-            <div class="team-role">Cloud Architect</div>
-            <p class="team-bio">AWS &amp; GCP certified expert building resilient, cost-optimised infrastructure.</p>
-            <div class="team-socials">
-              <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-6">
-        <div class="team-card">
-          <div class="team-avatar-wrap ta-bg-6">
-            <div class="team-avatar-circle">LA</div>
-            <div class="team-role-badge">Growth</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Lena Adler</div>
-            <div class="team-role">VP of Client Success</div>
-            <p class="team-bio">Ensures every client relationship delivers lasting value and measurable ROI.</p>
-            <div class="team-socials">
-              <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section> --}}
-
 <!-- ── TIMELINE ── -->
 <section class="timeline-section">
   <div class="container">
@@ -482,7 +360,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2018 — Founded</div>
+          <div class="timeline-year">2014 — Founded</div>
           <div class="timeline-event">Company Established</div>
           <p class="timeline-detail">Kawach Technology launched from a co-working space in New Delhi with a team of three and a vision to democratise enterprise software.</p>
         </div>
@@ -502,18 +380,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-card">
           <div class="timeline-year">2022 — AI Division</div>
           <div class="timeline-event">Launched AI &amp; ML Practice</div>
-          <p class="timeline-detail">Established a dedicated AI &amp; Machine Learning division, delivering our first predictive analytics product for a Fortune 500 client.</p>
+          <p class="timeline-detail">Established a dedicated AI &amp; Machine Learning division, delivering our first predictive analytics product for a client.</p>
         </div>
       </li>
-
-      {{-- <li class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-year">2020 — Global Expansion</div>
-          <div class="timeline-event">Offices in 3 Continents</div>
-          <p class="timeline-detail">Opened offices in London and Singapore, enabling us to serve clients across EMEA and APAC with localised expertise.</p>
-        </div>
-      </li> --}}
 
       <li class="timeline-item">
         <div class="timeline-dot"></div>
@@ -529,7 +398,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="timeline-card">
           <div class="timeline-year">2024 — Today</div>
           <div class="timeline-event">400+ Projects &amp; Counting</div>
-          <p class="timeline-detail">With 80+ team members, 400+ completed projects, and clients in 6+ countries, we're just getting started on our next decade of impact.</p>
+          <p class="timeline-detail">With 50+ team members, 400+ completed projects, and clients in 9+ countries, we're just getting started on our next decade of impact.</p>
         </div>
       </li>
 
@@ -561,51 +430,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="tech-pill"><i class="fab fa-angular"></i> Angular</div>
       <div class="tech-pill"><i class="fas fa-mobile-alt"></i> React Native</div>
       <div class="tech-pill"><i class="fas fa-infinity"></i> CI/CD</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── AWARDS ── -->
-<section class="awards-section">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="section-divider"></div>
-      <h2 class="section-title">Awards &amp; Recognition</h2>
-      <p class="section-subtitle">Proud to be recognised by the world's top industry bodies</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-6 col-md-3">
-        <div class="award-card">
-          <div class="award-icon"><i class="fas fa-trophy"></i></div>
-          <div class="award-title">Top Software Development Company</div>
-          <div class="award-org">Clutch Global</div>
-          <div class="award-year">2024, 2025</div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="award-card">
-          <div class="award-icon"><i class="fas fa-medal"></i></div>
-          <div class="award-title">Best AI Solutions Provider</div>
-          <div class="award-org">G2 Awards</div>
-          <div class="award-year">2024, 2025</div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="award-card">
-          <div class="award-icon"><i class="fas fa-star"></i></div>
-          <div class="award-title">Tech Innovator of the Year</div>
-          <div class="award-org">Forbes Tech Council</div>
-          <div class="award-year">2026</div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="award-card">
-          <div class="award-icon"><i class="fas fa-award"></i></div>
-          <div class="award-title">Best Workplace in Tech</div>
-          <div class="award-org">Built In</div>
-          <div class="award-year">2026</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

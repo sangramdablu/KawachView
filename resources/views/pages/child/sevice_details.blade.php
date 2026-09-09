@@ -7,6 +7,22 @@
     $seoImage       = $service->featured_image
         ? config('app.images_path') . $service->featured_image
         : asset('assets/images/kawach.png');
+
+    // SEO Phase 21: this used to feed the FAQPage schema from a single
+    // generic "why choose Kawach" line while the visible accordion below
+    // showed 5 different questions — a schema/visible-content mismatch.
+    // No service has real per-service FAQ data (PageService has no faqs
+    // relation), so both the schema and the accordion now read from this
+    // one genuinely useful, honest set instead of diverging.
+    $svcFaqs = isset($service->service->faqs) && $service->service->faqs->count()
+        ? $service->service->faqs->map(fn ($faq) => ['q' => $faq->question, 'a' => $faq->answer])->all()
+        : [
+            ['q' => 'How long does a typical project take?', 'a' => 'Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
+            ['q' => 'What does your development process look like?', 'a' => 'We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
+            ['q' => 'Do you offer post-launch support?', 'a' => 'Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
+            ['q' => 'How do you handle project communication?', 'a' => 'We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
+            ['q' => 'What happens if the scope changes mid-project?', 'a' => 'Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
+        ];
 @endphp
 
 @push('schema')
@@ -67,27 +83,16 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          @if(isset($service->service->faqs) && $service->service->faqs->count())
-            @foreach($service->service->faqs as $i => $faq)
+          @foreach($svcFaqs as $i => $faq)
             {
               "@type": "Question",
-              "name": "{{ $faq->question }}",
+              "name": {!! json_encode($faq['q']) !!},
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "{{ $faq->answer }}"
+                "text": {!! json_encode($faq['a']) !!}
               }
             }{{ !$loop->last ? ',' : '' }}
-            @endforeach
-          @else
-            {
-              "@type": "Question",
-              "name": "Why choose Kawach Technology for {{ $service->title }}?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Kawach Technology delivers expert {{ $service->title }} services backed by years of experience, a skilled team, and a commitment to quality and on-time delivery."
-              }
-            }
-          @endif
+          @endforeach
         ]
       }
     ]
@@ -364,33 +369,15 @@
         <div class="content-card anim">
           <h2 class="content-card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
           <div id="faqAccordion">
-            @if(isset($service->service->faqs) && $service->service->faqs->count())
-              @foreach($service->service->faqs as $i => $faq)
-              <div class="faq-item {{ $i === 0 ? 'open' : '' }}" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                  <span class="faq-q-text">{{ $faq->question }}</span>
-                  <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
-                </div>
-                <div class="faq-answer"><p>{{ $faq->answer }}</p></div>
+            @foreach($svcFaqs as $i => $faq)
+            <div class="faq-item {{ $i === 0 ? 'open' : '' }}" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span class="faq-q-text">{{ $faq['q'] }}</span>
+                <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
               </div>
-              @endforeach
-            @else
-              @foreach([
-                  ['How long does a typical project take?', 'Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
-                  ['What does your development process look like?', 'We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
-                  ['Do you offer post-launch support?', 'Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
-                  ['How do you handle project communication?', 'We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
-                  ['What happens if the scope changes mid-project?', 'Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
-                ] as $i => $qa)
-              <div class="faq-item {{ $i === 0 ? 'open' : '' }}" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                  <span class="faq-q-text">{{ $qa[0] }}</span>
-                  <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
-                </div>
-                <div class="faq-answer"><p>{{ $qa[1] }}</p></div>
-              </div>
-              @endforeach
-            @endif
+              <div class="faq-answer"><p>{{ $faq['a'] }}</p></div>
+            </div>
+            @endforeach
           </div>
         </div>
 
@@ -419,9 +406,11 @@
         </div>
         @endif
 
-        {{-- Software Development Services by Market — only on the flagship
-             custom software development page, not every service page. --}}
-        @if($service->slug === 'custom-software-development')
+        {{-- Software Development Services by Market — shown on every service
+             page per SEO Phase 9 ("every service page must link to relevant
+             markets"). The flagship custom-software-development page now has
+             its own dedicated template/route and no longer renders this
+             file, so this no longer needs a slug check. --}}
         <div class="anim" style="margin-top:32px;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
             <div class="section-label"><i class="fas fa-earth-americas"></i> Software Development Services by Market</div>
@@ -466,7 +455,6 @@
             </div>
           </div>
         </div>
-        @endif
 
       </div>{{-- /col-lg-8 --}}
 

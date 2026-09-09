@@ -65,6 +65,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <!-- Third-party CDN used for icon font (head) and Bootstrap JS bundle (footer) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -109,8 +111,33 @@
               "@type" => "ImageObject",
               "url" => asset('assets/images/kawach.png'),
           ],
-          "description" => "Kawach Technology is a custom software development company providing web development, mobile app development, AI solutions, cloud applications, and enterprise software services for businesses worldwide. Kawach Technology is an independent software company and is not affiliated with, and should not be confused with, Kavach — the Indian Railways automatic train protection system.",
+          "description" => "Kawach Technology is a remote-first custom software development company providing web development, mobile app development, AI and machine learning, SaaS, CRM and ERP development, cloud applications, software modernization, and enterprise software services for businesses worldwide. Kawach Technology is an independent software company and is not affiliated with, and should not be confused with, Kavach — the Indian Railways automatic train protection system.",
           "email" => config('app.main_email'),
+          "founder" => [
+              "@type" => "Person",
+              "name" => "Sraddha Gupta",
+              "jobTitle" => "Founder & CEO",
+              "url" => url('/about/founder'),
+          ],
+          "numberOfEmployees" => [
+              "@type" => "QuantitativeValue",
+              "value" => "50+",
+          ],
+          "knowsAbout" => [
+              "Custom Software Development",
+              "SaaS Development",
+              "AI & Machine Learning Development",
+              "Enterprise Software Development",
+              "Mobile App Development",
+              "Web Application Development",
+              "Software Modernization",
+              "Healthcare Software Development",
+              "FinTech Software Development",
+              "Manufacturing Software Development",
+              "Logistics Software Development",
+              "Retail Software Development",
+              "Education Software Development",
+          ],
           "sameAs" => array_values(array_filter([
               config('app.linkedin'),
               config('app.insta'),
@@ -177,4 +204,37 @@
   </script>
   <!-- Page-specific structured data (Service/Article/Person/FAQ/Breadcrumb schema) -->
   @stack('schema')
+
+  {{-- Self-hosted visitor analytics — dwell-time beacon. First-party only,
+       never sent to a third party; tracks regardless of the Google
+       consent-mode toggle above (see TrackVisitor middleware). --}}
+  @if(isset($kwPageviewId))
+  <script>
+    (function () {
+      var pageviewId = {{ (int) $kwPageviewId }};
+      var pingUrl = '{{ route('visitor-track.ping') }}';
+      var csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+      var start = Date.now();
+
+      function ping() {
+        var seconds = Math.round((Date.now() - start) / 1000);
+        if (seconds < 1) return;
+        var data = new FormData();
+        data.append('pageview_id', pageviewId);
+        data.append('seconds', seconds);
+        data.append('_token', csrfToken);
+        navigator.sendBeacon(pingUrl, data);
+      }
+
+      var heartbeat = setInterval(ping, 20000);
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') ping();
+      });
+      window.addEventListener('pagehide', function () {
+        clearInterval(heartbeat);
+        ping();
+      });
+    })();
+  </script>
+  @endif
 </head>

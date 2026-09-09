@@ -186,7 +186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="casehero-stats">
           <div class="stat-item">
-            <div class="stat-number">{{ $stats['projects'] }}+<span>+</span></div>
+            <div class="stat-number">{{ $stats['projects'] }}<span>+</span></div>
             <div class="stat-label">Projects Delivered</div>
           </div>
           <div class="stat-item">
@@ -200,45 +200,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- hero chart illustration -->
+      {{-- SEO Phase 11: the previous illustration showed invented per-industry
+           percentage figures ("+150% E-Com", "+80% CRM", etc.) and two
+           fabricated "150% Revenue Growth" / "60% Cost Reduction" stat
+           cards with no case study or data backing anywhere in the site —
+           replaced with the same real, already-computed stats used in the
+           hero above, and a non-numeric icon showcase instead of invented
+           outcome percentages. --}}
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
         <div class="hero-chart-wrap">
           <div class="mini-stat-card msc-1">
-            <div class="msc-num"><span>↑</span> 150%</div>
-            <div class="msc-label">Revenue Growth</div>
+            <div class="msc-num"><span><i class="fas fa-check"></i></span> {{ $stats['projects'] }}+</div>
+            <div class="msc-label">Projects Delivered</div>
           </div>
           <div class="mini-stat-card msc-2">
-            <div class="msc-num"><span>↓</span> 60%</div>
-            <div class="msc-label">Cost Reduction</div>
+            <div class="msc-num"><span><i class="fas fa-heart"></i></span> {{ $stats['satisfaction'] }}%</div>
+            <div class="msc-label">Client Satisfaction</div>
           </div>
           <div class="chart-card">
             <div class="chart-card-title">
-              <i class="fas fa-chart-bar"></i> Project Outcomes
+              <i class="fas fa-layer-group"></i> What We Build
             </div>
             <div class="chart-bars">
               <div class="chart-bar-group">
-                <div class="chart-bar-val">+150%</div>
-                <div class="chart-bar" style="height:90px;"></div>
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f6d2.svg" alt="E-Commerce" style="width:34px;height:34px;margin-bottom:8px;" loading="lazy">
                 <div class="chart-bar-label">E-Com</div>
               </div>
               <div class="chart-bar-group">
-                <div class="chart-bar-val">+80%</div>
-                <div class="chart-bar" style="height:60px; opacity:0.75;"></div>
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f4bc.svg" alt="CRM" style="width:34px;height:34px;margin-bottom:8px;" loading="lazy">
                 <div class="chart-bar-label">CRM</div>
               </div>
               <div class="chart-bar-group">
-                <div class="chart-bar-val">+65%</div>
-                <div class="chart-bar" style="height:50px; opacity:0.65;"></div>
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1fa7a.svg" alt="Healthcare" style="width:34px;height:34px;margin-bottom:8px;" loading="lazy">
                 <div class="chart-bar-label">Health</div>
               </div>
               <div class="chart-bar-group">
-                <div class="chart-bar-val">+90%</div>
-                <div class="chart-bar" style="height:72px; opacity:0.85;"></div>
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f4b0.svg" alt="FinTech" style="width:34px;height:34px;margin-bottom:8px;" loading="lazy">
                 <div class="chart-bar-label">Fin</div>
               </div>
               <div class="chart-bar-group">
-                <div class="chart-bar-val">+70%</div>
-                <div class="chart-bar" style="height:55px; opacity:0.7;"></div>
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f393.svg" alt="Education" style="width:34px;height:34px;margin-bottom:8px;" loading="lazy">
                 <div class="chart-bar-label">Edu</div>
               </div>
             </div>
@@ -339,7 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="case-card">
               <div class="case-card-visual ccv-ecom">
                   @if($case->featured_image)
-                      <img src="{{ config('app.images_path') . $case->featured_image }}" alt="{{ $case->title }}" title="{{ $case->title }}" class="case-card-image">
+                      <img src="{{ config('app.images_path') . $case->featured_image }}" alt="{{ $case->title }}" title="{{ $case->title }}" class="case-card-image" loading="lazy">
                   @endif
                   <div class="ccv-badge">
                       {{ $case->caseStudy->client_industry ?? 'Technology'}}
@@ -372,8 +373,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-@include('layouts.testmonials')
+<!-- ── TESTIMONIALS ──
+     SEO Phase 11: layouts.testmonials contains fabricated named reviewers
+     (not backed by any real case study or client record) plus an
+     unverifiable "4.9★ / 8 Verified Reviews" Clutch panel. Disabled here
+     to match the homepage, which already correctly uses only real,
+     DB-backed testimonials via layouts.client-reviews (see that file's
+     own comments). Do not re-enable without replacing the content with
+     real, attributable client testimonials. -->
+{{-- @include('layouts.testmonials') --}}
 
 <!-- ── INDUSTRIES ── -->
 @include('layouts.industry')

@@ -399,7 +399,7 @@
           <div class="usa-svc-icon"><i class="fas fa-cloud"></i></div>
           <h3>SaaS Development</h3>
           <p>From a focused MVP to a multi-tenant platform, built on architecture that scales as your customer base grows.</p>
-          <a href="{{ route('pages.child.sevice_details', 'cloud-devops-solutions') }}" class="usa-svc-link">Learn more &rarr;</a>
+          <a href="{{ route('pages.child.sevice_details', 'saas-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-brain"></i></div>
@@ -423,7 +423,7 @@
           <div class="usa-svc-icon"><i class="fas fa-arrows-rotate"></i></div>
           <h3>Legacy Software Modernization</h3>
           <p>Migrate aging systems to modern, maintainable architecture without disrupting the operations that depend on them.</p>
-          <a href="{{ route('pages.child.sevice_details', 'custom-api-development-integration-solutions') }}" class="usa-svc-link">Learn more &rarr;</a>
+          <a href="{{ route('pages.child.sevice_details', 'software-modernization') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-users-cog"></i></div>
@@ -541,12 +541,12 @@
       </div>
       <div class="usa-ind-grid">
         <a href="{{ route('case-studies.show', 'harborview-hospitality-group-booking-platform-case-study') }}" class="usa-ind-card"><i class="fas fa-hotel"></i><span>Hospitality</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
+        <a href="{{ route('industries.show', 'fintech-software-development') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-scale-balanced"></i><span>Legal Services</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-house-chimney"></i><span>Real Estate</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+        <a href="{{ route('industries.show', 'healthcare-software-development') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
+        <a href="{{ route('industries.show', 'retail-software-development') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
+        <a href="{{ route('industries.show', 'education-software-development') }}" class="usa-ind-card"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cloud"></i><span>SaaS</span></a>
       </div>
     </div>

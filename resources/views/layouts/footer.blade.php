@@ -13,7 +13,7 @@
 
             <div class="kw-brand">
                 <div class="kw-logo-mark" aria-hidden="true">
-                    <img src="{{ asset('assets/images/kawach.png') }}" alt="" class="kw-logo-mark-img">
+                    <img src="{{ asset('assets/images/kawach.png') }}" alt="" class="kw-logo-mark-img" loading="lazy">
                 </div>
                 <div class="kw-brand-text">
                     <span class="kw-brand-name">Kawach<em>TECH</em></span>
@@ -79,7 +79,8 @@
             <div class="kw-col">
                 <p class="kw-col-label">Company</p>
                 <ul class="kw-links">
-                    <li><a href="{{ route('founder') }}">About Us</a></li>
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="{{ route('founder') }}">Our Founder</a></li>
                     <li><a href="{{ route('casestudy') }}">Case Studies</a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
                     <li><a href="{{ route('careers') }}">Careers</a></li>
@@ -91,11 +92,11 @@
             <div class="kw-col">
                 <p class="kw-col-label">Services</p>
                 <ul class="kw-links">
-                    <li><a href="https://www.kawachtech.com/services/custom-software-development-services-for-businesses">Custom Software Dev</a></li>
+                    <li><a href="{{ route('pages.child.sevice_details', 'custom-software-development') }}">Custom Software Dev</a></li>
                     {{-- <li><a href="#">AI & Automation</a></li> --}}
                     {{-- <li><a href="#">SaaS Development</a></li> --}}
-                    <li><a href="https://www.kawachtech.com/services/custom-mobile-web-application-development-services">Web Development</a></li>
-                    <li><a href="https://www.kawachtech.com/services/custom-mobile-web-application-development-services">Mobile App Dev</a></li>
+                    <li><a href="{{ route('pages.child.sevice_details', 'web-application-development') }}">Web Development</a></li>
+                    <li><a href="{{ route('pages.child.sevice_details', 'mobile-app-development') }}">Mobile App Dev</a></li>
                     <li><a href="{{ route('newsroom') }}">Newsroom</a></li>
                 </ul>
             </div>

@@ -20,6 +20,32 @@ class PagesController extends Controller
         return view('pages.services', compact('services'));
     }
 
+    /**
+     * SEO PHASE 5 — the flagship /services/custom-software-development
+     * landing page. Bespoke template (not the generic sevice_details
+     * view every other service page uses) because its required structure
+     * — dedicated startup/small-business/solutions sections, two distinct
+     * CTAs — doesn't fit the shared Overview/Features/Process layout.
+     * Still reads meta tags from the CMS row (id 12) so Phases 2-4's
+     * work stays the single source of truth for title/description.
+     */
+    public function customSoftwareDevelopment()
+    {
+        $page = Page::with('service')
+            ->where('slug', 'custom-software-development')
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        $seoTitle       = $page->meta_title ?? 'Custom Software Development Company | Kawach Technology';
+        $seoDescription = $page->meta_description ?? $page->service->short_description;
+        $seoKeywords    = $page->meta_keywords ?? 'custom software development, custom software development company';
+        $seoCanonical   = url('/services/custom-software-development');
+
+        return view('pages.child.custom_software_development', compact(
+            'page', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoCanonical'
+        ));
+    }
+
     public function showServiceDetails($slug)
     {
         $service = Cache::remember("service_detail_{$slug}", 3600, function () use ($slug) {
@@ -70,19 +96,141 @@ class PagesController extends Controller
             ->where('status', 'published')
             ->firstOrFail();
 
-        $relatedCaseStudies = Page::with('caseStudy')
+        // SEO Phase 12: prefer other case studies in the same industry
+        // ("related industry" linking) before falling back to the latest
+        // others, instead of always showing an unfiltered "latest 3".
+        $industry = $caseStudy->caseStudy->client_industry ?? null;
+        $baseQuery = fn () => Page::with('caseStudy')
             ->where('page_type', 'casestudy')
             ->where('id', '!=', $caseStudy->id)
-            ->where('status', 'published')
-            ->latest()
-            ->take(3)
-            ->get();
+            ->where('status', 'published');
+
+        $relatedCaseStudies = collect();
+        if ($industry) {
+            $relatedCaseStudies = $baseQuery()
+                ->whereHas('caseStudy', fn ($q) => $q->where('client_industry', $industry))
+                ->latest()
+                ->take(3)
+                ->get();
+        }
+        if ($relatedCaseStudies->count() < 3) {
+            $fill = $baseQuery()
+                ->whereNotIn('id', $relatedCaseStudies->pluck('id'))
+                ->latest()
+                ->take(3 - $relatedCaseStudies->count())
+                ->get();
+            $relatedCaseStudies = $relatedCaseStudies->merge($fill);
+        }
+
+        $relatedServiceSlug = $this->relatedServiceSlugFor($caseStudy);
+        $relatedServiceName = [
+            'erp-development' => 'ERP Development',
+            'crm-development' => 'CRM Development',
+            'software-modernization' => 'Software Modernization',
+            'enterprise-software-development' => 'Enterprise Software Development',
+            'ai-machine-learning-development' => 'AI & Machine Learning Development',
+            'saas-development' => 'SaaS Development',
+            'mobile-app-development' => 'Mobile App Development',
+            'custom-api-development-integration-solutions' => 'API Development & Integration',
+            'web-application-development' => 'Web Application Development',
+            'custom-software-development' => 'Custom Software Development',
+        ][$relatedServiceSlug] ?? 'Custom Software Development';
+
+        $relatedIndustrySlug = $this->relatedIndustrySlugFor($caseStudy);
+        $relatedIndustryName = $relatedIndustrySlug ? (config('industries')[$relatedIndustrySlug]['title'] ?? null) : null;
 
         $seoTitle       = $caseStudy->meta_title ?: $caseStudy->title . ' — Case Study | Kawach Technology';
         $seoDescription = $caseStudy->meta_description ?: \Illuminate\Support\Str::limit(strip_tags($caseStudy->caseStudy->challenge ?? ''), 160);
         $seoKeywords    = $caseStudy->meta_keywords ?: trim(($caseStudy->focus_keyword ?? '') . ', ' . ($caseStudy->caseStudy->client_industry ?? '') . ', case study, Kawach Technology');
 
-        return view('pages.child.case_study_details', compact('caseStudy', 'relatedCaseStudies', 'seoTitle', 'seoDescription', 'seoKeywords'));
+        return view('pages.child.case_study_details', compact('caseStudy', 'relatedCaseStudies', 'relatedServiceSlug', 'relatedServiceName', 'relatedIndustrySlug', 'relatedIndustryName', 'seoTitle', 'seoDescription', 'seoKeywords'));
+    }
+
+    /**
+     * SEO Phase 17 (Case Study → Service → Industry → Market → Contact linking) —
+     * matches a case study's free-text client_industry to one of the 6 built
+     * industry pages (config/industries.php). Returns null rather than a wrong
+     * guess when the case study's industry has no dedicated page yet (e.g.
+     * Real Estate, Hospitality, Insurance) — never link to something that
+     * doesn't exist or misrepresent the case study's actual industry.
+     */
+    private function relatedIndustrySlugFor(Page $caseStudy): ?string
+    {
+        $industryText = strtolower($caseStudy->caseStudy->client_industry ?? '');
+        if ($industryText === '') {
+            return null;
+        }
+
+        $keywordMap = [
+            'health' => 'healthcare-software-development',
+            'fintech' => 'fintech-software-development',
+            'lending' => 'fintech-software-development',
+            'financial' => 'fintech-software-development',
+            'manufactur' => 'manufacturing-software-development',
+            'logistics' => 'logistics-software-development',
+            'supply chain' => 'logistics-software-development',
+            'retail' => 'retail-software-development',
+            'e-commerce' => 'retail-software-development',
+            'ecommerce' => 'retail-software-development',
+            'education' => 'education-software-development',
+        ];
+
+        foreach ($keywordMap as $keyword => $slug) {
+            if (str_contains($industryText, $keyword)) {
+                return isset(config('industries')[$slug]) ? $slug : null;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * SEO Phase 12 ("related service" linking) — matches a case study to
+     * whichever real, published service page its own content actually
+     * points to, instead of hardcoding a link to custom-software-development
+     * for every case study regardless of what it's about. Falls back to
+     * custom-software-development if nothing matches or the matched page
+     * isn't actually published (never link to something that doesn't exist).
+     */
+    private function relatedServiceSlugFor(Page $caseStudy): string
+    {
+        $haystack = strtolower(trim(
+            $caseStudy->title . ' ' .
+            ($caseStudy->caseStudy->client_industry ?? '') . ' ' .
+            strip_tags($caseStudy->caseStudy->challenge ?? '')
+        ));
+
+        $keywordMap = [
+            'erp' => 'erp-development',
+            'case management' => 'crm-development',
+            'crm' => 'crm-development',
+            'legacy' => 'software-modernization',
+            'modernizing' => 'software-modernization',
+            'industrial iot' => 'enterprise-software-development',
+            'predictive maintenance' => 'enterprise-software-development',
+            'insurance' => 'enterprise-software-development',
+            'machine learning' => 'ai-machine-learning-development',
+            ' ai ' => 'ai-machine-learning-development',
+            'automation' => 'ai-machine-learning-development',
+            'saas' => 'saas-development',
+            'platform' => 'saas-development',
+            'mobile' => 'mobile-app-development',
+            'api' => 'custom-api-development-integration-solutions',
+            'integration' => 'custom-api-development-integration-solutions',
+            'publishing' => 'web-application-development',
+            'cms' => 'web-application-development',
+        ];
+
+        $fallback = 'custom-software-development';
+
+        foreach ($keywordMap as $keyword => $slug) {
+            if (str_contains($haystack, $keyword)) {
+                $exists = Page::where('slug', $slug)->where('status', 'published')->exists();
+                return $exists ? $slug : $fallback;
+            }
+        }
+
+        return $fallback;
     }
 
     public function teamIndex()

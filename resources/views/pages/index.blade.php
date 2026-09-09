@@ -21,6 +21,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- SERVICES -->
 @include('layouts.service')
 
+<!-- LIGHT MID-PAGE CTA (Phase 27 — a CTA touchpoint after services, lighter
+     than the full banner at the bottom of the page so it doesn't feel like
+     a second hard sell right after the first) -->
+<section class="home-inline-cta-section">
+  <div class="container">
+    <div class="home-inline-cta">
+      <span>Not sure which service fits what you're building?</span>
+      <button class="home-inline-cta-btn" data-bs-toggle="modal" data-bs-target="#consultModal">
+        Get a Free Software Consultation <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+<style>
+.home-inline-cta-section{ padding:0 0 20px; }
+.home-inline-cta{
+  display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  padding:20px 26px; background:rgba(26,115,232,.06); border:1px solid rgba(26,115,232,.15);
+  border-radius:14px;
+}
+.home-inline-cta span{ font-weight:700; color:var(--text-dark, #1a1a2e); font-size:.96rem; }
+.home-inline-cta-btn{
+  display:inline-flex; align-items:center; gap:8px; background:#1a73e8; color:#fff; border:none;
+  padding:11px 22px; border-radius:9px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.2s;
+  white-space:nowrap;
+}
+.home-inline-cta-btn:hover{ background:#1558b0; }
+@media (max-width:640px){ .home-inline-cta{ justify-content:center; text-align:center; } }
+</style>
+
 <!-- PROJECTS -->
 @include('layouts.project')
 
@@ -35,9 +65,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 @include('layouts.global-markets')
 
-{{-- <!-- ── CLIENT VOICES ── -->
-@include('layouts.client-voices') --}}
-
 <!-- ── RESULTS ── -->
 @include('layouts.results')
 
@@ -50,9 +77,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ── OUR TEAM ── -->
 @include('layouts.our-team')
 
-{{-- ── CLUTCH REVIEWS — disabled per request, restore by uncommenting ── --}}
-{{-- <!-- ── TESTIMONIALS ── -->
-@include('layouts.testmonials') --}}
+{{-- SEO Phase 11: the old Clutch-reviews partial (layouts.testmonials) has
+     been deleted — it contained fabricated named reviewers with no real
+     case study backing. Real, DB-backed testimonials only, below. --}}
 
 <!-- ── CLIENT REVIEWS (from case studies) ── -->
 @include('layouts.client-reviews')

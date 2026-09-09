@@ -556,18 +556,30 @@
         @endif
         </div><!-- /article-content-wrap -->
 
-        <!-- AUTHOR BIO -->
+        {{-- AUTHOR BIO — SEO Phase 31: this used to hardcode a fake named
+             persona (invented credentials) on every single post regardless
+             of who actually wrote it or what it was about — the same
+             category of fabrication as the fake team bios removed from
+             about.blade.php in Phase 11. Now reads only real User fields
+             (name, designation, bio, linkedin_url) and falls back to an
+             honest, generic line instead of inventing specifics when a
+             field isn't set. --}}
+        @php
+          $authorName = $post->author?->name ?? 'Kawach Technology';
+          $nameParts = preg_split('/\s+/', trim($authorName));
+          $authorInitials = mb_strtoupper(mb_substr($nameParts[0] ?? '', 0, 1) . mb_substr(end($nameParts), 0, 1));
+        @endphp
         <div class="author-bio">
-          <div class="bio-avatar">AK</div>
+          <div class="bio-avatar">{{ $authorInitials }}</div>
           <div>
-            <div class="bio-name"> {{ $post->author?->name ?? 'Kawach Team' }} </div>
-            <div class="bio-role">Lead AI Engineer, Kawach Technology</div>
-            <p class="bio-text">Arjun leads AI strategy and implementation across KawachTech's enterprise client portfolio. With over 10 years in software engineering and 4 years specialising in applied ML, he has guided organisations across finance, healthcare, and logistics through large-scale AI adoption programmes.</p>
+            <div class="bio-name"> {{ $authorName }} </div>
+            <div class="bio-role">{{ $post->author?->designation ?? 'Kawach Technology' }}</div>
+            <p class="bio-text">{{ $post->author?->bio ?? 'This article was written by the Kawach Technology team, covering software development, technology strategy and building for real business outcomes.' }}</p>
+            @if($post->author?->linkedin_url)
             <div class="bio-socials">
-              <a href="#" class="bio-social-btn" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="bio-social-btn" style="background:#1da1f2;"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="bio-social-btn" style="background:#1a73e8;"><i class="fas fa-globe"></i></a>
+              <a href="{{ $post->author->linkedin_url }}" class="bio-social-btn" style="background:#0077b5;" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
             </div>
+            @endif
           </div>
         </div>
 

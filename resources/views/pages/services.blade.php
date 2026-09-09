@@ -324,7 +324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="service-card-img">
             <div class="svc-icon-wrap">
               <div class="svc-icon-circle ic-custom">
-                <img src="{{ config('app.images_path') . $service->featured_image }}" alt="{{ $service->image_alt }}" title="{{ $service->image_title }}">
+                <img src="{{ config('app.images_path') . $service->featured_image }}" alt="{{ $service->image_alt }}" title="{{ $service->image_title }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}">
               </div>
             </div>
           </div>

@@ -544,7 +544,7 @@ if (!function_exists('projMockIcon')) {
             <div class="proj-stat-item">
                 <div class="proj-stat-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f30e.svg" alt="Countries Served" class="proj-stat-icon-img" loading="lazy"></div>
                 <div>
-                    <div class="proj-stat-val">7+</div>
+                    <div class="proj-stat-val">9+</div>
                     <div class="proj-stat-label">Countries Served</div>
                 </div>
             </div>

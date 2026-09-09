@@ -141,8 +141,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <td>Laravel session cookie, CSRF token</td>
                         </tr>
                         <tr>
-                            <td><strong>Analytics &amp; Performance</strong></td>
-                            <td>Help us understand visitor behavior so we can improve the Site.</td>
+                            <td><strong>First-Party Site Analytics</strong></td>
+                            <td>Our own, self-hosted traffic measurement — records which pages are visited and how long is spent on the Site so we can understand and improve it. This data is never shared with, or sent to, any third party, is not used for advertising, and is not linked to your identity. Because it is first-party and non-advertising, it operates independently of the analytics toggle below.</td>
+                            <td><code>kw_visitor_id</code> (Kawach Technology, first-party only)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Analytics &amp; Performance (Third-Party)</strong></td>
+                            <td>Help us understand visitor behavior via third-party analytics providers. You can opt in or out of this category from the cookie preferences banner.</td>
                             <td>Google Analytics, Google Tag Manager</td>
                         </tr>
                         <tr>
@@ -154,7 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </table>
 
                 <h2 id="third-party">4. Third-Party Cookies</h2>
-                <p>Some cookies are placed by third-party services that appear on our pages, such as Google Analytics and Google Tag Manager. These providers may use cookies to collect information about your use of the Site and other websites over time. We do not control these third-party cookies — please review the respective third party's privacy and cookie policies for more information.</p>
+                <p>Some cookies are placed by third-party services that appear on our pages, such as Google Analytics and Google Tag Manager. These providers may use cookies to collect information about your use of the Site and other websites over time. We do not control these third-party cookies — please review the respective third party's privacy and cookie policies for more information. Our own first-party site analytics (see the table above) is not a third-party cookie — the data it collects stays on our own servers and is never transmitted to Google or any other outside party.</p>
 
                 <h2 id="managing">5. Managing &amp; Disabling Cookies</h2>
                 <p>You can control or disable cookies at any time through your browser settings. Most browsers allow you to:</p>

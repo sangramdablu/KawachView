@@ -385,7 +385,7 @@
           <div class="usa-svc-icon"><i class="fas fa-cloud"></i></div>
           <h3>SaaS &amp; Cloud Development</h3>
           <p>Scalable SaaS and cloud platforms built with EU or Germany-specific data residency in mind from the start.</p>
-          <a href="{{ route('pages.child.sevice_details', 'cloud-devops-solutions') }}" class="usa-svc-link">Learn more &rarr;</a>
+          <a href="{{ route('pages.child.sevice_details', 'saas-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-globe"></i></div>
@@ -403,7 +403,7 @@
           <div class="usa-svc-icon"><i class="fas fa-arrows-rotate"></i></div>
           <h3>Legacy &amp; ERP Modernization</h3>
           <p>Migrate aging production and logistics systems to modern architecture without disrupting live operations.</p>
-          <a href="{{ route('pages.child.sevice_details', 'custom-api-development-integration-solutions') }}" class="usa-svc-link">Learn more &rarr;</a>
+          <a href="{{ route('pages.child.sevice_details', 'software-modernization') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-users-cog"></i></div>
@@ -521,11 +521,11 @@
       </div>
       <div class="usa-ind-grid">
         <a href="{{ route('case-studies.show', 'nordholt-manufacturing-industrial-iot-case-study') }}" class="usa-ind-card"><i class="fas fa-industry"></i><span>Manufacturing &amp; Industrial IoT</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-truck-fast"></i><span>Logistics</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
+        <a href="{{ route('industries.show', 'logistics-software-development') }}" class="usa-ind-card"><i class="fas fa-truck-fast"></i><span>Logistics</span></a>
+        <a href="{{ route('industries.show', 'fintech-software-development') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
+        <a href="{{ route('industries.show', 'healthcare-software-development') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-house-chimney"></i><span>Real Estate</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
+        <a href="{{ route('industries.show', 'retail-software-development') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-scale-balanced"></i><span>Professional Services</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cloud"></i><span>SaaS</span></a>
       </div>

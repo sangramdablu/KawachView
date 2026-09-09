@@ -62,7 +62,7 @@
         <h1 class="hero-title">
           We Build Custom Software That Helps Businesses Scale
         </h1>
-        <p class="hero-subtitle">From SaaS platforms and AI automation to complex web and mobile applications, Kawach Technology helps startups and enterprises turn business problems into scalable software.</p>
+        <p class="hero-subtitle">From SaaS platforms and AI automation to complex web and mobile applications, Kawach Technology delivers custom software development for startups, small businesses and enterprises — turning business problems into scalable software.</p>
         <button class="btn btn-consultation" data-bs-toggle="modal" data-bs-target="#consultModal">Get a Free Consultation</button>
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">

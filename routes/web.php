@@ -9,9 +9,15 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\HireDeveloperController;
+use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\VisitorTrackController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+Route::post('/visitor-track/ping', [VisitorTrackController::class, 'ping'])
+    ->name('visitor-track.ping')
+    ->middleware('throttle:60,1');
 
 Route::get('/', function () {
     return view('pages.index');
@@ -59,12 +65,51 @@ Route::get('/products/orbit', function () {
     return view('pages.products.orbit');
 })->name('products.orbit');
 
+/*
+|--------------------------------------------------------------------------
+| Legacy service URL redirects
+|--------------------------------------------------------------------------
+| Old indexed slugs that have since been renamed — 301 so search engines
+| transfer ranking signal to the new URL instead of hitting a 404. Must be
+| declared before the /services/{slug} wildcard route below.
+|--------------------------------------------------------------------------
+*/
+Route::permanentRedirect(
+    '/services/custom-software-development-services-for-businesses',
+    '/services/custom-software-development'
+);
+
+/*
+| SEO PHASE 18/31 — kawach-provides-api-development-services duplicated
+| custom-api-development-integration-solutions (same search intent,
+| keyword cannibalization). Set to draft in the DB and 301'd here so any
+| existing inbound links/ranking signal transfers to the canonical page.
+*/
+Route::permanentRedirect(
+    '/services/kawach-provides-api-development-services',
+    '/services/custom-api-development-integration-solutions'
+);
+
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
+
+/*
+| SEO PHASE 5 — the flagship custom-software-development page gets its own
+| bespoke template/route, registered before the generic /services/{slug}
+| wildcard so it takes precedence for this one slug.
+*/
+Route::get('/services/custom-software-development', [PagesController::class, 'customSoftwareDevelopment'])->name('services.custom-software-development');
+
 Route::get('/services/{slug}', [PagesController::class, 'showServiceDetails'])->name('pages.child.sevice_details');
 Route::get('/case-studies', [PagesController::class, 'caseStudyIndex'])->name('casestudy');
 Route::get('/case-studies/{slug}', [PagesController::class, 'showCasestudyDetails'])->name('case-studies.show');
 
 Route::get('/team', [PagesController::class, 'teamIndex'])->name('team');
+
+/*
+| SEO PHASE 16 — industry pages, config-driven catalogue (see
+| config/industries.php) following the same pattern as hire-developer.
+*/
+Route::get('/industries/{slug}', [IndustryController::class, 'show'])->name('industries.show')->where('slug', '[a-z0-9\-]+');
 
 Route::get('/hire-developer', [HireDeveloperController::class, 'index'])->name('hire-developer.index');
 Route::get('/hire-developer/{slug}', [HireDeveloperController::class, 'show'])->name('hire-developer.show')->where('slug', '[a-z0-9\-]+');

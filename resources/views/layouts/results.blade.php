@@ -76,31 +76,31 @@
 
       <div class="result-item">
         <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f680.svg" alt="Projects Delivered" class="result-icon-img" loading="lazy"></div>
-        <div class="result-number" data-count-to="400" data-suffix="+">0</div>
+        <div class="result-number" data-count-to="400" data-suffix="+">400+</div>
         <div class="result-label">Projects Delivered</div>
       </div>
 
       <div class="result-item">
         <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f4c5.svg" alt="Years of Experience" class="result-icon-img" loading="lazy"></div>
-        <div class="result-number" data-count-to="10" data-suffix="+">0</div>
+        <div class="result-number" data-count-to="12" data-suffix="+">12+</div>
         <div class="result-label">Years of Experience</div>
       </div>
 
       <div class="result-item">
         <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f30e.svg" alt="Countries Served" class="result-icon-img" loading="lazy"></div>
-        <div class="result-number" data-count-to="7" data-suffix="+">0</div>
+        <div class="result-number" data-count-to="9" data-suffix="+">9+</div>
         <div class="result-label">Countries Served</div>
       </div>
 
       <div class="result-item">
         <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/23f0.svg" alt="On-Time Delivery" class="result-icon-img" loading="lazy"></div>
-        <div class="result-number" data-count-to="98" data-suffix="%">0</div>
+        <div class="result-number" data-count-to="98" data-suffix="%">98%</div>
         <div class="result-label">On-Time Delivery</div>
       </div>
 
       <div class="result-item">
         <div class="result-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/2b50.svg" alt="Avg. Client Rating" class="result-icon-img" loading="lazy"></div>
-        <div class="result-number" data-count-to="4.9" data-decimals="1" data-suffix="★">0</div>
+        <div class="result-number" data-count-to="4.9" data-decimals="1" data-suffix="★">4.9★</div>
         <div class="result-label">Avg. Client Rating</div>
       </div>
 

@@ -70,10 +70,22 @@ if (!function_exists('revInitials')) {
                         <div class="rev-author-text">
                             <cite class="rev-author-name">{{ $review->testimonial_name }}</cite>
                             @if($review->testimonial_role)
-                            <span class="rev-author-role">{{ $review->testimonial_role }}</span>
+                            <span class="rev-author-role">
+                                {{ $review->testimonial_role }}
+                                {{-- client_name is only appended when the role text doesn't
+                                     already name the company, since testimonial_role is
+                                     entered inconsistently (sometimes "Title", sometimes
+                                     "Title, Company") — never duplicate the real value. --}}
+                                @if($review->client_name && !str_contains($review->testimonial_role, $review->client_name))
+                                    &middot; {{ $review->client_name }}
+                                @endif
+                            </span>
+                            @elseif($review->client_name)
+                            <span class="rev-author-role">{{ $review->client_name }}</span>
                             @endif
                         </div>
                     </footer>
+                    <div class="rev-case-study-name">{{ $review->page->title }}</div>
                     <a href="{{ route('case-studies.show', $review->page->slug) }}"
                        class="rev-visit-btn"
                        aria-label="Visit case study: {{ $review->page->title }}">
@@ -140,6 +152,16 @@ if (!function_exists('revInitials')) {
 .rev-author-text{ display:flex; flex-direction:column; }
 .rev-author-name{ font-style:normal; font-weight:800; font-family:'Nunito', sans-serif; font-size:1rem; color:#fff; }
 .rev-author-role{ font-size:.85rem; color:#8fb3f0; margin-top:2px; }
+
+.rev-case-study-name{
+    font-size:.82rem;
+    font-weight:700;
+    color:#8fb3f0;
+    text-transform:uppercase;
+    letter-spacing:.3px;
+    margin-bottom:14px;
+    line-height:1.5;
+}
 
 .rev-visit-btn{
     align-self:flex-start;

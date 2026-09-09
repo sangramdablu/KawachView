@@ -379,7 +379,7 @@
           <div class="usa-svc-icon"><i class="fas fa-cloud"></i></div>
           <h3>SaaS Development</h3>
           <p>Multi-tenant SaaS platforms architected for localization — multiple languages, currencies and regional data residency.</p>
-          <a href="{{ route('pages.child.sevice_details', 'cloud-devops-solutions') }}" class="usa-svc-link">Learn more &rarr;</a>
+          <a href="{{ route('pages.child.sevice_details', 'saas-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-brain"></i></div>
@@ -403,7 +403,7 @@
           <div class="usa-svc-icon"><i class="fas fa-arrows-rotate"></i></div>
           <h3>Legacy Software Modernization</h3>
           <p>Migrate aging systems to modern, maintainable architecture without disrupting live operations.</p>
-          <a href="{{ route('pages.child.sevice_details', 'custom-api-development-integration-solutions') }}" class="usa-svc-link">Learn more &rarr;</a>
+          <a href="{{ route('pages.child.sevice_details', 'software-modernization') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-users-cog"></i></div>
@@ -535,11 +535,11 @@
       <div class="usa-ind-grid">
         <a href="{{ route('case-studies.show', 'zonneveld-energy-cooperative-solar-monitoring-case-study') }}" class="usa-ind-card"><i class="fas fa-solar-panel"></i><span>Renewable Energy</span></a>
         <a href="{{ route('case-studies.show', 'bistro-nationale-group-restaurant-platform-case-study') }}" class="usa-ind-card"><i class="fas fa-utensils"></i><span>Restaurant &amp; Food Service</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-industry"></i><span>Manufacturing</span></a>
+        <a href="{{ route('industries.show', 'manufacturing-software-development') }}" class="usa-ind-card"><i class="fas fa-industry"></i><span>Manufacturing</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-hotel"></i><span>Hospitality</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
+        <a href="{{ route('industries.show', 'fintech-software-development') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
+        <a href="{{ route('industries.show', 'retail-software-development') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
+        <a href="{{ route('industries.show', 'healthcare-software-development') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cloud"></i><span>SaaS</span></a>
       </div>
     </div>
