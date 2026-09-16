@@ -168,4 +168,30 @@ return [
         'case_study' => 'bright-horizons-school-group-erp-case-study',
     ],
 
+    'real-estate-software-development' => [
+        'title'    => 'Real Estate Software Development',
+        'icon'     => 'fas fa-building',
+        'meta_title' => 'Real Estate Software Development Company | Kawach Technology',
+        'meta_description' => 'Kawach Technology builds real estate software — listing sync, lead routing, tenant portals and e-signature workflows — for brokerages and property managers running on disconnected systems.',
+        'focus_keyword' => 'real estate software development',
+        'intro' => 'Real estate and property management businesses that have grown through acquisition or expansion often end up running the same job a dozen different ways across offices — this is software built to make one system the source of truth instead.',
+        'challenges' => [
+            ['icon' => 'fas fa-list-check', 'title' => 'Listing Data Drift', 'desc' => 'Listings updated manually across the MLS, the public website and an internal CRM routinely fall out of sync, so the same property shows different information in different places.'],
+            ['icon' => 'fas fa-clock', 'title' => 'Slow Lead Routing', 'desc' => 'Leads captured online often sit unassigned for a day or more before reaching an agent — long enough for a prospective buyer to have already called a competitor.'],
+            ['icon' => 'fas fa-file-signature', 'title' => 'Manual Paperwork', 'desc' => 'Offers and disclosures that still rely on printed, hand-signed and scanned documents add days to a transaction that should take hours.'],
+            ['icon' => 'fas fa-chart-simple', 'title' => 'No Cross-Office Visibility', 'desc' => 'Without a connected system, regional managers have no reliable way to see agent performance or listing velocity without calling each office individually.'],
+        ],
+        'solutions' => [
+            ['icon' => 'fas fa-arrows-rotate', 'title' => 'Unified Listing Sync', 'desc' => 'One system as the source of truth, pushing updates to the MLS, website and CRM automatically so listings stay consistent everywhere.'],
+            ['icon' => 'fas fa-route', 'title' => 'Automated Lead Routing', 'desc' => 'Rules based on property type, location and agent availability get a new lead to an assigned agent within minutes, not a shared inbox.'],
+            ['icon' => 'fas fa-key', 'title' => 'Tenant & Lease Portals', 'desc' => 'A shared view of lease terms, renewal dates and maintenance requests for both tenants and property managers — no spreadsheet reconciliation.'],
+            ['icon' => 'fas fa-signature', 'title' => 'E-Signature Workflows', 'desc' => 'Offer and disclosure signing built into the workflow directly, cutting a multi-day paper process down to same-day turnaround.'],
+        ],
+        'features' => ['MLS / Website / CRM Sync', 'Automated Lead Routing', 'Tenant & Lease Portals', 'E-Signature Integration', 'Maintenance Request Tracking', 'Agent Performance Dashboards', 'Multi-Office Reporting', 'Document Management'],
+        'integrations' => ['MLS providers', 'E-signature platforms (e.g. DocuSign)', 'CRM systems', 'Property management software', 'Marketing and lead-generation platforms'],
+        'compliance' => ['Secure handling of financial and lease documents', 'Fair housing compliance considerations in listing and screening workflows'],
+        'related_services' => ['web-application-development', 'crm-development', 'custom-software-development'],
+        'case_study' => 'sequoia-peak-realty-group-proptech-case-study',
+    ],
+
 ];

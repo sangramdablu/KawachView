@@ -577,7 +577,7 @@
       <div class="usa-ind-grid">
         <a href="{{ route('case-studies.show', 'sterling-cross-legal-partners-case-management-case-study') }}" class="usa-ind-card"><i class="fas fa-scale-balanced"></i><span>Legal Services</span></a>
         <a href="{{ route('case-studies.show', 'lakeshore-mutual-insurance-claims-automation-case-study') }}" class="usa-ind-card"><i class="fas fa-file-shield"></i><span>Insurance</span></a>
-        <a href="{{ route('case-studies.show', 'sequoia-peak-realty-group-proptech-case-study') }}" class="usa-ind-card"><i class="fas fa-house-chimney"></i><span>Real Estate &amp; PropTech</span></a>
+        <a href="{{ route('industries.show', 'real-estate-software-development') }}" class="usa-ind-card"><i class="fas fa-house-chimney"></i><span>Real Estate &amp; PropTech</span></a>
         <a href="{{ route('case-studies.show', 'horizon-give-foundation-donor-platform-case-study') }}" class="usa-ind-card"><i class="fas fa-hand-holding-heart"></i><span>Nonprofit</span></a>
         <a href="{{ route('case-studies.show', 'meridian-flow-technologies-saas-platform-case-study') }}" class="usa-ind-card"><i class="fas fa-cloud"></i><span>SaaS</span></a>
         <a href="{{ route('industries.show', 'healthcare-software-development') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>

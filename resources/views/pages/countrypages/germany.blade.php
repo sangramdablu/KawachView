@@ -524,7 +524,7 @@
         <a href="{{ route('industries.show', 'logistics-software-development') }}" class="usa-ind-card"><i class="fas fa-truck-fast"></i><span>Logistics</span></a>
         <a href="{{ route('industries.show', 'fintech-software-development') }}" class="usa-ind-card"><i class="fas fa-money-bill-trend-up"></i><span>FinTech</span></a>
         <a href="{{ route('industries.show', 'healthcare-software-development') }}" class="usa-ind-card"><i class="fas fa-heartbeat"></i><span>Healthcare</span></a>
-        <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-house-chimney"></i><span>Real Estate</span></a>
+        <a href="{{ route('industries.show', 'real-estate-software-development') }}" class="usa-ind-card"><i class="fas fa-house-chimney"></i><span>Real Estate</span></a>
         <a href="{{ route('industries.show', 'retail-software-development') }}" class="usa-ind-card"><i class="fas fa-cart-shopping"></i><span>E-commerce</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-scale-balanced"></i><span>Professional Services</span></a>
         <a href="{{ route('casestudy') }}" class="usa-ind-card"><i class="fas fa-cloud"></i><span>SaaS</span></a>

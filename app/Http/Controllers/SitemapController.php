@@ -72,6 +72,15 @@ class SitemapController extends Controller
                 ]);
             }
 
+            foreach (array_keys(config('solutions')) as $slug) {
+                $urls->push([
+                    'loc' => url('/solutions/' . $slug),
+                    'lastmod' => null,
+                    'changefreq' => 'monthly',
+                    'priority' => '0.7',
+                ]);
+            }
+
             Page::published()->byType('service')->get()->each(function (Page $page) use ($urls) {
                 $urls->push([
                     'loc' => url('/services/' . $page->slug),

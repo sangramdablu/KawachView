@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\HireDeveloperController;
 use App\Http\Controllers\IndustryController;
+use App\Http\Controllers\SolutionController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\VisitorTrackController;
 
@@ -90,6 +91,44 @@ Route::permanentRedirect(
     '/services/custom-api-development-integration-solutions'
 );
 
+/*
+|--------------------------------------------------------------------------
+| Pre-migration legacy URLs
+|--------------------------------------------------------------------------
+| Found live-indexed on Google (via a site: search) but dead — a much
+| older routing scheme (readable name + an encrypted/tokenized trailing
+| segment) that predates this codebase's clean-slug routes entirely, so
+| there's no old data to look up: these are simple pattern redirects to
+| the closest current equivalent, not slug-for-slug 1:1 mappings.
+| 301 so any residual ranking/backlink signal transfers instead of
+| sending real search traffic into a 404.
+|--------------------------------------------------------------------------
+*/
+Route::get('/custom-software-development-service/{any}', function () {
+    return redirect('/services/custom-software-development', 301);
+})->where('any', '.*');
+
+Route::get('/data-management-service/{any}', function () {
+    // No current dedicated "data management" service page exists —
+    // falls back to the flagship page rather than a wrong specific one.
+    return redirect('/services/custom-software-development', 301);
+})->where('any', '.*');
+
+Route::get('/{qa}-service/{any}', function () {
+    return redirect('/services/quality-assurance-software-testing', 301);
+})->where(['qa' => '(?i:quality-assurance)', 'any' => '.*']);
+
+Route::get('/industry-{industry}/{any}', function () {
+    // None of the currently-built industry pages match old industry
+    // names like "Energy&Utilities" — falls back to the flagship page.
+    return redirect('/services/custom-software-development', 301);
+})->where(['industry' => '[^/]+', 'any' => '.*']);
+
+Route::permanentRedirect('/kawach-technologies-works', '/case-studies');
+Route::permanentRedirect('/software-solution-services', '/services');
+Route::permanentRedirect('/contact-us', '/contact');
+Route::permanentRedirect('/cookies-policy', '/cookie-policy');
+
 Route::get('/services', [PagesController::class, 'showServices'])->name('services');
 
 /*
@@ -110,6 +149,12 @@ Route::get('/team', [PagesController::class, 'teamIndex'])->name('team');
 | config/industries.php) following the same pattern as hire-developer.
 */
 Route::get('/industries/{slug}', [IndustryController::class, 'show'])->name('industries.show')->where('slug', '[a-z0-9\-]+');
+
+/*
+| PHASE 35 — problem-first solution pages (config/solutions.php), same
+| config-driven pattern as industries/hire-developer.
+*/
+Route::get('/solutions/{slug}', [SolutionController::class, 'show'])->name('solutions.show')->where('slug', '[a-z0-9\-]+');
 
 Route::get('/hire-developer', [HireDeveloperController::class, 'index'])->name('hire-developer.index');
 Route::get('/hire-developer/{slug}', [HireDeveloperController::class, 'show'])->name('hire-developer.show')->where('slug', '[a-z0-9\-]+');

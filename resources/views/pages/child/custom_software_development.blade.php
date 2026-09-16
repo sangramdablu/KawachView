@@ -284,6 +284,33 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
 }
 .csd-cost-link:hover{ color:#1558b0; }
 @media (max-width:900px){ .csd-cost-layout{ grid-template-columns:1fr; } .csd-cost-factors{ grid-template-columns:1fr; } }
+
+/* ── COST CALCULATOR ── */
+.csd-calc{
+  margin-top:44px; background:#fff; border:1px solid #e2e8f0; border-radius:20px;
+  padding:36px 40px; box-shadow:0 10px 30px rgba(15,23,42,.06);
+}
+.csd-calc-head{ text-align:center; max-width:600px; margin:0 auto 28px; }
+.csd-calc-head h3{ font-size:1.25rem; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
+.csd-calc-head h3 i{ color:#1a73e8; }
+.csd-calc-head p{ color:#6c757d; font-size:.92rem; margin:0; }
+.csd-calc-q{ margin-bottom:22px; }
+.csd-calc-q-label{ font-weight:700; font-size:.92rem; color:#1a1a2e; margin-bottom:10px; }
+.csd-calc-opts{ display:flex; flex-wrap:wrap; gap:10px; }
+.csd-calc-opts button{
+  background:#f4f6fb; border:1.5px solid #e2e8f0; border-radius:9px; padding:10px 16px;
+  font-size:.85rem; font-weight:600; color:#4b5875; cursor:pointer; transition:.2s;
+}
+.csd-calc-opts button:hover{ border-color:#1a73e8; color:#1a73e8; }
+.csd-calc-opts button.active{ background:#1a73e8; border-color:#1a73e8; color:#fff; }
+.csd-calc-submit{ display:flex; margin:24px auto 0; opacity:.5; pointer-events:none; }
+.csd-calc-submit.ready{ opacity:1; pointer-events:auto; }
+.csd-calc-result{ display:none; margin-top:28px; padding-top:28px; border-top:1px solid #e2e8f0; text-align:center; }
+.csd-calc-result.show{ display:block; }
+.csd-calc-result-tier{ font-family:'Nunito',sans-serif; font-weight:900; font-size:1.4rem; color:#1a73e8; margin-bottom:6px; }
+.csd-calc-result-range{ font-size:1rem; color:#1a1a2e; font-weight:700; margin-bottom:10px; }
+.csd-calc-result-note{ color:#8a95a8; font-size:.84rem; max-width:520px; margin:0 auto 20px; }
+@media (max-width:640px){ .csd-calc{ padding:28px 22px; } }
 </style>
 
 <body>
@@ -337,19 +364,21 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-type-pills">
         @php
           // Second element links to the real service page where one exists —
-          // Phase 17 internal-linking requirement. Types without a dedicated
-          // page stay plain text rather than linking somewhere generic.
+          // Phase 17 internal-linking requirement. Third element (route name)
+          // overrides the default service-page route for the Phase 35
+          // solutions pages. Types without a dedicated page stay plain text
+          // rather than linking somewhere generic.
           $csdTypes = [
             ['Business Applications', null],
-            ['Internal Business Software', null],
+            ['Internal Business Software', 'excel-to-custom-software', 'solutions.show'],
             ['SaaS Platforms', 'saas-development'],
-            ['Customer Portals', null],
+            ['Customer Portals', 'customer-portal-development', 'solutions.show'],
             ['Dashboards', null],
-            ['Workflow Systems', null],
+            ['Workflow Systems', 'business-process-automation', 'solutions.show'],
             ['CRM', 'crm-development'],
             ['ERP', 'erp-development'],
             ['Marketplaces', null],
-            ['Automation Platforms', null],
+            ['Automation Platforms', 'business-process-automation', 'solutions.show'],
             ['Web Applications', 'web-application-development'],
             ['Mobile Applications', 'mobile-app-development'],
             ['API-Driven Systems', 'custom-api-development-integration-solutions'],
@@ -360,9 +389,43 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         @endphp
         @foreach($csdTypes as $type)
           @if($type[1])
-            <a href="{{ route('pages.child.sevice_details', $type[1]) }}" class="csd-type-pill csd-type-pill-link">{{ $type[0] }}</a>
+            <a href="{{ route($type[2] ?? 'pages.child.sevice_details', $type[1]) }}" class="csd-type-pill csd-type-pill-link">{{ $type[0] }}</a>
           @else
             <span class="csd-type-pill">{{ $type[0] }}</span>
+          @endif
+        @endforeach
+      </div>
+    </div>
+  </section>
+
+  {{-- ═══ SECTION 1.5: HOW WE WORK ═══ --}}
+  <section class="csd-section">
+    <div class="csd-container">
+      <div class="csd-section-head">
+        <span class="csd-eyebrow"><i class="fas fa-route"></i> Our Process</span>
+        <h2 class="csd-section-title">How We Work</h2>
+        <p class="csd-section-sub">The same seven-step process runs underneath every engagement, whether it's a focused MVP or a full enterprise platform — what changes is the scope, not the discipline.</p>
+      </div>
+      <div class="csd-flow">
+        @php
+          $howWeWorkSteps = [
+            ['Discovery', 'We start by understanding your business, your users and the actual problem you\'re solving — not by jumping straight to a tech stack.'],
+            ['Scope', 'Requirements get turned into a clear, prioritized scope: what\'s essential now, what can wait for a later phase.'],
+            ['UX / UI Design', 'Interfaces designed around how your users actually work, reviewed with you before a single line of code depends on them.'],
+            ['Development', '2-week sprints with working demos, so you see real progress throughout instead of waiting for a single reveal at the end.'],
+            ['QA & Testing', 'Every feature is tested against real use cases before it reaches you — not just checked that it runs.'],
+            ['Deployment', 'A planned launch with monitoring in place from day one, not a code drop and a hope.'],
+            ['Support', 'Post-launch support and a clear path to ongoing maintenance, so the relationship doesn\'t end at go-live.'],
+          ];
+        @endphp
+        @foreach($howWeWorkSteps as $i => $step)
+          <div class="csd-flow-step">
+            <div class="csd-flow-num">{{ $i + 1 }}</div>
+            <h4>{{ $step[0] }}</h4>
+            <p>{{ $step[1] }}</p>
+          </div>
+          @if(!$loop->last)
+            <div class="csd-flow-arrow"><i class="fas fa-arrow-right"></i></div>
           @endif
         @endforeach
       </div>
@@ -514,40 +577,43 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       </div>
       <div class="csd-solutions-grid">
         @php
+          // 4th element: [route_name, param] when a real page exists to link to.
+          // Phase 35 added solutions pages, so several of these that were
+          // plain text (no dedicated page yet) now have somewhere to go.
           $solutions = [
-            ['fa-address-book', 'CRM Software', 'Track leads, manage customer relationships, and give your sales team one place to work from, built around your actual sales process.'],
-            ['fa-industry', 'ERP Software', 'Bring finance, inventory, operations and reporting into one connected system instead of juggling spreadsheets and disconnected tools.'],
-            ['fa-cloud', 'SaaS Platforms', 'Multi-tenant platforms built to onboard customers, scale with usage, and support the subscription model your business runs on.'],
-            ['fa-briefcase', 'Business Management Software', 'Purpose-built software that runs a specific part of your business — scheduling, resourcing, project tracking — exactly the way you need it to.'],
-            ['fa-diagram-project', 'Workflow Automation', 'Automate the repetitive, multi-step processes your team currently does by hand, from approvals to notifications to data hand-offs.'],
-            ['fa-users-gear', 'Customer Portals', 'Self-service portals where your customers can track orders, view account information, or manage their own data without calling support.'],
-            ['fa-toolbox', 'Internal Business Applications', 'Internal tools built for how your team actually works day to day, replacing the spreadsheets and manual processes holding operations together.'],
-            ['fa-store', 'Marketplace Platforms', 'Two-sided platforms that connect buyers and sellers, or service providers and customers, with the matching, payments and trust features each side needs.'],
-            ['fa-cart-shopping', 'E-commerce Systems', 'Custom storefronts and back-office systems for businesses whose needs have outgrown what off-the-shelf e-commerce platforms can support.'],
-            ['fa-heart-pulse', 'Healthcare Software', 'Patient management, scheduling and clinical workflow software built with the data-handling and compliance considerations healthcare requires.'],
-            ['fa-building', 'Real Estate Software', 'Property management, listings and transaction-tracking platforms built around how your real estate business actually operates.'],
-            ['fa-truck-fast', 'Logistics Software', 'Fleet tracking, route planning and shipment visibility systems built to handle real-time operational data.'],
-            ['fa-sack-dollar', 'Financial Software', 'Lending, claims, or financial-services platforms built with the accuracy, auditability and security financial data demands.'],
-            ['fa-gears', 'Manufacturing Software', 'Production tracking, quality control and industrial IoT integrations that connect your shop floor to the rest of the business.'],
+            ['fa-address-book', 'CRM Software', 'Track leads, manage customer relationships, and give your sales team one place to work from, built around your actual sales process.', ['pages.child.sevice_details', 'crm-development']],
+            ['fa-industry', 'ERP Software', 'Bring finance, inventory, operations and reporting into one connected system instead of juggling spreadsheets and disconnected tools.', ['pages.child.sevice_details', 'erp-development']],
+            ['fa-cloud', 'SaaS Platforms', 'Multi-tenant platforms built to onboard customers, scale with usage, and support the subscription model your business runs on.', ['pages.child.sevice_details', 'saas-development']],
+            ['fa-briefcase', 'Business Management Software', 'Purpose-built software that runs a specific part of your business — scheduling, resourcing, project tracking — exactly the way you need it to.', null],
+            ['fa-diagram-project', 'Workflow Automation', 'Automate the repetitive, multi-step processes your team currently does by hand, from approvals to notifications to data hand-offs.', ['solutions.show', 'business-process-automation']],
+            ['fa-users-gear', 'Customer Portals', 'Self-service portals where your customers can track orders, view account information, or manage their own data without calling support.', ['solutions.show', 'customer-portal-development']],
+            ['fa-toolbox', 'Internal Business Applications', 'Internal tools built for how your team actually works day to day, replacing the spreadsheets and manual processes holding operations together.', ['solutions.show', 'excel-to-custom-software']],
+            ['fa-store', 'Marketplace Platforms', 'Two-sided platforms that connect buyers and sellers, or service providers and customers, with the matching, payments and trust features each side needs.', null],
+            ['fa-cart-shopping', 'E-commerce Systems', 'Custom storefronts and back-office systems for businesses whose needs have outgrown what off-the-shelf e-commerce platforms can support.', ['industries.show', 'retail-software-development']],
+            ['fa-heart-pulse', 'Healthcare Software', 'Patient management, scheduling and clinical workflow software built with the data-handling and compliance considerations healthcare requires.', ['industries.show', 'healthcare-software-development']],
+            ['fa-building', 'Real Estate Software', 'Property management, listings and transaction-tracking platforms built around how your real estate business actually operates.', ['industries.show', 'real-estate-software-development']],
+            ['fa-truck-fast', 'Logistics Software', 'Fleet tracking, route planning and shipment visibility systems built to handle real-time operational data.', ['industries.show', 'logistics-software-development']],
+            ['fa-sack-dollar', 'Financial Software', 'Lending, claims, or financial-services platforms built with the accuracy, auditability and security financial data demands.', ['industries.show', 'fintech-software-development']],
+            ['fa-gears', 'Manufacturing Software', 'Production tracking, quality control and industrial IoT integrations that connect your shop floor to the rest of the business.', ['industries.show', 'manufacturing-software-development']],
+            ['fa-brain', 'AI-Powered Applications', 'Features and applications built around your own data — from automation and recommendations to document processing — not a generic model demo.', ['pages.child.sevice_details', 'ai-machine-learning-development']],
           ];
         @endphp
         @foreach($solutions as $s)
-          <div class="csd-solution-card">
-            <div class="csd-solution-icon"><i class="fas {{ $s[0] }}"></i></div>
-            <h3>{{ $s[1] }}</h3>
-            <p>{{ $s[2] }}</p>
-          </div>
+          @if($s[3])
+            <a href="{{ route($s[3][0], $s[3][1]) }}" class="csd-solution-card">
+              <div class="csd-solution-icon"><i class="fas {{ $s[0] }}"></i></div>
+              <h3>{{ $s[1] }}</h3>
+              <p>{{ $s[2] }}</p>
+              <span class="csd-solution-link">Learn more &rarr;</span>
+            </a>
+          @else
+            <div class="csd-solution-card">
+              <div class="csd-solution-icon"><i class="fas {{ $s[0] }}"></i></div>
+              <h3>{{ $s[1] }}</h3>
+              <p>{{ $s[2] }}</p>
+            </div>
+          @endif
         @endforeach
-
-        {{-- Only card in this section linking out — the other 14 solution
-             types don't have a dedicated page yet (see Phase 9), and Phase 5
-             explicitly says only link to pages that actually exist. --}}
-        <a href="{{ route('pages.child.sevice_details', 'ai-machine-learning-development') }}" class="csd-solution-card">
-          <div class="csd-solution-icon"><i class="fas fa-brain"></i></div>
-          <h3>AI-Powered Applications</h3>
-          <p>Features and applications built around your own data — from automation and recommendations to document processing — not a generic model demo.</p>
-          <span class="csd-solution-link">Learn more &rarr;</span>
-        </a>
       </div>
     </div>
   </section>
@@ -593,6 +659,82 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
               <i class="fas fa-file-invoice-dollar"></i> Get a Scoped Estimate
             </button>
           </p>
+        </div>
+      </div>
+
+      {{-- ═══ COST CALCULATOR — directional complexity tier, not a fake
+           precise quote. Maps answers to the same three honest reference
+           ranges already used above and in the pricing article, so it can
+           never contradict what's already published elsewhere on the site. ═══ --}}
+      <div class="csd-calc" id="csdCalc">
+        <div class="csd-calc-head">
+          <h3><i class="fas fa-sliders"></i> Get a Directional Estimate in 30 Seconds</h3>
+          <p>Answer 5 quick questions for a rough complexity tier — not a quote, but a real starting point before you talk to us.</p>
+        </div>
+
+        <div class="csd-calc-q" data-q="type">
+          <div class="csd-calc-q-label">1. What are you building?</div>
+          <div class="csd-calc-opts">
+            <button type="button" data-val="1">Web Application</button>
+            <button type="button" data-val="1">Mobile App</button>
+            <button type="button" data-val="2">SaaS Platform</button>
+            <button type="button" data-val="2">CRM / ERP System</button>
+            <button type="button" data-val="3">Marketplace</button>
+            <button type="button" data-val="3">AI-Powered Application</button>
+            <button type="button" data-val="1">Internal Business Tool</button>
+          </div>
+        </div>
+
+        <div class="csd-calc-q" data-q="users">
+          <div class="csd-calc-q-label">2. How many users?</div>
+          <div class="csd-calc-opts">
+            <button type="button" data-val="0">Under 100</button>
+            <button type="button" data-val="1">100 – 1,000</button>
+            <button type="button" data-val="2">1,000 – 10,000</button>
+            <button type="button" data-val="3">10,000+</button>
+          </div>
+        </div>
+
+        <div class="csd-calc-q" data-q="complexity">
+          <div class="csd-calc-q-label">3. Overall complexity</div>
+          <div class="csd-calc-opts">
+            <button type="button" data-val="0">Basic — defined, straightforward scope</button>
+            <button type="button" data-val="1">Moderate — multiple user roles</button>
+            <button type="button" data-val="2">Advanced — complex workflows, real-time features</button>
+            <button type="button" data-val="3">Enterprise — multi-department, high compliance</button>
+          </div>
+        </div>
+
+        <div class="csd-calc-q" data-q="platforms">
+          <div class="csd-calc-q-label">4. Which platforms?</div>
+          <div class="csd-calc-opts">
+            <button type="button" data-val="0">Web Only</button>
+            <button type="button" data-val="1">Mobile Only (iOS / Android)</button>
+            <button type="button" data-val="2">Web + Mobile</button>
+          </div>
+        </div>
+
+        <div class="csd-calc-q" data-q="integrations">
+          <div class="csd-calc-q-label">5. Third-party integrations</div>
+          <div class="csd-calc-opts">
+            <button type="button" data-val="0">None</button>
+            <button type="button" data-val="1">1 – 3</button>
+            <button type="button" data-val="2">4 – 10</button>
+            <button type="button" data-val="3">10+</button>
+          </div>
+        </div>
+
+        <button type="button" class="csd-btn csd-btn-primary csd-calc-submit" id="csdCalcSubmit" disabled>
+          <i class="fas fa-calculator"></i> Calculate My Estimate
+        </button>
+
+        <div class="csd-calc-result" id="csdCalcResult">
+          <div class="csd-calc-result-tier" id="csdCalcTier"></div>
+          <p class="csd-calc-result-range" id="csdCalcRange"></p>
+          <p class="csd-calc-result-note">This is a directional starting point based on general project shape — not a quote. Every project is scoped individually once we understand your actual requirements.</p>
+          <button type="button" class="csd-btn csd-btn-primary" data-bs-toggle="modal" data-bs-target="#quoteModal">
+            <i class="fas fa-file-invoice-dollar"></i> Get My Detailed Estimate
+          </button>
         </div>
       </div>
     </div>
@@ -646,14 +788,13 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       </div>
       <div class="csd-solutions-grid">
         @php
-          // slug (5th element) links to the Phase 16 industry page when one exists —
-          // Real Estate has no dedicated industry page yet, only its case study.
+          // slug (5th element) links to the industry page when one exists.
           $industries = [
             ['fa-heart-pulse', 'Healthcare', 'Healthcare providers need software that handles sensitive patient data correctly while staying usable for clinical staff under real time pressure — from telemedicine platforms to scheduling and records.', 'medcare-health-network-telemedicine-case-study', 'healthcare-software-development'],
             ['fa-sack-dollar', 'FinTech', 'Financial services software has to get accuracy, auditability and security right the first time — we\'ve built lending platforms and claims-automation systems where that isn\'t optional.', 'quickfund-financial-services-lending-platform-case-study', 'fintech-software-development'],
             ['fa-gears', 'Manufacturing', 'Manufacturers need visibility from the shop floor to the back office — production tracking, quality control and IoT integrations that connect equipment data to business decisions.', 'nordholt-manufacturing-industrial-iot-case-study', 'manufacturing-software-development'],
             ['fa-truck-fast', 'Logistics', 'Logistics operations run on real-time data — fleet tracking, route planning and shipment visibility systems built to handle it as it happens, not in a nightly batch.', 'swiftcargo-logistics-fleet-tracking-case-study', 'logistics-software-development'],
-            ['fa-building', 'Real Estate', 'Property and real estate businesses need software that mirrors how listings, transactions and tenant relationships actually move — not a generic CRM stretched to fit.', 'sequoia-peak-realty-group-proptech-case-study', null],
+            ['fa-building', 'Real Estate', 'Property and real estate businesses need software that mirrors how listings, transactions and tenant relationships actually move — not a generic CRM stretched to fit.', 'sequoia-peak-realty-group-proptech-case-study', 'real-estate-software-development'],
             ['fa-cart-shopping', 'Retail', 'Retail and e-commerce businesses that have outgrown off-the-shelf platforms need storefronts and back-office systems — including AI-powered features — built for how they actually sell.', 'urban-threads-apparel-ecommerce-ai-case-study', 'retail-software-development'],
             ['fa-graduation-cap', 'Education', 'Schools and education groups managing multiple campuses or programs need administrative and ERP systems that actually reflect how the institution is structured.', 'bright-horizons-school-group-erp-case-study', 'education-software-development'],
           ];
@@ -718,6 +859,52 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
   @include('layouts.trust')
   <div class="csd-page">
 
+  {{-- ═══ SECTION 9.5: WHY KAWACH ═══ --}}
+  <section class="csd-section bg-light">
+    <div class="csd-container">
+      <div class="csd-section-head">
+        <span class="csd-eyebrow"><i class="fas fa-star"></i> Why Kawach</span>
+        <h2 class="csd-section-title">Why Businesses Choose Kawach</h2>
+      </div>
+      <div class="csd-approach-grid">
+        <div class="csd-approach-card">
+          <div class="csd-approach-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Business-First Development</h3>
+          <p>We start with the business problem you're solving, not the technology — the stack is a means to an end, not the pitch.</p>
+        </div>
+        <div class="csd-approach-card">
+          <div class="csd-approach-icon"><i class="fas fa-sliders"></i></div>
+          <h3>Flexible, Phased Budgets</h3>
+          <p>Build the essential functionality first and scale gradually, so you're never paying for complexity you don't need yet.</p>
+        </div>
+        <div class="csd-approach-card">
+          <div class="csd-approach-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h3>Custom Architecture, Not Templates</h3>
+          <p>Every system is designed around your actual workflow, not adapted from a generic starting point.</p>
+        </div>
+        <div class="csd-approach-card">
+          <div class="csd-approach-icon"><i class="fas fa-infinity"></i></div>
+          <h3>Full-Cycle Development</h3>
+          <p>Discovery, design, development, QA, deployment and support — one team accountable for the whole lifecycle, not handed off between vendors.</p>
+        </div>
+        <div class="csd-approach-card">
+          <div class="csd-approach-icon"><i class="fas fa-earth-americas"></i></div>
+          <h3>Remote-First, Real Communication</h3>
+          <p>Distributed doesn't mean disconnected — structured overlap-window meetings, daily written updates, and a single point of contact throughout.</p>
+        </div>
+        <div class="csd-approach-card">
+          <div class="csd-approach-icon"><i class="fas fa-user-check"></i></div>
+          <h3>Direct Access to Your Team</h3>
+          <p>You work with the actual engineers building your product, not layers of account management between you and the work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  @include('layouts.client-reviews')
+  <div class="csd-page">
+
   {{-- ═══ SECTION 10: MARKETS WE SERVE ═══ --}}
   <section class="csd-section">
     <div class="csd-container">
@@ -759,5 +946,58 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
 @include('layouts.footer')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var calc = document.getElementById('csdCalc');
+  if (!calc) return;
+
+  var answers = {};
+  var questions = calc.querySelectorAll('.csd-calc-q');
+  var submitBtn = document.getElementById('csdCalcSubmit');
+
+  questions.forEach(function (q) {
+    var key = q.getAttribute('data-q');
+    q.querySelectorAll('button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        q.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        answers[key] = parseInt(btn.getAttribute('data-val'), 10);
+        checkReady();
+      });
+    });
+  });
+
+  function checkReady() {
+    var allAnswered = Object.keys(answers).length === questions.length;
+    submitBtn.classList.toggle('ready', allAnswered);
+    submitBtn.disabled = !allAnswered;
+  }
+
+  submitBtn.addEventListener('click', function () {
+    if (submitBtn.disabled) return;
+
+    var score = Object.values(answers).reduce(function (sum, v) { return sum + v; }, 0);
+    // Directional tiers only — same three honest reference ranges already
+    // published in the Cost section above and in the pricing article, so
+    // this can never contradict what's stated elsewhere on the site.
+    var tier, range;
+    if (score <= 4) {
+      tier = 'Focused MVP';
+      range = 'Typically starts in the low five figures';
+    } else if (score <= 8) {
+      tier = 'Mid-Sized Application';
+      range = 'Typically falls in the mid five figures';
+    } else {
+      tier = 'Enterprise / AI-Powered Platform';
+      range = 'Typically runs into six figures';
+    }
+
+    document.getElementById('csdCalcTier').textContent = tier;
+    document.getElementById('csdCalcRange').textContent = range;
+    document.getElementById('csdCalcResult').classList.add('show');
+    document.getElementById('csdCalcResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
 </body>
 </html>

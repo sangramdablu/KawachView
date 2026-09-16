@@ -71,9 +71,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ── TRUST & ASSURANCE ── -->
 @include('layouts.trust')
 
-<!-- ── GOVERNMENT REGISTRATIONS & RECOGNITIONS ── -->
-@include('layouts.gov-registrations')
-
 <!-- ── OUR TEAM ── -->
 @include('layouts.our-team')
 

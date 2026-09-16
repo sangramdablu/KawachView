@@ -406,6 +406,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ── GOVERNMENT REGISTRATIONS & RECOGNITIONS ── -->
+@include('layouts.gov-registrations')
+
 <!-- ── TECH STACK ── -->
 <section class="tech-section">
   <div class="container">
