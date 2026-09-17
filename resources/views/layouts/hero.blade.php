@@ -62,66 +62,16 @@
         <h1 class="hero-title">
           We Build Custom Software That Helps Businesses Scale
         </h1>
-        <p class="hero-subtitle">From SaaS platforms and AI automation to complex web and mobile applications, Kawach Technology delivers custom software development for startups, small businesses and enterprises — turning business problems into scalable software.</p>
+        <p class="hero-subtitle">From SaaS platforms and AI automation to complex web and mobile applications, Kawach Technology delivers custom software development for startups, small businesses and enterprises, turning business problems into scalable software.</p>
         <button class="btn btn-consultation" data-bs-toggle="modal" data-bs-target="#consultModal">Get a Free Consultation</button>
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-flex hero-illustration">
-        <div class="hero-mockup position-relative">
-            <!-- Video temporarily disabled (production CDN/hosting issues) —
-                 showing the static model-girl image in the same framed card
-                 instead. Re-enable by swapping this <img> block back for the
-                 commented-out <video> block below; both reuse the identical
-                 hero-video-wrap/mat/frame/corner classes so the frame itself
-                 doesn't need to change either way. -->
-            <div class="hero-video-wrap">
-              <div class="hero-video-mat">
-                <div class="hero-video-frame">
-                  <img class="hero-video" src="{{ asset('assets/images/kawach_modelgirl.png') }}"
-                       alt="Kawach Technology — custom software development, cloud, security and support solutions">
-                </div>
-                <span class="hero-video-corner tl" aria-hidden="true"></span>
-                <span class="hero-video-corner tr" aria-hidden="true"></span>
-                <span class="hero-video-corner bl" aria-hidden="true"></span>
-                <span class="hero-video-corner br" aria-hidden="true"></span>
-              </div>
-            </div>
-
-            {{-- Video version — re-enable by uncommenting this and removing the <img> block above.
-            <div class="hero-video-wrap">
-              <div class="hero-video-mat">
-                <div class="hero-video-frame">
-                  <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-                         poster="{{ asset('assets/images/kawach_modelgirl.png') }}"
-                         aria-label="Kawach Technology — custom software development, cloud, security and support solutions">
-                    <source src="{{ asset('assets/videos/kawach-hero.mp4') }}" type="video/mp4">
-                  </video>
-                </div>
-                <span class="hero-video-corner tl" aria-hidden="true"></span>
-                <span class="hero-video-corner tr" aria-hidden="true"></span>
-                <span class="hero-video-corner bl" aria-hidden="true"></span>
-                <span class="hero-video-corner br" aria-hidden="true"></span>
-              </div>
-            </div>
-            --}}
-
-          {{-- <div class="laptop-frame">
-            <div class="laptop-screen">
-              <div class="screen-content">
-                <div class="screen-bar screen-bar-full" style="background:rgba(33,150,243,0.5);"></div>
-                <div class="screen-bar screen-bar-medium" style="background:rgba(255,255,255,0.2);"></div>
-                <div class="screen-bar screen-bar-short" style="background:rgba(33,150,243,0.4);"></div>
-                <div style="margin-top:12px;display:flex;gap:8px;">
-                  <div style="flex:1;height:70px;background:rgba(255,255,255,0.06);border-radius:4px;"></div>
-                  <div style="flex:1;height:70px;background:rgba(33,150,243,0.15);border-radius:4px;"></div>
-                  <div style="flex:1;height:70px;background:rgba(255,255,255,0.06);border-radius:4px;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="laptop-stand"></div>
-            <div class="laptop-base"></div>
-          </div> --}}
-
-
+        <!-- Un-boxed, full-size model image — no card/frame/bezel around it;
+             anchored so its bottom edge sits flush with the hero section's
+             own bottom edge (see .hero-section .hero-illustration override). -->
+        <div class="hero-model-wrap">
+          <img class="hero-model-img" src="{{ asset('assets/images/kawach_modelgirl.png') }}"
+               alt="Kawach Technology: custom software development, cloud, security and support solutions">
         </div>
       </div>
     </div>

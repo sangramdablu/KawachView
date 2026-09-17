@@ -175,7 +175,7 @@
                 <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f465.svg" alt="Dedicated Team" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Dedicated Team</div>
-                    <p class="trust-card-desc">A PM, developers, and QA assigned specifically to your project — not shared across ten other clients.</p>
+                    <p class="trust-card-desc">A PM, developers, and QA assigned specifically to your project, not shared across ten other clients.</p>
                 </div>
             </div>
 
@@ -199,7 +199,7 @@
                 <div class="trust-icon"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.3/assets/svg/1f30e.svg" alt="Global Delivery, Real Time Zones" class="trust-icon-img" loading="lazy"></div>
                 <div>
                     <div class="trust-card-title">Global Delivery, Real Time Zones</div>
-                    <p class="trust-card-desc">Clients across the US, UK, EU, Australia, and APAC — with overlapping working hours and clear communication.</p>
+                    <p class="trust-card-desc">Clients across the US, UK, EU, Australia, and APAC, with overlapping working hours and clear communication.</p>
                 </div>
             </div>
 

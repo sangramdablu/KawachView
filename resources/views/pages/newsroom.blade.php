@@ -620,7 +620,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="news-hero-eyebrow"><i class="fas fa-satellite-dish"></i> Company Newsroom</span>
     <h1 class="news-hero-title">Latest From Kawach Technology</h1>
     <p class="news-hero-subtitle">
-        Official announcements, company milestones, and media coverage — straight from our team, no filter.
+        Official announcements, company milestones, and media coverage, straight from our team, no filter.
     </p>
 
     <div class="news-wire-strip">

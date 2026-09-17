@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = 'Cookie Policy | Kawach Technology — Custom Software Development';
+    $seoTitle       = 'Cookie Policy | Kawach Technology: Custom Software Development';
     $seoDescription = 'Learn how Kawach Technology uses cookies and similar tracking technologies on our website, and how you can manage or disable them under GDPR and CCPA.';
     $seoKeywords    = 'Kawach Technology cookie policy, website cookies, GDPR cookie consent, manage cookies';
     $seoCanonical   = url('/cookie-policy');
@@ -142,7 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </tr>
                         <tr>
                             <td><strong>First-Party Site Analytics</strong></td>
-                            <td>Our own, self-hosted traffic measurement — records which pages are visited and how long is spent on the Site so we can understand and improve it. This data is never shared with, or sent to, any third party, is not used for advertising, and is not linked to your identity. Because it is first-party and non-advertising, it operates independently of the analytics toggle below.</td>
+                            <td>Our own, self-hosted traffic measurement, recording which pages are visited and how long is spent on the Site so we can understand and improve it. This data is never shared with, or sent to, any third party, is not used for advertising, and is not linked to your identity. Because it is first-party and non-advertising, it operates independently of the analytics toggle below.</td>
                             <td><code>kw_visitor_id</code> (Kawach Technology, first-party only)</td>
                         </tr>
                         <tr>
@@ -159,7 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </table>
 
                 <h2 id="third-party">4. Third-Party Cookies</h2>
-                <p>Some cookies are placed by third-party services that appear on our pages, such as Google Analytics and Google Tag Manager. These providers may use cookies to collect information about your use of the Site and other websites over time. We do not control these third-party cookies — please review the respective third party's privacy and cookie policies for more information. Our own first-party site analytics (see the table above) is not a third-party cookie — the data it collects stays on our own servers and is never transmitted to Google or any other outside party.</p>
+                <p>Some cookies are placed by third-party services that appear on our pages, such as Google Analytics and Google Tag Manager. These providers may use cookies to collect information about your use of the Site and other websites over time. We do not control these third-party cookies. Please review the respective third party's privacy and cookie policies for more information. Our own first-party site analytics (see the table above) is not a third-party cookie: the data it collects stays on our own servers and is never transmitted to Google or any other outside party.</p>
 
                 <h2 id="managing">5. Managing &amp; Disabling Cookies</h2>
                 <p>You can control or disable cookies at any time through your browser settings. Most browsers allow you to:</p>

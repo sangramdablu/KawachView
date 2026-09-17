@@ -14,15 +14,15 @@
         ],
         [
             'q' => 'How does KawachTech communicate with clients in the UK given the time difference?',
-            'a' => "This is one area where UK clients have it easier than most. India is UTC+5:30 and the UK is UTC+0 (GMT) or UTC+1 (BST) depending on the time of year — a gap of only 4.5 to 5.5 hours. A UK working day from 9am to 5:30pm overlaps with our team's afternoon and evening almost entirely. That means daily stand-ups, sprint planning, and ad hoc calls can genuinely happen in real time, not just asynchronously.",
+            'a' => "This is one area where UK clients have it easier than most. India is UTC+5:30 and the UK is UTC+0 (GMT) or UTC+1 (BST) depending on the time of year, a gap of only 4.5 to 5.5 hours. A UK working day from 9am to 5:30pm overlaps with our team's afternoon and evening almost entirely. That means daily stand-ups, sprint planning, and ad hoc calls can genuinely happen in real time, not just asynchronously.",
         ],
         [
             'q' => 'Does engaging KawachTech raise IR35 concerns for our business?',
-            'a' => "IR35 applies to the way individual contractors are engaged, not to a company-to-company services agreement with an external development partner — but we understand why UK businesses ask. We structure engagements as a services contract with KawachTech as the contracted party, not as individual placements, and we're happy to have your finance or legal team review the contract structure directly. We're not able to give IR35 tax advice ourselves — that's a question for your accountant or tax adviser — but we'll give them whatever detail they need about how the engagement is structured.",
+            'a' => "IR35 applies to the way individual contractors are engaged, not to a company-to-company services agreement with an external development partner, but we understand why UK businesses ask. We structure engagements as a services contract with KawachTech as the contracted party, not as individual placements, and we're happy to have your finance or legal team review the contract structure directly. We're not able to give IR35 tax advice ourselves (that's a question for your accountant or tax adviser), but we'll give them whatever detail they need about how the engagement is structured.",
         ],
         [
             'q' => 'Can I hire a dedicated software development team through KawachTech?',
-            'a' => 'Yes. Our dedicated development team model gives you engineers who work exclusively on your product and report into your priorities, functioning as an extension of your team rather than a project vendor — the model most UK clients use for ongoing product work.',
+            'a' => 'Yes. Our dedicated development team model gives you engineers who work exclusively on your product and report into your priorities, functioning as an extension of your team rather than a project vendor. This is the model most UK clients use for ongoing product work.',
         ],
         [
             'q' => 'Who owns the source code once the project is delivered?',
@@ -38,31 +38,31 @@
         ],
         [
             'q' => 'Can KawachTech work with our existing internal development team?',
-            'a' => "Yes — a common setup is us filling a specific skills gap or owning a defined module while your team owns the rest. We adapt to your existing tools, code review process and sprint cadence.",
+            'a' => "Yes: a common setup is us filling a specific skills gap or owning a defined module while your team owns the rest. We adapt to your existing tools, code review process and sprint cadence.",
         ],
         [
             'q' => 'Does KawachTech provide post-launch support?',
-            'a' => "Yes, sized to what your product actually needs — from a light monthly maintenance retainer to a full dedicated team continuing active development after launch.",
+            'a' => "Yes, sized to what your product actually needs, from a light monthly maintenance retainer to a full dedicated team continuing active development after launch.",
         ],
         [
             'q' => 'How is our data handled under UK GDPR?',
-            'a' => "We build data collection, storage and consent flows with UK GDPR and the Data Protection Act 2018 in mind — access controls, encryption, and clear data-handling practices. We're not a law firm, so for a definitive compliance sign-off specific to your business and your ICO obligations, that's a conversation for your own data protection officer or legal counsel, but we'll work directly with them on the technical implementation.",
+            'a' => "We build data collection, storage and consent flows with UK GDPR and the Data Protection Act 2018 in mind, including access controls, encryption, and clear data-handling practices. We're not a law firm, so for a definitive compliance sign-off specific to your business and your ICO obligations, that's a conversation for your own data protection officer or legal counsel, but we'll work directly with them on the technical implementation.",
         ],
         [
             'q' => 'Can you build compliant software for a regulated UK industry like fintech or healthcare?',
-            'a' => "We can build software with FCA-relevant financial regulations or NHS Digital-style healthcare data standards in mind — secure data handling, audit trails, and access controls appropriate to a regulated environment. As with any regulated sector, the specific certification and compliance sign-off for your product ultimately sits with your compliance team, and we work alongside them rather than claiming to replace that function.",
+            'a' => "We can build software with FCA-relevant financial regulations or NHS Digital-style healthcare data standards in mind, including secure data handling, audit trails, and access controls appropriate to a regulated environment. As with any regulated sector, the specific certification and compliance sign-off for your product ultimately sits with your compliance team, and we work alongside them rather than claiming to replace that function.",
         ],
         [
             'q' => 'Can KawachTech sign an NDA before we share project details?',
-            'a' => "Yes — this is standard practice before any substantive discussion of your product, data or business logic, not something you need to ask for specially.",
+            'a' => "Yes: this is standard practice before any substantive discussion of your product, data or business logic, not something you need to ask for specially.",
         ],
         [
             'q' => 'Can you modernize or rebuild our existing legacy software?',
-            'a' => "Yes, this is a significant part of what we do — migrating an aging on-premise system to the cloud, replacing a monolith with something more maintainable, or rebuilding on a modern stack while preserving the business logic your team has refined over years. We audit what exists before proposing what changes.",
+            'a' => "Yes, this is a significant part of what we do: migrating an aging on-premise system to the cloud, replacing a monolith with something more maintainable, or rebuilding on a modern stack while preserving the business logic your team has refined over years. We audit what exists before proposing what changes.",
         ],
         [
             'q' => 'Can we scale the development team up or down during the project?',
-            'a' => "Yes — add a specialist for a specific phase or scale back after a major release, with real notice rather than a multi-month hiring or restructuring process.",
+            'a' => "Yes: add a specialist for a specific phase or scale back after a major release, with real notice rather than a multi-month hiring or restructuring process.",
         ],
         [
             'q' => 'How do we get started with KawachTech?',
@@ -312,8 +312,8 @@
       </div>
       <h1>Custom Software Development Company for Businesses in the UK</h1>
       <p class="usa-hero-lede">
-        KawachTech helps UK founders, CTOs and product teams design, build and scale custom software —
-        from early-stage MVPs to enterprise systems — backed by a working day that genuinely overlaps
+        KawachTech helps UK founders, CTOs and product teams design, build and scale custom software,
+        from early-stage MVPs to enterprise systems, backed by a working day that genuinely overlaps
         with yours, not just a nightly hand-off.
       </p>
       <ul class="usa-hero-list">
@@ -332,7 +332,7 @@
       </div>
       <div class="usa-trust-line">
         <i class="fas fa-shield-alt"></i>
-        <span>Work with an experienced software development team with transparent communication, flexible engagement models, and complete focus on your business goals — not a rotating cast of subcontractors.</span>
+        <span>Work with an experienced software development team with transparent communication, flexible engagement models, and complete focus on your business goals, not a rotating cast of subcontractors.</span>
       </div>
     </div>
   </section>
@@ -354,22 +354,22 @@
         <div class="usa-challenge-card">
           <i class="fas fa-file-contract"></i>
           <h3>Contractor Classification &amp; IR35</h3>
-          <p>IR35 has made engaging individual contractors more complicated and higher-risk, pushing many UK businesses toward company-to-company engagement models instead — but that shift itself takes care to get right.</p>
+          <p>IR35 has made engaging individual contractors more complicated and higher-risk, pushing many UK businesses toward company-to-company engagement models instead, but that shift itself takes care to get right.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-server"></i>
           <h3>Legacy Systems in Established Businesses</h3>
-          <p>Many UK businesses outside the startup scene — financial services, insurance, professional services — are still running core operations on systems built well over a decade ago.</p>
+          <p>Many UK businesses outside the startup scene, including financial services, insurance, and professional services, are still running core operations on systems built well over a decade ago.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-user-shield"></i>
           <h3>UK GDPR and Data Protection Obligations</h3>
-          <p>Post-Brexit, the UK runs its own UK GDPR alongside the Data Protection Act 2018, enforced by the ICO — distinct enough from EU GDPR that software built for one market can't just be assumed compliant for the other.</p>
+          <p>Post-Brexit, the UK runs its own UK GDPR alongside the Data Protection Act 2018, enforced by the ICO, and distinct enough from EU GDPR that software built for one market can't just be assumed compliant for the other.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-chart-line"></i>
           <h3>Fintech Competition and FCA Scrutiny</h3>
-          <p>London is one of the world's largest fintech hubs, which means intense competitive pressure to ship fast — while still building the audit trails and data controls FCA-regulated products require.</p>
+          <p>London is one of the world's largest fintech hubs, which means intense competitive pressure to ship fast, while still building the audit trails and data controls FCA-regulated products require.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-cloud-arrow-up"></i>
@@ -386,7 +386,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-layer-group"></i> What We Build</span>
         <h2 class="usa-section-title">How KawachTech Helps Businesses in the UK</h2>
-        <p class="usa-section-sub">Practical solutions mapped to the challenges above — not a generic service menu.</p>
+        <p class="usa-section-sub">Practical solutions mapped to the challenges above, not a generic service menu.</p>
       </div>
       <div class="usa-svc-grid">
         <div class="usa-svc-card">
@@ -410,7 +410,7 @@
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-globe"></i></div>
           <h3>Web Application Development</h3>
-          <p>Secure, scalable web applications — customer-facing platforms, internal tools, and everything in between.</p>
+          <p>Secure, scalable web applications: customer-facing platforms, internal tools, and everything in between.</p>
           <a href="{{ route('pages.child.sevice_details', 'web-application-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
@@ -445,15 +445,15 @@
       <div class="usa-trust-grid">
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-comments"></i></div>
-          <div><strong>Transparent Communication</strong><span>Clear communication channels, regular written updates, and defined milestones — you always know exactly where your project stands.</span></div>
+          <div><strong>Transparent Communication</strong><span>Clear communication channels, regular written updates, and defined milestones, so you always know exactly where your project stands.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-clock"></i></div>
-          <div><strong>Real Working-Day Overlap</strong><span>A 4.5-5.5 hour gap means most of your working day genuinely overlaps with ours — not just a scheduled call once a day.</span></div>
+          <div><strong>Real Working-Day Overlap</strong><span>A 4.5-5.5 hour gap means most of your working day genuinely overlaps with ours, not just a scheduled call once a day.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-user-tie"></i></div>
-          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement — not a rotating cast of account managers.</span></div>
+          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement, not a rotating cast of account managers.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-rotate"></i></div>
@@ -465,7 +465,7 @@
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-diagram-project"></i></div>
-          <div><strong>Scalable Development Teams</strong><span>Add specialist skills for a specific phase or scale down after a major release — team composition adjusts to your actual roadmap.</span></div>
+          <div><strong>Scalable Development Teams</strong><span>Add specialist skills for a specific phase or scale down after a major release: team composition adjusts to your actual roadmap.</span></div>
         </div>
       </div>
     </div>
@@ -481,21 +481,21 @@
       <div class="usa-compliance-wrap">
         <p style="color:var(--text-muted);">
           Since Brexit, the UK has run its own UK GDPR alongside the Data Protection Act 2018, enforced by
-          the ICO — closely modelled on EU GDPR but a distinct regime in its own right, including its own
+          the ICO. It's closely modelled on EU GDPR but a distinct regime in its own right, including its own
           rules on international data transfers. What that means practically is that software genuinely
           built for UK GDPR needs to treat it as its own requirement, not assume EU GDPR compliance covers it.
         </p>
         <ul class="usa-compliance-list">
-          <li><i class="fas fa-user-shield"></i><span><strong>UK GDPR &amp; Data Protection Act 2018</strong> — data collection, storage and consent flows designed with ICO expectations and UK international transfer rules in mind.</span></li>
-          <li><i class="fas fa-chart-line"></i><span><strong>FCA-relevant fintech requirements</strong> — audit trails, data controls and security practices appropriate for FCA-regulated financial products.</span></li>
-          <li><i class="fas fa-notes-medical"></i><span><strong>NHS Digital-adjacent healthcare standards</strong> — access controls, encryption and audit logging in line with the data-handling expectations of UK health tech.</span></li>
-          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong> — encryption at rest and in transit, role-based access control, and infrastructure aligned with recognized security control principles.</span></li>
+          <li><i class="fas fa-user-shield"></i><span><strong>UK GDPR &amp; Data Protection Act 2018</strong>: data collection, storage and consent flows designed with ICO expectations and UK international transfer rules in mind.</span></li>
+          <li><i class="fas fa-chart-line"></i><span><strong>FCA-relevant fintech requirements</strong>: audit trails, data controls and security practices appropriate for FCA-regulated financial products.</span></li>
+          <li><i class="fas fa-notes-medical"></i><span><strong>NHS Digital-adjacent healthcare standards</strong>: access controls, encryption and audit logging in line with the data-handling expectations of UK health tech.</span></li>
+          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong>: encryption at rest and in transit, role-based access control, and infrastructure aligned with recognized security control principles.</span></li>
         </ul>
         <div class="usa-compliance-note">
           <strong>An honest note on compliance:</strong> we're not a law firm and this page isn't legal advice.
           We build software with security, privacy and compliance requirements in mind and work directly with
           your internal legal, compliance and data protection teams to meet the specific regulatory obligations
-          that apply to your business — final compliance sign-off, including anything to do with ICO registration
+          that apply to your business. Final compliance sign-off, including anything to do with ICO registration
           or FCA authorisation, is always a decision for your own counsel.
         </div>
       </div>
@@ -508,7 +508,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-briefcase"></i> Real Projects</span>
         <h2 class="usa-section-title">Software Development Success Stories</h2>
-        <p class="usa-section-sub">A UK-based client engagement — real challenge, real solution, measurable outcome.</p>
+        <p class="usa-section-sub">A UK-based client engagement: real challenge, real solution, measurable outcome.</p>
       </div>
       <div class="usa-cs-grid">
         <div class="usa-cs-card">
@@ -558,29 +558,29 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-file-signature"></i> How We Work Together</span>
         <h2 class="usa-section-title">Engagement Models</h2>
-        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements — these models describe structure, not price.</p>
+        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements. These models describe structure, not price.</p>
       </div>
       <div class="usa-eng-grid">
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for defined scope</div>
           <h3>Fixed Price Project</h3>
-          <p>Suited to projects with <strong>clearly defined requirements</strong> — an MVP, a specific feature set, or a scoped integration.</p>
+          <p>Suited to projects with <strong>clearly defined requirements</strong>: an MVP, a specific feature set, or a scoped integration.</p>
           <p><strong>Communication:</strong> milestone-based check-ins tied to agreed deliverables.</p>
-          <p><strong>Flexibility:</strong> lower — scope changes require a formal change request.</p>
+          <p><strong>Flexibility:</strong> lower. Scope changes require a formal change request.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for ongoing product work</div>
           <h3>Dedicated Development Team</h3>
           <p>Suited to <strong>long-term product development</strong> where requirements will keep evolving after launch.</p>
           <p><strong>Communication:</strong> daily/weekly syncs, sprint planning, and a dedicated point of contact.</p>
-          <p><strong>Flexibility:</strong> high — team composition and priorities adjust as your roadmap changes.</p>
+          <p><strong>Flexibility:</strong> high. Team composition and priorities adjust as your roadmap changes.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for evolving scope</div>
           <h3>Time &amp; Material</h3>
           <p>Suited to work where requirements are <strong>still being discovered</strong>, or where scope is likely to shift as you learn.</p>
           <p><strong>Communication:</strong> regular reporting on hours and progress against a rolling plan.</p>
-          <p><strong>Flexibility:</strong> high — priorities can be reordered sprint to sprint.</p>
+          <p><strong>Flexibility:</strong> high. Priorities can be reordered sprint to sprint.</p>
         </div>
       </div>
     </div>
@@ -612,7 +612,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-earth-europe"></i> Working Together</span>
         <h2 class="usa-section-title">Working With a Software Development Team Across Time Zones</h2>
-        <p class="usa-section-sub">Kawach Technology is headquartered in India — and the UK time gap is one of the smallest we work across.</p>
+        <p class="usa-section-sub">Kawach Technology is headquartered in India, and the UK time gap is one of the smallest we work across.</p>
       </div>
       <div class="usa-tz-wrap">
         <div class="usa-tz-card">
@@ -622,7 +622,7 @@
           <div class="usa-tz-row"><div class="loc">Real-Time Overlap</div><div class="time">Most of the UK working day</div></div>
         </div>
         <ul class="usa-tz-list">
-          <li><i class="fas fa-calendar-check"></i><span><strong>Daily real-time stand-ups</strong> are genuinely practical here — a 9am UK start is early-to-mid afternoon for our team, well within normal working hours on both sides.</span></li>
+          <li><i class="fas fa-calendar-check"></i><span><strong>Daily real-time stand-ups</strong> are genuinely practical here: a 9am UK start is early-to-mid afternoon for our team, well within normal working hours on both sides.</span></li>
           <li><i class="fas fa-clipboard-list"></i><span><strong>A shared project board</strong> (Jira, Linear, Trello, or your existing tool) and written updates for anything that happens outside the overlap window.</span></li>
           <li><i class="fas fa-user"></i><span><strong>One dedicated point of contact</strong> on our side, reachable by message throughout your working day.</span></li>
           <li><i class="fas fa-video"></i><span><strong>Sprint planning and demos</strong> scheduled at times that work for both time zones without anyone needing to be online at 6am or midnight.</span></li>

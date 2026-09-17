@@ -3,7 +3,7 @@
 
 @php
     $seoTitle       = 'About Us | Custom Software Development Company in USA & Europe | Kawach Technology';
-    $seoDescription = 'Learn about Kawach Technology — a custom software development company building scalable web, mobile, AI, and SaaS solutions for startups and enterprises across the USA and Europe.';
+    $seoDescription = 'Learn about Kawach Technology, a custom software development company building scalable web, mobile, AI, and SaaS solutions for startups and enterprises across the USA and Europe.';
     $seoKeywords    = 'about Kawach Technology, custom software development company, software development team, software development company USA, software development company Europe';
     $seoCanonical   = url('/about-us');
 
@@ -18,7 +18,7 @@
         ],
         [
             'q' => "Is Kawach Technology related to Indian Railways' Kavach train protection system?",
-            'a' => "No. Kawach Technology is an independent, privately-owned software development company and has no affiliation with Kavach, the Automatic Train Protection (ATP) system deployed by Indian Railways. The similar-sounding name is a coincidence — we're a technology services business, not a railway safety system.",
+            'a' => "No. Kawach Technology is an independent, privately-owned software development company and has no affiliation with Kavach, the Automatic Train Protection (ATP) system deployed by Indian Railways. The similar-sounding name is a coincidence: we're a technology services business, not a railway safety system.",
         ],
         [
             'q' => 'What services does Kawach Technology offer?',
@@ -30,7 +30,7 @@
         ],
         [
             'q' => 'How can I get in touch with Kawach Technology?',
-            'a' => 'You can reach us through our Contact page, or request a free consultation directly from any page on this site — our team typically responds within 24 hours.',
+            'a' => 'You can reach us through our Contact page, or request a free consultation directly from any page on this site, and our team typically responds within 24 hours.',
         ],
     ];
 @endphp
@@ -280,10 +280,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="who-label">Our Story</div>
         <h2 class="who-title">We Build Software That<br>Drives Real Results</h2>
         <p class="who-desc">
-          Kawach Technology was founded in 2014 with a clear mission — to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 9+ countries.
+          Kawach Technology was founded in 2014 with a clear mission: to make enterprise-grade software development accessible to businesses of all sizes. What started as a small team of three developers has grown into a 50+ member powerhouse serving clients across 9+ countries.
         </p>
         <p class="who-desc">
-          We believe technology is only as powerful as the human needs it serves. That's why we pair deep technical expertise with genuine business understanding — listening first, building second, and measuring success by our clients' outcomes.
+          We believe technology is only as powerful as the human needs it serves. That's why we pair deep technical expertise with genuine business understanding, listening first, building second, and measuring success by our clients' outcomes.
         </p>
         <div class="who-highlights">
           <div class="who-highlight-item">
@@ -333,14 +333,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="mvv-card">
           <div class="mvv-icon"><i class="fas fa-eye"></i></div>
           <div class="mvv-title">Our Vision</div>
-          <p class="mvv-desc">To be the world's most trusted technology partner — known for turning complex challenges into elegant digital solutions that stand the test of time.</p>
+          <p class="mvv-desc">To be the world's most trusted technology partner, known for turning complex challenges into elegant digital solutions that stand the test of time.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="mvv-card">
           <div class="mvv-icon"><i class="fas fa-heart"></i></div>
           <div class="mvv-title">Our Values</div>
-          <p class="mvv-desc">Integrity, innovation, collaboration, and client obsession. We hold ourselves to the highest standards in everything — from code quality to communication.</p>
+          <p class="mvv-desc">Integrity, innovation, collaboration, and client obsession. We hold ourselves to the highest standards in everything, from code quality to communication.</p>
         </div>
       </div>
     </div>
@@ -360,7 +360,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2014 — Founded</div>
+          <div class="timeline-year">2014: Founded</div>
           <div class="timeline-event">Company Established</div>
           <p class="timeline-detail">Kawach Technology launched from a co-working space in New Delhi with a team of three and a vision to democratise enterprise software.</p>
         </div>
@@ -369,7 +369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2020 — First Milestone</div>
+          <div class="timeline-year">2020: First Milestone</div>
           <div class="timeline-event">Reached 25 Clients</div>
           <p class="timeline-detail">After two years of bootstrapped growth, we crossed our first 25-client milestone and expanded the team to 12 engineers.</p>
         </div>
@@ -378,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2022 — AI Division</div>
+          <div class="timeline-year">2022: AI Division</div>
           <div class="timeline-event">Launched AI &amp; ML Practice</div>
           <p class="timeline-detail">Established a dedicated AI &amp; Machine Learning division, delivering our first predictive analytics product for a client.</p>
         </div>
@@ -387,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2022 — Recognition</div>
+          <div class="timeline-year">2022: Recognition</div>
           <div class="timeline-event">Named Top Software Company</div>
           <p class="timeline-detail">Recognised by Clutch and G2 as one of the top software development companies globally, with a 4.9-star client rating.</p>
         </div>
@@ -396,7 +396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-year">2024 — Today</div>
+          <div class="timeline-year">2024: Today</div>
           <div class="timeline-event">400+ Projects &amp; Counting</div>
           <p class="timeline-detail">With 50+ team members, 400+ completed projects, and clients in 9+ countries, we're just getting started on our next decade of impact.</p>
         </div>
@@ -533,7 +533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="section-eyebrow"><i class="fas fa-circle-question"></i> Frequently Asked Questions</span>
     <h2 class="section-title" id="about-faq-heading">Get to Know Kawach Technology</h2>
     <p class="section-intro">
-        A few quick answers about who we are — including a question we get asked more often than you'd expect.
+        A few quick answers about who we are, including a question we get asked more often than you'd expect.
     </p>
 
     <div class="about-faq-list text-start">

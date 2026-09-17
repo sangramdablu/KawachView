@@ -13,7 +13,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = 'Contact Us | Kawach Technology — Custom Software Development';
+    $seoTitle       = 'Contact Us | Kawach Technology: Custom Software Development';
     $seoDescription = 'Get in touch with Kawach Technology for custom software, web, mobile, AI, and cloud development services. Book a free consultation with our team today.';
     $seoKeywords    = 'contact Kawach Technology, software development quote, hire software developers, free consultation software company';
     $seoCanonical   = url('/contact');
@@ -183,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="col-lg-7">
         <div class="hero-badge"><i class="fas fa-circle"></i> We're Online & Ready</div>
         <h1 class="contact-hero-title">Let's Build Something<br><span>Great Together</span></h1>
-        <p class="contact-hero-sub">Whether you have a project in mind, a question about our services, or just want to say hello — our team is here and ready to help.</p>
+        <p class="contact-hero-sub">Whether you have a project in mind, a question about our services, or just want to say hello, our team is here and ready to help.</p>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-icon"><i class="fas fa-clock"></i></div>
@@ -513,11 +513,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           ['q' => 'How quickly will I get a response after submitting the form?',
            'a' => 'We respond to all inquiries within 24 business hours. For urgent matters, you can call us directly during office hours and we\'ll connect you with the right team member immediately.'],
           ['q' => 'Do you work with startups or only established businesses?',
-           'a' => 'We work with businesses of all sizes — from early-stage startups building their first MVP to large enterprises modernizing legacy systems. Our flexible engagement models are designed to fit different stages and budgets.'],
+           'a' => 'We work with businesses of all sizes, from early-stage startups building their first MVP to large enterprises modernizing legacy systems. Our flexible engagement models are designed to fit different stages and budgets.'],
           ['q' => 'What information should I prepare before contacting you?',
-           'a' => 'A brief description of your project goals, desired timeline, and rough budget range will help us give you the most relevant response. Don\'t worry if you don\'t have everything figured out — we can help you scope the project during our first call.'],
+           'a' => 'A brief description of your project goals, desired timeline, and rough budget range will help us give you the most relevant response. Don\'t worry if you don\'t have everything figured out. We can help you scope the project during our first call.'],
           ['q' => 'Do you offer free consultations?',
-           'a' => 'Yes! We offer a complimentary 30-minute consultation call for all new inquiries. It\'s a no-pressure conversation to understand your needs and explore how we can help — no strings attached.'],
+           'a' => 'Yes! We offer a complimentary 30-minute consultation call for all new inquiries. It\'s a no-pressure conversation to understand your needs and explore how we can help, with no strings attached.'],
           ['q' => 'Can you work with clients in different time zones?',
            'a' => 'Absolutely. We have successfully delivered projects for clients across North America, Europe, and Asia-Pacific. We schedule regular check-ins at times that work for both teams and maintain clear async communication throughout.'],
         ] as $i => $faq)

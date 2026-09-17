@@ -10,35 +10,35 @@
     $deFaqs = [
         [
             'q' => 'Why should a German company work with an offshore software development team?',
-            'a' => "Germany's own engineering talent pool is deep but heavily contested — Mittelstand manufacturers, automotive suppliers and enterprise software teams are all competing for the same senior developers, and salaries in Munich, Berlin and Stuttgart reflect that. Working with an established team like KawachTech gives you engineers who've already worked together and a project moving within weeks, without a multi-month hiring process. It works best when the engagement is structured with the same documentation discipline German teams expect internally — which is how we approach it.",
+            'a' => "Germany's own engineering talent pool is deep but heavily contested: Mittelstand manufacturers, automotive suppliers and enterprise software teams are all competing for the same senior developers, and salaries in Munich, Berlin and Stuttgart reflect that. Working with an established team like KawachTech gives you engineers who've already worked together and a project moving within weeks, without a multi-month hiring process. It works best when the engagement is structured with the same documentation discipline German teams expect internally, which is how we approach it.",
         ],
         [
             'q' => 'How does KawachTech communicate with clients in Germany given the time difference?',
-            'a' => "India (IST, UTC+5:30) is 3.5 hours behind Germany during CET and 4.5 hours behind during CEST — a small enough gap that a German working day overlaps substantially with ours. We schedule recurring sprint planning and demo calls within that overlap, back them up with detailed written documentation for every decision and change, and keep a shared project board updated daily.",
+            'a' => "India (IST, UTC+5:30) is 3.5 hours behind Germany during CET and 4.5 hours behind during CEST, a small enough gap that a German working day overlaps substantially with ours. We schedule recurring sprint planning and demo calls within that overlap, back them up with detailed written documentation for every decision and change, and keep a shared project board updated daily.",
         ],
         [
             'q' => 'How do you handle GDPR and German data protection requirements specifically?',
-            'a' => "Germany applies GDPR through its own federal data protection act (the BDSG) and enforcement tends to be strict and detail-oriented compared to some other EU member states. We build data collection, storage and processing flows with GDPR and BDSG principles in mind — data minimization, clear consent, encryption, and detailed processing records — and we're glad to work directly with your Datenschutzbeauftragter (data protection officer) on the technical implementation. We're not a law firm, so final sign-off on your specific compliance obligations is always a decision for your own legal counsel.",
+            'a' => "Germany applies GDPR through its own federal data protection act (the BDSG) and enforcement tends to be strict and detail-oriented compared to some other EU member states. We build data collection, storage and processing flows with GDPR and BDSG principles in mind (data minimization, clear consent, encryption, and detailed processing records), and we're glad to work directly with your Datenschutzbeauftragter (data protection officer) on the technical implementation. We're not a law firm, so final sign-off on your specific compliance obligations is always a decision for your own legal counsel.",
         ],
         [
             'q' => 'Can you host our data within the EU or specifically in Germany?',
-            'a' => "Yes — EU-region cloud infrastructure (including Germany-specific regions on major providers) is a standard architecture choice we build around when data residency is a requirement, which it often is for German enterprise clients.",
+            'a' => "Yes: EU-region cloud infrastructure (including Germany-specific regions on major providers) is a standard architecture choice we build around when data residency is a requirement, which it often is for German enterprise clients.",
         ],
         [
             'q' => 'Does building software that touches employee data require Betriebsrat (works council) involvement?',
-            'a' => "In Germany, a works council often has co-determination rights over software that monitors or evaluates employee performance or behavior — this is a real and important consideration for HR systems, time-tracking tools, or anything with employee-facing analytics. We're not in a position to manage that internal approval process for you, but we design the software itself with configurable data collection and transparent logging so your team can have that conversation with the works council on solid technical footing.",
+            'a' => "In Germany, a works council often has co-determination rights over software that monitors or evaluates employee performance or behavior, and this is a real and important consideration for HR systems, time-tracking tools, or anything with employee-facing analytics. We're not in a position to manage that internal approval process for you, but we design the software itself with configurable data collection and transparent logging so your team can have that conversation with the works council on solid technical footing.",
         ],
         [
             'q' => 'Can I hire a dedicated software development team through KawachTech?',
-            'a' => 'Yes. Our dedicated development team model gives you engineers who work exclusively on your product and report into your priorities — the model most of our German clients use for ongoing product and platform development.',
+            'a' => 'Yes. Our dedicated development team model gives you engineers who work exclusively on your product and report into your priorities. This is the model most of our German clients use for ongoing product and platform development.',
         ],
         [
             'q' => 'Who owns the source code and intellectual property once the project is delivered?',
-            'a' => "Source code, technical documentation and custom IP built for your project belong to you, as set out in our project agreement before work begins — something we're happy to confirm in writing to your legal team.",
+            'a' => "Source code, technical documentation and custom IP built for your project belong to you, as set out in our project agreement before work begins, something we're happy to confirm in writing to your legal team.",
         ],
         [
             'q' => 'How much does custom software development cost?',
-            'a' => "It depends on scope, complexity, integrations and engagement model — we'll walk through realistic cost ranges once we understand your requirements during a free consultation, rather than quoting a number blind.",
+            'a' => "It depends on scope, complexity, integrations and engagement model. We'll walk through realistic cost ranges once we understand your requirements during a free consultation, rather than quoting a number blind.",
         ],
         [
             'q' => 'How long does it take to develop custom software?',
@@ -46,23 +46,23 @@
         ],
         [
             'q' => 'Can KawachTech work with our existing internal development or IT team?',
-            'a' => "Yes — a common arrangement is us filling a specific skills gap (an unfamiliar framework, DevOps, or embedded/IoT expertise) or owning a defined module while your team owns the rest.",
+            'a' => "Yes: a common arrangement is us filling a specific skills gap (an unfamiliar framework, DevOps, or embedded/IoT expertise) or owning a defined module while your team owns the rest.",
         ],
         [
             'q' => 'Does KawachTech provide detailed technical documentation?',
-            'a' => "Yes, and we treat this as a first-class deliverable rather than an afterthought — architecture decisions, API documentation and system diagrams are maintained throughout the project, not written retroactively before handover.",
+            'a' => "Yes, and we treat this as a first-class deliverable rather than an afterthought: architecture decisions, API documentation and system diagrams are maintained throughout the project, not written retroactively before handover.",
         ],
         [
             'q' => 'Can you modernize legacy manufacturing or ERP-adjacent systems?',
-            'a' => "Yes — legacy and industrial systems modernization is a significant part of our work, including retrofitting older machinery with IoT sensors and building the data pipelines and dashboards on top. We audit what exists before proposing what changes.",
+            'a' => "Yes: legacy and industrial systems modernization is a significant part of our work, including retrofitting older machinery with IoT sensors and building the data pipelines and dashboards on top. We audit what exists before proposing what changes.",
         ],
         [
             'q' => 'Does KawachTech provide post-launch support?',
-            'a' => "Yes, sized to what your system actually needs — from a maintenance retainer to a full dedicated team continuing active development, including ongoing support for industrial/IoT deployments after initial rollout.",
+            'a' => "Yes, sized to what your system actually needs, from a maintenance retainer to a full dedicated team continuing active development, including ongoing support for industrial/IoT deployments after initial rollout.",
         ],
         [
             'q' => 'Can KawachTech sign an NDA (Geheimhaltungsvereinbarung) before we share project details?',
-            'a' => "Yes — signing an NDA before any substantive discussion of your product, data, or business logic is standard practice, not an exception you need to request.",
+            'a' => "Yes: signing an NDA before any substantive discussion of your product, data, or business logic is standard practice, not an exception you need to request.",
         ],
         [
             'q' => 'How do we get started with KawachTech?',
@@ -292,7 +292,7 @@
       </div>
       <h1>Custom Software Development Company for Businesses in Germany</h1>
       <p class="usa-hero-lede">
-        KawachTech helps German businesses — from Mittelstand manufacturers to enterprise product teams —
+        KawachTech helps German businesses, from Mittelstand manufacturers to enterprise product teams,
         design, build and scale custom software, with the documentation discipline and engineering rigor
         German teams expect as standard.
       </p>
@@ -312,7 +312,7 @@
       </div>
       <div class="usa-trust-line">
         <i class="fas fa-shield-alt"></i>
-        <span>Work with an experienced software development team with transparent communication, thorough documentation, and complete focus on your business goals — not a rotating cast of subcontractors.</span>
+        <span>Work with an experienced software development team with transparent communication, thorough documentation, and complete focus on your business goals, not a rotating cast of subcontractors.</span>
       </div>
     </div>
   </section>
@@ -329,7 +329,7 @@
         <div class="usa-challenge-card">
           <i class="fas fa-industry"></i>
           <h3>Mittelstand Manufacturers Digitizing Under Pressure</h3>
-          <p>Germany's Mittelstand backbone is under real pressure to adopt Industry 4.0 practices — predictive maintenance, connected machinery, data-driven operations — often without an internal software team built for it.</p>
+          <p>Germany's Mittelstand backbone is under real pressure to adopt Industry 4.0 practices (predictive maintenance, connected machinery, data-driven operations), often without an internal software team built for it.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-user-slash"></i>
@@ -339,22 +339,22 @@
         <div class="usa-challenge-card">
           <i class="fas fa-server"></i>
           <h3>Legacy ERP and Production Systems</h3>
-          <p>Many established German businesses run core production and logistics on systems that have been extended for years — functional, but increasingly risky to modify without specialist knowledge.</p>
+          <p>Many established German businesses run core production and logistics on systems that have been extended for years: functional, but increasingly risky to modify without specialist knowledge.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-user-shield"></i>
           <h3>Strict GDPR Enforcement and BDSG Obligations</h3>
-          <p>German data protection authorities are known for close, detail-oriented GDPR enforcement, which raises the bar for how carefully data handling needs to be designed from day one — not retrofitted later.</p>
+          <p>German data protection authorities are known for close, detail-oriented GDPR enforcement, which raises the bar for how carefully data handling needs to be designed from day one, not retrofitted later.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-users-viewfinder"></i>
           <h3>Works Council Co-Determination on Employee-Facing Tools</h3>
-          <p>Software that monitors or evaluates employee performance often requires Betriebsrat involvement under German co-determination law — a real design and governance consideration many companies underestimate.</p>
+          <p>Software that monitors or evaluates employee performance often requires Betriebsrat involvement under German co-determination law, a real design and governance consideration many companies underestimate.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-cloud-arrow-up"></i>
           <h3>Cloud Modernization With Data Residency Requirements</h3>
-          <p>Moving to the cloud is a priority for most German enterprises, but frequently comes with a real requirement to keep data within the EU — or Germany specifically — which not every cloud migration plan accounts for upfront.</p>
+          <p>Moving to the cloud is a priority for most German enterprises, but frequently comes with a real requirement to keep data within the EU, or Germany specifically, which not every cloud migration plan accounts for upfront.</p>
         </div>
       </div>
     </div>
@@ -366,7 +366,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-layer-group"></i> What We Build</span>
         <h2 class="usa-section-title">How KawachTech Helps Businesses in Germany</h2>
-        <p class="usa-section-sub">Practical solutions mapped to the challenges above — not a generic service menu.</p>
+        <p class="usa-section-sub">Practical solutions mapped to the challenges above, not a generic service menu.</p>
       </div>
       <div class="usa-svc-grid">
         <div class="usa-svc-card">
@@ -390,7 +390,7 @@
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-globe"></i></div>
           <h3>Web Application Development</h3>
-          <p>Secure, scalable web applications — customer-facing platforms, internal tools, and everything in between.</p>
+          <p>Secure, scalable web applications: customer-facing platforms, internal tools, and everything in between.</p>
           <a href="{{ route('pages.child.sevice_details', 'web-application-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
@@ -425,7 +425,7 @@
       <div class="usa-trust-grid">
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-file-lines"></i></div>
-          <div><strong>Documentation-First Delivery</strong><span>Architecture decisions, API references and system diagrams maintained throughout the project — not written retroactively at handover.</span></div>
+          <div><strong>Documentation-First Delivery</strong><span>Architecture decisions, API references and system diagrams maintained throughout the project, not written retroactively at handover.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-clock"></i></div>
@@ -433,7 +433,7 @@
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-user-tie"></i></div>
-          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement — not a rotating cast of account managers.</span></div>
+          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement, not a rotating cast of account managers.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-rotate"></i></div>
@@ -445,7 +445,7 @@
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-diagram-project"></i></div>
-          <div><strong>Scalable Development Teams</strong><span>Add specialist skills — like embedded/IoT expertise — for a specific phase, then scale down once it's delivered.</span></div>
+          <div><strong>Scalable Development Teams</strong><span>Add specialist skills, like embedded/IoT expertise, for a specific phase, then scale down once it's delivered.</span></div>
         </div>
       </div>
     </div>
@@ -467,15 +467,15 @@
           GDPR checklist.
         </p>
         <ul class="usa-compliance-list">
-          <li><i class="fas fa-user-shield"></i><span><strong>GDPR &amp; BDSG-aware design</strong> — data minimization, clear consent flows, encryption, and detailed processing records built in from the start.</span></li>
-          <li><i class="fas fa-earth-europe"></i><span><strong>EU or Germany-specific data residency</strong> — architecture built around EU-region or Germany-region cloud infrastructure where required.</span></li>
-          <li><i class="fas fa-users-viewfinder"></i><span><strong>Works council-ready design</strong> — configurable data collection and transparent audit logging for HR and employee-facing systems.</span></li>
-          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong> — encryption at rest and in transit, role-based access control, and infrastructure aligned with recognized security control principles.</span></li>
+          <li><i class="fas fa-user-shield"></i><span><strong>GDPR &amp; BDSG-aware design</strong>: data minimization, clear consent flows, encryption, and detailed processing records built in from the start.</span></li>
+          <li><i class="fas fa-earth-europe"></i><span><strong>EU or Germany-specific data residency</strong>: architecture built around EU-region or Germany-region cloud infrastructure where required.</span></li>
+          <li><i class="fas fa-users-viewfinder"></i><span><strong>Works council-ready design</strong>: configurable data collection and transparent audit logging for HR and employee-facing systems.</span></li>
+          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong>: encryption at rest and in transit, role-based access control, and infrastructure aligned with recognized security control principles.</span></li>
         </ul>
         <div class="usa-compliance-note">
           <strong>An honest note on compliance:</strong> we're not a law firm and this page isn't legal advice.
           We build software with security, privacy and compliance requirements in mind and work directly with
-          your internal legal, Datenschutzbeauftragter, and works council where relevant — but final compliance
+          your internal legal, Datenschutzbeauftragter, and works council where relevant, but final compliance
           sign-off for your business is always a decision for your own counsel.
         </div>
       </div>
@@ -488,7 +488,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-briefcase"></i> Real Projects</span>
         <h2 class="usa-section-title">Software Development Success Stories</h2>
-        <p class="usa-section-sub">A German-based client engagement — real challenge, real solution, measurable outcome.</p>
+        <p class="usa-section-sub">A German-based client engagement: real challenge, real solution, measurable outcome.</p>
       </div>
       <div class="usa-cs-grid">
         <div class="usa-cs-card">
@@ -538,29 +538,29 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-file-signature"></i> How We Work Together</span>
         <h2 class="usa-section-title">Engagement Models</h2>
-        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements — these models describe structure, not price.</p>
+        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements. These models describe structure, not price.</p>
       </div>
       <div class="usa-eng-grid">
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for defined scope</div>
           <h3>Fixed Price Project</h3>
-          <p>Suited to projects with <strong>clearly defined requirements</strong> — an MVP, a specific feature set, or a scoped integration.</p>
+          <p>Suited to projects with <strong>clearly defined requirements</strong>: an MVP, a specific feature set, or a scoped integration.</p>
           <p><strong>Communication:</strong> milestone-based check-ins tied to agreed, documented deliverables.</p>
-          <p><strong>Flexibility:</strong> lower — scope changes require a formal change request.</p>
+          <p><strong>Flexibility:</strong> lower. Scope changes require a formal change request.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for ongoing product work</div>
           <h3>Dedicated Development Team</h3>
           <p>Suited to <strong>long-term product or platform development</strong> where requirements will keep evolving.</p>
           <p><strong>Communication:</strong> daily/weekly syncs, sprint planning, and a dedicated point of contact.</p>
-          <p><strong>Flexibility:</strong> high — team composition and priorities adjust as your roadmap changes.</p>
+          <p><strong>Flexibility:</strong> high. Team composition and priorities adjust as your roadmap changes.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for evolving scope</div>
           <h3>Time &amp; Material</h3>
           <p>Suited to work where requirements are <strong>still being discovered</strong>, such as early-stage IoT or hardware-integration projects.</p>
           <p><strong>Communication:</strong> regular reporting on hours and progress against a rolling plan.</p>
-          <p><strong>Flexibility:</strong> high — priorities can be reordered sprint to sprint.</p>
+          <p><strong>Flexibility:</strong> high. Priorities can be reordered sprint to sprint.</p>
         </div>
       </div>
     </div>
@@ -592,7 +592,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-earth-europe"></i> Working Together</span>
         <h2 class="usa-section-title">Working With a Software Development Team Across Time Zones</h2>
-        <p class="usa-section-sub">Kawach Technology is headquartered in India — the German time gap allows for real daily overlap.</p>
+        <p class="usa-section-sub">Kawach Technology is headquartered in India, and the German time gap allows for real daily overlap.</p>
       </div>
       <div class="usa-tz-wrap">
         <div class="usa-tz-card">
@@ -602,7 +602,7 @@
           <div class="usa-tz-row"><div class="loc">Real-Time Overlap</div><div class="time">Most of the working day</div></div>
         </div>
         <ul class="usa-tz-list">
-          <li><i class="fas fa-calendar-check"></i><span><strong>Daily real-time stand-ups</strong> fit comfortably in the overlap window — a 9am German start is early afternoon for our team.</span></li>
+          <li><i class="fas fa-calendar-check"></i><span><strong>Daily real-time stand-ups</strong> fit comfortably in the overlap window: a 9am German start is early afternoon for our team.</span></li>
           <li><i class="fas fa-file-lines"></i><span><strong>Detailed written documentation</strong> for every architectural decision and change, in line with the standard German engineering teams expect.</span></li>
           <li><i class="fas fa-clipboard-list"></i><span><strong>A shared project board</strong> (Jira, Linear, or your existing tool) updated daily so status is never ambiguous.</span></li>
           <li><i class="fas fa-user"></i><span><strong>One dedicated point of contact</strong> on our side, reachable throughout your working day.</span></li>

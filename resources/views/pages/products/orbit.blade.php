@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = 'Orbit — Real-Time Project Boards by Kawach Technology';
+    $seoTitle       = 'Orbit: Real-Time Project Boards by Kawach Technology';
     $seoDescription = 'Orbit is the project board where tasks, comments, and updates sync in real time. Built by Kawach Technology. Boards, automation, and a free-forever plan.';
     $seoKeywords    = 'Orbit project management, real-time project board, Kawach Technology product, Orbit app, orbitzr.com, kanban board tool';
     $seoCanonical   = url('/products/orbit');
@@ -194,8 +194,8 @@
     <div class="op-wrap op-hero-inner">
       <div>
         <div class="op-hero-eyebrow">Kawach Products &middot; Orbit</div>
-        <h1>Capture, organize, and move work forward — together.</h1>
-        <p class="op-hero-sub">Orbit is the board where tasks, comments, and updates sync in real time — so nothing gets lost in a chat thread or forgotten in someone's inbox.</p>
+        <h1>Capture, organize, and move work forward, together.</h1>
+        <p class="op-hero-sub">Orbit is the board where tasks, comments, and updates sync in real time, so nothing gets lost in a chat thread or forgotten in someone's inbox.</p>
         <div class="op-hero-ctas">
           <a href="https://orbitzr.com" target="_blank" rel="noopener" class="op-btn op-btn-primary">
             Get Orbit free <i class="fa-solid fa-arrow-right"></i>
@@ -223,7 +223,7 @@
       </div>
       <div class="op-stat">
         <div class="op-stat-num">$0</div>
-        <div class="op-stat-label">to get started — no credit card required</div>
+        <div class="op-stat-label">to get started (no credit card required)</div>
       </div>
     </div>
   </section>
@@ -341,7 +341,7 @@
         <div class="op-audience-card">
           <div class="op-audience-icon"><i class="fa-solid fa-briefcase"></i></div>
           <h3>Agencies &amp; Client Work</h3>
-          <p>Keep every client's work organized — and shareable when needed.</p>
+          <p>Keep every client's work organized and shareable when needed.</p>
         </div>
         <div class="op-audience-card">
           <div class="op-audience-icon"><i class="fa-solid fa-user"></i></div>

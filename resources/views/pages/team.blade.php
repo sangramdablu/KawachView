@@ -5,7 +5,7 @@
     use Illuminate\Support\Str;
 
     $seoTitle       = 'Meet the Kawach Technology Team | Leadership & Engineers';
-    $seoDescription = 'Meet the leadership team and engineers at Kawach Technology, the custom software development company behind our clients\' projects — CEO, CTO, project managers, and developers.';
+    $seoDescription = 'Meet the leadership team and engineers at Kawach Technology, the custom software development company behind our clients\' projects: CEO, CTO, project managers, and developers.';
     $seoKeywords    = 'Kawach Technology team, Kawach Technology leadership, Kawach Technology CEO, Kawach Technology CTO, software development team, meet the team';
     $seoCanonical   = url('/team');
 

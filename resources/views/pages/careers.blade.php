@@ -604,7 +604,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     @if($detectedCountry && isset($countryOptions[$detectedCountry]))
-      <div class="careers-geo-note"><i class="fas fa-location-dot"></i> Showing roles relevant to <strong>{{ $countryOptions[$detectedCountry] }}</strong> first — use the dropdown above to see another country.</div>
+      <div class="careers-geo-note"><i class="fas fa-location-dot"></i> Showing roles relevant to <strong>{{ $countryOptions[$detectedCountry] }}</strong> first. Use the dropdown above to see another country.</div>
     @endif
 
     <div id="jobCardsWrap">
@@ -668,7 +668,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     @empty
     <div class="job-card text-center">
-        <p class="job-summary mb-0">We don't have any open positions right now — check back soon, or send your resume to
+        <p class="job-summary mb-0">We don't have any open positions right now. Check back soon, or send your resume to
             <a href="mailto:{{ config('app.main_email') }}">{{ config('app.main_email') }}</a>.
         </p>
     </div>
@@ -697,7 +697,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="apply-modal-header">
       <div>
         <div class="apply-card-title" id="applyModalTitle">Apply</div>
-        <p class="apply-card-sub mb-0">Fill in your details below — we typically respond within a few business days.</p>
+        <p class="apply-card-sub mb-0">Fill in your details below, and we typically respond within a few business days.</p>
       </div>
       <button type="button" class="apply-modal-close" onclick="closeApplyModal()" aria-label="Close">&times;</button>
     </div>

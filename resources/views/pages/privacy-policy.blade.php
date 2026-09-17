@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = 'Privacy Policy | Kawach Technology — Custom Software Development';
+    $seoTitle       = 'Privacy Policy | Kawach Technology: Custom Software Development';
     $seoDescription = 'Read the Kawach Technology privacy policy to learn how we collect, use, and protect your personal data, including your rights under GDPR (EU/UK) and CCPA (California, USA).';
     $seoKeywords    = 'Kawach Technology privacy policy, GDPR compliance, CCPA compliance, data protection policy, software company privacy policy';
     $seoCanonical   = url('/privacy-policy');
@@ -127,7 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h3>b. Information collected automatically</h3>
                 <ul>
                     <li>Device and usage data such as IP address, browser type, operating system, referring URL, pages viewed, and time spent on the Site, collected via Google Analytics and Google Tag Manager.</li>
-                    <li>Cookies and similar tracking technologies — see our <a href="{{ route('cookie-policy') }}">Cookie Policy</a> for details.</li>
+                    <li>Cookies and similar tracking technologies: see our <a href="{{ route('cookie-policy') }}">Cookie Policy</a> for details.</li>
                 </ul>
                 <p>We do not knowingly collect sensitive categories of personal data (e.g., health, biometric, or financial account data) through the Site.</p>
 
@@ -144,10 +144,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h2 id="legal-basis">4. Legal Basis for Processing (GDPR)</h2>
                 <p>If you are located in the European Economic Area or United Kingdom, we process your personal data under the following legal bases:</p>
                 <ul>
-                    <li><strong>Consent</strong> — for newsletters, marketing communications, and non-essential cookies.</li>
-                    <li><strong>Contractual necessity</strong> — to respond to your inquiries and provide services you request.</li>
-                    <li><strong>Legitimate interest</strong> — to operate, secure, and improve our Site and business.</li>
-                    <li><strong>Legal obligation</strong> — where required by applicable law.</li>
+                    <li><strong>Consent</strong>: for newsletters, marketing communications, and non-essential cookies.</li>
+                    <li><strong>Contractual necessity</strong>: to respond to your inquiries and provide services you request.</li>
+                    <li><strong>Legitimate interest</strong>: to operate, secure, and improve our Site and business.</li>
+                    <li><strong>Legal obligation</strong>: where required by applicable law.</li>
                 </ul>
 
                 <h2 id="cookies">5. Cookies &amp; Tracking Technologies</h2>
@@ -186,7 +186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li>Know what personal information we collect, use, and disclose.</li>
                     <li>Request deletion of your personal information.</li>
                     <li>Correct inaccurate personal information.</li>
-                    <li>Opt out of the sale or sharing of personal information — <strong>we do not sell or share personal information</strong> as defined under the CCPA/CPRA.</li>
+                    <li>Opt out of the sale or sharing of personal information (<strong>we do not sell or share personal information</strong> as defined under the CCPA/CPRA).</li>
                     <li>Not be discriminated against for exercising your privacy rights.</li>
                 </ul>
                 <div class="legal-note">To exercise any of these rights, contact us at <a href="mailto:{{ config('app.main_email') }}">{{ config('app.main_email') }}</a>. We may need to verify your identity before fulfilling your request.</div>

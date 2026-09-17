@@ -9,51 +9,51 @@
     $csdFaqs = [
         [
             'q' => 'What is custom software development?',
-            'a' => "Custom software development means designing and building an application around your business's actual workflows, instead of adapting your business to fit a generic, off-the-shelf product. It can be a business application, an internal tool, a customer portal, or a full SaaS platform — built specifically for how you operate.",
+            'a' => "Custom software development means designing and building an application around your business's actual workflows, instead of adapting your business to fit a generic, off-the-shelf product. It can be a business application, an internal tool, a customer portal, or a full SaaS platform, built specifically for how you operate.",
         ],
         [
             'q' => 'How much does custom software development cost?',
-            'a' => 'It depends on scope, complexity, integrations and which engagement model you choose — anyone quoting a number before understanding your requirements is guessing. As a general reference, a focused MVP typically starts in the low five figures, a mid-sized application usually falls in the mid five figures, and a full enterprise or AI-powered platform can run into six figures. See our full breakdown in <a href="' . route('blog.show', 'how-much-does-custom-software-development-cost-in-2026') . '">How Much Does Custom Software Development Cost in 2026?</a>, or get a scoped estimate once we understand your project.',
+            'a' => 'It depends on scope, complexity, integrations and which engagement model you choose: anyone quoting a number before understanding your requirements is guessing. As a general reference, a focused MVP typically starts in the low five figures, a mid-sized application usually falls in the mid five figures, and a full enterprise or AI-powered platform can run into six figures. See our full breakdown in <a href="' . route('blog.show', 'how-much-does-custom-software-development-cost-in-2026') . '">How Much Does Custom Software Development Cost in 2026?</a>, or get a scoped estimate once we understand your project.',
         ],
         [
             'q' => 'Can you build software for a small business?',
-            'a' => "Yes. A significant part of our work is with small and growing businesses, not just enterprises. We scope projects around what a small business actually needs first — usually a focused MVP or a specific internal tool — rather than a full enterprise platform you don't need yet.",
+            'a' => "Yes. A significant part of our work is with small and growing businesses, not just enterprises. We scope projects around what a small business actually needs first, usually a focused MVP or a specific internal tool, rather than a full enterprise platform you don't need yet.",
         ],
         [
             'q' => 'Do you offer affordable software development?',
-            'a' => "We build cost-effective software through deliberate choices — MVP-first scoping, phased development, reusable components and efficient architecture — not by cutting corners on security or quality. \"Affordable\" means you're not paying for complexity you don't need yet, not that every project has a fixed low price regardless of scope.",
+            'a' => "We build cost-effective software through deliberate choices, including MVP-first scoping, phased development, reusable components and efficient architecture, not by cutting corners on security or quality. \"Affordable\" means you're not paying for complexity you don't need yet, not that every project has a fixed low price regardless of scope.",
         ],
         [
             'q' => 'Can you build an MVP on a limited budget?',
-            'a' => "Yes — MVP-first development is one of our core approaches. We help you identify the smallest version of your product that delivers real value and validates the idea, then phase in automation, integrations and advanced features as the product proves itself, rather than building everything on day one.",
+            'a' => "Yes, MVP-first development is one of our core approaches. We help you identify the smallest version of your product that delivers real value and validates the idea, then phase in automation, integrations and advanced features as the product proves itself, rather than building everything on day one.",
         ],
         [
             'q' => 'How long does custom software development take?',
-            'a' => "A focused MVP typically takes a few months depending on scope; a more complex platform with significant integrations can take considerably longer. We give a realistic timeline after a discovery phase, once we understand your actual requirements — not before.",
+            'a' => "A focused MVP typically takes a few months depending on scope; a more complex platform with significant integrations can take considerably longer. We give a realistic timeline after a discovery phase, once we understand your actual requirements, not before.",
         ],
         [
             'q' => 'Can you modernize existing software?',
-            'a' => 'Yes — legacy software modernization is a dedicated part of what we do, from replatforming outdated systems to migrating to modern, maintainable architecture without disrupting the business that depends on the existing system. See our <a href="' . route('pages.child.sevice_details', 'software-modernization') . '">software modernization page</a> for how we approach this.',
+            'a' => 'Yes, legacy software modernization is a dedicated part of what we do, from replatforming outdated systems to migrating to modern, maintainable architecture without disrupting the business that depends on the existing system. See our <a href="' . route('pages.child.sevice_details', 'software-modernization') . '">software modernization page</a> for how we approach this.',
         ],
         [
             'q' => 'Can you build web and mobile applications?',
-            'a' => "Yes, both — often as part of the same project. We build web applications, mobile applications, and API-driven systems that tie them together, scoped around whichever platforms your users actually need.",
+            'a' => "Yes, both, often as part of the same project. We build web applications, mobile applications, and API-driven systems that tie them together, scoped around whichever platforms your users actually need.",
         ],
         [
             'q' => 'Do you provide ongoing software maintenance?',
-            'a' => "Yes. Launching is rarely the end of the work — bug fixes, performance tuning and incremental feature requests keep coming after go-live. We offer ongoing maintenance and support sized to what your product actually needs, from a light retainer to continued active development.",
+            'a' => "Yes. Launching is rarely the end of the work: bug fixes, performance tuning and incremental feature requests keep coming after go-live. We offer ongoing maintenance and support sized to what your product actually needs, from a light retainer to continued active development.",
         ],
         [
             'q' => 'Do you work with startups?',
-            'a' => "Yes — startups are a core part of who we build for. For a startup, that usually means MVP-first scoping to validate the idea quickly, with the architecture ready to extend once the product finds traction, rather than over-building before you have real users.",
+            'a' => "Yes, startups are a core part of who we build for. For a startup, that usually means MVP-first scoping to validate the idea quickly, with the architecture ready to extend once the product finds traction, rather than over-building before you have real users.",
         ],
         [
             'q' => 'Do you work with companies in the USA, UK, Germany and Europe?',
-            'a' => "Yes. We work with businesses across the USA, United Kingdom, Germany and wider Europe — each of our market pages covers the specific business context, communication approach and compliance considerations relevant to that market.",
+            'a' => "Yes. We work with businesses across the USA, United Kingdom, Germany and wider Europe, and each of our market pages covers the specific business context, communication approach and compliance considerations relevant to that market.",
         ],
         [
             'q' => 'Can you integrate third-party APIs and existing systems?',
-            'a' => 'Yes — connecting to the tools and systems you already rely on is a common part of custom software projects, whether that\'s a payment gateway, a CRM, an internal legacy system, or a third-party public API. See our <a href="' . route('pages.child.sevice_details', 'custom-api-development-integration-solutions') . '">API development &amp; integration page</a> for more detail.',
+            'a' => 'Yes, connecting to the tools and systems you already rely on is a common part of custom software projects, whether that\'s a payment gateway, a CRM, an internal legacy system, or a third-party public API. See our <a href="' . route('pages.child.sevice_details', 'custom-api-development-integration-solutions') . '">API development &amp; integration page</a> for more detail.',
         ],
     ];
 
@@ -326,7 +326,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       </div>
       <h1>Custom Software Development Company for Businesses of All Sizes</h1>
       <p class="csd-hero-lede">
-        Build software around your business — not the other way around. Kawach Technology develops secure,
+        Build software around your business, not the other way around. Kawach Technology develops secure,
         scalable and cost-effective custom software for startups, small businesses, growing companies and
         enterprises.
       </p>
@@ -351,7 +351,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <p>
         Custom software development means designing and building an application around your business's actual
         workflows, rather than adapting your business to fit a generic, off-the-shelf product. That can take many
-        forms — a business application that runs a core operation, an internal tool that replaces manual admin work,
+        forms: a business application that runs a core operation, an internal tool that replaces manual admin work,
         a customer portal or dashboard your clients log into every day, or a full SaaS platform you sell to your
         own customers.
       </p>
@@ -404,16 +404,16 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-section-head">
         <span class="csd-eyebrow"><i class="fas fa-route"></i> Our Process</span>
         <h2 class="csd-section-title">How We Work</h2>
-        <p class="csd-section-sub">The same seven-step process runs underneath every engagement, whether it's a focused MVP or a full enterprise platform — what changes is the scope, not the discipline.</p>
+        <p class="csd-section-sub">The same seven-step process runs underneath every engagement, whether it's a focused MVP or a full enterprise platform: what changes is the scope, not the discipline.</p>
       </div>
       <div class="csd-flow">
         @php
           $howWeWorkSteps = [
-            ['Discovery', 'We start by understanding your business, your users and the actual problem you\'re solving — not by jumping straight to a tech stack.'],
+            ['Discovery', 'We start by understanding your business, your users and the actual problem you\'re solving, not by jumping straight to a tech stack.'],
             ['Scope', 'Requirements get turned into a clear, prioritized scope: what\'s essential now, what can wait for a later phase.'],
             ['UX / UI Design', 'Interfaces designed around how your users actually work, reviewed with you before a single line of code depends on them.'],
             ['Development', '2-week sprints with working demos, so you see real progress throughout instead of waiting for a single reveal at the end.'],
-            ['QA & Testing', 'Every feature is tested against real use cases before it reaches you — not just checked that it runs.'],
+            ['QA & Testing', 'Every feature is tested against real use cases before it reaches you, not just checked that it runs.'],
             ['Deployment', 'A planned launch with monitoring in place from day one, not a code drop and a hope.'],
             ['Support', 'Post-launch support and a clear path to ongoing maintenance, so the relationship doesn\'t end at go-live.'],
           ];
@@ -438,7 +438,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-section-head">
         <span class="csd-eyebrow"><i class="fas fa-scale-balanced"></i> Built To Be Cost-Effective</span>
         <h2 class="csd-section-title">Affordable Custom Software Development Without Cutting Corners</h2>
-        <p class="csd-section-sub">Affordable doesn't mean cutting corners — it means being deliberate about scope, architecture and technology so you're never paying for complexity you don't need yet.</p>
+        <p class="csd-section-sub">Affordable doesn't mean cutting corners: it means being deliberate about scope, architecture and technology so you're never paying for complexity you don't need yet.</p>
       </div>
       <div class="csd-approach-grid">
         <div class="csd-approach-card">
@@ -449,17 +449,17 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-layer-group"></i></div>
           <h3>Phased Development</h3>
-          <p>Rather than building everything up front, we break larger projects into phases — core platform first, then automation and integrations, then advanced features.</p>
+          <p>Rather than building everything up front, we break larger projects into phases: core platform first, then automation and integrations, then advanced features.</p>
         </div>
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-puzzle-piece"></i></div>
           <h3>Reusable Components</h3>
-          <p>We rely on well-tested components and proven architecture patterns instead of reinventing solved problems, keeping development time — and cost — down.</p>
+          <p>We rely on well-tested components and proven architecture patterns instead of reinventing solved problems, keeping both development time and cost down.</p>
         </div>
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-sitemap"></i></div>
           <h3>Efficient, Modern Architecture</h3>
-          <p>Choosing the right architecture from day one avoids expensive rewrites later — we design for the scale you actually need now, with a clear path to grow.</p>
+          <p>Choosing the right architecture from day one avoids expensive rewrites later: we design for the scale you actually need now, with a clear path to grow.</p>
         </div>
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-arrows-rotate"></i></div>
@@ -469,12 +469,12 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-handshake"></i></div>
           <h3>Flexible Engagement Models</h3>
-          <p>Fixed price, dedicated team, or time &amp; materials — we scope the engagement to match your budget, timeline and how much day-to-day control you want.</p>
+          <p>Fixed price, dedicated team, or time &amp; materials: we scope the engagement to match your budget, timeline and how much day-to-day control you want.</p>
         </div>
       </div>
       <p class="csd-disclaimer">
         <i class="fas fa-circle-info"></i>&nbsp;
-        What this costs in practice depends on your specific scope, integrations and requirements — every project
+        What this costs in practice depends on your specific scope, integrations and requirements. Every project
         is different, and we'll always be upfront about what drives cost up or down rather than promising a
         one-size-fits-all number.
       </p>
@@ -494,7 +494,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <span class="csd-eyebrow"><i class="fas fa-seedling"></i> For Founders &amp; Product Teams</span>
         <h2 class="csd-section-title">Custom Software Development for Startups</h2>
         <p class="csd-section-sub">
-          Startup software development is a different discipline from building for an established enterprise —
+          Startup software development is a different discipline from building for an established enterprise:
           speed to market and validated learning matter more than covering every edge case on day one. As a
           startup software development company, we work with founders and early product teams to get from idea
           to a real, working product without over-building.
@@ -503,11 +503,11 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-flow">
         @php
           $startupSteps = [
-            ['Idea', 'You bring the problem you\'re solving and who it\'s for — we don\'t need a finished spec to start the conversation.'],
+            ['Idea', 'You bring the problem you\'re solving and who it\'s for; we don\'t need a finished spec to start the conversation.'],
             ['Discovery', 'A focused discovery phase turns your idea into a clear scope: core features, user flows, and a technical approach that fits your budget.'],
-            ['MVP', 'We build a minimum viable product — not a stripped-down demo, but a real, usable product focused on what matters to your first users.'],
+            ['MVP', 'We build a minimum viable product: not a stripped-down demo, but a real, usable product focused on what matters to your first users.'],
             ['Launch', 'Your MVP goes live to real users, with the infrastructure and monitoring in place to handle actual usage.'],
-            ['Validation', 'Real usage data and user feedback tell us what to build next — and just as importantly, what not to build yet.'],
+            ['Validation', 'Real usage data and user feedback tell us what to build next, and just as importantly, what not to build yet.'],
             ['Scaling', 'As traction grows, we extend the architecture and add the features validation showed you actually need.'],
           ];
         @endphp
@@ -524,7 +524,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       </div>
       <p style="text-align:center;max-width:760px;margin:36px auto 0;color:#6c757d;">
         Whether you need a SaaS MVP to bring to your first investors or a working product to test with real
-        customers, our startup MVP development process is built to get you there without wasted spend — and
+        customers, our startup MVP development process is built to get you there without wasted spend, and
         affordable software development for startups means spending it on the right things, at the right time.
       </p>
     </div>
@@ -538,7 +538,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <h2 class="csd-section-title">Software Development for Small Businesses</h2>
         <p class="csd-section-sub">
           Software development for small businesses isn't about building the same complex systems enterprises
-          need — it's about replacing the specific manual processes quietly costing your team hours every week
+          need. It's about replacing the specific manual processes quietly costing your team hours every week
           with custom business software sized to how you actually operate.
         </p>
       </div>
@@ -573,7 +573,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-section-head">
         <span class="csd-eyebrow"><i class="fas fa-shapes"></i> The Solutions Catalogue</span>
         <h2 class="csd-section-title">Custom Software Solutions We Build</h2>
-        <p class="csd-section-sub">A look at the specific types of software we build most often for our clients — each one shaped around the business it's built for, not a fixed template.</p>
+        <p class="csd-section-sub">A look at the specific types of software we build most often for our clients, each one shaped around the business it's built for, not a fixed template.</p>
       </div>
       <div class="csd-solutions-grid">
         @php
@@ -584,7 +584,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
             ['fa-address-book', 'CRM Software', 'Track leads, manage customer relationships, and give your sales team one place to work from, built around your actual sales process.', ['pages.child.sevice_details', 'crm-development']],
             ['fa-industry', 'ERP Software', 'Bring finance, inventory, operations and reporting into one connected system instead of juggling spreadsheets and disconnected tools.', ['pages.child.sevice_details', 'erp-development']],
             ['fa-cloud', 'SaaS Platforms', 'Multi-tenant platforms built to onboard customers, scale with usage, and support the subscription model your business runs on.', ['pages.child.sevice_details', 'saas-development']],
-            ['fa-briefcase', 'Business Management Software', 'Purpose-built software that runs a specific part of your business — scheduling, resourcing, project tracking — exactly the way you need it to.', null],
+            ['fa-briefcase', 'Business Management Software', 'Purpose-built software that runs a specific part of your business (scheduling, resourcing, project tracking) exactly the way you need it to.', null],
             ['fa-diagram-project', 'Workflow Automation', 'Automate the repetitive, multi-step processes your team currently does by hand, from approvals to notifications to data hand-offs.', ['solutions.show', 'business-process-automation']],
             ['fa-users-gear', 'Customer Portals', 'Self-service portals where your customers can track orders, view account information, or manage their own data without calling support.', ['solutions.show', 'customer-portal-development']],
             ['fa-toolbox', 'Internal Business Applications', 'Internal tools built for how your team actually works day to day, replacing the spreadsheets and manual processes holding operations together.', ['solutions.show', 'excel-to-custom-software']],
@@ -595,7 +595,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
             ['fa-truck-fast', 'Logistics Software', 'Fleet tracking, route planning and shipment visibility systems built to handle real-time operational data.', ['industries.show', 'logistics-software-development']],
             ['fa-sack-dollar', 'Financial Software', 'Lending, claims, or financial-services platforms built with the accuracy, auditability and security financial data demands.', ['industries.show', 'fintech-software-development']],
             ['fa-gears', 'Manufacturing Software', 'Production tracking, quality control and industrial IoT integrations that connect your shop floor to the rest of the business.', ['industries.show', 'manufacturing-software-development']],
-            ['fa-brain', 'AI-Powered Applications', 'Features and applications built around your own data — from automation and recommendations to document processing — not a generic model demo.', ['pages.child.sevice_details', 'ai-machine-learning-development']],
+            ['fa-brain', 'AI-Powered Applications', 'Features and applications built around your own data, from automation and recommendations to document processing, not a generic model demo.', ['pages.child.sevice_details', 'ai-machine-learning-development']],
           ];
         @endphp
         @foreach($solutions as $s)
@@ -624,7 +624,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-section-head">
         <span class="csd-eyebrow"><i class="fas fa-calculator"></i> Investment</span>
         <h2 class="csd-section-title">How Much Does Custom Software Development Cost?</h2>
-        <p class="csd-section-sub">There's no single number that applies to every project — the honest answer is "it depends on what you're building." Here's what actually drives the cost up or down.</p>
+        <p class="csd-section-sub">There's no single number that applies to every project: the honest answer is "it depends on what you're building." Here's what actually drives the cost up or down.</p>
       </div>
       <div class="csd-cost-layout">
         <ul class="csd-cost-factors">
@@ -644,11 +644,11 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
           <p>
             As a general reference point, a focused MVP typically starts in the low five figures, a mid-sized
             web or mobile application usually falls in the mid five figures, and a full enterprise or AI-powered
-            platform can run into six figures — but those ranges only mean something once we know your actual
+            platform can run into six figures, but those ranges only mean something once we know your actual
             scope.
           </p>
           <p>
-            We break this down in detail — by project type, by engagement model, and by team structure — in our
+            We break this down in detail, by project type, by engagement model, and by team structure, in our
             full pricing guide:
           </p>
           <a href="{{ route('blog.show', 'how-much-does-custom-software-development-cost-in-2026') }}" class="csd-cost-link">
@@ -669,7 +669,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-calc" id="csdCalc">
         <div class="csd-calc-head">
           <h3><i class="fas fa-sliders"></i> Get a Directional Estimate in 30 Seconds</h3>
-          <p>Answer 5 quick questions for a rough complexity tier — not a quote, but a real starting point before you talk to us.</p>
+          <p>Answer 5 quick questions for a rough complexity tier: not a quote, but a real starting point before you talk to us.</p>
         </div>
 
         <div class="csd-calc-q" data-q="type">
@@ -698,10 +698,10 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <div class="csd-calc-q" data-q="complexity">
           <div class="csd-calc-q-label">3. Overall complexity</div>
           <div class="csd-calc-opts">
-            <button type="button" data-val="0">Basic — defined, straightforward scope</button>
-            <button type="button" data-val="1">Moderate — multiple user roles</button>
-            <button type="button" data-val="2">Advanced — complex workflows, real-time features</button>
-            <button type="button" data-val="3">Enterprise — multi-department, high compliance</button>
+            <button type="button" data-val="0">Basic: defined, straightforward scope</button>
+            <button type="button" data-val="1">Moderate: multiple user roles</button>
+            <button type="button" data-val="2">Advanced: complex workflows, real-time features</button>
+            <button type="button" data-val="3">Enterprise: multi-department, high compliance</button>
           </div>
         </div>
 
@@ -731,7 +731,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <div class="csd-calc-result" id="csdCalcResult">
           <div class="csd-calc-result-tier" id="csdCalcTier"></div>
           <p class="csd-calc-result-range" id="csdCalcRange"></p>
-          <p class="csd-calc-result-note">This is a directional starting point based on general project shape — not a quote. Every project is scoped individually once we understand your actual requirements.</p>
+          <p class="csd-calc-result-note">This is a directional starting point based on general project shape, not a quote. Every project is scoped individually once we understand your actual requirements.</p>
           <button type="button" class="csd-btn csd-btn-primary" data-bs-toggle="modal" data-bs-target="#quoteModal">
             <i class="fas fa-file-invoice-dollar"></i> Get My Detailed Estimate
           </button>
@@ -751,11 +751,11 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-flow">
         @php
           $budgetPhases = [
-            ['Core MVP', 'Launch with the essential features that solve your core problem — nothing more. This is what proves the concept and gets real users on the product.'],
+            ['Core MVP', 'Launch with the essential features that solve your core problem, nothing more. This is what proves the concept and gets real users on the product.'],
             ['Customer Feedback', 'Real usage tells you far more than assumptions do. This phase is about listening before spending more, so the next investment goes where it actually matters.'],
             ['Automation & Integrations', 'Once the core product is validated, we automate the manual steps and connect the third-party tools and systems your business already relies on.'],
             ['Advanced Features', 'With a stable, adopted product, we layer in the more complex, higher-effort features that weren\'t essential for day one but now add real value.'],
-            ['Scale & Optimization', 'As usage grows, we optimize performance, harden security, and scale the infrastructure to match — built on an architecture designed for this from the start.'],
+            ['Scale & Optimization', 'As usage grows, we optimize performance, harden security, and scale the infrastructure to match, built on an architecture designed for this from the start.'],
           ];
         @endphp
         @foreach($budgetPhases as $i => $phase)
@@ -772,7 +772,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <p class="csd-disclaimer" style="margin-top:36px;">
         <i class="fas fa-circle-info"></i>&nbsp;
         Phased development helps control your initial investment while keeping the architecture ready for future
-        growth — it doesn't mean every project can be delivered for a fixed low price. Each phase is scoped and
+        growth. It doesn't mean every project can be delivered for a fixed low price. Each phase is scoped and
         estimated on its own terms, so you always know what you're paying for and why.
       </p>
     </div>
@@ -784,18 +784,18 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-section-head">
         <span class="csd-eyebrow"><i class="fas fa-industry"></i> Industry Expertise</span>
         <h2 class="csd-section-title">Custom Software Development for Different Industries</h2>
-        <p class="csd-section-sub">Every industry brings its own constraints — compliance, real-time data, transaction complexity. Here's some of what we've built, by industry.</p>
+        <p class="csd-section-sub">Every industry brings its own constraints, including compliance, real-time data, transaction complexity. Here's some of what we've built, by industry.</p>
       </div>
       <div class="csd-solutions-grid">
         @php
           // slug (5th element) links to the industry page when one exists.
           $industries = [
-            ['fa-heart-pulse', 'Healthcare', 'Healthcare providers need software that handles sensitive patient data correctly while staying usable for clinical staff under real time pressure — from telemedicine platforms to scheduling and records.', 'medcare-health-network-telemedicine-case-study', 'healthcare-software-development'],
-            ['fa-sack-dollar', 'FinTech', 'Financial services software has to get accuracy, auditability and security right the first time — we\'ve built lending platforms and claims-automation systems where that isn\'t optional.', 'quickfund-financial-services-lending-platform-case-study', 'fintech-software-development'],
-            ['fa-gears', 'Manufacturing', 'Manufacturers need visibility from the shop floor to the back office — production tracking, quality control and IoT integrations that connect equipment data to business decisions.', 'nordholt-manufacturing-industrial-iot-case-study', 'manufacturing-software-development'],
-            ['fa-truck-fast', 'Logistics', 'Logistics operations run on real-time data — fleet tracking, route planning and shipment visibility systems built to handle it as it happens, not in a nightly batch.', 'swiftcargo-logistics-fleet-tracking-case-study', 'logistics-software-development'],
-            ['fa-building', 'Real Estate', 'Property and real estate businesses need software that mirrors how listings, transactions and tenant relationships actually move — not a generic CRM stretched to fit.', 'sequoia-peak-realty-group-proptech-case-study', 'real-estate-software-development'],
-            ['fa-cart-shopping', 'Retail', 'Retail and e-commerce businesses that have outgrown off-the-shelf platforms need storefronts and back-office systems — including AI-powered features — built for how they actually sell.', 'urban-threads-apparel-ecommerce-ai-case-study', 'retail-software-development'],
+            ['fa-heart-pulse', 'Healthcare', 'Healthcare providers need software that handles sensitive patient data correctly while staying usable for clinical staff under real time pressure, from telemedicine platforms to scheduling and records.', 'medcare-health-network-telemedicine-case-study', 'healthcare-software-development'],
+            ['fa-sack-dollar', 'FinTech', 'Financial services software has to get accuracy, auditability and security right the first time; we\'ve built lending platforms and claims-automation systems where that isn\'t optional.', 'quickfund-financial-services-lending-platform-case-study', 'fintech-software-development'],
+            ['fa-gears', 'Manufacturing', 'Manufacturers need visibility from the shop floor to the back office: production tracking, quality control and IoT integrations that connect equipment data to business decisions.', 'nordholt-manufacturing-industrial-iot-case-study', 'manufacturing-software-development'],
+            ['fa-truck-fast', 'Logistics', 'Logistics operations run on real-time data: fleet tracking, route planning and shipment visibility systems built to handle it as it happens, not in a nightly batch.', 'swiftcargo-logistics-fleet-tracking-case-study', 'logistics-software-development'],
+            ['fa-building', 'Real Estate', 'Property and real estate businesses need software that mirrors how listings, transactions and tenant relationships actually move, not a generic CRM stretched to fit.', 'sequoia-peak-realty-group-proptech-case-study', 'real-estate-software-development'],
+            ['fa-cart-shopping', 'Retail', 'Retail and e-commerce businesses that have outgrown off-the-shelf platforms need storefronts and back-office systems, including AI-powered features, built for how they actually sell.', 'urban-threads-apparel-ecommerce-ai-case-study', 'retail-software-development'],
             ['fa-graduation-cap', 'Education', 'Schools and education groups managing multiple campuses or programs need administrative and ERP systems that actually reflect how the institution is structured.', 'bright-horizons-school-group-erp-case-study', 'education-software-development'],
           ];
         @endphp
@@ -870,7 +870,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-bullseye"></i></div>
           <h3>Business-First Development</h3>
-          <p>We start with the business problem you're solving, not the technology — the stack is a means to an end, not the pitch.</p>
+          <p>We start with the business problem you're solving, not the technology: the stack is a means to an end, not the pitch.</p>
         </div>
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-sliders"></i></div>
@@ -885,12 +885,12 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-infinity"></i></div>
           <h3>Full-Cycle Development</h3>
-          <p>Discovery, design, development, QA, deployment and support — one team accountable for the whole lifecycle, not handed off between vendors.</p>
+          <p>Discovery, design, development, QA, deployment and support: one team accountable for the whole lifecycle, not handed off between vendors.</p>
         </div>
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-earth-americas"></i></div>
           <h3>Remote-First, Real Communication</h3>
-          <p>Distributed doesn't mean disconnected — structured overlap-window meetings, daily written updates, and a single point of contact throughout.</p>
+          <p>Distributed doesn't mean disconnected: structured overlap-window meetings, daily written updates, and a single point of contact throughout.</p>
         </div>
         <div class="csd-approach-card">
           <div class="csd-approach-icon"><i class="fas fa-user-check"></i></div>
@@ -911,7 +911,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
       <div class="csd-section-head">
         <span class="csd-eyebrow"><i class="fas fa-earth-americas"></i> Where We Work</span>
         <h2 class="csd-section-title">Custom Software Development Across Markets</h2>
-        <p class="csd-section-sub">We work with businesses across the USA, United Kingdom, Germany and Europe — each market page covers the specific business challenges, communication approach and compliance considerations relevant there.</p>
+        <p class="csd-section-sub">We work with businesses across the USA, United Kingdom, Germany and Europe, and each market page covers the specific business challenges, communication approach and compliance considerations relevant there.</p>
       </div>
       <div class="csd-market-row">
         <a href="{{ route('country.usa') }}" class="csd-market-chip"><i class="fas fa-flag-usa"></i> USA</a>
@@ -926,7 +926,7 @@ a.csd-solution-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rg
   <section class="cta-banner-section text-center">
     <div class="container">
       <h2 class="cta-banner-title">Ready to Build the Right Software for Your Business?</h2>
-      <p class="cta-banner-sub">Let's talk about what you're trying to build — and the most cost-effective way to get there.</p>
+      <p class="cta-banner-sub">Let's talk about what you're trying to build, and the most cost-effective way to get there.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap" style="position:relative;z-index:1;">
         <button class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#consultModal">
           <i class="fas fa-comments"></i> Get a Free Consultation

@@ -9,7 +9,7 @@
         ],
         [
             'q' => 'What engagement models do you offer?',
-            'a' => 'Full-time (dedicated, 40 hrs/week), part-time, hourly, or project-based fixed-scope engagements — whichever fits your budget and timeline.',
+            'a' => 'Full-time (dedicated, 40 hrs/week), part-time, hourly, or project-based fixed-scope engagements, whichever fits your budget and timeline.',
         ],
         [
             'q' => 'Can I interview the developer before starting?',
@@ -338,7 +338,7 @@
           <div class="hdd-success" id="hddSuccess">
             <div class="hdd-success-icon"><i class="fas fa-check"></i></div>
             <h4>Request Sent!</h4>
-            <p id="hddSuccessMsg">Thanks — we'll reach out within 24 hours.</p>
+            <p id="hddSuccessMsg">Thanks, we'll reach out within 24 hours.</p>
           </div>
         </div>
       </div>
@@ -504,7 +504,7 @@
         btnContent.innerHTML = 'Send Request <i class="fas fa-arrow-right"></i>';
       }
     } catch (err) {
-      showServerError('Network error — please check your connection and try again.');
+      showServerError('Network error: please check your connection and try again.');
       sendBtn.disabled = false;
       btnContent.innerHTML = 'Send Request <i class="fas fa-arrow-right"></i>';
       console.error('Hire developer submission error:', err);

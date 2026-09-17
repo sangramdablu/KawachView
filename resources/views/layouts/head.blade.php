@@ -111,7 +111,7 @@
               "@type" => "ImageObject",
               "url" => asset('assets/images/kawach.png'),
           ],
-          "description" => "Kawach Technology is a remote-first custom software development company providing web development, mobile app development, AI and machine learning, SaaS, CRM and ERP development, cloud applications, software modernization, and enterprise software services for businesses worldwide. Kawach Technology is an independent software company and is not affiliated with, and should not be confused with, Kavach — the Indian Railways automatic train protection system.",
+          "description" => "Kawach Technology is a remote-first custom software development company providing web development, mobile app development, AI and machine learning, SaaS, CRM and ERP development, cloud applications, software modernization, and enterprise software services for businesses worldwide. Kawach Technology is an independent software company and is not affiliated with, and should not be confused with, Kavach, the Indian Railways automatic train protection system.",
           "email" => config('app.main_email'),
           "founder" => [
               "@type" => "Person",

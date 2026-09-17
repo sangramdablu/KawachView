@@ -228,7 +228,7 @@
             <div class="kwob-card kwob-source-card">
               <div class="kwob-card-bar kwob-bar-ink"></div>
               <div class="kwob-card-body">
-                <p>Welcome to Orbit — try dragging me to another list</p>
+                <p>Welcome to Orbit: try dragging me to another list</p>
                 <div class="kwob-card-meta"><span>No due date</span><span>0</span></div>
               </div>
             </div>
@@ -276,7 +276,7 @@
         <div class="kwob-travel-card">
           <div class="kwob-card-bar kwob-bar-ink"></div>
           <div class="kwob-card-body">
-            <p>Welcome to Orbit — try dragging me to another list</p>
+            <p>Welcome to Orbit: try dragging me to another list</p>
             <div class="kwob-card-meta"><span>No due date</span><span>0</span></div>
           </div>
         </div>
@@ -284,7 +284,7 @@
 
       <div class="kwob-view kwob-view-list">
         <div class="kwob-list-panel">
-          <div class="kwob-list-row"><span class="kwob-list-dot kwob-bar-ink"></span><p>Welcome to Orbit — try dragging me to another list</p><span class="kwob-list-tag kwob-tag-sky">Backlog</span></div>
+          <div class="kwob-list-row"><span class="kwob-list-dot kwob-bar-ink"></span><p>Welcome to Orbit: try dragging me to another list</p><span class="kwob-list-tag kwob-tag-sky">Backlog</span></div>
           <div class="kwob-list-row"><span class="kwob-list-dot kwob-bar-ok"></span><p>Copy of Blog Page</p><span class="kwob-list-tag kwob-tag-sky">Backlog</span><span class="kwob-avatar-sm kwob-avatar-warn">J</span></div>
           <div class="kwob-list-row"><span class="kwob-list-dot kwob-bar-brand"></span><p>Taks Need to Do</p><span class="kwob-list-tag kwob-tag-ok">To Do</span><span class="kwob-avatar-sm kwob-avatar-ok">S</span></div>
           <div class="kwob-list-row"><span class="kwob-list-dot kwob-bar-warn"></span><p>Marketing Updates</p><span class="kwob-list-tag kwob-tag-ok">To Do</span></div>
@@ -316,7 +316,7 @@
       <div class="kwob-avatar kwob-avatar-sky" style="margin-left:0;">MK</div>
       <div>
         <p class="kwob-float-name">Maya commented</p>
-        <p class="kwob-float-text">"Looks great — shipping it"</p>
+        <p class="kwob-float-text">"Looks great, shipping it"</p>
       </div>
     </div>
   </div>

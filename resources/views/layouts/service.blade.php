@@ -574,8 +574,8 @@ if (!function_exists('svcIcon')) {
                 Software Development Services Built Around Your Business
             </h2>
             <p class="section-intro">
-                Kawach Technology delivers end-to-end software development services — from custom software and
-                web &amp; mobile applications to cloud, AI, and dedicated engineering teams — helping startups and
+                Kawach Technology delivers end-to-end software development services, from custom software and
+                web &amp; mobile applications to cloud, AI, and dedicated engineering teams, helping startups and
                 enterprises across the USA, Europe, and beyond ship reliable products faster.
             </p>
         </div>

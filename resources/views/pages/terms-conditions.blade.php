@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = 'Terms & Conditions | Kawach Technology — Custom Software Development';
+    $seoTitle       = 'Terms & Conditions | Kawach Technology: Custom Software Development';
     $seoDescription = 'Read the terms and conditions governing the use of the Kawach Technology website and our custom software development services for clients in the USA, Europe, and worldwide.';
     $seoKeywords    = 'Kawach Technology terms and conditions, software development terms of service, website terms of use';
     $seoCanonical   = url('/terms-conditions');
@@ -130,7 +130,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </ul>
 
                 <h2 id="ip">4. Intellectual Property</h2>
-                <p>Unless otherwise agreed in writing, all content on the Site — including text, graphics, logos, and design — is owned by or licensed to Kawach Technology and is protected by applicable intellectual property laws. For client projects, ownership of custom deliverables (source code, designs, and related work product) transfers to the Client upon full payment, except for any pre-existing Kawach Technology tools, frameworks, or libraries, which remain our property and are licensed to the Client for use in the delivered project. Specific IP terms may be superseded by a signed SOW or agreement.</p>
+                <p>Unless otherwise agreed in writing, all content on the Site (including text, graphics, logos, and design) is owned by or licensed to Kawach Technology and is protected by applicable intellectual property laws. For client projects, ownership of custom deliverables (source code, designs, and related work product) transfers to the Client upon full payment, except for any pre-existing Kawach Technology tools, frameworks, or libraries, which remain our property and are licensed to the Client for use in the delivered project. Specific IP terms may be superseded by a signed SOW or agreement.</p>
 
                 <h2 id="engagements">5. Quotes &amp; Service Engagements</h2>
                 <p>Any quote, estimate, or proposal shared through the Site or via email is non-binding until confirmed in a signed SOW or service agreement. Project timelines, deliverables, and pricing are estimates based on the information available at the time and may be revised once full requirements are assessed.</p>

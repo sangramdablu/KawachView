@@ -487,21 +487,21 @@
                 <select class="form-select" id="sc_timezone" name="timezone">
                   <option value="">Select your timezone</option>
                   <optgroup label="Americas">
-                    <option value="EST">EST — Eastern (UTC−5)</option>
-                    <option value="CST">CST — Central (UTC−6)</option>
-                    <option value="MST">MST — Mountain (UTC−7)</option>
-                    <option value="PST">PST — Pacific (UTC−8)</option>
+                    <option value="EST">EST: Eastern (UTC−5)</option>
+                    <option value="CST">CST: Central (UTC−6)</option>
+                    <option value="MST">MST: Mountain (UTC−7)</option>
+                    <option value="PST">PST: Pacific (UTC−8)</option>
                   </optgroup>
                   <optgroup label="Europe">
-                    <option value="GMT">GMT — London (UTC+0)</option>
-                    <option value="CET">CET — Central Europe (UTC+1)</option>
-                    <option value="EET">EET — Eastern Europe (UTC+2)</option>
+                    <option value="GMT">GMT: London (UTC+0)</option>
+                    <option value="CET">CET: Central Europe (UTC+1)</option>
+                    <option value="EET">EET: Eastern Europe (UTC+2)</option>
                   </optgroup>
                   <optgroup label="Asia / Pacific">
-                    <option value="IST">IST — India (UTC+5:30)</option>
-                    <option value="SGT">SGT — Singapore (UTC+8)</option>
-                    <option value="JST">JST — Japan (UTC+9)</option>
-                    <option value="AEST">AEST — Sydney (UTC+10)</option>
+                    <option value="IST">IST: India (UTC+5:30)</option>
+                    <option value="SGT">SGT: Singapore (UTC+8)</option>
+                    <option value="JST">JST: Japan (UTC+9)</option>
+                    <option value="AEST">AEST: Sydney (UTC+10)</option>
                   </optgroup>
                 </select>
                 <div class="invalid-feedback" id="sc_timezone_err">Please select your timezone.</div>
@@ -1111,7 +1111,7 @@
 
     } catch (err) {
       hideLoading();
-      showServerBanner('Network error — please check your connection and try again.');
+      showServerBanner('Network error: please check your connection and try again.');
       console.error('Schedule submission error:', err);
     }
   });

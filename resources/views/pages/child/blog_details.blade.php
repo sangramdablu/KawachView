@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = ($post->seo?->og_title ?? $post->meta_title ?? $post->title) . ' — Kawach Technology';
+    $seoTitle       = ($post->seo?->og_title ?? $post->meta_title ?? $post->title) . ' | Kawach Technology';
     $seoDescription = $post->seo?->og_description ?? $post->meta_description;
     $seoKeywords    = $post->seo?->meta_keywords ?? $post->focus_keyword ?? $post->tags->pluck('name')->implode(', ');
     $seoRobots      = $post->seo?->robots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';

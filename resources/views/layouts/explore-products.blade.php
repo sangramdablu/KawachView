@@ -56,11 +56,11 @@
         <div class="ps-eyebrow">Our Product</div>
         <h2 class="ps-title">Explore Our Products</h2>
         <p class="ps-sub">
-          Beyond client work, we build our own software too. Meet <strong>Orbit</strong> —
+          Beyond client work, we build our own software too. Meet <strong>Orbit</strong>,
           the real-time project board for teams who'd rather move a card than write a status update.
         </p>
         <ul class="ps-points">
-          <li><i class="fa-solid fa-bolt"></i> Real-time sync — updates appear in under a second</li>
+          <li><i class="fa-solid fa-bolt"></i> Real-time sync: updates appear in under a second</li>
           <li><i class="fa-solid fa-diagram-project"></i> Boards, checklists, automation and more</li>
           <li><i class="fa-solid fa-circle-check"></i> Free to start, no credit card required</li>
         </ul>

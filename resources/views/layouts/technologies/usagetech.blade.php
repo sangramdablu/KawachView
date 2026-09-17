@@ -87,7 +87,7 @@
     <div class="text-center mb-4">
       <div class="section-divider"></div>
       <h2 class="section-title">Our Technology Stack</h2>
-      <p class="section-subtitle">A snapshot of the tools we build with — see the specific stack behind each project on its service or case study page.</p>
+      <p class="section-subtitle">A snapshot of the tools we build with. See the specific stack behind each project on its service or case study page.</p>
     </div>
 
     <!-- Scrolling ticker -->

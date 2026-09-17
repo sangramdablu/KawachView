@@ -383,7 +383,7 @@
   <div class="hero-glow"></div>
   <div class="breadcrumb fade-up">About Us &rsaquo; <span>Founders & Authors</span></div>
   <h1 class="fade-up delay-1">The Minds <em>Behind</em><br>Kawach Technology</h1>
-  <p class="fade-up delay-2">Meet the visionaries who built KawachTech from a three-person startup into a global software powerhouse — and continue to shape the future of technology through thought leadership.</p>
+  <p class="fade-up delay-2">Meet the visionaries who built KawachTech from a three-person startup into a global software powerhouse, and continue to shape the future of technology through thought leadership.</p>
 </section>
 
 <!-- ─── FOUNDER: ARJUN KAPOOR ─── -->
@@ -517,7 +517,7 @@
         <div class="article-body">
             <span class="article-tag teal">Cloud & DevOps</span>
             <h4>Kubernetes Cost Optimisation: Cut Your Cloud Bill by 40% Without Sacrificing Reliability</h4>
-            <p>Real techniques from Sofia's cloud infrastructure work — right-sizing, spot instances, autoscaling policies, and more.</p>
+            <p>Real techniques from Sofia's cloud infrastructure work: right-sizing, spot instances, autoscaling policies, and more.</p>
             <div class="article-meta">
             <span class="author">Sofia Russo · 9 min read</span>
             <a class="read-link" href="https://kawachtech.com/blog">Read →</a>
@@ -530,7 +530,7 @@
         <div class="article-body">
             <span class="article-tag amber">AI & ML</span>
             <h4>Integrating LLMs Into Production Apps Without Losing Your Mind (or Your Budget)</h4>
-            <p>A framework for evaluating, integrating, and monitoring large language models in customer-facing products — from prototype to production.</p>
+            <p>A framework for evaluating, integrating, and monitoring large language models in customer-facing products, from prototype to production.</p>
             <div class="article-meta">
             <span class="author">Sofia Russo · 15 min read</span>
             <a class="read-link" href="https://kawachtech.com/blog">Read →</a>
@@ -543,7 +543,7 @@
         <div class="article-body">
             <span class="article-tag">Strategy</span>
             <h4>From Idea to MVP in 8 Weeks: The KawachTech Sprint Framework</h4>
-            <p>How we structure discovery, design, and delivery sprints to ship working software in weeks — not months — without cutting corners.</p>
+            <p>How we structure discovery, design, and delivery sprints to ship working software in weeks, not months, without cutting corners.</p>
             <div class="article-meta">
             <span class="author">Arjun Kapoor · 8 min read</span>
             <a class="read-link" href="https://kawachtech.com/blog">Read →</a>
@@ -556,7 +556,7 @@
         <div class="article-body">
             <span class="article-tag teal">Security</span>
             <h4>Security-First Development: Why We Bake It In, Not Bolt It On</h4>
-            <p>Our philosophy and checklist for embedding security into every phase of the SDLC — from design reviews to automated scanning in CI/CD.</p>
+            <p>Our philosophy and checklist for embedding security into every phase of the SDLC, from design reviews to automated scanning in CI/CD.</p>
             <div class="article-meta">
             <span class="author">Sofia Russo · 11 min read</span>
             <a class="read-link" href="https://kawachtech.com/blog">Read →</a>
@@ -569,7 +569,7 @@
         <div class="article-body">
             <span class="article-tag amber">Growth</span>
             <h4>How to Scale a Remote Engineering Team Across 8 Time Zones</h4>
-            <p>Lessons from a decade of distributed team-building — async culture, sprint rituals, code quality standards, and the tools that tie it all together.</p>
+            <p>Lessons from a decade of distributed team-building: async culture, sprint rituals, code quality standards, and the tools that tie it all together.</p>
             <div class="article-meta">
             <span class="author">Arjun Kapoor · 10 min read</span>
             <a class="read-link" href="https://kawachtech.com/blog">Read →</a>
@@ -585,7 +585,7 @@
 <div style="padding: 3rem 2rem 3rem;">
   <div class="cta-strip">
     <h2>Ready to Build Something Extraordinary?</h2>
-    <p>Speak directly with Arjun or Sofia about your project — we offer free 30-minute consultations with no obligation.</p>
+    <p>Speak directly with Arjun or Sofia about your project. We offer free 30-minute consultations with no obligation.</p>
     <div class="btn-row">
       <button class="btn-primary">Book a Free Consultation</button>
       <a href="{{ route('blog') }}"><button class="btn-ghost">Read the Blog</button></a>

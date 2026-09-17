@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = ($post->seo?->og_title ?? $post->meta_title ?? $post->title) . ' — Kawach Technology Newsroom';
+    $seoTitle       = ($post->seo?->og_title ?? $post->meta_title ?? $post->title) . ' | Kawach Technology Newsroom';
     $seoDescription = $post->seo?->og_description ?? $post->meta_description;
 
     // Merge EVERY dynamic keyword source the admin can set for this article —
@@ -645,7 +645,7 @@
 
           @if(!$post->external_source_name)
           <div class="nd-dateline-inline">
-            NEW DELHI, INDIA — {{ $post->published_at->format('F d, Y') }}
+            NEW DELHI, INDIA: {{ $post->published_at->format('F d, Y') }}
           </div>
           @endif
 

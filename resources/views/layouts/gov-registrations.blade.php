@@ -36,7 +36,7 @@
         <span class="govdoc-eyebrow"><i class="fas fa-landmark"></i> Government Registrations &amp; Recognitions</span>
         <h2 class="govdoc-heading">The Record Speaks <span>For Itself</span></h2>
         <p class="govdoc-subtitle">
-            Kawach Technology is officially registered and recognized by Indian government authorities —
+            Kawach Technology is officially registered and recognized by Indian government authorities:
             a compliant, verifiable business you can build with confidently.
         </p>
 

@@ -180,7 +180,7 @@ tailwind.config = {
 
     <!-- 2. Updated supporting line -->
     <p class="animate-fade-up3 text-lg sm:text-xl text-slate-200 font-semibold leading-snug mb-3 max-w-sm mx-auto">
-      Let customers buy now — and choose exactly when it arrives.
+      Let customers buy now and choose exactly when it arrives.
     </p>
 
     <!-- 10. "Turn future demand into sales today" -->
@@ -190,7 +190,7 @@ tailwind.config = {
 
     <!-- 2. 12 months emphasis -->
     <p class="animate-fade-up3 text-sm text-slate-400 leading-relaxed mb-4 max-w-xs mx-auto">
-      BLU gives your customers the freedom to buy now and choose exactly when their order ships — <span class="text-slate-300 font-bold">up to 12 months in advance.</span>
+      BLU gives your customers the freedom to buy now and choose exactly when their order ships, <span class="text-slate-300 font-bold">up to 12 months in advance.</span>
     </p>
 
     <!-- 2. Updated supporting merchant line -->
@@ -308,7 +308,7 @@ tailwind.config = {
       BLU appears right in your <span class="text-gradient">existing checkout</span>
     </h2>
     <!-- 6. Updated line -->
-    <p class="text-center text-xs text-slate-500 mb-8 leading-relaxed">Alongside Afterpay, Klarna, and more — BLU is a native checkout option merchants install in minutes.</p>
+    <p class="text-center text-xs text-slate-500 mb-8 leading-relaxed">Alongside Afterpay, Klarna, and more, BLU is a native checkout option merchants install in minutes.</p>
 
     <div class="animate-float bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden">
 
@@ -417,7 +417,7 @@ tailwind.config = {
     </div>
 
     <p class="text-center text-xs text-slate-600 mt-5 leading-relaxed">
-      ↑ BLU lives right here — alongside Afterpay, Klarna, and the rest.<br/>
+      ↑ BLU lives right here, alongside Afterpay, Klarna, and the rest.<br/>
       <span class="text-slate-500">No friction. Just install and go.</span>
     </p>
   </div>
@@ -515,7 +515,7 @@ tailwind.config = {
             <!-- 5. Dec 23 highlighted legend -->
             <div class="mt-2 flex items-center gap-1.5">
               <span class="text-sm"></span>
-              <span class="text-xs text-slate-500 italic">Dec 23 — Pre-Christmas delivery</span>
+              <span class="text-xs text-slate-500 italic">Dec 23: Pre-Christmas delivery</span>
             </div>
 
             <div id="selected-date-display" class="mt-3 flex items-center gap-2 bg-panel rounded-xl px-3 py-2.5 border border-border">
@@ -572,7 +572,7 @@ tailwind.config = {
       </div>
     </div>
     <!-- 7. Updated closing line -->
-    <p class="text-sm text-slate-500 leading-relaxed">This shift drives more sales, fewer returns, and happier customers — automatically.</p>
+    <p class="text-sm text-slate-500 leading-relaxed">This shift drives more sales, fewer returns, and happier customers, automatically.</p>
     <!-- 10. Optional "Turn future demand" line here too -->
     <p class="text-xs text-cyan-400/70 mt-3 font-semibold italic">Turn future demand into sales today.</p>
   </div>
@@ -728,7 +728,7 @@ tailwind.config = {
         </div>
         <div class="flex justify-between text-xs">
           <span class="text-slate-500">Future delivery date</span>
-          <span id="modal-ship-date" class="font-bold text-cyan-400">—</span>
+          <span id="modal-ship-date" class="font-bold text-cyan-400">TBD</span>
         </div>
         <div class="flex justify-between text-xs">
           <span class="text-slate-500">Method</span>
@@ -744,7 +744,7 @@ tailwind.config = {
         </div>
       </div>
 
-      <p class="text-xs text-slate-600 mb-5 italic">This is the confirmation your customers see — powered by BLU in your checkout.</p>
+      <p class="text-xs text-slate-600 mb-5 italic">This is the confirmation your customers see, powered by BLU in your checkout.</p>
 
       <button onclick="closeModal('confirm-modal');openDownloadModal()"
         class="w-full bg-blu-600 hover:bg-blu-700 text-white font-bold text-sm rounded-2xl py-3.5 transition-all flex items-center justify-center gap-2">

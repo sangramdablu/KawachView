@@ -142,7 +142,7 @@
 <section class="hd-index-hero">
   <div class="container">
     <h1>Hire Developers Who Ship</h1>
-    <p>Pre-vetted engineers across full stack, frontend, backend, mobile, and AI — pick a role or a technology to get started.</p>
+    <p>Pre-vetted engineers across full stack, frontend, backend, mobile, and AI. Pick a role or a technology to get started.</p>
   </div>
 </section>
 

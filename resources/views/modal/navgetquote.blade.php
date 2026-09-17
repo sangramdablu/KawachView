@@ -361,7 +361,7 @@
         </button>
         <div class="modal-brand-icon"><i class="fas fa-file-invoice-dollar"></i></div>
         <div class="modal-title-main">Get a Free Quote</div>
-        <div class="modal-title-sub">Tell us about your project — we'll respond within 24 hours.</div>
+        <div class="modal-title-sub">Tell us about your project, and we'll respond within 24 hours.</div>
       </div>
 
       {{-- Body --}}

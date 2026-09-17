@@ -2,7 +2,7 @@
 <html lang="en">
 
 @php
-    $seoTitle       = 'Refund Policy | Kawach Technology — Custom Software Development';
+    $seoTitle       = 'Refund Policy | Kawach Technology: Custom Software Development';
     $seoDescription = 'Read the Kawach Technology refund policy to understand our terms for cancellations, refunds, and payment disputes for custom software, web, mobile, AI, and cloud development services.';
     $seoKeywords    = 'Kawach Technology refund policy, cancellation policy, software development refunds, payment dispute policy';
     $seoCanonical   = url('/refund-policy');

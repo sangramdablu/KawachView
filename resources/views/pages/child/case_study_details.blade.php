@@ -440,7 +440,7 @@
         <a href="{{ url('/case-studies') }}" class="cs-back-link">
           <i class="fas fa-arrow-left"></i> Back to Case Studies
         </a>
-        <div class="cs-eyebrow"> Case Study — {{ $caseStudy->caseStudy->client_industry ?? 'Technology' }}</div>
+        <div class="cs-eyebrow"> Case Study: {{ $caseStudy->caseStudy->client_industry ?? 'Technology' }}</div>
         <h1 class="cs-hero-title">
             {{ $caseStudy->title }}
         </h1>
@@ -481,7 +481,7 @@
                 <div class="cs-stat-lbl">{{ $kpi['label'] ?? '' }}</div>
               </div>
             @empty
-              <div class="cs-stat-box"><div class="cs-stat-num">—</div><div class="cs-stat-lbl">No KPIs yet</div></div>
+              <div class="cs-stat-box"><div class="cs-stat-num">N/A</div><div class="cs-stat-lbl">No KPIs yet</div></div>
             @endforelse
 
             @if($caseStudy->caseStudy->completion_date)
@@ -489,7 +489,7 @@
               <div style="display:flex;justify-content:space-between;align-items:center;">
                 <div style="text-align:center;">
                   <div style="font-size:.68rem;color:#8bacc8;">Duration</div>
-                  <div style="font-size:.8rem;font-weight:700;color:#fff;">{{ $caseStudy->caseStudy->project_duration ?? '—' }}</div>
+                  <div style="font-size:.8rem;font-weight:700;color:#fff;">{{ $caseStudy->caseStudy->project_duration ?? 'N/A' }}</div>
                 </div>
                 <div style="flex:1;height:1px;background:rgba(255,255,255,.15);margin:0 10px;position:relative;">
                   <div style="width:100%;height:3px;background:linear-gradient(90deg,#1a73e8,#00c896);border-radius:2px;margin-top:-1px;"></div>
@@ -735,7 +735,7 @@
         <div class="side-line"></div>
         <div class="section-eyebrow">Technology Stack</div>
         <h2 class="section-heading">Built With the Right Tools</h2>
-        <p class="section-sub">We selected every technology based on this project's real requirements — {{ !empty($caseStudy->caseStudy->compliance_items) ? 'compliance obligations, ' : '' }}scalability needs, and long-term maintainability. No trend-chasing — only battle-tested solutions.</p>
+        <p class="section-sub">We selected every technology based on this project's real requirements: {{ !empty($caseStudy->caseStudy->compliance_items) ? 'compliance obligations, ' : '' }}scalability needs, and long-term maintainability. No trend-chasing, only battle-tested solutions.</p>
       </div>
       <div class="col-lg-8">
         @if(!empty($caseStudy->caseStudy->tech_stack))
@@ -769,7 +769,7 @@
         <p class="section-sub">Agile delivery with regular demos and continuous deployment. Full transparency at every stage.</p>
         <div style="margin-top:24px;background:#e8f1fd;border-radius:10px;padding:16px;">
           <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--primary-blue);margin-bottom:8px;">Total Timeline</div>
-          <div style="font-size:1.6rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--text-dark);">{{ $caseStudy->caseStudy->project_duration ?? '—' }}</div>
+          <div style="font-size:1.6rem;font-family:'Nunito',sans-serif;font-weight:900;color:var(--text-dark);">{{ $caseStudy->caseStudy->project_duration ?? 'N/A' }}</div>
           <div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;">{{ $caseStudy->caseStudy->completion_date ? 'Discovery → Live Production' : 'Started → Ongoing' }}</div>
         </div>
       </div>
@@ -919,7 +919,7 @@
         <div class="side-line"></div>
         <div class="section-eyebrow">Key Achievements</div>
         <h2 class="section-heading">Why This Project Matters</h2>
-        <p class="section-sub">Beyond the numbers — what this project changed day-to-day for {{ $caseStudy->caseStudy->client_name ?? 'the client' }} and the people who rely on what we built.</p>
+        <p class="section-sub">Beyond the numbers: what this project changed day-to-day for {{ $caseStudy->caseStudy->client_name ?? 'the client' }} and the people who rely on what we built.</p>
       </div>
       <div class="col-lg-8">
         @if(!empty($caseStudy->caseStudy->achievements))
@@ -1028,7 +1028,7 @@
     </div>
     <p style="margin-top:22px; color:var(--text-muted, #6c757d); font-size:.9rem;">
       Want a similar result for your business?
-      <a href="{{ route('pages.child.sevice_details', $relatedServiceSlug) }}">Explore our {{ $relatedServiceName }} services</a>@if($relatedIndustrySlug), see our <a href="{{ route('industries.show', $relatedIndustrySlug) }}">{{ $relatedIndustryName }}</a> work @endif @if($csMarket), or see how we work with businesses in <a href="{{ route($csMarket['route']) }}">{{ $csMarket['label'] }}</a> @endif — or <a href="{{ route('contact') }}">get in touch</a> directly.
+      <a href="{{ route('pages.child.sevice_details', $relatedServiceSlug) }}">Explore our {{ $relatedServiceName }} services</a>@if($relatedIndustrySlug), see our <a href="{{ route('industries.show', $relatedIndustrySlug) }}">{{ $relatedIndustryName }}</a> work @endif @if($csMarket), or see how we work with businesses in <a href="{{ route($csMarket['route']) }}">{{ $csMarket['label'] }}</a> @endif, or <a href="{{ route('contact') }}">get in touch</a> directly.
     </p>
   </div>
 </section>

@@ -286,7 +286,7 @@
   <section class="cta-banner-section text-center">
     <div class="container">
       <h2 class="cta-banner-title">Ready to Fix This For Good?</h2>
-      <p class="cta-banner-sub">Let's talk about what you're dealing with — and the most cost-effective way to solve it.</p>
+      <p class="cta-banner-sub">Let's talk about what you're dealing with, and the most cost-effective way to solve it.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap" style="position:relative;z-index:1;">
         <button class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#consultModal">
           <i class="fas fa-comments"></i> Get a Free Consultation

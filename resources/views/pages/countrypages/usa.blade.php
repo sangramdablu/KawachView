@@ -12,11 +12,11 @@
     $usaFaqs = [
         [
             'q' => 'Why should a USA company work with an offshore software development team?',
-            'a' => "The honest reason most US companies explore offshore development isn't just cost — it's access. Senior engineering talent is in short supply and expensive to hire directly in most US markets right now, and building an in-house team from scratch can take months before a single feature ships. Working with an established team like KawachTech gives you engineers who've already worked together, a project already in motion within weeks rather than a hiring pipeline, and a partner who's built similar systems before. It works best when you treat it as a genuine extension of your team, not a hand-off — which is exactly how we structure engagements.",
+            'a' => "The honest reason most US companies explore offshore development isn't just cost: it's access. Senior engineering talent is in short supply and expensive to hire directly in most US markets right now, and building an in-house team from scratch can take months before a single feature ships. Working with an established team like KawachTech gives you engineers who've already worked together, a project already in motion within weeks rather than a hiring pipeline, and a partner who's built similar systems before. It works best when you treat it as a genuine extension of your team, not a hand-off, which is exactly how we structure engagements.",
         ],
         [
             'q' => 'How does KawachTech communicate with clients in the USA given the time difference?',
-            'a' => "Our engineering teams are based in India, which puts us roughly 9.5 to 13.5 hours ahead of the continental US depending on your time zone and time of year. We don't pretend that gap doesn't exist. What we do instead is schedule recurring meetings in the overlap window — typically early morning Eastern/Pacific time, which is evening for our team — for sprint planning, demos, and any decision that genuinely needs real-time back-and-forth. Between those syncs, you get written daily updates, a shared project board, and a dedicated point of contact who's reachable by message throughout your working day.",
+            'a' => "Our engineering teams are based in India, which puts us roughly 9.5 to 13.5 hours ahead of the continental US depending on your time zone and time of year. We don't pretend that gap doesn't exist. What we do instead is schedule recurring meetings in the overlap window (typically early morning Eastern/Pacific time, which is evening for our team) for sprint planning, demos, and any decision that genuinely needs real-time back-and-forth. Between those syncs, you get written daily updates, a shared project board, and a dedicated point of contact who's reachable by message throughout your working day.",
         ],
         [
             'q' => 'Can I hire a dedicated software development team through KawachTech?',
@@ -24,23 +24,23 @@
         ],
         [
             'q' => 'Who owns the source code once the project is delivered?',
-            'a' => "Source code, documentation, and any custom IP built specifically for your project belong to you, as set out in our project agreement — this is standard practice and something we're happy to confirm in writing before work begins. If your legal team wants specific IP assignment or work-for-hire language, we'll work with them on the contract.",
+            'a' => "Source code, documentation, and any custom IP built specifically for your project belong to you, as set out in our project agreement, which is standard practice and something we're happy to confirm in writing before work begins. If your legal team wants specific IP assignment or work-for-hire language, we'll work with them on the contract.",
         ],
         [
             'q' => 'How much does custom software development cost?',
-            'a' => "It genuinely depends on scope, complexity, integrations, and which engagement model you choose — anyone who quotes a number before understanding your requirements is guessing. What we can tell you is that a fixed-price MVP and an ongoing dedicated-team product build have very different cost structures, and we'll walk through both during a free consultation once we understand what you're trying to build.",
+            'a' => "It genuinely depends on scope, complexity, integrations, and which engagement model you choose: anyone who quotes a number before understanding your requirements is guessing. What we can tell you is that a fixed-price MVP and an ongoing dedicated-team product build have very different cost structures, and we'll walk through both during a free consultation once we understand what you're trying to build.",
         ],
         [
             'q' => 'How long does it take to develop custom software?',
-            'a' => "A focused MVP typically takes 3-6 months depending on scope; a more complex enterprise platform or a product with significant integrations can run 9-12+ months. We'll give you a realistic timeline estimate after the discovery phase, once we actually understand your requirements — not before.",
+            'a' => "A focused MVP typically takes 3-6 months depending on scope; a more complex enterprise platform or a product with significant integrations can run 9-12+ months. We'll give you a realistic timeline estimate after the discovery phase, once we actually understand your requirements, not before.",
         ],
         [
             'q' => 'Can KawachTech work with our existing internal development team?',
-            'a' => "Yes, this is a common setup — we often work alongside an in-house team, either filling a specific skills gap (like a particular framework or DevOps expertise) or taking on a defined module while your team owns the rest. We'll adapt to your existing tools, code review process, and sprint cadence rather than asking you to adapt to ours.",
+            'a' => "Yes, this is a common setup: we often work alongside an in-house team, either filling a specific skills gap (like a particular framework or DevOps expertise) or taking on a defined module while your team owns the rest. We'll adapt to your existing tools, code review process, and sprint cadence rather than asking you to adapt to ours.",
         ],
         [
             'q' => 'Does KawachTech provide post-launch support?',
-            'a' => "Yes. Launching is rarely the end of the work — bug fixes, performance tuning, and incremental feature requests keep coming in the months after go-live. We offer ongoing maintenance and support arrangements sized to what your product actually needs, from a light monthly retainer to a full dedicated team continuing active development.",
+            'a' => "Yes. Launching is rarely the end of the work: bug fixes, performance tuning, and incremental feature requests keep coming in the months after go-live. We offer ongoing maintenance and support arrangements sized to what your product actually needs, from a light monthly retainer to a full dedicated team continuing active development.",
         ],
         [
             'q' => 'How do you manage different time zones on an active project?',
@@ -52,15 +52,15 @@
         ],
         [
             'q' => 'Can KawachTech sign an NDA before we share project details?',
-            'a' => "Yes — signing an NDA before any substantive discussion of your product, data, or business logic is standard practice for us, not an exception you need to request.",
+            'a' => "Yes: signing an NDA before any substantive discussion of your product, data, or business logic is standard practice for us, not an exception you need to request.",
         ],
         [
             'q' => 'Can you modernize or rebuild our existing legacy software?',
-            'a' => "Yes, legacy modernization is a significant part of what we do — whether that's migrating an aging on-premise system to the cloud, replacing a monolith with a more maintainable architecture, or rebuilding a product on a modern stack while keeping the business logic your team has refined over years. We start by auditing what exists before proposing what changes, rather than assuming a full rewrite is always the right answer.",
+            'a' => "Yes, legacy modernization is a significant part of what we do, whether that's migrating an aging on-premise system to the cloud, replacing a monolith with a more maintainable architecture, or rebuilding a product on a modern stack while keeping the business logic your team has refined over years. We start by auditing what exists before proposing what changes, rather than assuming a full rewrite is always the right answer.",
         ],
         [
             'q' => 'Can we scale the development team up or down during the project?',
-            'a' => "Yes — this is one of the practical advantages of a dedicated-team engagement over hiring directly. If you need to add a specialist for a specific phase (say, a DevOps engineer during a cloud migration) or scale back after a major release, we can adjust team composition with real notice rather than a multi-month hiring or layoff process.",
+            'a' => "Yes: this is one of the practical advantages of a dedicated-team engagement over hiring directly. If you need to add a specialist for a specific phase (say, a DevOps engineer during a cloud migration) or scale back after a major release, we can adjust team composition with real notice rather than a multi-month hiring or layoff process.",
         ],
         [
             'q' => 'What industries does KawachTech have experience in within the USA market?',
@@ -68,7 +68,7 @@
         ],
         [
             'q' => 'How do we get started with KawachTech?',
-            'a' => "Book a free consultation through this page or our contact form. We'll ask about your business goals, current systems, and what you're trying to build, then follow up with an honest assessment of scope, approach, and realistic next steps — no obligation, no generic sales deck.",
+            'a' => "Book a free consultation through this page or our contact form. We'll ask about your business goals, current systems, and what you're trying to build, then follow up with an honest assessment of scope, approach, and realistic next steps, with no obligation and no generic sales deck.",
         ],
     ];
 
@@ -223,8 +223,8 @@
       </div>
       <h1>Custom Software Development Company for Businesses in the USA</h1>
       <p class="usa-hero-lede">
-        KawachTech helps US founders, CTOs and product teams design, build and scale custom software —
-        from early-stage MVPs to enterprise systems — without the overhead of building an internal
+        KawachTech helps US founders, CTOs and product teams design, build and scale custom software,
+        from early-stage MVPs to enterprise systems, without the overhead of building an internal
         engineering org from zero.
       </p>
       <ul class="usa-hero-list">
@@ -243,7 +243,7 @@
       </div>
       <div class="usa-trust-line">
         <i class="fas fa-shield-alt"></i>
-        <span>Work with an experienced software development team with transparent communication, flexible engagement models, and complete focus on your business goals — not a rotating cast of subcontractors.</span>
+        <span>Work with an experienced software development team with transparent communication, flexible engagement models, and complete focus on your business goals, not a rotating cast of subcontractors.</span>
       </div>
     </div>
   </section>
@@ -272,12 +272,12 @@
         <div class="usa-challenge-card">
           <i class="fas fa-user-slash"></i>
           <h3>A Tight, Expensive Senior Engineering Market</h3>
-          <p>Experienced software engineers in most US tech hubs command high salaries and are genuinely hard to hire quickly — a single senior backend hire can take three to six months from job posting to start date, time most product roadmaps can't afford to lose.</p>
+          <p>Experienced software engineers in most US tech hubs command high salaries and are genuinely hard to hire quickly: a single senior backend hire can take three to six months from job posting to start date, time most product roadmaps can't afford to lose.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-server"></i>
           <h3>Legacy Systems Slowing Down the Business</h3>
-          <p>Many established US businesses are still running on systems built a decade or more ago — functional, but brittle, poorly documented, and increasingly risky to extend without breaking something else.</p>
+          <p>Many established US businesses are still running on systems built a decade or more ago: functional, but brittle, poorly documented, and increasingly risky to extend without breaking something else.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-clipboard-list"></i>
@@ -287,17 +287,17 @@
         <div class="usa-challenge-card">
           <i class="fas fa-hourglass-half"></i>
           <h3>Product Development Moving Too Slowly</h3>
-          <p>Competitors — often venture-funded and digital-first — are shipping faster. A slow internal release cadence isn't just an engineering inconvenience, it's a real competitive risk in most US verticals right now.</p>
+          <p>Competitors, often venture-funded and digital-first, are shipping faster. A slow internal release cadence isn't just an engineering inconvenience, it's a real competitive risk in most US verticals right now.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-cloud-arrow-up"></i>
           <h3>Cloud Modernization and Scaling Infrastructure</h3>
-          <p>Moving from on-premise or a single monolithic server to properly scalable cloud infrastructure is a project most internal teams put off — not because it isn't a priority, but because nobody has the bandwidth to own it end-to-end.</p>
+          <p>Moving from on-premise or a single monolithic server to properly scalable cloud infrastructure is a project most internal teams put off, not because it isn't a priority, but because nobody has the bandwidth to own it end-to-end.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-brain"></i>
           <h3>Figuring Out Where AI Actually Fits</h3>
-          <p>Most US businesses now feel pressure to "do something with AI," but the harder problem is identifying which specific workflow — support triage, document processing, recommendations — would genuinely benefit, and building it on real data rather than a demo.</p>
+          <p>Most US businesses now feel pressure to "do something with AI," but the harder problem is identifying which specific workflow (support triage, document processing, recommendations) would genuinely benefit, and building it on real data rather than a demo.</p>
         </div>
       </div>
     </div>
@@ -328,7 +328,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-layer-group"></i> What We Build</span>
         <h2 class="usa-section-title">How KawachTech Helps Businesses in the USA</h2>
-        <p class="usa-section-sub">Practical solutions mapped to the challenges above — not a generic service menu.</p>
+        <p class="usa-section-sub">Practical solutions mapped to the challenges above, not a generic service menu.</p>
       </div>
       <div class="usa-svc-grid">
         <div class="usa-svc-card">
@@ -352,7 +352,7 @@
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-globe"></i></div>
           <h3>Web Application Development</h3>
-          <p>Secure, scalable web applications — customer-facing platforms, internal tools, and everything in between.</p>
+          <p>Secure, scalable web applications: customer-facing platforms, internal tools, and everything in between.</p>
           <a href="{{ route('pages.child.sevice_details', 'web-application-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
@@ -400,15 +400,15 @@
       <div class="usa-trust-grid">
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-comments"></i></div>
-          <div><strong>Transparent Communication</strong><span>Clear communication channels, regular written updates, and defined milestones — you always know exactly where your project stands.</span></div>
+          <div><strong>Transparent Communication</strong><span>Clear communication channels, regular written updates, and defined milestones, so you always know exactly where your project stands.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-clock"></i></div>
-          <div><strong>Realistic Time-Zone Collaboration</strong><span>Scheduled overlap meetings, async daily updates, and a dedicated point of contact — built around the real time difference, not an exaggerated one.</span></div>
+          <div><strong>Realistic Time-Zone Collaboration</strong><span>Scheduled overlap meetings, async daily updates, and a dedicated point of contact, built around the real time difference, not an exaggerated one.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-user-tie"></i></div>
-          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement — not a rotating cast of account managers.</span></div>
+          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement, not a rotating cast of account managers.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-rotate"></i></div>
@@ -420,7 +420,7 @@
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-diagram-project"></i></div>
-          <div><strong>Scalable Development Teams</strong><span>Add specialist skills for a specific phase or scale down after a major release — team composition adjusts to your actual roadmap.</span></div>
+          <div><strong>Scalable Development Teams</strong><span>Add specialist skills for a specific phase or scale down after a major release: team composition adjusts to your actual roadmap.</span></div>
         </div>
       </div>
     </div>
@@ -446,23 +446,23 @@
       </div>
       <div class="usa-compliance-wrap">
         <p style="color:var(--text-muted);">
-          The US doesn't have one single federal privacy law the way the EU has GDPR — instead, requirements
+          The US doesn't have one single federal privacy law the way the EU has GDPR. Instead, requirements
           come from a mix of state-level privacy laws (like California's CCPA/CPRA), industry-specific
           regulations, and whatever contractual obligations your own customers or partners impose on you.
           What that means practically is that "compliance" looks different depending on what you're building
           and who your users are.
         </p>
         <ul class="usa-compliance-list">
-          <li><i class="fas fa-notes-medical"></i><span><strong>Healthcare software</strong> — building with HIPAA-conscious data handling in mind: access controls, encryption, and audit trails around protected health information.</span></li>
-          <li><i class="fas fa-credit-card"></i><span><strong>Financial &amp; payments software</strong> — PCI-DSS compliant payment processing and the kind of data-handling discipline financial regulators expect.</span></li>
-          <li><i class="fas fa-map-location-dot"></i><span><strong>State-level privacy laws</strong> — designing data collection, storage and consent flows with California and other state privacy requirements in mind where your user base requires it.</span></li>
-          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong> — encryption at rest and in transit, role-based access control, and infrastructure aligned with SOC 2-style control principles.</span></li>
+          <li><i class="fas fa-notes-medical"></i><span><strong>Healthcare software</strong>: building with HIPAA-conscious data handling in mind, including access controls, encryption, and audit trails around protected health information.</span></li>
+          <li><i class="fas fa-credit-card"></i><span><strong>Financial &amp; payments software</strong>: PCI-DSS compliant payment processing and the kind of data-handling discipline financial regulators expect.</span></li>
+          <li><i class="fas fa-map-location-dot"></i><span><strong>State-level privacy laws</strong>: designing data collection, storage and consent flows with California and other state privacy requirements in mind where your user base requires it.</span></li>
+          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong>: encryption at rest and in transit, role-based access control, and infrastructure aligned with SOC 2-style control principles.</span></li>
         </ul>
         <div class="usa-compliance-note">
           <strong>An honest note on compliance:</strong> we're not a law firm and this page isn't legal advice.
           We build software with security, privacy and compliance requirements in mind and work directly with
           your internal legal, compliance and security teams to meet the specific regulatory obligations that
-          apply to your business — but final compliance sign-off for your industry and jurisdiction is always
+          apply to your business, but final compliance sign-off for your industry and jurisdiction is always
           a decision for your own counsel.
         </div>
       </div>
@@ -500,7 +500,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-briefcase"></i> Real Projects</span>
         <h2 class="usa-section-title">Software Development Success Stories</h2>
-        <p class="usa-section-sub">US-based client engagements — real challenges, real solutions, measurable outcomes.</p>
+        <p class="usa-section-sub">US-based client engagements: real challenges, real solutions, measurable outcomes.</p>
       </div>
       <div class="usa-cs-grid">
 
@@ -606,29 +606,29 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-file-signature"></i> How We Work Together</span>
         <h2 class="usa-section-title">Engagement Models</h2>
-        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements — these models describe structure, not price.</p>
+        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements. These models describe structure, not price.</p>
       </div>
       <div class="usa-eng-grid">
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for defined scope</div>
           <h3>Fixed Price Project</h3>
-          <p>Suited to projects with <strong>clearly defined requirements</strong> — an MVP, a specific feature set, or a scoped integration.</p>
+          <p>Suited to projects with <strong>clearly defined requirements</strong>: an MVP, a specific feature set, or a scoped integration.</p>
           <p><strong>Communication:</strong> milestone-based check-ins tied to agreed deliverables.</p>
-          <p><strong>Flexibility:</strong> lower — scope changes require a formal change request.</p>
+          <p><strong>Flexibility:</strong> lower. Scope changes require a formal change request.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for ongoing product work</div>
           <h3>Dedicated Development Team</h3>
           <p>Suited to <strong>long-term product development</strong> where requirements will keep evolving after launch.</p>
           <p><strong>Communication:</strong> daily/weekly syncs, sprint planning, and a dedicated point of contact.</p>
-          <p><strong>Flexibility:</strong> high — team composition and priorities adjust as your roadmap changes.</p>
+          <p><strong>Flexibility:</strong> high. Team composition and priorities adjust as your roadmap changes.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for evolving scope</div>
           <h3>Time &amp; Material</h3>
           <p>Suited to work where requirements are <strong>still being discovered</strong>, or where scope is likely to shift as you learn.</p>
           <p><strong>Communication:</strong> regular reporting on hours and progress against a rolling plan.</p>
-          <p><strong>Flexibility:</strong> high — priorities can be reordered sprint to sprint.</p>
+          <p><strong>Flexibility:</strong> high. Priorities can be reordered sprint to sprint.</p>
         </div>
       </div>
     </div>
@@ -693,7 +693,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-earth-americas"></i> Working Together</span>
         <h2 class="usa-section-title">Working With a Software Development Team Across Time Zones</h2>
-        <p class="usa-section-sub">Kawach Technology is headquartered in India — here's honestly how that works with a team in the USA.</p>
+        <p class="usa-section-sub">Kawach Technology is headquartered in India. Here's honestly how that works with a team in the USA.</p>
       </div>
       <div class="usa-tz-wrap">
         <div class="usa-tz-card">
@@ -704,7 +704,7 @@
         </div>
         <ul class="usa-tz-list">
           <li><i class="fas fa-calendar-check"></i><span><strong>Scheduled overlap meetings</strong> in early-morning Eastern/Pacific time (evening for our team) for sprint planning, demos, and decisions that need real-time discussion.</span></li>
-          <li><i class="fas fa-moon"></i><span><strong>Work continues while you sleep.</strong> The gap that makes live overlap limited also means development often progresses overnight your time — you frequently wake up to completed work.</span></li>
+          <li><i class="fas fa-moon"></i><span><strong>Work continues while you sleep.</strong> The gap that makes live overlap limited also means development often progresses overnight your time, so you frequently wake up to completed work.</span></li>
           <li><i class="fas fa-clipboard-list"></i><span><strong>Written daily updates</strong> and a shared project board (Jira, Linear, Trello, or your existing tool) so status is never a mystery between syncs.</span></li>
           <li><i class="fas fa-user"></i><span><strong>One dedicated point of contact</strong> on our side, reachable by message throughout your working day even outside scheduled calls.</span></li>
           <li><i class="fas fa-video"></i><span><strong>Recorded sprint demos</strong> for anyone on your team who can't make the live overlap window.</span></li>

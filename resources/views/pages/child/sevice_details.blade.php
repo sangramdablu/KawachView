@@ -19,7 +19,7 @@
         : [
             ['q' => 'How long does a typical project take?', 'a' => 'Timeline depends on scope. A simple web app takes 4–8 weeks; a full-scale SaaS platform can take 3–6 months. We provide a detailed roadmap at the start of every engagement.'],
             ['q' => 'What does your development process look like?', 'a' => 'We use Agile methodology with 2-week sprints. You get a working demo every sprint, daily standup reports, and direct access to your project manager throughout.'],
-            ['q' => 'Do you offer post-launch support?', 'a' => 'Yes — all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
+            ['q' => 'Do you offer post-launch support?', 'a' => 'Yes, all projects include 30 days of free post-launch support. After that, we offer flexible monthly retainer plans for ongoing maintenance, monitoring, and feature development.'],
             ['q' => 'How do you handle project communication?', 'a' => 'We communicate via Slack, email, and weekly video calls. You\'ll have a dedicated project manager and access to our project tracking dashboard at all times.'],
             ['q' => 'What happens if the scope changes mid-project?', 'a' => 'Scope changes are handled transparently. We assess the impact on timeline and budget, present options, and only proceed with your approval. No surprise invoices.'],
         ];
@@ -417,7 +417,7 @@
           </div>
           <p style="color:var(--text-muted, #6c757d); font-size:.95rem; margin-bottom:18px;">
             KawachTech works with businesses across the USA, United Kingdom, Germany and Europe to design,
-            develop and scale custom software products — each market page covers the specific business
+            develop and scale custom software products, and each market page covers the specific business
             challenges, communication approach and compliance considerations relevant there.
           </p>
           <div class="row g-3">
@@ -467,7 +467,7 @@
             <div class="sidebar-card-header">
               <div class="sidebar-card-header-icon"><i class="fas fa-paper-plane"></i></div>
               <div class="sidebar-card-title">Start Your Project</div>
-              <div class="sidebar-card-sub">Free consultation — no commitment</div>
+              <div class="sidebar-card-sub">Free consultation, no commitment</div>
             </div>
             <div class="sidebar-card-body">
               <button class="sidebar-cta-btn"

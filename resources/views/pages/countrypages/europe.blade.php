@@ -10,27 +10,27 @@
     $euFaqs = [
         [
             'q' => 'Why should a European company work with an offshore software development team?',
-            'a' => "Senior engineering talent is contested across most major European tech hubs — Amsterdam, Paris, Berlin, and the Nordics are all competing for the same limited pool. Working with an established team like KawachTech gives you engineers who've already worked together and a project moving within weeks, without a multi-month hiring process, and without needing to navigate hiring regulations in a second country just to add capacity.",
+            'a' => "Senior engineering talent is contested across most major European tech hubs: Amsterdam, Paris, Berlin, and the Nordics are all competing for the same limited pool. Working with an established team like KawachTech gives you engineers who've already worked together and a project moving within weeks, without a multi-month hiring process, and without needing to navigate hiring regulations in a second country just to add capacity.",
         ],
         [
             'q' => 'Does KawachTech understand that "Europe" isn\'t one single market?',
-            'a' => "Yes — a company operating in the Netherlands, France and Germany simultaneously faces genuinely different national nuances even though GDPR provides a common baseline: different consumer protection rules, different invoicing and VAT conventions, sometimes different language and localization expectations. We ask specifically which countries your software needs to serve before making any assumptions, rather than treating 'Europe' as a single undifferentiated market.",
+            'a' => "Yes: a company operating in the Netherlands, France and Germany simultaneously faces genuinely different national nuances even though GDPR provides a common baseline: different consumer protection rules, different invoicing and VAT conventions, sometimes different language and localization expectations. We ask specifically which countries your software needs to serve before making any assumptions, rather than treating 'Europe' as a single undifferentiated market.",
         ],
         [
             'q' => 'How does KawachTech communicate with clients across European time zones?',
-            'a' => "Most of continental Europe runs on CET/CEST, which is 3.5-4.5 hours behind India depending on the time of year — a gap small enough for genuine daily overlap. For clients on the edges of that range (Ireland, Portugal, or Eastern Europe), we adjust meeting scheduling accordingly rather than assuming one fixed overlap window fits everyone.",
+            'a' => "Most of continental Europe runs on CET/CEST, which is 3.5-4.5 hours behind India depending on the time of year, a gap small enough for genuine daily overlap. For clients on the edges of that range (Ireland, Portugal, or Eastern Europe), we adjust meeting scheduling accordingly rather than assuming one fixed overlap window fits everyone.",
         ],
         [
             'q' => 'How do you handle GDPR compliance across different EU member states?',
-            'a' => "GDPR sets one common regulatory baseline across the EU, but enforcement style and some implementation details (like Germany's BDSG or specific national derogations) vary by member state. We build data handling with GDPR's core principles in mind — data minimization, lawful basis for processing, encryption, and clear consent — and adapt to country-specific requirements where your legal team identifies them. We're not a law firm, so final compliance sign-off for a specific jurisdiction is always a decision for your own counsel.",
+            'a' => "GDPR sets one common regulatory baseline across the EU, but enforcement style and some implementation details (like Germany's BDSG or specific national derogations) vary by member state. We build data handling with GDPR's core principles in mind (data minimization, lawful basis for processing, encryption, and clear consent), and adapt to country-specific requirements where your legal team identifies them. We're not a law firm, so final compliance sign-off for a specific jurisdiction is always a decision for your own counsel.",
         ],
         [
             'q' => 'Can you host our data within the EU?',
-            'a' => "Yes — EU-region cloud infrastructure is a standard architecture choice we build around, and where a client needs data to stay within a specific member state (as some Dutch, French and German enterprises require), we design for that specifically rather than assuming a generic EU region is sufficient.",
+            'a' => "Yes: EU-region cloud infrastructure is a standard architecture choice we build around, and where a client needs data to stay within a specific member state (as some Dutch, French and German enterprises require), we design for that specifically rather than assuming a generic EU region is sufficient.",
         ],
         [
             'q' => 'Can I hire a dedicated software development team through KawachTech?',
-            'a' => 'Yes. Our dedicated development team model gives you engineers who work exclusively on your product and report into your priorities — the model most of our European clients use for ongoing product development across multiple markets.',
+            'a' => 'Yes. Our dedicated development team model gives you engineers who work exclusively on your product and report into your priorities. This is the model most of our European clients use for ongoing product development across multiple markets.',
         ],
         [
             'q' => 'Who owns the source code and intellectual property once the project is delivered?',
@@ -46,23 +46,23 @@
         ],
         [
             'q' => 'Can you build software that supports multiple languages and currencies?',
-            'a' => "Yes — multi-language and multi-currency support is a common requirement for European clients operating across several countries, and we design for localization from the architecture stage rather than retrofitting it after launch.",
+            'a' => "Yes: multi-language and multi-currency support is a common requirement for European clients operating across several countries, and we design for localization from the architecture stage rather than retrofitting it after launch.",
         ],
         [
             'q' => 'Can KawachTech work with our existing internal development team?',
-            'a' => "Yes — a common setup is filling a specific skills gap or owning a defined module while your team owns the rest, adapting to your existing tools and processes.",
+            'a' => "Yes: a common setup is filling a specific skills gap or owning a defined module while your team owns the rest, adapting to your existing tools and processes.",
         ],
         [
             'q' => 'Does KawachTech provide post-launch support?',
-            'a' => "Yes, sized to what your product needs — from a light maintenance retainer to a full dedicated team continuing active development after launch.",
+            'a' => "Yes, sized to what your product needs, from a light maintenance retainer to a full dedicated team continuing active development after launch.",
         ],
         [
             'q' => 'Can KawachTech sign an NDA before we share project details?',
-            'a' => "Yes — this is standard practice before any substantive discussion of your product, data or business logic.",
+            'a' => "Yes: this is standard practice before any substantive discussion of your product, data or business logic.",
         ],
         [
             'q' => 'Can you modernize or rebuild our existing legacy software?',
-            'a' => "Yes — migrating an aging system to the cloud, replacing a monolith, or rebuilding on a modern stack while preserving existing business logic is a significant part of what we do. We audit before proposing changes.",
+            'a' => "Yes: migrating an aging system to the cloud, replacing a monolith, or rebuilding on a modern stack while preserving existing business logic is a significant part of what we do. We audit before proposing changes.",
         ],
         [
             'q' => 'How do we get started with KawachTech?',
@@ -292,7 +292,7 @@
       </div>
       <h1>Software Development Services for Businesses Across Europe</h1>
       <p class="usa-hero-lede">
-        KawachTech helps European businesses — operating in one market or several at once — design, build
+        KawachTech helps European businesses, operating in one market or several at once, design, build
         and scale custom software, with GDPR-aware data handling and localization built in from the
         architecture stage, not bolted on afterward.
       </p>
@@ -329,12 +329,12 @@
         <div class="usa-challenge-card">
           <i class="fas fa-map"></i>
           <h3>Operating Across Multiple National Regulatory Regimes</h3>
-          <p>GDPR gives the EU a common baseline, but national implementations, consumer protection rules and industry regulations still vary by member state — a genuine complexity for any business serving more than one country.</p>
+          <p>GDPR gives the EU a common baseline, but national implementations, consumer protection rules and industry regulations still vary by member state, a genuine complexity for any business serving more than one country.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-language"></i>
           <h3>Multi-Language and Multi-Currency Requirements</h3>
-          <p>Software built for one market often needs significant rework to support additional languages, currencies and local payment methods — costly if localization wasn't part of the original architecture.</p>
+          <p>Software built for one market often needs significant rework to support additional languages, currencies and local payment methods, costly if localization wasn't part of the original architecture.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-user-slash"></i>
@@ -344,7 +344,7 @@
         <div class="usa-challenge-card">
           <i class="fas fa-server"></i>
           <h3>Legacy Systems in Established European Businesses</h3>
-          <p>Many long-established European companies — in energy, hospitality, food service and manufacturing alike — are still running core operations on systems that predate modern cloud architecture.</p>
+          <p>Many long-established European companies, in energy, hospitality, food service and manufacturing alike, are still running core operations on systems that predate modern cloud architecture.</p>
         </div>
         <div class="usa-challenge-card">
           <i class="fas fa-earth-europe"></i>
@@ -366,7 +366,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-layer-group"></i> What We Build</span>
         <h2 class="usa-section-title">How KawachTech Helps Businesses Across Europe</h2>
-        <p class="usa-section-sub">Practical solutions mapped to the challenges above — not a generic service menu.</p>
+        <p class="usa-section-sub">Practical solutions mapped to the challenges above, not a generic service menu.</p>
       </div>
       <div class="usa-svc-grid">
         <div class="usa-svc-card">
@@ -378,7 +378,7 @@
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-cloud"></i></div>
           <h3>SaaS Development</h3>
-          <p>Multi-tenant SaaS platforms architected for localization — multiple languages, currencies and regional data residency.</p>
+          <p>Multi-tenant SaaS platforms architected for localization: multiple languages, currencies and regional data residency.</p>
           <a href="{{ route('pages.child.sevice_details', 'saas-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
@@ -390,7 +390,7 @@
         <div class="usa-svc-card">
           <div class="usa-svc-icon"><i class="fas fa-globe"></i></div>
           <h3>Web Application Development</h3>
-          <p>Secure, scalable web applications — customer-facing platforms, internal tools, and everything in between.</p>
+          <p>Secure, scalable web applications: customer-facing platforms, internal tools, and everything in between.</p>
           <a href="{{ route('pages.child.sevice_details', 'web-application-development') }}" class="usa-svc-link">Learn more &rarr;</a>
         </div>
         <div class="usa-svc-card">
@@ -425,7 +425,7 @@
       <div class="usa-trust-grid">
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-comments"></i></div>
-          <div><strong>Transparent Communication</strong><span>Clear communication channels, regular written updates, and defined milestones — you always know exactly where your project stands.</span></div>
+          <div><strong>Transparent Communication</strong><span>Clear communication channels, regular written updates, and defined milestones, so you always know exactly where your project stands.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-clock"></i></div>
@@ -433,7 +433,7 @@
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-user-tie"></i></div>
-          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement — not a rotating cast of account managers.</span></div>
+          <div><strong>Dedicated Project Management</strong><span>A single, clear point of contact throughout the engagement, not a rotating cast of account managers.</span></div>
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-language"></i></div>
@@ -445,7 +445,7 @@
         </div>
         <div class="usa-trust-item">
           <div class="usa-trust-icon"><i class="fas fa-diagram-project"></i></div>
-          <div><strong>Scalable Development Teams</strong><span>Add specialist skills for a specific phase or scale down after a major release — team composition adjusts to your roadmap.</span></div>
+          <div><strong>Scalable Development Teams</strong><span>Add specialist skills for a specific phase or scale down after a major release: team composition adjusts to your roadmap.</span></div>
         </div>
       </div>
     </div>
@@ -461,22 +461,22 @@
       <div class="usa-compliance-wrap">
         <p style="color:var(--text-muted);">
           GDPR gives every EU member state a shared regulatory floor, but national implementation and
-          enforcement style still differ — the Netherlands, France and Germany each apply the same
+          enforcement style still differ: the Netherlands, France and Germany each apply the same
           regulation with their own local nuance. Software genuinely built for a European audience needs
           to treat that baseline seriously while staying adaptable to country-specific requirements as
           they come up.
         </p>
         <ul class="usa-compliance-list">
-          <li><i class="fas fa-user-shield"></i><span><strong>GDPR-first design</strong> — data minimization, lawful basis for processing, encryption, and clear consent flows built in from the architecture stage.</span></li>
-          <li><i class="fas fa-earth-europe"></i><span><strong>EU or member-state-specific data residency</strong> — infrastructure built around EU-region cloud hosting, or a specific country's region where required.</span></li>
-          <li><i class="fas fa-language"></i><span><strong>Localization-ready architecture</strong> — multi-language and multi-currency support designed in from the start, not retrofitted.</span></li>
-          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong> — encryption at rest and in transit, role-based access control, and infrastructure aligned with recognized security control principles.</span></li>
+          <li><i class="fas fa-user-shield"></i><span><strong>GDPR-first design</strong>: data minimization, lawful basis for processing, encryption, and clear consent flows built in from the architecture stage.</span></li>
+          <li><i class="fas fa-earth-europe"></i><span><strong>EU or member-state-specific data residency</strong>: infrastructure built around EU-region cloud hosting, or a specific country's region where required.</span></li>
+          <li><i class="fas fa-language"></i><span><strong>Localization-ready architecture</strong>: multi-language and multi-currency support designed in from the start, not retrofitted.</span></li>
+          <li><i class="fas fa-server"></i><span><strong>Enterprise security architecture</strong>: encryption at rest and in transit, role-based access control, and infrastructure aligned with recognized security control principles.</span></li>
         </ul>
         <div class="usa-compliance-note">
           <strong>An honest note on compliance:</strong> we're not a law firm and this page isn't legal advice.
           We build software with security, privacy and compliance requirements in mind and work directly with
           your internal legal and data protection teams to meet the specific obligations of each market you
-          operate in — final compliance sign-off is always a decision for your own counsel.
+          operate in. Final compliance sign-off is always a decision for your own counsel.
         </div>
       </div>
     </div>
@@ -488,7 +488,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-briefcase"></i> Real Projects</span>
         <h2 class="usa-section-title">Software Development Success Stories</h2>
-        <p class="usa-section-sub">European client engagements — real challenges, real solutions, measurable outcomes.</p>
+        <p class="usa-section-sub">European client engagements: real challenges, real solutions, measurable outcomes.</p>
       </div>
       <div class="usa-cs-grid">
         <div class="usa-cs-card">
@@ -551,29 +551,29 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-file-signature"></i> How We Work Together</span>
         <h2 class="usa-section-title">Engagement Models</h2>
-        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements — these models describe structure, not price.</p>
+        <p class="usa-section-sub">Final cost always depends on scope, complexity, team composition and requirements. These models describe structure, not price.</p>
       </div>
       <div class="usa-eng-grid">
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for defined scope</div>
           <h3>Fixed Price Project</h3>
-          <p>Suited to projects with <strong>clearly defined requirements</strong> — an MVP, a specific feature set, or a scoped integration.</p>
+          <p>Suited to projects with <strong>clearly defined requirements</strong>: an MVP, a specific feature set, or a scoped integration.</p>
           <p><strong>Communication:</strong> milestone-based check-ins tied to agreed deliverables.</p>
-          <p><strong>Flexibility:</strong> lower — scope changes require a formal change request.</p>
+          <p><strong>Flexibility:</strong> lower. Scope changes require a formal change request.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for ongoing product work</div>
           <h3>Dedicated Development Team</h3>
           <p>Suited to <strong>long-term product development</strong> across one or several European markets at once.</p>
           <p><strong>Communication:</strong> daily/weekly syncs, sprint planning, and a dedicated point of contact.</p>
-          <p><strong>Flexibility:</strong> high — team composition and priorities adjust as your roadmap changes.</p>
+          <p><strong>Flexibility:</strong> high. Team composition and priorities adjust as your roadmap changes.</p>
         </div>
         <div class="usa-eng-card">
           <div class="usa-eng-best">Best for evolving scope</div>
           <h3>Time &amp; Material</h3>
           <p>Suited to work where requirements are <strong>still being discovered</strong>, or where a multi-market rollout means scope will shift.</p>
           <p><strong>Communication:</strong> regular reporting on hours and progress against a rolling plan.</p>
-          <p><strong>Flexibility:</strong> high — priorities can be reordered sprint to sprint.</p>
+          <p><strong>Flexibility:</strong> high. Priorities can be reordered sprint to sprint.</p>
         </div>
       </div>
     </div>
@@ -605,7 +605,7 @@
       <div class="usa-section-head">
         <span class="usa-eyebrow"><i class="fas fa-earth-europe"></i> Working Together</span>
         <h2 class="usa-section-title">Working With a Software Development Team Across Time Zones</h2>
-        <p class="usa-section-sub">Kawach Technology is headquartered in India — most of continental Europe overlaps with our working day comfortably.</p>
+        <p class="usa-section-sub">Kawach Technology is headquartered in India, and most of continental Europe overlaps with our working day comfortably.</p>
       </div>
       <div class="usa-tz-wrap">
         <div class="usa-tz-card">
@@ -616,7 +616,7 @@
         </div>
         <ul class="usa-tz-list">
           <li><i class="fas fa-calendar-check"></i><span><strong>Daily real-time stand-ups</strong> fit comfortably within a normal European working day for most CET/CEST markets.</span></li>
-          <li><i class="fas fa-map"></i><span><strong>Meeting times adjusted per market</strong> — a client based in Ireland or Portugal gets a scheduling approach that reflects their slightly wider gap, not a one-size-fits-all overlap window.</span></li>
+          <li><i class="fas fa-map"></i><span><strong>Meeting times adjusted per market</strong>: a client based in Ireland or Portugal gets a scheduling approach that reflects their slightly wider gap, not a one-size-fits-all overlap window.</span></li>
           <li><i class="fas fa-clipboard-list"></i><span><strong>A shared project board</strong> (Jira, Linear, or your existing tool) and written updates so status is never a mystery between syncs.</span></li>
           <li><i class="fas fa-user"></i><span><strong>One dedicated point of contact</strong> on our side, reachable throughout your working day.</span></li>
         </ul>

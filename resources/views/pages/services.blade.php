@@ -3,7 +3,7 @@
 
 @php
     $seoTitle       = 'Our Services | Custom Software Development Company | Kawach Technology';
-    $seoDescription = "Explore Kawach Technology's full range of software development services — web, mobile, AI, cloud, and SaaS solutions for businesses in the USA and Europe.";
+    $seoDescription = "Explore Kawach Technology's full range of software development services: web, mobile, AI, cloud, and SaaS solutions for businesses in the USA and Europe.";
     $seoKeywords    = 'software development services, web development services, mobile app development, AI development services, cloud application development, SaaS development';
     $seoCanonical   = url('/services');
 @endphp

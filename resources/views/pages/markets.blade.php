@@ -88,7 +88,7 @@
         <a href="{{ route('country.usa') }}" class="mkt-card">
           <span class="mkt-card-flag">United States</span>
           <h2>Software Development for US Businesses</h2>
-          <p>Custom software, SaaS and AI development for US founders, CTOs and product teams — with a realistic look at time-zone collaboration and US-specific compliance considerations.</p>
+          <p>Custom software, SaaS and AI development for US founders, CTOs and product teams, with a realistic look at time-zone collaboration and US-specific compliance considerations.</p>
           <span class="mkt-card-link">Explore the USA page &rarr;</span>
         </a>
         <a href="{{ route('country.uk') }}" class="mkt-card">

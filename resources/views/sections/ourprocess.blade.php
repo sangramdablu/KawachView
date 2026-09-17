@@ -14,7 +14,7 @@
               @endforeach
             @else
               @foreach([
-                ['Discovery & Requirements','We conduct in-depth workshops to understand your goals, audience, and technical constraints. No assumptions — just clarity.'],
+                ['Discovery & Requirements','We conduct in-depth workshops to understand your goals, audience, and technical constraints. No assumptions, just clarity.'],
                 ['Architecture & Planning','Our architects design a scalable system blueprint. Tech stack, infrastructure, timelines, and milestones are defined before a line of code is written.'],
                 ['Agile Development','Two-week sprints with daily standups. You get a working demo at the end of every sprint so feedback loops stay tight.'],
                 ['Quality Assurance','Manual and automated testing across devices, browsers, and edge cases. We don\'t ship until it\'s solid.'],
